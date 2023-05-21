@@ -38,6 +38,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 /* ROUTES */
+/* CLIENT FACING SIDEBAR OPTIONS */
 app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
@@ -61,4 +62,4 @@ mongoose
     // Transaction.insertMany(dataTransaction);
     // User.insertMany(dataUser);
   })
-  .catch((error) => console.log(`${error} did not connect`));
+  .catch((error) => console.log(`${error} Did not connect`));

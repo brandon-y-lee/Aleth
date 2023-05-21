@@ -1,14 +1,23 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+/* createApi is a function that generates an API slice, 
+    which includes reducers and actions that handles all the data fetching logic. */
 export const api = createApi({
+
+  /* baseQuery handles making the actual HTTP requests, fetchBaseQuery is a basic fetch implementation
+      with sensible defaults for things like headers. */
   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL }),
+
+  /* reducerPath is the key in the Redux store where the API slice reducer will be mounted. */
   reducerPath: "adminApi",
+  
+  /* tagTypes is an array of tag types that can be invalidated or refetched as part of the cache handling behavior. */
   tagTypes: [
     "User",
-    "Products",
-    "Customers",
-    "Transactions",
-    "Geography",
+    "Templates",
+    "Entity",
+    "Shipments",
+    "Map",
     "Sales",
     "Admins",
     "Performance",
@@ -20,24 +29,24 @@ export const api = createApi({
       providesTags: ["User"],
     }),
     getProducts: build.query({
-      query: () => "client/products",
-      providesTags: ["Products"],
+      query: () => "client/templates",
+      providesTags: ["Templates"],
     }),
     getCustomers: build.query({
-      query: () => "client/customers",
-      providesTags: ["Customers"],
+      query: () => "client/entity",
+      providesTags: ["Entity"],
     }),
     getTransactions: build.query({
       query: ({ page, pageSize, sort, search }) => ({
-        url: "client/transactions",
+        url: "client/shipments",
         method: "GET",
         params: { page, pageSize, sort, search },
       }),
-      providesTags: ["Transactions"],
+      providesTags: ["Shipments"],
     }),
     getGeography: build.query({
-      query: () => "client/geography",
-      providesTags: ["Geography"],
+      query: () => "client/map",
+      providesTags: ["Map"],
     }),
     getSales: build.query({
       query: () => "sales/sales",

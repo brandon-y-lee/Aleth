@@ -19,6 +19,7 @@ const UserSchema = new mongoose.Schema(
       required: true,
       min: 5,
     },
+    // Need to set up validations
     city: String,
     state: String,
     country: String,

@@ -29,10 +29,10 @@ function App() {
             <Route element={<Layout />}>
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/customers" element={<Customers />} />
-              <Route path="/transactions" element={<Transactions />} />
-              <Route path="/geography" element={<Geography />} />
+              <Route path="/map" element={<Geography />} />
+              <Route path="/shipments" element={<Transactions />} />
+              <Route path="/entity" element={<Customers />} />
+              <Route path="/templates" element={<Products />} />
               <Route path="/overview" element={<Overview />} />
               <Route path="/daily" element={<Daily />} />
               <Route path="/monthly" element={<Monthly />} />

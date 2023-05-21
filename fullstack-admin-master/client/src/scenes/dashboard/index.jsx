@@ -7,6 +7,7 @@ import {
   PointOfSale,
   PersonAdd,
   Traffic,
+  UploadFileOutlined,
 } from "@mui/icons-material";
 import {
   Box,
@@ -60,21 +61,36 @@ const Dashboard = () => {
   return (
     <Box m="1.5rem 2.5rem">
       <FlexBetween>
-        <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
+        <Header title="DASHBOARD" subtitle="Good evening Shelly, there have been 7 new updates." />
 
         <Box>
-          <Button
-            sx={{
-              backgroundColor: theme.palette.secondary.light,
-              color: theme.palette.background.alt,
-              fontSize: "14px",
-              fontWeight: "bold",
-              padding: "10px 20px",
-            }}
-          >
-            <DownloadOutlined sx={{ mr: "10px" }} />
-            Download Reports
-          </Button>
+          <FlexBetween gap="1rem">
+            <Button
+              sx={{
+                backgroundColor: theme.palette.secondary.light,
+                color: theme.palette.background.alt,
+                fontSize: "14px",
+                fontWeight: "bold",
+                padding: "10px 20px",
+              }}
+            >
+              <UploadFileOutlined sx={{ mr: "10px" }} />
+              Create Certificate
+            </Button>
+            
+            <Button
+              sx={{
+                backgroundColor: theme.palette.secondary.light,
+                color: theme.palette.background.alt,
+                fontSize: "14px",
+                fontWeight: "bold",
+                padding: "10px 20px",
+              }}
+            >
+              <DownloadOutlined sx={{ mr: "10px" }} />
+              Download Reports
+            </Button>
+          </FlexBetween>
         </Box>
       </FlexBetween>
 
@@ -95,7 +111,7 @@ const Dashboard = () => {
           increase="+14%"
           description="Since last month"
           icon={
-            <Email
+            <PersonAdd
               sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
             />
           }
@@ -126,7 +142,7 @@ const Dashboard = () => {
           increase="+5%"
           description="Since last month"
           icon={
-            <PersonAdd
+            <Email
               sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
             />
           }
@@ -170,7 +186,7 @@ const Dashboard = () => {
             },
             "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
               color: `${theme.palette.secondary[200]} !important`,
-            },
+            },          
           }}
         >
           <DataGrid
@@ -196,8 +212,7 @@ const Dashboard = () => {
             fontSize="0.8rem"
             sx={{ color: theme.palette.secondary[200] }}
           >
-            Breakdown of real states and information via category for revenue
-            made for this year and total sales.
+            Breakdown of total sales for this year by category.
           </Typography>
         </Box>
       </Box>

@@ -2,7 +2,9 @@ import User from "../models/User.js";
 import OverallStat from "../models/OverallStat.js";
 import Transaction from "../models/Transaction.js";
 
+// Req is used to get params and body, res is used to send back info to frontend from API call
 export const getUser = async (req, res) => {
+  // Based on req.params, find user
   try {
     const { id } = req.params;
     const user = await User.findById(id);
@@ -21,7 +23,7 @@ export const getDashboardStats = async (req, res) => {
 
     /* Recent Transactions */
     const transactions = await Transaction.find()
-      .limit(50)
+      .limit(200)
       .sort({ createdOn: -1 });
 
     /* Overall Stats */
