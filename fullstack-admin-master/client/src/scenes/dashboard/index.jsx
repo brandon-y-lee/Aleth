@@ -61,7 +61,7 @@ const Dashboard = () => {
   return (
     <Box m="1.5rem 2.5rem">
       <FlexBetween>
-        <Header title="DASHBOARD" subtitle="Good evening Shelly, there have been 7 new updates." />
+        <Header title="DASHBOARD"/>
 
         <Box>
           <FlexBetween gap="1rem">
