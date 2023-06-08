@@ -25,6 +25,7 @@ import {
 import { DataGrid } from "@mui/x-data-grid";
 import { useGetTransactionsQuery } from "state/api";
 import Header from "components/Header";
+import Map from "components/Map";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import StatBox from "components/StatBox";
 
@@ -113,6 +114,12 @@ const Transactions = () => {
         </Box>
       </FlexBetween>
       
+      <Box mt="2rem">
+        <Map>
+        </Map>
+      </Box>
+
+      { /*
       <FlexBetween>
         <Box
           mt="20px"
@@ -170,9 +177,10 @@ const Transactions = () => {
               </Box>
             </Box>
           </Box>
-          { /* INSERT CODE HERE */ }
+          { /* INSERT CODE HERE }
         </Box>
       </FlexBetween>
+      */ }
 
       
       <Box
