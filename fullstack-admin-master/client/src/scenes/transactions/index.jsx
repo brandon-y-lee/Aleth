@@ -37,6 +37,7 @@ const Transactions = () => {
   const [pageSize, setPageSize] = useState(20);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
+  const [coordinates, setCoordinates] = useState({"lat":1, "long":1});
 
   const [searchInput, setSearchInput] = useState("");
   const { data, isLoading } = useGetTransactionsQuery({
@@ -46,31 +47,63 @@ const Transactions = () => {
     search,
   });
 
+  // const columns = [
+  //   {
+  //     field: "_id",
+  //     headerName: "ID",
+  //     flex: 1,
+  //   },
+  //   {
+  //     field: "userId",
+  //     headerName: "User ID",
+  //     flex: 1,
+  //   },
+  //   {
+  //     field: "createdAt",
+  //     headerName: "CreatedAt",
+  //     flex: 1,
+  //   },
+  //   {
+  //     field: "products",
+  //     headerName: "# of Products",
+  //     flex: 0.5,
+  //     sortable: false,
+  //     renderCell: (params) => params.value.length,
+  //   },
+  //   {
+  //     field: "cost",
+  //     headerName: "Cost",
+  //     flex: 1,
+  //     renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
+  //   },
+  // ];
+
   const columns = [
     {
-      field: "_id",
+      field: "id",
       headerName: "ID",
       flex: 1,
     },
     {
-      field: "userId",
+      field: "coordinates",
       headerName: "User ID",
       flex: 1,
+      valueGetter: (params) => {return params.value[0]}
     },
     {
-      field: "createdAt",
+      field: "material",
       headerName: "CreatedAt",
       flex: 1,
     },
     {
-      field: "products",
+      field: "amount",
       headerName: "# of Products",
       flex: 0.5,
       sortable: false,
       renderCell: (params) => params.value.length,
     },
     {
-      field: "cost",
+      field: "unit",
       headerName: "Cost",
       flex: 1,
       renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
@@ -204,7 +237,7 @@ const Transactions = () => {
       >
         <DataGrid
           loading={isLoading || !data}
-          getRowId={(row) => row._id}
+          getRowId={(row) => row.id}
           rows={(data && data.transactions) || []}
           columns={columns}
           rowCount={(data && data.total) || 0}
@@ -221,6 +254,7 @@ const Transactions = () => {
           componentsProps={{
             toolbar: { searchInput, setSearchInput, setSearch },
           }}
+          onRowClick={(row) => setCoordinates({"lat":row.lat, "long":row.long})}
         />
       </Box>
     </Box>
