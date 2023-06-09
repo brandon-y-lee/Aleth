@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Typography, TextField, Slider, Button, Box, useTheme } from "@mui/material";
 import { ConstructionRounded, RestartAlt, SearchOutlined } from '@mui/icons-material';
 import GoogleMapReact from 'google-map-react';
 
 const Map = () => {
     const theme = useTheme();
+    const [location, setLocation] = useState({
+        latitude: 24.723456,
+        longitude: 46.70095,
+    });
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                console.log(position.coords);
+                setLocation({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                });
+            },
+            (error) => {
+                console.log("Error Getting Location: " + error.message);
+            }
+        );
+    }, []);
     
     return (
         <div>
@@ -33,14 +52,13 @@ const Map = () => {
             <Box mt="2rem">
                 <div style={{ height: "80vh", width: "100%" }}>
                     <GoogleMapReact
-                        bootstrapURLKeys={{ key: ""}}
+                        bootstrapURLKeys={{ key: "AIzaSyAuVjIdVnypBE451-sxt-h-_R78hQSUDPI"}}
                         defaultCenter={{
                             lat: 10.99835602,
                             lng: 77.01502627
                         }}
                         defaultZoom={14}
                     >
-
                     </GoogleMapReact>
                 </div>
             </Box>
