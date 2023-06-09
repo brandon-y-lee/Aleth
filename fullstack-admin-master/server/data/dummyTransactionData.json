@@ -1,0 +1,1255 @@
+[
+    {"material": "Cotton", "amount": 23.12, "unit": "kg"},
+    {"material": "Silk", "amount": 45.89, "unit": "lb"},
+    {"material": "Denim", "amount": 67.43, "unit": "piece"},
+    {"material": "Wool", "amount": 12.11, "unit": "kg"},
+    {"material": "Leather", "amount": 78.9, "unit": "lb"},
+    {"material": "Synthetic", "amount": 56.54, "unit": "piece"},
+    {"material": "Linen", "amount": 34.98, "unit": "kg"},
+    {"material": "Polyester", "amount": 89.12, "unit": "lb"},
+    {"material": "Rayon", "amount": 32.33, "unit": "piece"},
+    {"material": "Nylon", "amount": 44.67, "unit": "kg"},
+    {"material": "Velvet", "amount": 21.78, "unit": "lb"},
+    {"material": "Fleece", "amount": 39.89, "unit": "piece"},
+    {"material": "Spandex", "amount": 14.32, "unit": "kg"},
+    {"material": "Satin", "amount": 90.21, "unit": "lb"},
+    {"material": "Corduroy", "amount": 75.65, "unit": "piece"},
+    {"material": "Chiffon", "amount": 34.87, "unit": "kg"},
+    {"material": "Flannel", "amount": 56.89, "unit": "lb"},
+    {"material": "Lace", "amount": 24.76, "unit": "piece"},
+    {"material": "Tweed", "amount": 87.12, "unit": "kg"},
+    {"material": "Hemp", "amount": 33.23, "unit": "lb"},
+    {"material": "Bamboo", "amount": 44.88, "unit": "piece"},
+    {"material": "Fur", "amount": 21.56, "unit": "kg"},
+    {"material": "Rubber", "amount": 45.32, "unit": "lb"},
+    {"material": "Cashmere", "amount": 65.43, "unit": "piece"},
+    {"material": "Muslin", "amount": 98.21, "unit": "kg"},
+    {"material": "Cambric", "amount": 15.76, "unit": "lb"},
+    {"material": "Canvas", "amount": 89.32, "unit": "piece"},
+    {"material": "Georgette", "amount": 12.34, "unit": "kg"},
+    {"material": "Poplin", "amount": 90.45, "unit": "lb"},
+    {"material": "Organza", "amount": 34.56, "unit": "piece"},
+    {"material": "Percale", "amount": 78.32, "unit": "kg"},
+    {"material": "Tulle", "amount": 21.43, "unit": "lb"},
+    {"material": "Velour", "amount": 45.32, "unit": "piece"},
+    {"material": "Sequin", "amount":  67.87, "unit": "kg"},
+    {"material": "Brocade", "amount": 23.89, "unit": "lb"},
+    {"material": "Chenille", "amount": 54.32, "unit": "piece"},
+    {"material": "Voile", "amount": 33.21, "unit": "kg"},
+    {"material": "Chambray", "amount": 44.12, "unit": "lb"},
+    {"material": "Batiste", "amount": 55.43, "unit": "piece"},
+    {"material": "Gabardine", "amount": 12.98, "unit": "kg"},
+    {"material": "Pique", "amount": 78.21, "unit": "lb"},
+    {"material": "Jersey", "amount": 67.12, "unit": "piece"},
+    {"material": "Damask", "amount": 90.34, "unit": "kg"},
+    {"material": "Suede", "amount": 23.89, "unit": "lb"},
+    {"material": "Taffeta", "amount": 32.34, "unit": "piece"},
+    {"material": "Velveteen", "amount": 43.21, "unit": "kg"},
+    {"material": "Tencel", "amount": 56.89, "unit": "lb"},
+    {"material": "Crêpe", "amount": 67.43, "unit": "piece"},
+    {"material": "Charmeuse", "amount": 12.89, "unit": "kg"},
+    {"material": "Gingham", "amount": 34.56, "unit": "lb"},
+    {"material": "Sateen", "amount": 45.32, "unit": "piece"},
+    {"material": "Twill", "amount": 67.89, "unit": "kg"}
+  ],
+    [ {
+        "id": "TR2023019QXZZFR",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            30.5569551,
+            38.7539463
+          ]
+        },
+        "properties": {
+          "name": "03 Efe Kan Tekstil San. ve Tic. Ltd. Şti.",
+          "address": "Güvenler Mh. Fatih Cd. No: 43/11",
+          "country_code": "TR",
+          "os_id": "TR2023019QXZZFR",
+          "country_name": "Türkiye",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "CN202031463D4MB",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            113.9573319,
+            23.1259237
+          ]
+        },
+        "properties": {
+          "name": "1010 Printing International Ltd",
+          "address": "Xia Nan Industry, Hui Xing Road, Yuanzhou Town",
+          "country_code": "CN",
+          "os_id": "CN202031463D4MB",
+          "country_name": "China",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "CN2021337XH03YJ",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            113.33138,
+            22.91954
+          ]
+        },
+        "properties": {
+          "name": "10TH BRANCH OF GUANGZHOU FANGYING JEWELRY CO LTD",
+          "address": "3-4 FLOOR, THE 20TH BUILDING, NO. 999 FULONG ROAD, SHAWAN TOWN, PANYU,, GUANGZHOU 511483   CN",
+          "country_code": "CN",
+          "os_id": "CN2021337XH03YJ",
+          "country_name": "China",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "US2020349635F81",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -84.7767657,
+            37.629886
+          ]
+        },
+        "properties": {
+          "name": "10th Planet LLC-The",
+          "address": "204 George Martin Dr Danville KY 40422",
+          "country_code": "US",
+          "os_id": "US2020349635F81",
+          "country_name": "United States",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "PT2023019Z2JT02",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -8.627792,
+            41.5288043
+          ]
+        },
+        "properties": {
+          "name": "11 CORES - TINTURARIA E ACABAMENTOS TÊXTEIS, LDA",
+          "address": "RUA CASAL DE NIL, VILA FRESCAÍNHA S. MARTINHO,",
+          "country_code": "PT",
+          "os_id": "PT2023019Z2JT02",
+          "country_name": "Portugal",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "TR2022299HPQ6NS",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            29.2583382,
+            40.8861988
+          ]
+        },
+        "properties": {
+          "name": "11M ÇELİK İNŞAAT SAN. VE TİC. LTD. ŞTİ.",
+          "address": "YENİŞEHİR MAH. OSMANLI BLV. AY PORT SİTESİ A BLOK NO:2-2/59, PENDİK, İSTANBUL",
+          "country_code": "TR",
+          "os_id": "TR2022299HPQ6NS",
+          "country_name": "Türkiye",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "DE2023019MMW839",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            6.4473648,
+            51.182841
+          ]
+        },
+        "properties": {
+          "name": "140Fahrenheit GmbH",
+          "address": "Monforts Quatier 41",
+          "country_code": "DE",
+          "os_id": "DE2023019MMW839",
+          "country_name": "Germany",
+          "has_approved_claim": true,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "CA20231180ZFYRS",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -79.7125435,
+            43.7574648
+          ]
+        },
+        "properties": {
+          "name": "1487304 ONTARIO CORPORATION",
+          "address": "14 AUTOMATIC RD, UNITS 48-49, ONTARIO/BRAMPTON, CANADA",
+          "country_code": "CA",
+          "os_id": "CA20231180ZFYRS",
+          "country_name": "Canada",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "PT2023062FQG7H1",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -8.5971418,
+            40.1599474
+          ]
+        },
+        "properties": {
+          "name": "14All II Textile Industries, Unipessoal, Lda.",
+          "address": "Rua Estrada Nacional 13 nº3",
+          "country_code": "PT",
+          "os_id": "PT2023062FQG7H1",
+          "country_name": "Portugal",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "AR2022286WCS4N3",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -63.616672,
+            -38.416097
+          ]
+        },
+        "properties": {
+          "name": "14 DE ABRIL S.R.L.",
+          "address": "ALVEAR 460",
+          "country_code": "AR",
+          "os_id": "AR2022286WCS4N3",
+          "country_name": "Argentina",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "TR2023004EW1NDY",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            38.94844,
+            36.713349
+          ]
+        },
+        "properties": {
+          "name": "15 TEMMUZ TARIM ÜRÜNLERİ SAN. VE TİC. LTD.ŞTİ",
+          "address": "EKİNYAZI MAH. AKYILDIZ KÜME EVLER NO:1  63500   AKÇAKALE ŞANLIURFA",
+          "country_code": "TR",
+          "os_id": "TR2023004EW1NDY",
+          "country_name": "Türkiye",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "CA2023156N48N8N",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -79.2726889,
+            43.7748791
+          ]
+        },
+        "properties": {
+          "name": "1707447 Ontario Inc.",
+          "address": "Unit 7, 2245 Midland Ave, Scarborough, Ontario",
+          "country_code": "CA",
+          "os_id": "CA2023156N48N8N",
+          "country_name": "Canada",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "TR2023019M6T9F3",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            27.277777,
+            38.437409
+          ]
+        },
+        "properties": {
+          "name": "1800 Wash Tekstil Yıkama San. Tic. A.ş.",
+          "address": "Kemalpaşa Mah.7416\\3 Sok No:4 Bornova",
+          "country_code": "TR",
+          "os_id": "TR2023019M6T9F3",
+          "country_name": "Türkiye",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "US2022297NC86VA",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -117.8620038,
+            33.8526071
+          ]
+        },
+        "properties": {
+          "name": "180 Snacks",
+          "address": "1173 N Armando St  Anaheim 92806 California",
+          "country_code": "US",
+          "os_id": "US2022297NC86VA",
+          "country_name": "United States",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "US2022300JR2PD0",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -74.5270754,
+            40.5565575
+          ]
+        },
+        "properties": {
+          "name": "1890 T-Shirt Company",
+          "address": "30 Main Street, South Bound Brook, NJ, USA",
+          "country_code": "US",
+          "os_id": "US2022300JR2PD0",
+          "country_name": "United States",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "VN2023084J70AWP",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            109.0978925,
+            13.863761
+          ]
+        },
+        "properties": {
+          "name": "19 Forestry Joint Stock Company - An Nhon Furniture Factory",
+          "address": "660 Vo Nguyen Giap Street National road No.19 Tan Hoa Group Nhon Hoa Ward An Nhon Town",
+          "country_code": "VN",
+          "os_id": "VN2023084J70AWP",
+          "country_name": "Vietnam",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "CZ20230192M95E0",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            16.9827545,
+            49.9497435
+          ]
+        },
+        "properties": {
+          "name": "1.\tFirma Sumtex CZ s.r.o.",
+          "address": "Zerotinova 85",
+          "country_code": "CZ",
+          "os_id": "CZ20230192M95E0",
+          "country_name": "Czech Republic",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "PT2021300PNX592",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -8.2120117,
+            41.35876870000001
+          ]
+        },
+        "properties": {
+          "name": "1 Hundred Shoes/Cunha -Factory",
+          "address": "Rua Padroso, Apartado 14, 4610-267 Felgueiras Portugal",
+          "country_code": "PT",
+          "os_id": "PT2021300PNX592",
+          "country_name": "Portugal",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "PT2021125FX4ME3",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -8.2135062,
+            41.3596025
+          ]
+        },
+        "properties": {
+          "name": "1 HUNDRED SHOES,LDA ",
+          "address": "CM1175 738, 4610 Felgueiras, Portugal",
+          "country_code": "PT",
+          "os_id": "PT2021125FX4ME3",
+          "country_name": "Portugal",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "CN20211203QVJ77",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            113.330524,
+            22.919591
+          ]
+        },
+        "properties": {
+          "name": "1ST BRANCH FACTORY OF GUANGZHOU FANGYING JEWELRY CO",
+          "address": "Factory A7, Shawan Jewelry Industrial Park, Panyu District, Guangzhou, Guangdong Province, China",
+          "country_code": "CN",
+          "os_id": "CN20211203QVJ77",
+          "country_name": "China",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "US2020211SA6BX1",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -86.01335,
+            39.9567548
+          ]
+        },
+        "properties": {
+          "name": "1st Makerspace",
+          "address": "Fishers IN 46038 United States",
+          "country_code": "US",
+          "os_id": "US2020211SA6BX1",
+          "country_name": "United States",
+          "has_approved_claim": false,
+          "ppe_product_types": [],
+          "ppe_contact_phone": "",
+          "ppe_contact_email": "",
+          "ppe_website": "https://1stmakerspace.com/blogs/1st-maker-blog/makers-joining-the-fight-against-covid-19",
+          "is_closed": null
+        }
+      },
+      {
+        "id": "GB20223058KGN1R",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1.143889,
+            52.3201264
+          ]
+        },
+        "properties": {
+          "name": "1STOP  HALAL",
+          "address": "MAGDALEN ST EYE NORFOLK IP23 7AJ",
+          "country_code": "GB",
+          "os_id": "GB20223058KGN1R",
+          "country_name": "United Kingdom",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "US20203494S4JBT",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -97.2190254,
+            32.8036369
+          ]
+        },
+        "properties": {
+          "name": "1st Place Promo",
+          "address": "7370 Deqwood Park Dr. Fort Worth TX 76118",
+          "country_code": "US",
+          "os_id": "US20203494S4JBT",
+          "country_name": "United States",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "IT2022335KG8QCW",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            9.0881246,
+            45.6960962
+          ]
+        },
+        "properties": {
+          "name": "1- TAT SPA",
+          "address": "Via Europa Unita 33",
+          "country_code": "IT",
+          "os_id": "IT2022335KG8QCW",
+          "country_name": "Italy",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "IT20230625TADHK",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            8.2738998,
+            45.7144398
+          ]
+        },
+        "properties": {
+          "name": "1 - ZEGNA BARUFFA LANE BORGOSESIA SPA",
+          "address": "Largo Magni 3",
+          "country_code": "IT",
+          "os_id": "IT20230625TADHK",
+          "country_name": "Italy",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "US2022297HXQXGJ",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -88.404832,
+            41.382847
+          ]
+        },
+        "properties": {
+          "name": "2000 Ashley Road",
+          "address": "2000 Ashley Road  Morris 60450 Illinois",
+          "country_code": "US",
+          "os_id": "US2022297HXQXGJ",
+          "country_name": "United States",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "TR2022353Y6Y9FH",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            37.3640249,
+            37.0253673
+          ]
+        },
+        "properties": {
+          "name": "200 TRİKO TEKS SAN. VE TİC. LTD. ŞTİ.",
+          "address": "TEKSTİLKENT MAH. 47001 NOLU SK. B BLOK 141/1  27010   ŞAHİNBEY GAZIANTEP",
+          "country_code": "TR",
+          "os_id": "TR2022353Y6Y9FH",
+          "country_name": "Türkiye",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "TR2019241E8W15H",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            28.6819161,
+            41.0042448
+          ]
+        },
+        "properties": {
+          "name": "2010 Istanbul Tekstil",
+          "address": "Beysan Sanayi Sitesi Dereboyo Caddesi N0 34 Kat1 Beylikduzu Istanbul ",
+          "country_code": "TR",
+          "os_id": "TR2019241E8W15H",
+          "country_name": "Türkiye",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "TR2021309QNRR4Q",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            29.1769019,
+            40.9862046
+          ]
+        },
+        "properties": {
+          "name": "2010 Istanbul Tekstil San. Ve Dis. Tic. Ltd. Sti.",
+          "address": "Zafer Mah. Adile Nasit Bulvari 151/152 Sok. B Blok No:3-5 K:4-5 Esenyurt / Istanbul",
+          "country_code": "TR",
+          "os_id": "TR2021309QNRR4Q",
+          "country_name": "Türkiye",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "TN2022060H3QGX6",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            10.8987803,
+            34.9840474
+          ]
+        },
+        "properties": {
+          "name": "201242-CIS-CONFECTION MODERNE EL AMRA",
+          "address": "RTE El Mahdia km 28 El Amra, Sfax",
+          "country_code": "TN",
+          "os_id": "TN2022060H3QGX6",
+          "country_name": "Tunisia",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "RO2020268ZCHX6M",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            24.5544652,
+            44.5409492
+          ]
+        },
+        "properties": {
+          "name": "201531-MATO SRL-SC MATO SRL punct de lucu Margineni",
+          "address": "str. Giurgiului (Coastei), nr.35, MARGINENI SLOBOZIA, OLT",
+          "country_code": "RO",
+          "os_id": "RO2020268ZCHX6M",
+          "country_name": "Romania",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "RO2021363PFYTQ6",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            24.9233219,
+            44.8638486
+          ]
+        },
+        "properties": {
+          "name": "201531-SC MATO SRL-punct de lucru Stefanesti",
+          "address": "'Complex Prestări Servicii'' Ştefăneşti, Zona Blocuri, pe soseaua veche Bucuresti-\nPitesti, in incinta Restaurantului Dealul Viilor Stefanesti, Arges Romania",
+          "country_code": "RO",
+          "os_id": "RO2021363PFYTQ6",
+          "country_name": "Romania",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "MA20202680RFD9Z",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -8.0398445,
+            31.6701284
+          ]
+        },
+        "properties": {
+          "name": "202145-Rectangle - Morocco",
+          "address": "120 quartier industriel \nSidi Ghanem \nRoute de Safi\n04000 Marrackech \nMaroc",
+          "country_code": "MA",
+          "os_id": "MA20202680RFD9Z",
+          "country_name": "Morocco",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "BG2021363V9WHMZ",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            25.9812276,
+            43.8608922
+          ]
+        },
+        "properties": {
+          "name": "203939-CTECA EOOD",
+          "address": "6 Tsvetnitsa Street,Ruse, Bulgaria",
+          "country_code": "BG",
+          "os_id": "BG2021363V9WHMZ",
+          "country_name": "Bulgaria",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "MA2020268FBYS7T",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -7.5355555,
+            33.6005081
+          ]
+        },
+        "properties": {
+          "name": "204059-KAIMILOA - Morocco",
+          "address": "KAIMILOA Km 11Route Cotière Ain Seeba 20590 Casablanca Maroc",
+          "country_code": "MA",
+          "os_id": "MA2020268FBYS7T",
+          "country_name": "Morocco",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "TN20213630Z1X1H",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            10.8676994,
+            35.6723062
+          ]
+        },
+        "properties": {
+          "name": "204824-AMENO-CONTEX",
+          "address": "Road of bouhjar 5099 Lamta Monastir Tunisia",
+          "country_code": "TN",
+          "os_id": "TN20213630Z1X1H",
+          "country_name": "Tunisia",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "ES20213637SCNBN",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.4298855,
+            41.5337019
+          ]
+        },
+        "properties": {
+          "name": "205114-SOURTEX-CONFECCION OLIMPICA",
+          "address": "Cami del Mig 79, Local 15B, 08302, Mataro, Barcelona",
+          "country_code": "ES",
+          "os_id": "ES20213637SCNBN",
+          "country_name": "Spain",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "MA2021363PT117R",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -5.7827385,
+            35.7602607
+          ]
+        },
+        "properties": {
+          "name": "205114-SOURTEX-CONFECTION SALSABILE",
+          "address": "ZONE INDUSTRILLE AI MAJD-TANGER LOT.826 - MOROCCO",
+          "country_code": "MA",
+          "os_id": "MA2021363PT117R",
+          "country_name": "Morocco",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "TN202210475T1K7",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            10.8084675,
+            36.4653274
+          ]
+        },
+        "properties": {
+          "name": "205156-ESSENTIELLE SUARL-STE ESSENTI'ELLE",
+          "address": "ROUTE DE KORBA KM2 MAAMOURA, MAAMOURA,TUNISIA",
+          "country_code": "TN",
+          "os_id": "TN202210475T1K7",
+          "country_name": "Tunisia",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "US202115459JRGZ",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -84.0600404,
+            34.071799
+          ]
+        },
+        "properties": {
+          "name": "20 Days Printing",
+          "address": "4276 Brogdon Exchange Suwannee GA 30024",
+          "country_code": "US",
+          "os_id": "US202115459JRGZ",
+          "country_name": "United States",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "US20222968TQXWH",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -117.3610252,
+            33.9837719
+          ]
+        },
+        "properties": {
+          "name": "220 LABORATORIES INC",
+          "address": "2375 3RD STREET, 92507, RIVERSIDE, RIVERSIDE, California 92507",
+          "country_code": "US",
+          "os_id": "US20222968TQXWH",
+          "country_name": "United States",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "CA20222976NWHW0",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -79.5280532,
+            43.7349967
+          ]
+        },
+        "properties": {
+          "name": "2239 Sheppard",
+          "address": "2239 Sheppard Avenue North York M9M 2Z7 Ontario",
+          "country_code": "CA",
+          "os_id": "CA20222976NWHW0",
+          "country_name": "Canada",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "US2020191FFHVDE",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -118.122553,
+            33.978695
+          ]
+        },
+        "properties": {
+          "name": "2253 Apparel Ltd",
+          "address": "1708 Gage Road, Montebello",
+          "country_code": "US",
+          "os_id": "US2020191FFHVDE",
+          "country_name": "United States",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "BG2020217GWWM5R",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            22.9080799,
+            42.7412596
+          ]
+        },
+        "properties": {
+          "name": "2360 Breznik / Bulgaria",
+          "address": "6,Yane Sandanski str., 2360, Breznik, Pernik",
+          "country_code": "BG",
+          "os_id": "BG2020217GWWM5R",
+          "country_name": "Bulgaria",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "US2022297PRAERY",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -89.8958575,
+            29.900687
+          ]
+        },
+        "properties": {
+          "name": "2521 Packenham Rd",
+          "address": "2521 Packenham Rd  Violet 70092 Louisiana",
+          "country_code": "US",
+          "os_id": "US2022297PRAERY",
+          "country_name": "United States",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "TR2022301ZCM1YE",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            29.203042,
+            40.201451
+          ]
+        },
+        "properties": {
+          "name": "25-ES TEKSTİL MEFRUŞAT MOBİLYA TURİZM İTHALAT İHRACAT SANAYİ VE TİCARET LTD. ŞTİ.",
+          "address": "A.VEFIK PAŞA MAH.2.ORG.SAN.BÖL HÜNKAR CD. KAT.1, KESTEL, BURSA",
+          "country_code": "TR",
+          "os_id": "TR2022301ZCM1YE",
+          "country_name": "Türkiye",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "TR2022353G17TBM",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            37.4288472,
+            37.0943795
+          ]
+        },
+        "properties": {
+          "name": "27ŞAHİN LOJİSTİK VE SAN. TİC. LTD. ŞTİ.",
+          "address": "İNCİLİPINAR MH. KIBRIS CAD. AFAK İŞ MRK. BLOK NO:9 İÇ KAPI NO:12 27060   ŞEHİTKAMİL GAZIANTEP",
+          "country_code": "TR",
+          "os_id": "TR2022353G17TBM",
+          "country_name": "Türkiye",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "CA2022347BNGBE1",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -79.2763866,
+            43.77981339999999
+          ]
+        },
+        "properties": {
+          "name": "2828928 Ontario Ltd.",
+          "address": "Unit 6, 2360 Midland Avenue, Scarborough, Ontario",
+          "country_code": "CA",
+          "os_id": "CA2022347BNGBE1",
+          "country_name": "Canada",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "VN20192418AVEN7",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            108.211161,
+            16.049063
+          ]
+        },
+        "properties": {
+          "name": "28 Da Nang Joint Stock Company",
+          "address": "67 Duy Tan Hoa Thuan Tay Ward Hai Chau District Da Nang 7059000 ",
+          "country_code": "VN",
+          "os_id": "VN20192418AVEN7",
+          "country_name": "Vietnam",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      },
+      {
+        "id": "VN2019097WYVEJN",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            106.6741997,
+            10.8286627
+          ]
+        },
+        "properties": {
+          "name": "28 Hung Phu Joint Stock Company",
+          "address": "168 Quang Trung, P10, Go Vap, Ho Chi Minh City, Vietnam, 8408",
+          "country_code": "VN",
+          "os_id": "VN2019097WYVEJN",
+          "country_name": "Vietnam",
+          "has_approved_claim": false,
+          "ppe_product_types": null,
+          "ppe_contact_phone": null,
+          "ppe_contact_email": null,
+          "ppe_website": null,
+          "is_closed": null
+        }
+      }
+    ]
