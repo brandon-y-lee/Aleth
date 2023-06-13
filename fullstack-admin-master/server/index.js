@@ -22,9 +22,11 @@ import {
   dataProduct,
   dataProductStat,
   dataTransaction,
+  dataShipments,
   dataOverallStat,
   dataAffiliateStat,
 } from "./data/index.js";
+import Shipments from "./models/Shipments.js";
 
 /* CONFIGURATION */
 dotenv.config();
@@ -53,13 +55,45 @@ mongoose
   })
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
-
+    console.log("here");
     /* ONLY ADD DATA ONE TIME */
     // AffiliateStat.insertMany(dataAffiliateStat);
     // OverallStat.insertMany(dataOverallStat);
     // Product.insertMany(dataProduct);
     // ProductStat.insertMany(dataProductStat);
     // Transaction.insertMany(dataTransaction);
+    // print("This is the shipmentsdata")
+    // print(dataShipments);
+    // Shipments.insertMany(dataShipments);
     // User.insertMany(dataUser);
+  //   Shipments.aggregate([{
+  //     $match: {
+  //         id: "12354"
+  //     }
+  // }, {
+  //     $graphLookup: {
+  //         from: "dummyShipments",
+  //         startWith: "$name",
+  //         connectFromField: "next",
+  //         connectToField: "name",
+  //         as: "nameList"
+  //     }
+  // }, {
+  //     $project: {
+  //         nameList: {
+  //             $reduce: {
+  //                 input: "$nameList",
+  //                 initialValue: [],
+  //                 in: {
+  //                     "$concatArrays": ["$$value", {
+  //                         $slice: ["$$this.na", 1]
+  //                     }]
+  //                 }
+  //             }
+  //         }
+  //     }
+  // }])
   })
   .catch((error) => console.log(`${error} Did not connect`));
+
+

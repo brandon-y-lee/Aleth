@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { 
   Box, 
   Button, 
@@ -23,7 +23,7 @@ import {
   ExpandLess
 } from "@mui/icons-material";
 import { DataGrid } from "@mui/x-data-grid";
-import { useGetTransactionsQuery } from "state/api";
+import { useGetTransactionsQuery, useGetChainOfShipmentsQuery } from "state/api";
 import Header from "components/Header";
 import Map from "components/Map";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
@@ -38,7 +38,8 @@ const Transactions = () => {
   const [pageSize, setPageSize] = useState(20);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
-  const [coordinates, setCoordinates] = useState({"lat":1, "long":1});
+  const [coordinates, setCoordinates] = useState({});
+  const [selectedId, setSelectedId] = useState("TR2023019QXZZFR");
 
   const [searchInput, setSearchInput] = useState("");
   const { data, isLoading } = useGetTransactionsQuery({
@@ -47,6 +48,15 @@ const Transactions = () => {
     sort: JSON.stringify(sort),
     search,
   });
+
+  console.log(data);
+
+  const {data: locations} = useGetChainOfShipmentsQuery(selectedId);
+
+  useEffect(() =>  { 
+    console.log(locations);
+  },[data]);
+
 
   // const columns = [
   //   {
@@ -79,6 +89,8 @@ const Transactions = () => {
   //   },
   // ];
 
+
+
   const columns = [
     {
       field: "id",
@@ -89,7 +101,7 @@ const Transactions = () => {
       field: "coordinates",
       headerName: "User ID",
       flex: 1,
-      valueGetter: (params) => {return params.value[0]}
+      valueGetter: (params) => {return params.value}
     },
     {
       field: "material",
@@ -148,7 +160,7 @@ const Transactions = () => {
       </FlexBetween>
       
       <Box mt="2rem">
-        <Map>
+        <Map coordinates={coordinates}>
         </Map>
       </Box>
 
@@ -262,7 +274,11 @@ const Transactions = () => {
           componentsProps={{
             toolbar: { searchInput, setSearchInput, setSearch },
           }}
-          onRowClick={(row) => setCoordinates({"lat":row.lat, "long":row.long})}
+          onRowClick={(row)=>{
+            setSelectedId(row.id);
+            console.log(selectedId);
+            setCoordinates({"lat":Math.random()*10, "long":Math.random()*10})}
+          }
         />
       </Box>
     </Box>

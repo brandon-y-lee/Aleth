@@ -3,27 +3,52 @@ import { Typography, TextField, Slider, Button, Box, useTheme } from "@mui/mater
 import { ConstructionRounded, RestartAlt, SearchOutlined } from '@mui/icons-material';
 import GoogleMapReact from 'google-map-react';
 
-const Map = () => {
+
+const AnyReactComponent = ({ text }) => (
+    <div style={{
+      color: 'white', 
+      background: 'grey',
+      padding: '15px 10px',
+      display: 'inline-flex',
+      textAlign: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: '100%',
+      transform: 'translate(-50%, -50%)'
+    }}>
+      {text}
+    </div>
+  );
+
+
+function Map(props){
     const theme = useTheme();
     const [location, setLocation] = useState({
-        latitude: 24.723456,
-        longitude: 46.70095,
+        latitude: props.coordinates.lat,
+        longitude: props.coordinates.long ,
     });
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                console.log(position.coords);
+                // console.log("rendered");
+                // console.log(position.coords);
+                // console.log(props.coordinates);
+                // setLocation({
+                //     latitude: position.coords.latitude,
+                //     longitude: position.coords.longitude,
+                // }
                 setLocation({
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude,
-                });
+                    latitude: props.coordinates.lat,
+                    longitude: props.coordinates.long,
+                }
+                );
             },
             (error) => {
                 console.log("Error Getting Location: " + error.message);
             }
         );
-    }, []);
+    }, [props]);
     
     return (
         <div>
@@ -57,7 +82,8 @@ const Map = () => {
                             lat: 10.99835602,
                             lng: 77.01502627
                         }}
-                        defaultZoom={14}
+                        center={[location.latitude, location.longitude]}
+                        defaultZoom={4}
                     >
                     </GoogleMapReact>
                 </div>

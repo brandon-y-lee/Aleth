@@ -44,6 +44,14 @@ export const api = createApi({
       }),
       providesTags: ["Shipments"],
     }),
+    getChainOfShipments: build.query({
+      query: (chainId) => ({
+        url: "client/chainOfShipments",
+        method: "GET",
+        params: {chainId},
+      }),
+      providesTags: ['chainOfShipments'],
+    }),
     getGeography: build.query({
       query: () => "client/map",
       providesTags: ["Map"],
@@ -72,6 +80,7 @@ export const {
   useGetProductsQuery,
   useGetCustomersQuery,
   useGetTransactionsQuery,
+  useGetChainOfShipmentsQuery,
   useGetGeographyQuery,
   useGetSalesQuery,
   useGetAdminsQuery,
