@@ -4,6 +4,8 @@ import {
   Button, 
   Divider, 
   IconButton, 
+  Menu,
+  MenuItem,
   Table, 
   TableBody, 
   TableCell, 
@@ -11,23 +13,25 @@ import {
   TableHead, 
   TableRow, 
   Collapse, 
-  Typography, 
+  Typography,
   useMediaQuery, 
   useTheme 
 } from "@mui/material";
-import FlexBetween from "components/FlexBetween";
 import {
   DownloadOutlined,
   UploadFileOutlined,
   ExpandMore, 
-  ExpandLess
+  ExpandLess,
 } from "@mui/icons-material";
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz'; 
 import { DataGrid } from "@mui/x-data-grid";
 import { useGetTransactionsQuery } from "state/api";
 import Header from "components/Header";
 import Map from "components/Map";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import StatBox from "components/StatBox";
+import ActionMenu from "components/ActionMenu";
+import FlexBetween from "components/FlexBetween";
 
 const Transactions = () => {
   const theme = useTheme();
@@ -73,8 +77,17 @@ const Transactions = () => {
     {
       field: "cost",
       headerName: "Cost",
-      flex: 1,
+      flex: 0.75,
       renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
+    },
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      flex: 0.5,
+      renderCell: (params) => (
+        <ActionMenu />
+      ),
     },
   ];
 
