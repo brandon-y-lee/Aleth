@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, TextField, Slider, Button, Box, useTheme } from "@mui/material";
-import { ConstructionRounded, RestartAlt, SearchOutlined, MyLocationOutlinedIcon } from '@mui/icons-material';
+import { ConstructionRounded, RestartAlt, SearchOutlined } from '@mui/icons-material';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 import GoogleMapReact from 'google-map-react';
 
 const Map = () => {
@@ -9,6 +11,15 @@ const Map = () => {
         latitude: 24.723456,
         longitude: 46.70095,
     });
+    const [mocks, setMocks] = useState([]);
+    const [selectedMockId, setSelectedMockId] = useState(null);
+    const [searchText, setSearchText] = useState("");
+
+
+    const handleSearch = () => {
+        let filteredMocks = mockData.filter(x => x.name.toLowerCase().includes(searchText.toLowerCase()))
+        setMocks(filteredMocks);
+    }
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
@@ -30,20 +41,17 @@ const Map = () => {
             <TextField label="Search for a supplier..."
                 variant="outlined"
                 style={{ width: "100%" }}
+                onChange={(event) => setSearchText(event.target.value)}
             />
-            <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-                <Typography>
-                    Distance:
-                </Typography>
-                <Slider style={{ width: "100%" }} />
-            </div>
 
             <div>
                 <Button variant="outlined" style={{ width: "50%" }}>
                     <RestartAlt />
                     Reset
                 </Button>
-                <Button variant="contained" style={{ width: "50%" }}>
+                <Button variant="contained"
+                    onClick={handleSearch}
+                    style={{ width: "50%" }}>
                     <SearchOutlined />
                     Search
                 </Button>
@@ -63,11 +71,25 @@ const Map = () => {
                             lng: location.longitude
                         }}
                     >
-                        
+                        { /* NEED TO REPLACE mocks and mock */ }
+                        {
+                            mocks.map((mock) => {
+                                return (
+                                    <LocationOnIcon
+                                        lat={mock.latitude}
+                                        lng={mock.longitude}
+                                        onClick={() => setSelectedMockId(mock.id)}
+                                    />
+                                )
+                            })
+                        }
+                        <LocationSearchingIcon
+                            lat={location.latitude}
+                            lng={location.longitude}
+                        />
                     </GoogleMapReact>
                 </div>
             </Box>
-
         </div>
     );
   };
