@@ -18,9 +18,13 @@ const TransactionSchema = new mongoose.Schema(
     coordinates:{
       lat: mongoose.Types.Decimal128,
       long: mongoose.Types.Decimal128,
+<<<<<<< HEAD
     },
     prev: [String],
     next: [String]
+=======
+    }
+>>>>>>> b17022ca06aacb0ea233f415c7cfba716f803f41
   },
   { timestamps: true }
 );

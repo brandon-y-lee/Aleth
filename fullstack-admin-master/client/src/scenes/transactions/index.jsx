@@ -38,8 +38,12 @@ const Transactions = () => {
   const [pageSize, setPageSize] = useState(20);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
+<<<<<<< HEAD
   const [coordinates, setCoordinates] = useState({});
   const [selectedId, setSelectedId] = useState("TR2023019QXZZFR");
+=======
+  const [coordinates, setCoordinates] = useState({"lat":1, "long":1});
+>>>>>>> b17022ca06aacb0ea233f415c7cfba716f803f41
 
   const [searchInput, setSearchInput] = useState("");
   const { data, isLoading } = useGetTransactionsQuery({
@@ -49,6 +53,7 @@ const Transactions = () => {
     search,
   });
 
+<<<<<<< HEAD
   console.log(data);
 
   const {data: locations} = useGetChainOfShipmentsQuery(selectedId);
@@ -58,6 +63,8 @@ const Transactions = () => {
   },[data]);
 
 
+=======
+>>>>>>> b17022ca06aacb0ea233f415c7cfba716f803f41
   // const columns = [
   //   {
   //     field: "_id",
@@ -89,8 +96,11 @@ const Transactions = () => {
   //   },
   // ];
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> b17022ca06aacb0ea233f415c7cfba716f803f41
   const columns = [
     {
       field: "id",
@@ -101,7 +111,11 @@ const Transactions = () => {
       field: "coordinates",
       headerName: "User ID",
       flex: 1,
+<<<<<<< HEAD
       valueGetter: (params) => {return params.value}
+=======
+      valueGetter: (params) => {return params.value[0]}
+>>>>>>> b17022ca06aacb0ea233f415c7cfba716f803f41
     },
     {
       field: "material",
@@ -274,11 +288,15 @@ const Transactions = () => {
           componentsProps={{
             toolbar: { searchInput, setSearchInput, setSearch },
           }}
+<<<<<<< HEAD
           onRowClick={(row)=>{
             setSelectedId(row.id);
             console.log(selectedId);
             setCoordinates({"lat":Math.random()*10, "long":Math.random()*10})}
           }
+=======
+          onRowClick={(row) => setCoordinates({"lat":row.lat, "long":row.long})}
+>>>>>>> b17022ca06aacb0ea233f415c7cfba716f803f41
         />
       </Box>
     </Box>
