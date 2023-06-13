@@ -4,6 +4,8 @@ import {
   Button, 
   Divider, 
   IconButton, 
+  Menu,
+  MenuItem,
   Table, 
   TableBody, 
   TableCell, 
@@ -15,19 +17,21 @@ import {
   useMediaQuery, 
   useTheme 
 } from "@mui/material";
-import FlexBetween from "components/FlexBetween";
 import {
   DownloadOutlined,
   UploadFileOutlined,
   ExpandMore, 
-  ExpandLess
+  ExpandLess,
 } from "@mui/icons-material";
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz'; 
 import { DataGrid } from "@mui/x-data-grid";
 import { useGetTransactionsQuery, useGetChainOfShipmentsQuery } from "state/api";
 import Header from "components/Header";
 import Map from "components/Map";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import StatBox from "components/StatBox";
+import ActionMenu from "components/ActionMenu";
+import FlexBetween from "components/FlexBetween";
 
 const Transactions = () => {
   const theme = useTheme();
@@ -38,12 +42,8 @@ const Transactions = () => {
   const [pageSize, setPageSize] = useState(20);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
-<<<<<<< HEAD
   const [coordinates, setCoordinates] = useState({});
   const [selectedId, setSelectedId] = useState("TR2023019QXZZFR");
-=======
-  const [coordinates, setCoordinates] = useState({"lat":1, "long":1});
->>>>>>> b17022ca06aacb0ea233f415c7cfba716f803f41
 
   const [searchInput, setSearchInput] = useState("");
   const { data, isLoading } = useGetTransactionsQuery({
@@ -53,7 +53,6 @@ const Transactions = () => {
     search,
   });
 
-<<<<<<< HEAD
   console.log(data);
 
   const {data: locations} = useGetChainOfShipmentsQuery(selectedId);
@@ -63,8 +62,6 @@ const Transactions = () => {
   },[data]);
 
 
-=======
->>>>>>> b17022ca06aacb0ea233f415c7cfba716f803f41
   // const columns = [
   //   {
   //     field: "_id",
@@ -96,11 +93,8 @@ const Transactions = () => {
   //   },
   // ];
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> b17022ca06aacb0ea233f415c7cfba716f803f41
   const columns = [
     {
       field: "id",
@@ -111,11 +105,7 @@ const Transactions = () => {
       field: "coordinates",
       headerName: "User ID",
       flex: 1,
-<<<<<<< HEAD
       valueGetter: (params) => {return params.value}
-=======
-      valueGetter: (params) => {return params.value[0]}
->>>>>>> b17022ca06aacb0ea233f415c7cfba716f803f41
     },
     {
       field: "material",
@@ -132,8 +122,17 @@ const Transactions = () => {
     {
       field: "unit",
       headerName: "Cost",
-      flex: 1,
+      flex: 0.75,
       renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
+    },
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      flex: 0.5,
+      renderCell: (params) => (
+        <ActionMenu />
+      ),
     },
   ];
 
@@ -288,15 +287,11 @@ const Transactions = () => {
           componentsProps={{
             toolbar: { searchInput, setSearchInput, setSearch },
           }}
-<<<<<<< HEAD
           onRowClick={(row)=>{
             setSelectedId(row.id);
             console.log(selectedId);
             setCoordinates({"lat":Math.random()*10, "long":Math.random()*10})}
           }
-=======
-          onRowClick={(row) => setCoordinates({"lat":row.lat, "long":row.long})}
->>>>>>> b17022ca06aacb0ea233f415c7cfba716f803f41
         />
       </Box>
     </Box>
