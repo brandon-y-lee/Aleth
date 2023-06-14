@@ -4,6 +4,7 @@ import { ConstructionRounded, RestartAlt, SearchOutlined } from '@mui/icons-mate
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 import GoogleMapReact from 'google-map-react';
+import Marker from "components/Marker";
 
 const Map = () => {
     const theme = useTheme();
@@ -15,11 +16,12 @@ const Map = () => {
     const [selectedMockId, setSelectedMockId] = useState(null);
     const [searchText, setSearchText] = useState("");
 
-
+    { /*
     const handleSearch = () => {
         let filteredMocks = mockData.filter(x => x.name.toLowerCase().includes(searchText.toLowerCase()))
         setMocks(filteredMocks);
     }
+    */ }
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
@@ -40,18 +42,18 @@ const Map = () => {
         <div>
             <TextField label="Search for a supplier..."
                 variant="outlined"
-                style={{ width: "100%" }}
+                style={{ width: "40%" }}
                 onChange={(event) => setSearchText(event.target.value)}
             />
 
             <div>
-                <Button variant="outlined" style={{ width: "50%" }}>
+                <Button variant="contained" style={{ width: "20%" }}>
                     <RestartAlt />
                     Reset
                 </Button>
                 <Button variant="contained"
-                    onClick={handleSearch}
-                    style={{ width: "50%" }}>
+                //  onClick={handleSearch}
+                    style={{ width: "20%" }}>
                     <SearchOutlined />
                     Search
                 </Button>
@@ -66,27 +68,22 @@ const Map = () => {
                             lng: 77.01502627
                         }}
                         defaultZoom={14}
-                        center={{
-                            lat: location.latitude, 
-                            lng: location.longitude
-                        }}
                     >
                         { /* NEED TO REPLACE mocks and mock */ }
                         {
-                            mocks.map((mock) => {
+                            mocks.map((mock, i) => {
                                 return (
-                                    <LocationOnIcon
+                                    <Marker
                                         lat={mock.latitude}
                                         lng={mock.longitude}
                                         onClick={() => setSelectedMockId(mock.id)}
+                                        title={`${i + 1}. ${mock.name}`} // replace mock.name with the appropriate field
+                                        index={i}
+                                        totalMarkers={mocks.length}
                                     />
                                 )
                             })
                         }
-                        <LocationSearchingIcon
-                            lat={location.latitude}
-                            lng={location.longitude}
-                        />
                     </GoogleMapReact>
                 </div>
             </Box>

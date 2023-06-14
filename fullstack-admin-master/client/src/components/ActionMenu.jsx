@@ -8,7 +8,7 @@ import LinkDialog from './LinkDialog';
 const ActionMenu = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -18,6 +18,14 @@ const ActionMenu = (props) => {
     setAnchorEl(null);
   };
 
+  const handleLinkClick = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
   return (
     <div>
       <IconButton
@@ -25,14 +33,13 @@ const ActionMenu = (props) => {
         color= "primary"
         onClick={handleClick}
       >
-        <MoreHorizIcon />
+        <MoreHorizIcon color="action" />
       </IconButton>
       <Menu
         id="actions-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        onClick={handleClose}
         MenuProps={{
           elevation: 0,
           sx: {
@@ -62,12 +69,10 @@ const ActionMenu = (props) => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={() => setDialogOpen(true)}>
+        <MenuItem onClick={handleLinkClick}>
             Link
         </MenuItem>
-        <MenuItem>
-          Action 2
-        </MenuItem>
+        <LinkDialog open={openDialog} onClose={handleCloseDialog} />
       </Menu>
     </div>
   );
