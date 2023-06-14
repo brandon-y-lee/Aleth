@@ -15,8 +15,17 @@ const Map = () => {
     const [mocks, setMocks] = useState([]);
     const [selectedMockId, setSelectedMockId] = useState(null);
     const [searchText, setSearchText] = useState("");
+    { /* Need to define and assign polylinePath from props */ } 
+    const [polylinePath, setPolylinePath] = useState([]);
+    
+    { /* Mock polylinePath data
+    const polylinePath = [
+    { lat: 41.879, lng: -87.624 },
+    { lat: 41.878, lng: -87.629 },
+    ];
+    */ }
 
-    { /*
+    { /* Handles search for a known list of ids
     const handleSearch = () => {
         let filteredMocks = mockData.filter(x => x.name.toLowerCase().includes(searchText.toLowerCase()))
         setMocks(filteredMocks);
@@ -84,6 +93,7 @@ const Map = () => {
                                 )
                             })
                         }
+                        <MapPolyline path={polylinePath} />
                     </GoogleMapReact>
                 </div>
             </Box>
