@@ -15,12 +15,10 @@ const ShipmentsSchema = new mongoose.Schema(
     //   type: [mongoose.Types.ObjectId],
     //   of: Number,
     // },
-    coordinates:{
-      lat: mongoose.Types.Decimal128,
-      long: mongoose.Types.Decimal128,
-    },
+    coordinates:[mongoose.Types.Decimal128],
     prev: [String],
-    next: String
+    next: String,
+    shipmentID: String
   },
   { timestamps: true }
 );

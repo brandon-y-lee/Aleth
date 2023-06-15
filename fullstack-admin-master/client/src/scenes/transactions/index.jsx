@@ -28,6 +28,8 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useGetTransactionsQuery, useGetChainOfShipmentsQuery } from "state/api";
 import Header from "components/Header";
 import Map from "components/Map";
+// import Temp from "components/Temp";
+// import TempComp from "components/TempComp";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import StatBox from "components/StatBox";
 import ActionMenu from "components/ActionMenu";
@@ -42,7 +44,7 @@ const Transactions = () => {
   const [pageSize, setPageSize] = useState(20);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
-  const [coordinates, setCoordinates] = useState({});
+  const [coordinates, setCoordinates] = useState([]);
   const [selectedId, setSelectedId] = useState("TR2023019QXZZFR");
 
   const [searchInput, setSearchInput] = useState("");
@@ -53,47 +55,16 @@ const Transactions = () => {
     search,
   });
 
-  console.log(data);
+  // console.log(data);
 
-  const {data: locations} = useGetChainOfShipmentsQuery(selectedId);
+  let {data: locations, isLoading: isLoadingNew} = useGetChainOfShipmentsQuery(selectedId);
+  if(locations ===  undefined)
+    locations = {"shipmentChain":[]}
 
   useEffect(() =>  { 
+    console.log("Locations!");
     console.log(locations);
-  },[data]);
-
-
-  // const columns = [
-  //   {
-  //     field: "_id",
-  //     headerName: "ID",
-  //     flex: 1,
-  //   },
-  //   {
-  //     field: "userId",
-  //     headerName: "User ID",
-  //     flex: 1,
-  //   },
-  //   {
-  //     field: "createdAt",
-  //     headerName: "CreatedAt",
-  //     flex: 1,
-  //   },
-  //   {
-  //     field: "products",
-  //     headerName: "# of Products",
-  //     flex: 0.5,
-  //     sortable: false,
-  //     renderCell: (params) => params.value.length,
-  //   },
-  //   {
-  //     field: "cost",
-  //     headerName: "Cost",
-  //     flex: 1,
-  //     renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
-  //   },
-  // ];
-
-
+  },[selectedId]);
 
   const columns = [
     {
@@ -173,73 +144,9 @@ const Transactions = () => {
       </FlexBetween>
       
       <Box mt="2rem">
-        <Map coordinates={coordinates}>
+        <Map coordinates={coordinates} locations={locations}>
         </Map>
       </Box>
-
-      { /*
-      <FlexBetween>
-        <Box
-          mt="20px"
-          display="grid"
-          gridTemplateColumns="repeat(12, 1fr)"
-          gridAutoRows="auto"
-          gap="20px"
-          sx={{
-            "& > div": { gridColumn: isNonMediumScreens ? "span 12" : "span 8"},
-          }}
-        >
-          <Box
-            bgcolor={theme.palette.background.alt}
-            borderRadius="5px"
-            p="1rem 4rem 1rem 4rem"
-            sx={{ gridColumn: isNonMediumScreens ? "span 12" : "span 8"}}
-          >
-            <Typography variant="h5" align="center" gutterBottom fontWeight="bold" m="10px">
-              Certificates Overview
-            </Typography>
-            
-            <Box
-              display="flex"
-              flexDirection={"column"}
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Box textAlign="center">
-                <StatBox
-                  title="Your Certificates"
-                  value={data && data.transactions.length}
-                />
-              </Box>
-              <Divider 
-                orientation="horizontal"
-                variant="middle"
-                sx={{ width: '100%'}} 
-              />
-              <Box textAlign="center">
-                <StatBox
-                  title="New Certificates"
-                  value={data && data.transactions.length}
-                />
-              </Box>
-              <Divider 
-                orientation="horizontal"
-                variant="middle"
-                sx={{ width: '100%'}} 
-              />
-              <Box textAlign="center">
-                <StatBox
-                  title="Pending Certificates"
-                  value={data && data.transactions.length}
-                />
-              </Box>
-            </Box>
-          </Box>
-          { /* INSERT CODE HERE }
-        </Box>
-      </FlexBetween>
-      */ }
-
       
       <Box
         height="80vh"
@@ -288,9 +195,11 @@ const Transactions = () => {
             toolbar: { searchInput, setSearchInput, setSearch },
           }}
           onRowClick={(row)=>{
-            setSelectedId(row.id);
-            console.log(selectedId);
-            setCoordinates({"lat":Math.random()*10, "long":Math.random()*10})}
+            // console.log(row.row.shipmentID);
+            // console.log(row.row.shipmentID);
+            setSelectedId(row.row.shipmentID);
+            // console.log(selectedId);
+            setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
           }
         />
       </Box>

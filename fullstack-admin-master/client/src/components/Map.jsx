@@ -4,6 +4,9 @@ import { ConstructionRounded, RestartAlt, SearchOutlined } from '@mui/icons-mate
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 import GoogleMapReact from 'google-map-react';
+import { Marker } from "@react-google-maps/api";
+import LocationIcon from '../assets/blue-dot.png'
+
 
 
 const AnyReactComponent = ({ text }) => (
@@ -24,10 +27,11 @@ const AnyReactComponent = ({ text }) => (
 
 
 function Map(props){
+    console.log(props.locations);
     const theme = useTheme();
     const [location, setLocation] = useState({
-        latitude: props.coordinates.lat,
-        longitude: props.coordinates.long ,
+        latitude: 22.4, //props.coordinates[0].$numberDecimal,
+        longitude: 22.4 //props.coordinates[1].$numberDecimal ,
     });
     const [mocks, setMocks] = useState([]);
     const [selectedMockId, setSelectedMockId] = useState(null);
@@ -35,25 +39,23 @@ function Map(props){
 
 
     const handleSearch = () => {
-        let filteredMocks = mockData.filter(x => x.name.toLowerCase().includes(searchText.toLowerCase()))
+        let filteredMocks = props.locations.filter(x => x.name.toLowerCase().includes(searchText.toLowerCase()))
         setMocks(filteredMocks);
     }
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                // console.log("rendered");
-                // console.log(position.coords);
-                // console.log(props.coordinates);
-                // setLocation({
-                //     latitude: position.coords.latitude,
-                //     longitude: position.coords.longitude,
-                // }
+                console.log("rendered");
+                console.log(props);
+                if(props.coordinates && props.coordinates.length)
+                {
                 setLocation({
-                    latitude: props.coordinates.lat,
-                    longitude: props.coordinates.long,
+                    latitude: props.coordinates[0].$numberDecimal,
+                    longitude: props.coordinates[1].$numberDecimal,
                 }
-                );
+                )
+            };
             },
             (error) => {
                 console.log("Error Getting Location: " + error.message);
@@ -85,33 +87,37 @@ function Map(props){
             <Box mt="2rem">
                 <div style={{ height: "80vh", width: "100%" }}>
                     <GoogleMapReact
+                        key={JSON.stringify(props.locations)}
                         bootstrapURLKeys={{ key: "AIzaSyAuVjIdVnypBE451-sxt-h-_R78hQSUDPI" }}
                         defaultCenter={{
-                            lat: 10.99835602,
-                            lng: 77.01502627
+                            lat: -2.99835602,
+                            lng: -2.01502627
                         }}
-                        defaultZoom={14}
-                        center={{
-                            lat: location.latitude, 
-                            lng: location.longitude
-                        }}
+                        defaultZoom={2}
+                        // center={{
+                        //     lat: location.latitude, 
+                        //     lng: location.longitude
+                        // }}
                     >
-                        { /* NEED TO REPLACE mocks and mock */ }
-                        {
-                            mocks.map((mock) => {
+
+                        <LocationSearchingIcon>
+                            lat = {23}
+                            lng = {20}
+                        </LocationSearchingIcon>
+                        
+                        {        
+                            props.locations && props.locations.shipmentChain.map((mock) => {
+                                console.log(mock.coordinates[0].$numberDecimal)
                                 return (
                                     <LocationOnIcon
-                                        lat={mock.latitude}
-                                        lng={mock.longitude}
+                                        lat=  {mock.coordinates[0].$numberDecimal}//mock.coordinates[0].$numberDecimal}
+                                        lng= {mock.coordinates[1].$numberDecimal}//{mock.coordinates[1].$numberDecimal}
+                                        key = {mock.coordinates[0].$numberDecimal}
                                         onClick={() => setSelectedMockId(mock.id)}
                                     />
                                 )
                             })
-                        }
-                        <LocationSearchingIcon
-                            lat={location.latitude}
-                            lng={location.longitude}
-                        />
+                        }                  
                     </GoogleMapReact>
                 </div>
             </Box>
