@@ -4,26 +4,9 @@ import { ConstructionRounded, RestartAlt, SearchOutlined } from '@mui/icons-mate
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 import GoogleMapReact from 'google-map-react';
-import { Marker } from "@react-google-maps/api";
-import LocationIcon from '../assets/blue-dot.png'
+import Marker from "components/Marker";
+// import Polyline from './Polyline';
 
-
-
-const AnyReactComponent = ({ text }) => (
-    <div style={{
-      color: 'white', 
-      background: 'grey',
-      padding: '15px 10px',
-      display: 'inline-flex',
-      textAlign: 'center',
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: '100%',
-      transform: 'translate(-50%, -50%)'
-    }}>
-      {text}
-    </div>
-  );
 
 
 function Map(props){
@@ -36,12 +19,22 @@ function Map(props){
     const [mocks, setMocks] = useState([]);
     const [selectedMockId, setSelectedMockId] = useState(null);
     const [searchText, setSearchText] = useState("");
+    { /* Need to define and assign polylinePath from props */ } 
+    // const [polylinePath, setPolylinePath] = useState([]);
+    
+    { /* Mock polylinePath data
+    const polylinePath = [
+    { lat: 41.879, lng: -87.624 },
+    { lat: 41.878, lng: -87.629 },
+    ];
+    */ }
 
-
+    { /* Handles search for a known list of ids
     const handleSearch = () => {
         let filteredMocks = props.locations.filter(x => x.name.toLowerCase().includes(searchText.toLowerCase()))
         setMocks(filteredMocks);
     }
+    */ }
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
@@ -67,18 +60,18 @@ function Map(props){
         <div>
             <TextField label="Search for a supplier..."
                 variant="outlined"
-                style={{ width: "100%" }}
+                style={{ width: "40%" }}
                 onChange={(event) => setSearchText(event.target.value)}
             />
 
             <div>
-                <Button variant="outlined" style={{ width: "50%" }}>
+                <Button variant="contained" style={{ width: "20%" }}>
                     <RestartAlt />
                     Reset
                 </Button>
                 <Button variant="contained"
-                    onClick={handleSearch}
-                    style={{ width: "50%" }}>
+                //  onClick={handleSearch}
+                    style={{ width: "20%" }}>
                     <SearchOutlined />
                     Search
                 </Button>
@@ -105,7 +98,7 @@ function Map(props){
                             lng = {20}
                         </LocationSearchingIcon>
                         
-                        {        
+                        {/* {        
                             props.locations && props.locations.shipmentChain.map((mock) => {
                                 console.log(mock.coordinates[0].$numberDecimal)
                                 return (
@@ -113,11 +106,31 @@ function Map(props){
                                         lat=  {mock.coordinates[0].$numberDecimal}//mock.coordinates[0].$numberDecimal}
                                         lng= {mock.coordinates[1].$numberDecimal}//{mock.coordinates[1].$numberDecimal}
                                         key = {mock.coordinates[0].$numberDecimal}
+                                    />)
+                                    
+                                })
+                        } */}
+
+                        {        
+                            props.locations && props.locations.shipmentChain.map((mock,index) => {
+                                console.log(mock.coordinates[0].$numberDecimal)
+                                return (
+                                    <Marker
+                                        lat={mock.coordinates[0].$numberDecimal}
+                                        lng={mock.coordinates[1].$numberDecimal}
                                         onClick={() => setSelectedMockId(mock.id)}
+                                        title={`${index + 1}. ${mock.name}`} // replace mock.name with the appropriate field
+                                        index={index}
+                                        totalMarkers={props.locations.shipmentChain.length}
                                     />
-                                )
-                            })
-                        }                  
+                                    )
+                                    
+                                })
+                        }
+
+
+                        {/* {<Polyline path={polylinePath} />} */}
+                    
                     </GoogleMapReact>
                 </div>
             </Box>
