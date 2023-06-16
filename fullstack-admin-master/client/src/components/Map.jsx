@@ -4,8 +4,9 @@ import { ConstructionRounded, RestartAlt, SearchOutlined } from '@mui/icons-mate
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 import GoogleMapReact from 'google-map-react';
-import Marker from "components/Marker";
-// import Polyline from './Polyline';
+import GoogleMap from 'google-map-react';
+import CustomMarker from "components/CustomMarker";
+import Polyline from './Polyline';
 
 
 
@@ -20,7 +21,7 @@ function Map(props){
     const [selectedMockId, setSelectedMockId] = useState(null);
     const [searchText, setSearchText] = useState("");
     { /* Need to define and assign polylinePath from props */ } 
-    // const [polylinePath, setPolylinePath] = useState([]);
+    const [polylinePath, setPolylinePath] = useState([]);
     
     { /* Mock polylinePath data
     const polylinePath = [
@@ -35,6 +36,12 @@ function Map(props){
         setMocks(filteredMocks);
     }
     */ }
+
+    function getPolylinePath(shipmentArray){
+        let pPath = []
+        shipmentArray.map((shipment,_) => pPath.push([shipment.coordinates[0].$numberDecimal,shipment.coordinates[1].$numberDecimal]))
+        return pPath;
+    }
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
@@ -79,7 +86,7 @@ function Map(props){
 
             <Box mt="2rem">
                 <div style={{ height: "80vh", width: "100%" }}>
-                    <GoogleMapReact
+                    <GoogleMap
                         key={JSON.stringify(props.locations)}
                         bootstrapURLKeys={{ key: "AIzaSyAuVjIdVnypBE451-sxt-h-_R78hQSUDPI" }}
                         defaultCenter={{
@@ -93,10 +100,10 @@ function Map(props){
                         // }}
                     >
 
-                        <LocationSearchingIcon>
+                        <LocationSearchingIcon 
                             lat = {23}
                             lng = {20}
-                        </LocationSearchingIcon>
+                        />
                         
                         {/* {        
                             props.locations && props.locations.shipmentChain.map((mock) => {
@@ -115,7 +122,7 @@ function Map(props){
                             props.locations && props.locations.shipmentChain.map((mock,index) => {
                                 console.log(mock.coordinates[0].$numberDecimal)
                                 return (
-                                    <Marker
+                                    <CustomMarker
                                         lat={mock.coordinates[0].$numberDecimal}
                                         lng={mock.coordinates[1].$numberDecimal}
                                         onClick={() => setSelectedMockId(mock.id)}
@@ -129,9 +136,14 @@ function Map(props){
                         }
 
 
-                        {/* {<Polyline path={polylinePath} />} */}
+                        {/* {
+                            
+                            props.locations && 
+                            <Polyline path={getPolylinePath(props.locations.shipmentChain)} />
+                        
+                        } */}
                     
-                    </GoogleMapReact>
+                    </GoogleMap>
                 </div>
             </Box>
         </div>

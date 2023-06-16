@@ -27,7 +27,8 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { DataGrid } from "@mui/x-data-grid";
 import { useGetTransactionsQuery, useGetChainOfShipmentsQuery } from "state/api";
 import Header from "components/Header";
-import Map from "components/Map";
+// import Map from "components/Map";
+import Map1 from "components/Map1";
 // import Temp from "components/Temp";
 // import TempComp from "components/TempComp";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
@@ -144,8 +145,8 @@ const Transactions = () => {
       </FlexBetween>
       
       <Box mt="2rem">
-        <Map coordinates={coordinates} locations={locations}>
-        </Map>
+        <Map1 coordinates={coordinates} locations={locations}>
+        </Map1>
       </Box>
       
       <Box

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import InfoWindow from 'components/InfoWindow'; // import the InfoWindow component
 
-const Marker = ({ lat, lng, onClick, title, index, totalMarkers }) => {
+const CustomMarker = ({ lat, lng, onClick, title, index, totalMarkers }) => {
     const [showInfoWindow, setShowInfoWindow] = useState(false);
     const markerRef = useRef(null);
 
@@ -52,4 +52,4 @@ const Marker = ({ lat, lng, onClick, title, index, totalMarkers }) => {
     )
 }
 
-export default Marker;
+export default CustomMarker;
