@@ -28,12 +28,44 @@ const Map = (props) => {
             }
 
             // Set the focus to the new marker
-            markersRef.current[newIndex].setFocus();
-        }
+            focusMarker(newIndex);
+        };
+    };
+
+    const focusMarker = (index) => {
+        const marker = markersRef.current[index];
+        if (marker) {
+            const map = marker.getMap();
+            map.panTo(marker.getPosition());
+        };
     };
 
     const closeInfoWindow = () => {
         setActiveMarkerIndex(null); // close InfoWindow
+    };
+
+    function getPolylinePath(shipmentArray){
+        console.log("Here");
+        const data = shipmentArray;
+        const pairs = [];
+        const idToObject = {};
+
+        // Create a dictionary to map object IDs to their corresponding objects
+        data.forEach(obj => {
+        idToObject[obj.id] = obj;
+        }); 
+
+        // Generate pairs where a.next = b.id
+        data.forEach(obj => {
+            const nextId = obj.next;
+            if (nextId && idToObject[nextId]) {
+                const a = obj.coordinates;
+                const b = idToObject[nextId].coordinates;
+                pairs.push([ [a[0].$numberDecimal,a[1].$numberDecimal], [b[0].$numberDecimal, b[1].$numberDecimal]]);
+            }
+        });
+        console.log(pairs);
+        return pairs;
     }
 
     function getPolylinePath(shipmentArray){
@@ -72,8 +104,7 @@ const Map = (props) => {
         var bounds = new window.google.maps.LatLngBounds();
 
         // Create markers and polyline
-        if(props.locations && props.locations.shipmentChain)
-        {
+        if (props.locations && props.locations.shipmentChain) {
             console.log("Getting here")
             markersRef.current = props.locations.shipmentChain.map((point, index) => {
                 console.log(point);
