@@ -18613,7 +18613,7 @@ export const dataShipments = [
     "amount": 123.45,
     "unit": "piece",
     "prev": [],
-    "next": "TR2022299HPQ6NS",
+    "next": "TR2022299HPQ6NT",
     "shipmentID": "Shipment3"
   },
   {
@@ -18626,7 +18626,7 @@ export const dataShipments = [
     "material": "Synthetic",
     "amount": 65.1,
     "unit": "piece",
-    "prev": ["PT2023019Z2JT02"],
+    "prev": ["US2023019Z2JT02"],
     "next": "",
     "shipmentID": "Shipment4"
   },
@@ -18701,7 +18701,6 @@ export const dataShipments = [
     "shipmentID": "Shipment5"
   }
 ];
-
 
 
 export const dataUser = [

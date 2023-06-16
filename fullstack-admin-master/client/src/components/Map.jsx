@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import InfoWindow from 'components/InfoWindow';
+import { json } from 'react-router-dom';
 
 // Replace the path prop with actual data
 const Map = (props) => {
@@ -35,14 +36,40 @@ const Map = (props) => {
         setActiveMarkerIndex(null); // close InfoWindow
     }
 
+    function getPolylinePath(shipmentArray){
+        console.log("Here");
+        const data = shipmentArray;
+        const pairs = [];
+        const idToObject = {};
+
+        // Create a dictionary to map object IDs to their corresponding objects
+        data.forEach(obj => {
+        idToObject[obj.id] = obj;
+        }); 
+
+        // Generate pairs where a.next = b.id
+        data.forEach(obj => {
+            const nextId = obj.next;
+            if (nextId && idToObject[nextId]) {
+                const a = obj.coordinates;
+                const b = idToObject[nextId].coordinates;
+                pairs.push([ [a[0].$numberDecimal,a[1].$numberDecimal], [b[0].$numberDecimal, b[1].$numberDecimal]]);
+            }
+        });
+        console.log(pairs);
+        return pairs;
+    }
+
     const initMap = async () => {
         // Load the Maps JavaScript API library
         const { Map, Marker, Polyline } = await window.google.maps.importLibrary('maps');
 
         const map = new Map(mapRef.current, {
             center: { lat: 10.99835602, lng: 77.01502627 },
-            zoom: 2,
+            zoom: 5,
         });
+
+        var bounds = new window.google.maps.LatLngBounds();
 
         // Create markers and polyline
         if(props.locations && props.locations.shipmentChain)
@@ -63,22 +90,42 @@ const Map = (props) => {
 
                 // Add a click listener to focus the marker when it's clicked
                 marker.addListener('click', () => {
-                    marker.setFocus();
+                    setActiveMarkerIndex(index);
                 });
-                
-                // console.log(marker);
-                return marker;
             });
-        }
+    
 
-        polylineRef.current = new Polyline({
-            path: getPolylinePath(props.locations.shipmentChain),
-            geodesic: true,
-            strokeColor: "#ff2527",
-            strokeOpacity: 0.75,
-            strokeWeight: 2,
-            map,
-        });
+                let pPairs = getPolylinePath(props.locations.shipmentChain);
+                console.log(pPairs);
+                var polygons = [];
+                
+                for(var i in pPairs)
+                {   
+                    var arr = [];
+
+                    for (var j = 0; j < pPairs[i].length; j++) {
+                        console.log(pPairs);
+                        arr.push(new window.google.maps.LatLng(
+                            parseFloat(pPairs[i][j][0]),
+                            parseFloat(pPairs[i][j][1])
+                        ));
+                        bounds.extend(arr[arr.length - 1])
+                    }
+                    map.fitBounds(bounds);
+                    console.log(arr);
+                    polygons.push(new window.google.maps.Polyline({
+                    path: arr,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#FF0000',
+                    fillOpacity: 0.35
+                    }));
+                    
+                    polygons[polygons.length - 1].setMap(map);
+                }
+            
+        }
 
         // Clean up on unmount
         return () => {
@@ -89,12 +136,6 @@ const Map = (props) => {
         };
     };
 
-    function getPolylinePath(shipmentArray){
-        let pPath = []
-        shipmentArray.map((shipment,_) => pPath.push({"lat":parseFloat(shipment.coordinates[0].$numberDecimal), "lng":parseFloat(shipment.coordinates[1].$numberDecimal)}))
-        console.log(pPath);
-        return pPath;
-    }
 
     useEffect(() => {
         // Call the initMap function
@@ -113,10 +154,10 @@ const Map = (props) => {
         <div ref={mapRef} style={{ height: "80vh", width: "100%" }}>
             {activeMarkerIndex !== null && (
                 <InfoWindow
-                lat={props[activeMarkerIndex].lat}
-                lng={props[activeMarkerIndex].lng}
+                lat={props.locations.shipmentChain[activeMarkerIndex].coordinates[0].$numberDecimal}
+                lng={props.locations.shipmentChain[activeMarkerIndex].coordinates[1].$numberDecimal}
                 onClose={closeInfoWindow}
-                title={props[activeMarkerIndex].name}
+                title={props.locations.shipmentChain[activeMarkerIndex].name}
               />
             )}
         </div>
