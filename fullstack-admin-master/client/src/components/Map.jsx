@@ -27,13 +27,21 @@ const Map = (props) => {
             }
 
             // Set the focus to the new marker
-            markersRef.current[newIndex].setFocus();
-        }
+            focusMarker(newIndex);
+        };
+    };
+
+    const focusMarker = (index) => {
+        const marker = markersRef.current[index];
+        if (marker) {
+            const map = marker.getMap();
+            map.panTo(marker.getPosition());
+        };
     };
 
     const closeInfoWindow = () => {
         setActiveMarkerIndex(null); // close InfoWindow
-    }
+    };
 
     const initMap = async () => {
         // Load the Maps JavaScript API library
@@ -45,8 +53,7 @@ const Map = (props) => {
         });
 
         // Create markers and polyline
-        if(props.locations && props.locations.shipmentChain)
-        {
+        if (props.locations && props.locations.shipmentChain) {
             console.log("Getting here")
             markersRef.current = props.locations.shipmentChain.map((point, index) => {
                 console.log(point);
@@ -63,13 +70,10 @@ const Map = (props) => {
 
                 // Add a click listener to focus the marker when it's clicked
                 marker.addListener('click', () => {
-                    marker.setFocus();
+                    setActiveMarkerIndex(index);
                 });
-                
-                // console.log(marker);
-                return marker;
             });
-        }
+        };
 
         polylineRef.current = new Polyline({
             path: getPolylinePath(props.locations.shipmentChain),
@@ -92,9 +96,9 @@ const Map = (props) => {
     function getPolylinePath(shipmentArray){
         let pPath = []
         shipmentArray.map((shipment,_) => pPath.push({"lat":parseFloat(shipment.coordinates[0].$numberDecimal), "lng":parseFloat(shipment.coordinates[1].$numberDecimal)}))
-        console.log(pPath);
+        console.log("pPath: ", pPath);
         return pPath;
-    }
+    };
 
     useEffect(() => {
         // Call the initMap function
