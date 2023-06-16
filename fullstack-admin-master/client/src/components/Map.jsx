@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import InfoWindow from 'components/InfoWindow';
 
 // Replace the path prop with actual data
 const Map = ({ path }) => {
     const mapRef = useRef(null);
     const markersRef = useRef([]);
     const polylineRef = useRef(null);
+    const [activeMarkerIndex, setActiveMarkerIndex] = useState(null);
 
     const handleKeyDown = (event) => {
         // Check if the target of the event is a marker
@@ -14,7 +16,7 @@ const Map = ({ path }) => {
             // Calculate the new index based on the key that was pressed
             if (event.key === 'Enter' || event.key === ' ') {
                 console.log("Pressed Enter");
-                { /* handleMarkerClick(); */ }
+                setActiveMarkerIndex(event.target.markerIndex); // open InfoWindow
             } else if (event.key === 'ArrowRight') {
                 event.preventDefault();
                 newIndex = (event.target.markerIndex + 1) % markersRef.current.length;
@@ -28,15 +30,22 @@ const Map = ({ path }) => {
         }
     };
 
-    const initMap = () => {
-        const map = new window.google.maps.Map(mapRef.current, {
+    const closeInfoWindow = () => {
+        setActiveMarkerIndex(null); // close InfoWindow
+    }
+
+    const initMap = async () => {
+        // Load the Maps JavaScript API library
+        const { Map, Marker, Polyline } = await window.google.maps.importLibrary('maps');
+
+        const map = new Map(mapRef.current, {
             center: { lat: 10.99835602, lng: 77.01502627 },
             zoom: 14,
         });
 
         // Create markers and polyline
         markersRef.current = path.map((point, index) => {
-            const marker = new window.google.maps.Marker({
+            const marker = new Marker({
                 position: point,
                 map,
                 title: `#${index + 1}`,
@@ -52,7 +61,7 @@ const Map = ({ path }) => {
             return marker;
         });
 
-        polylineRef.current = new window.google.maps.Polyline({
+        polylineRef.current = new Polyline({
             path,
             geodesic: true,
             strokeColor: "#ff2527",
@@ -71,21 +80,30 @@ const Map = ({ path }) => {
     };
 
     useEffect(() => {
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap`;
-        script.async = true;
-        window.initMap = initMap;
-        document.body.appendChild(script);
-
+        // Call the initMap function
+        initMap();
+    
+        // Add the keydown event listener
         window.addEventListener('keydown', handleKeyDown);
-
+    
+        // Clean up the event listener when the component unmounts
         return () => {
-            // Clean up the event listener when the component unmounts
             window.removeEventListener('keydown', handleKeyDown);
         };
     }, [path]);
 
-    return <div ref={mapRef} style={{ height: "80vh", width: "100%" }} />;
+    return (
+        <div ref={mapRef} style={{ height: "80vh", width: "100%" }}>
+            {activeMarkerIndex !== null && (
+                <InfoWindow
+                lat={path[activeMarkerIndex].lat}
+                lng={path[activeMarkerIndex].lng}
+                onClose={closeInfoWindow}
+                title={path[activeMarkerIndex].name}
+              />
+            )}
+        </div>
+    );
 };
 
 export default Map;
