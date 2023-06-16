@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import LinkDialog from './LinkDialog';
+import Link from 'components/Link';
 
 const ActionMenu = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -72,7 +72,7 @@ const ActionMenu = (props) => {
         <MenuItem onClick={handleLinkClick}>
             Link
         </MenuItem>
-        <LinkDialog open={openDialog} onClose={handleCloseDialog} />
+        <Link open={openDialog} onClose={handleCloseDialog} />
       </Menu>
     </div>
   );

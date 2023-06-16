@@ -1,17 +1,26 @@
-import { React, useState } from 'react';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
-import ListItemText from '@mui/material/ListItemText';
-import ListItem from '@mui/material/ListItem';
-import List from '@mui/material/List';
-import { ListItemButton } from '@mui/material';
+import { React, useEffect, useState } from 'react';
+import { 
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Button,
+  Checkbox,
+  ListItemText,
+  ListItem,
+  List,
+  ListItemButton
+} from '@mui/material';
 
-const LinkDialog = ({ open, onClose }) => {
+// Need to add shipments prop
+const Link = ({ open, onClose }) => {
   const [checked, setChecked] = useState([]);
+
+  useEffect(() => {
+    if (open) {
+      setChecked([]);
+    }
+  }, [open]);
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
@@ -28,10 +37,10 @@ const LinkDialog = ({ open, onClose }) => {
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Link Shipments</DialogTitle>
+      <DialogTitle>Link To Received Shipment</DialogTitle>
       <DialogContent>
         <List>
-        {/*
+          {/*
           {shipments.map((shipment) => (
             <ListItemButton key={shipment.id} onClick={handleToggle(shipment.id)}>
               <Checkbox
@@ -40,7 +49,7 @@ const LinkDialog = ({ open, onClose }) => {
                 tabIndex={-1}
                 disableRipple
               />
-              <ListItemText primary={`ID: ${shipment.id}, Seller: ${shipment.seller}, Material: ${shipment.material}, Amount: ${shipment.amount}, Unit: ${shipment.unit}, Date: ${shipment.date}, Certificates: ${shipment.certificates}`} />
+              <ListItemText primary={`ID: ${shipment.id}, Seller: ${shipment.seller}, Material: ${shipment.material}, Amount: ${shipment.amount}, Unit: ${shipment.unit}, Date: ${shipment.date}`} />
             </ListItemButton>
           ))}
           */}
@@ -58,4 +67,4 @@ const LinkDialog = ({ open, onClose }) => {
   );
 }
 
-export default LinkDialog;
+export default Link;

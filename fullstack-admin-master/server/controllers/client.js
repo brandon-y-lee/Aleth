@@ -1157,7 +1157,7 @@ export const getChainOfShipments = async (req, res) => {
     const shipmentChain = await Shipments.find({
       $or: [
         { shipmentID: chainID.chainId },
-        { shipmentID: "Shipment1" },
+        // { shipmentID: "Shipment1" },
       ],
     });
     // const transactions = transactionsDummy;

@@ -17,24 +17,17 @@ import {
   useMediaQuery, 
   useTheme 
 } from "@mui/material";
-import {
-  DownloadOutlined,
-  UploadFileOutlined,
-  ExpandMore, 
-  ExpandLess,
-} from "@mui/icons-material";
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz'; 
 import { DataGrid } from "@mui/x-data-grid";
 import { useGetTransactionsQuery, useGetChainOfShipmentsQuery } from "state/api";
 import Header from "components/Header";
-// import Map from "components/Map";
+import Map from "components/Map";
 import Map1 from "components/Map1";
 // import Temp from "components/Temp";
 // import TempComp from "components/TempComp";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
-import StatBox from "components/StatBox";
 import ActionMenu from "components/ActionMenu";
 import FlexBetween from "components/FlexBetween";
+import PrimaryButtons from "components/PrimaryButtons";
 
 const Transactions = () => {
   const theme = useTheme();
@@ -112,41 +105,12 @@ const Transactions = () => {
     <Box m="1.5rem 2.5rem">
       <FlexBetween>
         <Header title="SHIPMENTS"/>
-
-        <Box>
-          <FlexBetween gap="1rem">          
-            <Button
-              sx={{
-                backgroundColor: theme.palette.secondary.light,
-                color: theme.palette.background.alt,
-                fontSize: "14px",
-                fontWeight: "bold",
-                padding: "10px 20px",
-              }}
-            >
-              <DownloadOutlined sx={{ mr: "10px" }} />
-              Download Reports
-            </Button>
-
-            <Button
-              sx={{
-                backgroundColor: theme.palette.secondary.light,
-                color: theme.palette.background.alt,
-                fontSize: "14px",
-                fontWeight: "bold",
-                padding: "10px 20px",
-              }}
-            >
-              <UploadFileOutlined sx={{ mr: "10px" }} />
-              Create Certificate
-            </Button>
-          </FlexBetween>
-        </Box>
+        <PrimaryButtons/>
       </FlexBetween>
       
       <Box mt="2rem">
-        <Map1 coordinates={coordinates} locations={locations}>
-        </Map1>
+        <Map coordinates={coordinates} locations={locations}>
+        </Map>
       </Box>
       
       <Box
@@ -178,7 +142,7 @@ const Transactions = () => {
       >
         <DataGrid
           loading={isLoading || !data}
-          getRowId={(row) => row.id}
+          getRowId={(row) => Math.random()}
           rows={(data && data.transactions) || []}
           columns={columns}
           rowCount={(data && data.total) || 0}
