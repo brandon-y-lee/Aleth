@@ -3,6 +3,7 @@ import ProductStat from "../models/ProductStat.js";
 import User from "../models/User.js";
 import Transaction from "../models/Transaction.js";
 import Shipments from "../models/Shipments.js";
+import HackShipments from "../models/HackShipments.js";
 import getCountryIso3 from "country-iso-2-to-3";
 
 
@@ -1123,19 +1124,19 @@ export const getTransactions = async (req, res) => {
     };
     const sortFormatted = Boolean(sort) ? generateSort() : {};
 
-    const transactions = await Shipments.find({
+    const transactions = await HackShipments.find({
       $or: [
-        { cost: { $regex: new RegExp(search, "i") } },
-        { userId: { $regex: new RegExp(search, "i") } },
+        { name: { $regex: new RegExp(search, "i") } },
+        // { userId: { $regex: new RegExp(search, "i") } },
       ],
     })
       .sort(sortFormatted)
       .skip(page * pageSize)
       .limit(pageSize);
     // const transactions = transactionsDummy;
+    console.log(transactions);
 
-
-    const total = await Shipments.countDocuments({
+    const total = await HackShipments.countDocuments({
       name: { $regex: search, $options: "i" },
     });
 
@@ -1148,17 +1149,60 @@ export const getTransactions = async (req, res) => {
   }
 };
 
+export const getPredictiveTransactions = async (req, res) => {
+  try {
+    console.log("hit it");
+    // print("here");
+    // sort should look like this: { "field": "userId", "sort": "desc"}
+    const { page = 1, pageSize = 20, sort = null, search = "" } = req.query;
+
+    // formatted sort should look like { userId: -1 }
+    const generateSort = () => {
+      const sortParsed = JSON.parse(sort);
+      const sortFormatted = {
+        [sortParsed.field]: (sortParsed.sort = "asc" ? 1 : -1),
+      };
+
+      return sortFormatted;
+    };
+    const sortFormatted = Boolean(sort) ? generateSort() : {};
+
+    const transactions = await HackShipments.find({
+      $or: [
+        { name: { $regex: new RegExp(search, ".") } },
+      ],
+    })
+      .sort(sortFormatted)
+      .skip(page * pageSize)
+      .limit(pageSize);
+    // const transactions = transactionsDummy;
+
+
+    const total = await HackShipments.countDocuments({
+      name: { $regex: search, $options: "i" },
+    });
+
+    res.status(200).json({
+      transactions,
+      total,
+    });
+  } catch (error) {
+    console.log(error)
+    res.status(404).json({ message: error.message });
+  }
+};
+
 export const getChainOfShipments = async (req, res) => {
   try {
-    const chainID = req.query;
-    console.log("This is the place where chainID is printed");
-    console.log(chainID);   
+    //const chainID = req.query;
+    console.log("This is the place where chainID is printed : Shipmentid");
+    //console.log(chainID);   
 
-    const shipmentChain = await Shipments.find({
-      $or: [
-        { shipmentID: chainID.chainId },
-        // { shipmentID: "Shipment1" },
-      ],
+    const shipmentChain = await HackShipments.find({
+      // $or: [
+      //   // { shipmentID: chainID.chainId },
+      // //  { name: { $regex: new RegExp("", ".") } },
+      // ],
     });
     // const transactions = transactionsDummy;
 
@@ -1167,6 +1211,7 @@ export const getChainOfShipments = async (req, res) => {
       shipmentChain,
     });
   } catch (error) {
+    console.log(error);
     res.status(404).json({ message: error.message });
   }
 };

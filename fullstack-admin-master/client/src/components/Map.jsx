@@ -126,35 +126,35 @@ const Map = (props) => {
             });
     
 
-                let pPairs = getPolylinePath(props.locations.shipmentChain);
-                console.log(pPairs);
-                var polygons = [];
+                // let pPairs = getPolylinePath(props.locations.shipmentChain);
+                // console.log(pPairs);
+                // var polygons = [];
                 
-                for(var i in pPairs)
-                {   
-                    var arr = [];
+                // for(var i in pPairs)
+                // {   
+                //     var arr = [];
 
-                    for (var j = 0; j < pPairs[i].length; j++) {
-                        console.log(pPairs);
-                        arr.push(new window.google.maps.LatLng(
-                            parseFloat(pPairs[i][j][0]),
-                            parseFloat(pPairs[i][j][1])
-                        ));
-                        bounds.extend(arr[arr.length - 1])
-                    }
-                    map.fitBounds(bounds);
-                    console.log(arr);
-                    polygons.push(new window.google.maps.Polyline({
-                    path: arr,
-                    strokeColor: '#FF0000',
-                    strokeOpacity: 0.8,
-                    strokeWeight: 2,
-                    fillColor: '#FF0000',
-                    fillOpacity: 0.35
-                    }));
+                //     for (var j = 0; j < pPairs[i].length; j++) {
+                //         console.log(pPairs);
+                //         arr.push(new window.google.maps.LatLng(
+                //             parseFloat(pPairs[i][j][0]),
+                //             parseFloat(pPairs[i][j][1])
+                //         ));
+                //         bounds.extend(arr[arr.length - 1])
+                //     }
+                //     map.fitBounds(bounds);
+                //     console.log(arr);
+                //     polygons.push(new window.google.maps.Polyline({
+                //     path: arr,
+                //     strokeColor: '#FF0000',
+                //     strokeOpacity: 0.8,
+                //     strokeWeight: 2,
+                //     fillColor: '#FF0000',
+                //     fillOpacity: 0.35
+                //     }));
                     
-                    polygons[polygons.length - 1].setMap(map);
-                }
+                //     polygons[polygons.length - 1].setMap(map);
+                // }
             
         }
 
@@ -180,16 +180,16 @@ const Map = (props) => {
             window.removeEventListener('keydown', handleKeyDown);
         };
     }, [props]);
-
+    
     return (
         <div ref={mapRef} style={{ height: "80vh", width: "100%" }}>
             {activeMarkerIndex !== null && (
                 <InfoWindow
-                lat={props.locations.shipmentChain[activeMarkerIndex].coordinates[0].$numberDecimal}
-                lng={props.locations.shipmentChain[activeMarkerIndex].coordinates[1].$numberDecimal}
-                onClose={closeInfoWindow}
-                title={props.locations.shipmentChain[activeMarkerIndex].name}
-              />
+                    lat={props.locations.shipmentChain[activeMarkerIndex].coordinates[0].$numberDecimal}
+                    lng={props.locations.shipmentChain[activeMarkerIndex].coordinates[1].$numberDecimal}
+                    onClose={closeInfoWindow}
+                    title={props.locations.shipmentChain[activeMarkerIndex].name}
+                />
             )}
         </div>
     );

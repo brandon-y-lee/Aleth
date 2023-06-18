@@ -44,11 +44,19 @@ export const api = createApi({
       }),
       providesTags: ["Shipments"],
     }),
+    getPredictiveTransactions: build.query({
+      query: ({ page, pageSize, sort, search }) => ({
+        url: "client/predshipments",
+        method: "GET",
+        params: { page, pageSize, sort, search },
+      }),
+      providesTags: ["PredShipments"],
+    }),
     getChainOfShipments: build.query({
-      query: (chainId) => ({
+      query: () => ({
         url: "client/chainOfShipments",
         method: "GET",
-        params: {chainId},
+        // params: {chainId},
       }),
       providesTags: ['chainOfShipments'],
     }),
@@ -80,6 +88,7 @@ export const {
   useGetProductsQuery,
   useGetCustomersQuery,
   useGetTransactionsQuery,
+  useGetPredictiveTransactionsQuery,
   useGetChainOfShipmentsQuery,
   useGetGeographyQuery,
   useGetSalesQuery,

@@ -18,7 +18,7 @@ import {
   useTheme 
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { useGetTransactionsQuery, useGetChainOfShipmentsQuery } from "state/api";
+import { useGetTransactionsQuery, useGetChainOfShipmentsQuery, useGetPredictiveTransactionsQuery } from "state/api";
 import Header from "components/Header";
 import Map from "components/Map";
 import Map1 from "components/Map1";
@@ -29,7 +29,7 @@ import ActionMenu from "components/ActionMenu";
 import FlexBetween from "components/FlexBetween";
 import PrimaryButtons from "components/PrimaryButtons";
 
-const Transactions = () => {
+const PredictiveTransactions = () => {
   const theme = useTheme();
   const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
 
@@ -42,14 +42,16 @@ const Transactions = () => {
   const [selectedId, setSelectedId] = useState("TR2023019QXZZFR");
 
   const [searchInput, setSearchInput] = useState("");
-  const { data, isLoading } = useGetTransactionsQuery({
+  const { data, isLoading } = useGetPredictiveTransactionsQuery({
     page,
     pageSize,
     sort: JSON.stringify(sort),
     search,
   });
 
-  // console.log(data);
+
+
+  console.log(data);
 
   let {data: locations, isLoading: isLoadingNew} = useGetChainOfShipmentsQuery(selectedId);
   if(locations ===  undefined)
@@ -72,24 +74,24 @@ const Transactions = () => {
       flex: 1,
       valueGetter: (params) => {return params.value}
     },
-    // {
-    //   field: "material",
-    //   headerName: "CreatedAt",
-    //   flex: 1,
-    // },
-    // {
-    //   field: "amount",
-    //   headerName: "# of Products",
-    //   flex: 0.5,
-    //   sortable: false,
-    //   renderCell: (params) => params.value.length,
-    // },
-    // {
-    //   field: "unit",
-    //   headerName: "Cost",
-    //   flex: 0.75,
-    //   renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
-    // },
+    {
+      field: "material",
+      headerName: "CreatedAt",
+      flex: 1,
+    },
+    {
+      field: "amount",
+      headerName: "# of Products",
+      flex: 0.5,
+      sortable: false,
+      renderCell: (params) => params.value.length,
+    },
+    {
+      field: "unit",
+      headerName: "Cost",
+      flex: 0.75,
+      renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
+    },
     {
       field: "actions",
       headerName: "Actions",
@@ -104,12 +106,12 @@ const Transactions = () => {
   return (
     <Box m="1.5rem 2.5rem">
       <FlexBetween>
-        <Header title="SHIPMENTS"/>
+        <Header title="PREDSHIPMENTS"/>
         <PrimaryButtons/>
       </FlexBetween>
       
       <Box mt="2rem">
-        <Map coordinates={coordinates} locations={locations} style={"width:50%"}>
+        <Map coordinates={coordinates} locations={locations}>
         </Map>
       </Box>
       
@@ -162,7 +164,7 @@ const Transactions = () => {
           onRowClick={(row)=>{
             // console.log(row.row.shipmentID);
             // console.log(row.row.shipmentID);
-            setSelectedId({"chainId":"1"});///row.row.shipmentID);
+            setSelectedId(row.row.shipmentID);
             // console.log(selectedId);
             setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
           }
@@ -172,4 +174,4 @@ const Transactions = () => {
   );
 };
 
-export default Transactions;
+export default PredictiveTransactions;

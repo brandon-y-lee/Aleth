@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from 'react';
 let infoWindowId = 0;
 
 const InfoWindow = ({ lat, lng, onClose, title }) => {
+    console.log("Reaching here!");
     const closeButtonRef = useRef(null);
     const infoWindowRef = useRef(`info-window-${infoWindowId++}`);
 
@@ -18,8 +19,7 @@ const InfoWindow = ({ lat, lng, onClose, title }) => {
 
     return (
         <div
-          lat={lat}
-          lng={lng}
+          // position={{"lat":lat,"lng":lng}}
           style={{
             position: 'relative',
             width: 150,
