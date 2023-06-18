@@ -182,7 +182,7 @@ const Map = (props) => {
     }, [props]);
 
     return (
-        <div ref={mapRef} style={{ height: "80vh", width: "100%" }}>
+        <div ref={mapRef} style={{ height: "80vh" }}>
             {activeMarkerIndex !== null && (
                 <InfoWindow
                 lat={props.locations.shipmentChain[activeMarkerIndex].coordinates[0].$numberDecimal}

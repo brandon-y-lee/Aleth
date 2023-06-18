@@ -3,6 +3,7 @@ import {
   Box, 
   Button, 
   Divider, 
+  Grid,
   IconButton, 
   Menu,
   MenuItem,
@@ -17,17 +18,21 @@ import {
   useMediaQuery, 
   useTheme 
 } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridColumnHeaderFilterIconButton } from "@mui/x-data-grid";
 import { useGetTransactionsQuery, useGetChainOfShipmentsQuery } from "state/api";
 import Header from "components/Header";
 import Map from "components/Map";
-import Map1 from "components/Map1";
 // import Temp from "components/Temp";
 // import TempComp from "components/TempComp";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import ActionMenu from "components/ActionMenu";
 import FlexBetween from "components/FlexBetween";
 import PrimaryButtons from "components/PrimaryButtons";
+import AcceptedList from "components/AcceptedList";
+import FlexTop from "components/FlexTop";
+import Chat from "components/Chat";
+import HalfWidth from "components/HalfWidth";
+import HalfHeight from "components/HalfHeight";
 
 const Transactions = () => {
   const theme = useTheme();
@@ -108,10 +113,37 @@ const Transactions = () => {
         <PrimaryButtons/>
       </FlexBetween>
       
-      <Box mt="2rem">
-        <Map coordinates={coordinates} locations={locations}>
-        </Map>
+      <Box
+        display="grid"
+        gridTemplateColumns="repeat(12, 1fr)"
+        gridAutoRows="160px"
+        gap="20px"
+        sx={{
+          "& > div": { gridColumn: isNonMediumScreens ? undefined : "span 12" },
+        }}
+      >
+        <Box
+          gridColumn="span 4"
+          gridRow="span 2"
+          backgroundColor={theme.palette.background.alt}
+          p="1rem"
+          borderRadius="0.55rem"
+        >
+          <AcceptedList />
+        </Box>
+        <Box
+          gridColumn="span 5"
+          gridRow="span 3"
+          backgroundColor={theme.palette.background.alt}
+          p="1.5rem"
+          borderRadius="0.55rem"
+        >
+          <Map />
+        </Box>
+
+
       </Box>
+      
       
       <Box
         height="80vh"
