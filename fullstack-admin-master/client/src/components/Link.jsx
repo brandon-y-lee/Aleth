@@ -11,10 +11,23 @@ import {
   List,
   ListItemButton
 } from '@mui/material';
+import { useGetTransactionsQuery } from "state/api";
+
 
 // Need to add shipments prop
 const Link = ({ open, onClose }) => {
   const [checked, setChecked] = useState([]);
+  const [page, setPage] = useState(0);
+  const [pageSize, setPageSize] = useState(20);
+  const [sort, setSort] = useState({});
+  const [search, setSearch] = useState("");
+
+  const { data, isLoading } = useGetTransactionsQuery({
+    page,
+    pageSize,
+    sort: JSON.stringify(sort),
+    search,
+  });
 
   useEffect(() => {
     if (open) {
@@ -35,24 +48,26 @@ const Link = ({ open, onClose }) => {
     setChecked(newChecked);
   };
 
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>Link To Received Shipment</DialogTitle>
       <DialogContent>
         <List>
-          {/*
-          {shipments.map((shipment) => (
-            <ListItemButton key={shipment.id} onClick={handleToggle(shipment.id)}>
+          {data && data.transactions.map((transaction) => (
+            <ListItemButton key={transaction.id} onClick={handleToggle(transaction.id)}>
               <Checkbox
                 edge="start"
-                checked={checked.indexOf(shipment.id) !== -1}
+                checked={checked.indexOf(transaction.id) !== -1}
                 tabIndex={-1}
                 disableRipple
               />
-              <ListItemText primary={`ID: ${shipment.id}, Seller: ${shipment.seller}, Material: ${shipment.material}, Amount: ${shipment.amount}, Unit: ${shipment.unit}, Date: ${shipment.date}`} />
+              <ListItemText primary={`ID: ${transaction.id}, Material: ${transaction.material}, Amount: ${transaction.amount}, Unit: ${transaction.unit}`} />
             </ListItemButton>
           ))}
-          */}
         </List>
       </DialogContent>
       <DialogActions>
