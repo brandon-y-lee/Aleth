@@ -55,13 +55,12 @@ const Transactions = () => {
   });
 
   // console.log(data);
-
   let {data: locations, isLoading: isLoadingNew} = useGetChainOfShipmentsQuery(selectedId);
+
   if(locations ===  undefined)
     locations = {"shipmentChain":[]}
 
   useEffect(() =>  { 
-    console.log("Locations!");
     console.log(locations);
   },[selectedId]);
 
@@ -73,27 +72,30 @@ const Transactions = () => {
     },
     {
       field: "coordinates",
-      headerName: "User ID",
+      headerName: "Coordinates",
       flex: 1,
-      valueGetter: (params) => {return params.value}
+      valueGetter: (params) => {
+        const lat = Number(Number(params.value[0].$numberDecimal).toFixed(4));
+        const lon = Number(Number(params.value[1].$numberDecimal).toFixed(4));
+        return `[${lat}, ${lon}]`;
+      },
     },
     {
       field: "material",
-      headerName: "CreatedAt",
+      headerName: "Material",
       flex: 1,
     },
     {
       field: "amount",
-      headerName: "# of Products",
+      headerName: "Amount",
       flex: 0.5,
       sortable: false,
       renderCell: (params) => params.value.length,
     },
     {
       field: "unit",
-      headerName: "Cost",
-      flex: 0.75,
-      renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
+      headerName: "Unit",
+      flex: 0.5,
     },
     {
       field: "actions",
@@ -113,37 +115,9 @@ const Transactions = () => {
         <PrimaryButtons/>
       </FlexBetween>
       
-      <Box
-        display="grid"
-        gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="160px"
-        gap="20px"
-        sx={{
-          "& > div": { gridColumn: isNonMediumScreens ? undefined : "span 12" },
-        }}
-      >
-        <Box
-          gridColumn="span 4"
-          gridRow="span 2"
-          backgroundColor={theme.palette.background.alt}
-          p="1rem"
-          borderRadius="0.55rem"
-        >
-          <AcceptedList />
-        </Box>
-        <Box
-          gridColumn="span 5"
-          gridRow="span 3"
-          backgroundColor={theme.palette.background.alt}
-          p="1.5rem"
-          borderRadius="0.55rem"
-        >
-          <Map />
-        </Box>
-
-
+      <Box mt="2rem">
+        <Map coordinates={coordinates} locations={locations}/>
       </Box>
-      
       
       <Box
         height="80vh"
