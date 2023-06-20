@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 const Chat = () => {
   const [input, setInput] = useState('');
@@ -9,8 +9,8 @@ const Chat = () => {
     setConversation([...conversation, { text: input, sender: 'user' }]);
     
     try {
-      const response = await axios.post('CHATBOT_API_ENDPOINT', { text: input });
-      setConversation([...conversation, { text: input, sender: 'user' }, { text: response.data, sender: 'chatbot' }]);
+      // const response = await axios.post('CHATBOT_API_ENDPOINT', { text: input });
+      // setConversation([...conversation, { text: input, sender: 'user' }, { text: response.data, sender: 'chatbot' }]);
     } catch (error) {
       console.error('Error sending message:', error);
     }

@@ -1,7 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import InfoWindow from 'components/InfoWindow';
 import { json } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
 
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import { ListItemContent } from '@mui/joy';
+import Divider from '@mui/material/Divider';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
+import { ListItemButton } from '@mui/material';
 // Replace the path prop with actual data
 const Map = (props) => {
     console.log(props);
@@ -9,6 +19,8 @@ const Map = (props) => {
     const markersRef = useRef([]);
     const polylineRef = useRef(null);
     const [activeMarkerIndex, setActiveMarkerIndex] = useState(null);
+    const [hoveredMarkerIndex, setHoveredMarkerIndex] = useState(null);
+
 
     const handleKeyDown = (event) => {
         // Check if the target of the event is a marker
@@ -64,7 +76,6 @@ const Map = (props) => {
                 pairs.push([ [a[0].$numberDecimal,a[1].$numberDecimal], [b[0].$numberDecimal, b[1].$numberDecimal]]);
             }
         });
-        console.log(pairs);
         return pairs;
     }
 
@@ -88,7 +99,6 @@ const Map = (props) => {
                 pairs.push([ [a[0].$numberDecimal,a[1].$numberDecimal], [b[0].$numberDecimal, b[1].$numberDecimal]]);
             }
         });
-        console.log(pairs);
         return pairs;
     }
 
@@ -105,9 +115,7 @@ const Map = (props) => {
 
         // Create markers and polyline
         if (props.locations && props.locations.shipmentChain) {
-            console.log("Getting here")
             markersRef.current = props.locations.shipmentChain.map((point, index) => {
-                console.log(point);
                 const marker = new window.google.maps.Marker({
                     position: {
                         lat: parseFloat(point.coordinates[0].$numberDecimal), 
@@ -123,11 +131,20 @@ const Map = (props) => {
                 marker.addListener('click', () => {
                     setActiveMarkerIndex(index);
                 });
+
+                marker.addListener('mouseover', () => {
+                    setHoveredMarkerIndex(index);
+                });
+            
+                // Add a mouseout listener to clear the hovered marker index
+                marker.addListener('mouseout', () => {
+                    setHoveredMarkerIndex(null);
+                });
+            
             });
     
 
                 let pPairs = getPolylinePath(props.locations.shipmentChain);
-                console.log(pPairs);
                 var polygons = [];
                 
                 for(var i in pPairs)
@@ -135,7 +152,6 @@ const Map = (props) => {
                     var arr = [];
 
                     for (var j = 0; j < pPairs[i].length; j++) {
-                        console.log(pPairs);
                         arr.push(new window.google.maps.LatLng(
                             parseFloat(pPairs[i][j][0]),
                             parseFloat(pPairs[i][j][1])
@@ -143,7 +159,6 @@ const Map = (props) => {
                         bounds.extend(arr[arr.length - 1])
                     }
                     map.fitBounds(bounds);
-                    console.log(arr);
                     polygons.push(new window.google.maps.Polyline({
                     path: arr,
                     strokeColor: '#FF0000',
@@ -181,17 +196,55 @@ const Map = (props) => {
         };
     }, [props]);
 
+    const elems = props.locations.shipmentChain.map((elem,index) => (
+        <ListItem
+                alignItems="flex-start"
+                sx={{
+                    height: '100px',
+                    backgroundColor: hoveredMarkerIndex === index ? 'grey' : 'transparent',
+                }}
+                key={elem.id}
+        >   
+            {/* <ListItemText key={elem.id} primary={elem.name} />
+            <Divider variant="inset" component="li" /> */}
+            <ListItemButton disabled={false} selected={false} sx={{height:'80px'}}>
+                <ListItemContent>{elem.name}</ListItemContent>
+                <Divider variant="inset" component="li" />
+            </ListItemButton>
+
+        </ListItem>
+
+      ));
+
+    console.log(elems);
+
     return (
-        <div ref={mapRef} style={{ height: "80vh" }}>
-            {activeMarkerIndex !== null && (
-                <InfoWindow
-                lat={props.locations.shipmentChain[activeMarkerIndex].coordinates[0].$numberDecimal}
-                lng={props.locations.shipmentChain[activeMarkerIndex].coordinates[1].$numberDecimal}
-                onClose={closeInfoWindow}
-                title={props.locations.shipmentChain[activeMarkerIndex].name}
-              />
-            )}
-        </div>
+        <Grid container spacing={2}>
+            <Grid item xs={8} display="flex">
+                <div ref={mapRef} style={{ height: "70vh", width: "100%" }}>
+                {activeMarkerIndex !== null && (
+                    <InfoWindow
+                    lat={
+                        props.locations.shipmentChain[activeMarkerIndex].coordinates[0]
+                        .$numberDecimal
+                    }
+                    lng={
+                        props.locations.shipmentChain[activeMarkerIndex].coordinates[1]
+                        .$numberDecimal
+                    }
+                    onClose={closeInfoWindow}
+                    title={props.locations.shipmentChain[activeMarkerIndex].name}
+                    />
+                )}
+                </div>
+            </Grid>
+            
+            <Grid item xs={2} display="flex">
+                <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                    {elems}
+                </List>
+            </Grid>
+</Grid>
     );
 };
 

@@ -76,7 +76,7 @@ const Link = ({ open, onClose }) => {
           // handle submit here
           console.log(checked);
           onClose();
-        }}>Confirm & Link</Button>
+        } }>Confirm & Link</Button>
       </DialogActions>
     </Dialog>
   );
