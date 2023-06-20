@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import InfoWindow from 'components/InfoWindow';
 import { json } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
+import SupplierCard from './SupplierDetails/SupplierCard';
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -12,6 +13,13 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { ListItemButton } from '@mui/material';
+import Paper from '@mui/material/Paper';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+
+
 // Replace the path prop with actual data
 const Map = (props) => {
     console.log(props);
@@ -196,21 +204,41 @@ const Map = (props) => {
         };
     }, [props]);
 
+    const card = (
+        <React.Fragment>
+          <CardContent>
+            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+              Word of the Day
+            </Typography>
+            <Typography variant="h5" component="div">
+             temporary
+            </Typography>
+            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+              adjective
+            </Typography>
+            <Typography variant="body2">
+              well meaning and kindly.
+              <br />
+              {'"a benevolent smile"'}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size="small">Learn More</Button>
+          </CardActions>
+        </React.Fragment>
+      );
+
     const elems = props.locations.shipmentChain.map((elem,index) => (
         <ListItem
-                alignItems="flex-start"
-                sx={{
-                    height: '100px',
-                    backgroundColor: hoveredMarkerIndex === index ? 'grey' : 'transparent',
-                }}
-                key={elem.id}
-        >   
-            {/* <ListItemText key={elem.id} primary={elem.name} />
-            <Divider variant="inset" component="li" /> */}
-            <ListItemButton disabled={false} selected={false} sx={{height:'80px'}}>
-                <ListItemContent>{elem.name}</ListItemContent>
-                <Divider variant="inset" component="li" />
-            </ListItemButton>
+            alignItems="flex-start"
+            sx={{  
+                // backgroundColor: hoveredMarkerIndex === index ? 'grey' : 'transparent',
+            }}
+            key={elem.id}
+            component="div" // Change the component from "li" to "div"
+        >
+          
+            <SupplierCard place={{"name":elem.name}} selected = {1} refProp={1} color={hoveredMarkerIndex === index ? 'gainsboro' : 'transparent'}></SupplierCard>
 
         </ListItem>
 
@@ -239,10 +267,13 @@ const Map = (props) => {
                 </div>
             </Grid>
             
-            <Grid item xs={2} display="flex">
-                <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                    {elems}
-                </List>
+            <Grid item xs={4} display="flex">
+                <Paper style={{maxHeight: "70vh", overflow: 'auto'}}>
+                    
+                    <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                        {elems}
+                    </List>
+                </Paper>
             </Grid>
 </Grid>
     );
