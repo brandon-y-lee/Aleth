@@ -49,6 +49,9 @@ const SupplierCard = ({ place, selected, refProp, color }) => {
         <Button size="small" color="primary" style={{"background-color":"#00994c"}} onClick={() => window.open(place.web_url, '_blank')}>
           Go to Supplier Analytics
         </Button>
+        <Button size="small" color="primary" style={{"background-color":"#00994c"}} onClick={() => window.open(place.web_url, '_blank')}>
+          Check Status
+        </Button>
       </CardActions>
     </Card>
   );
