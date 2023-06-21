@@ -250,7 +250,7 @@ const Map = (props) => {
         <Grid container spacing={2}>
             <Grid item xs={8} display="flex">
                 <div ref={mapRef} style={{ height: "70vh", width: "100%" }}>
-                {activeMarkerIndex !== null && (
+                {/* {activeMarkerIndex !== null && (
                     <InfoWindow
                     lat={
                         props.locations.shipmentChain[activeMarkerIndex].coordinates[0]
@@ -263,7 +263,7 @@ const Map = (props) => {
                     onClose={closeInfoWindow}
                     title={props.locations.shipmentChain[activeMarkerIndex].name}
                     />
-                )}
+                )} */}
                 </div>
             </Grid>
             
