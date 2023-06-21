@@ -13,7 +13,7 @@ import {
 import FlexBetween from "components/FlexBetween";
 import Certificate from "components/Certificate/Certificate";
 
-const PrimaryButtons = () => {
+const CertificateButton = () => {
     const theme = useTheme();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -29,20 +29,7 @@ const PrimaryButtons = () => {
 
     return (
         <Box>
-          <FlexBetween gap="1rem">          
-            <Button
-              sx={{
-                backgroundColor: theme.palette.secondary.light,
-                color: theme.palette.background.alt,
-                fontSize: "14px",
-                fontWeight: "bold",
-                padding: "10px 20px",
-              }}
-            >
-              <DownloadOutlined sx={{ mr: "10px" }} />
-              Download Reports
-            </Button>
-
+          <FlexBetween gap="1rem">
             <Button
               sx={{
                 backgroundColor: theme.palette.secondary.light,
@@ -77,4 +64,4 @@ const PrimaryButtons = () => {
     );
 };
 
-export default PrimaryButtons;
+export default CertificateButton;

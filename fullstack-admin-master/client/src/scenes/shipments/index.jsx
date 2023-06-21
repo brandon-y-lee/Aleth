@@ -1,40 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { 
   Box, 
-  Button, 
-  Divider, 
-  Grid,
-  IconButton, 
-  Menu,
-  MenuItem,
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableContainer, 
-  TableHead, 
-  TableRow, 
-  Collapse, 
-  Typography, 
   useMediaQuery, 
   useTheme 
 } from "@mui/material";
-import { DataGrid, GridColumnHeaderFilterIconButton } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import { useGetTransactionsQuery, useGetChainOfShipmentsQuery } from "state/api";
 import Header from "components/Header";
 import Map from "components/Map";
-// import Temp from "components/Temp";
-// import TempComp from "components/TempComp";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import ActionMenu from "components/ActionMenu";
 import FlexBetween from "components/FlexBetween";
-import PrimaryButtons from "components/PrimaryButtons";
-import AcceptedList from "components/AcceptedList";
-import FlexTop from "components/FlexTop";
-import Chat from "components/Chat";
-import HalfWidth from "components/HalfWidth";
-import HalfHeight from "components/HalfHeight";
+import CertificateButton from "components/CertificateButton";
 
-const Transactions = () => {
+const Shipments = () => {
   const theme = useTheme();
   const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
 
@@ -112,7 +91,7 @@ const Transactions = () => {
     <Box m="1.5rem 2.5rem">
       <FlexBetween>
         <Header title="SHIPMENTS"/>
-        <PrimaryButtons/>
+        <CertificateButton/>
       </FlexBetween>
       
       <Box mt="2rem">
@@ -178,4 +157,4 @@ const Transactions = () => {
   );
 };
 
-export default Transactions;
+export default Shipments;

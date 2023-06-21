@@ -45,7 +45,7 @@ const navItems = [
     icon: null,
   },
   {
-    text: "Map",
+    text: "Order",
     icon: <PublicOutlined />,
   },
   {

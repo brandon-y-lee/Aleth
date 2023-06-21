@@ -21,11 +21,10 @@ import Button from '@mui/material/Button';
 
 
 // Replace the path prop with actual data
-const Map = (props) => {
+const OrderMap = (props) => {
     console.log(props);
     const mapRef = useRef(null);
     const markersRef = useRef([]);
-    const polylineRef = useRef(null);
     const [activeMarkerIndex, setActiveMarkerIndex] = useState(null);
     const [hoveredMarkerIndex, setHoveredMarkerIndex] = useState(null);
 
@@ -64,32 +63,9 @@ const Map = (props) => {
         setActiveMarkerIndex(null); // close InfoWindow
     };
 
-    function getPolylinePath(shipmentArray){
-        console.log("Here");
-        const data = shipmentArray;
-        const pairs = [];
-        const idToObject = {};
-
-        // Create a dictionary to map object IDs to their corresponding objects
-        data.forEach(obj => {
-        idToObject[obj.id] = obj;
-        }); 
-
-        // Generate pairs where a.next = b.id
-        data.forEach(obj => {
-            const nextId = obj.next;
-            if (nextId && idToObject[nextId]) {
-                const a = obj.coordinates;
-                const b = idToObject[nextId].coordinates;
-                pairs.push([ [a[0].$numberDecimal,a[1].$numberDecimal], [b[0].$numberDecimal, b[1].$numberDecimal]]);
-            }
-        });
-        return pairs;
-    }
-
     const initMap = async () => {
         // Load the Maps JavaScript API library
-        const { Map, Marker, Polyline } = await window.google.maps.importLibrary('maps');
+        const { Map, Marker } = await window.google.maps.importLibrary('maps');
 
         const map = new Map(mapRef.current, {
             center: { lat: 10.99835602, lng: 77.01502627 },
@@ -101,11 +77,13 @@ const Map = (props) => {
         // Create markers and polyline
         if (props.locations && props.locations.shipmentChain) {
             markersRef.current = props.locations.shipmentChain.map((point, index) => {
+                const position = {
+                    lat: parseFloat(point.coordinates[0].$numberDecimal), 
+                    lng: parseFloat(point.coordinates[1].$numberDecimal)
+                };
+
                 const marker = new window.google.maps.Marker({
-                    position: {
-                        lat: parseFloat(point.coordinates[0].$numberDecimal), 
-                        lng: parseFloat(point.coordinates[1].$numberDecimal)
-                    },
+                    position,
                     map,
                     title: `#${index + 1}`,
                 });
@@ -125,48 +103,21 @@ const Map = (props) => {
                 marker.addListener('mouseout', () => {
                     setHoveredMarkerIndex(null);
                 });
-            
+
+                bounds.extend(position);
+
+                return marker;
             });
-    
 
-                let pPairs = getPolylinePath(props.locations.shipmentChain);
-                var polygons = [];
-                
-                for(var i in pPairs)
-                {   
-                    var arr = [];
-
-                    for (var j = 0; j < pPairs[i].length; j++) {
-                        arr.push(new window.google.maps.LatLng(
-                            parseFloat(pPairs[i][j][0]),
-                            parseFloat(pPairs[i][j][1])
-                        ));
-                        bounds.extend(arr[arr.length - 1])
-                    }
-                    map.fitBounds(bounds);
-                    polygons.push(new window.google.maps.Polyline({
-                    path: arr,
-                    strokeColor: '#FF0000',
-                    strokeOpacity: 0.8,
-                    strokeWeight: 2,
-                    fillColor: '#FF0000',
-                    fillOpacity: 0.35
-                    }));
-                    
-                    polygons[polygons.length - 1].setMap(map);
-                }
-            
+            map.fitBounds(bounds);
         }
 
         // Clean up on unmount
         return () => {
             markersRef.current.forEach(marker => marker.setMap(null));
             markersRef.current = [];
-            polylineRef.current.setMap(null);
-            polylineRef.current = null;
         };
     };
-
 
     useEffect(() => {
         // Call the initMap function
@@ -220,11 +171,11 @@ const Map = (props) => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={8} display="flex">
-                <div ref={mapRef} style={{ height: "70vh", width: "100%" }}/>
+                <div ref={mapRef} style={{ height: "40vh", width: "100%" }}/>
             </Grid>
             
             <Grid item xs={4} display="flex">
-                <Paper style={{maxHeight: "70vh", overflow: 'auto'}}>
+                <Paper style={{maxHeight: "40vh", overflow: 'auto'}}>
                     <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
                         {elems}
                     </List>
@@ -234,4 +185,4 @@ const Map = (props) => {
     );
 };
 
-export default Map;
+export default OrderMap;
