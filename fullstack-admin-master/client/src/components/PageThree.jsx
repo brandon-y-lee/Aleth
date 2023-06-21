@@ -17,10 +17,6 @@ const PageThree = ({ onButtonClick }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!singleUser && !multiUser) {
-      alert("Please select at least one option.");
-      return;
-    }
     onButtonClick("pagefour");
   };
 

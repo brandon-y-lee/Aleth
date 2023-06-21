@@ -15,23 +15,17 @@ const PageFour = () => {
         color: 'text.primary',
       }}
     >
-      <Card
-        sx={{
-          width: '80%',
-          mt: 3,
-          mb: 3,
-          p: 3,
-        }}
-      >
-        <CardContent>
-          <Typography variant="h4" component="h2" align="center">
-            Congratulations, Eren!
-          </Typography>
-          <Typography variant="body1" color="text.secondary" align="center">
-            You have completed the onboarding, you can start using the Eden!
-          </Typography>
-        </CardContent>
-      </Card>
+      <Box sx={{ mb: 1 }}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Please review your Certificate details below
+        </Typography>
+      </Box>
+      <Box sx={{ width: '75%' }}>
+        <Typography variant="body1" gutterBottom>
+          If you would like to make amendments, click back to make changes.
+        </Typography>
+      </Box>
+      
       <Button
         variant="contained"
         color="primary"
@@ -39,7 +33,7 @@ const PageFour = () => {
           mt: 3,
         }}
       >
-        Launch Eden
+        Publish Certificate
       </Button>
     </Box>
   );
