@@ -18504,7 +18504,8 @@ export const dataShipments = [
     "unit": "piece",
     "prev": [],
     "next": "PT2023018Q22FVH",
-    "shipmentID": "Shipment1"
+    "shipmentID": "Shipment1",
+    "orderStatus": 0
   },
   {
     "userId": 2,
@@ -18522,7 +18523,8 @@ export const dataShipments = [
       "TR2022299HPQ6NS"
     ],
     "next": "US202220707WWRM",
-    "shipmentID": "Shipment1"
+    "shipmentID": "Shipment1",
+    "orderStatus": 1
   },
   {
     "userId": 3,
@@ -18540,7 +18542,8 @@ export const dataShipments = [
       "PT2023018Q22FVH"
     ],
     "next": "NM202220707WWRM",
-    "shipmentID": "Shipment1"
+    "shipmentID": "Shipment1",
+    "orderStatus": 2
   },
   {
     "userId": 4,
@@ -18557,8 +18560,9 @@ export const dataShipments = [
     "prev": [
       "US202220707WWRM"
     ],
-    "next": "BO202320707WWRM",
-    "shipmentID": "Shipment1"
+    "next": "",
+    "shipmentID": "Shipment1",
+    "orderStatus": 0
   },
   {
     "userId": 5,
@@ -18576,7 +18580,8 @@ export const dataShipments = [
       "NM202220707WWRM"
     ],
     "next": "",
-    "shipmentID": "Shipment1"
+    "shipmentID": "Shipment1",
+    "orderStatus": 1
   },
   {
     "userId": 6,
@@ -18584,7 +18589,7 @@ export const dataShipments = [
     "id": "CN2022364N63PG",
     "name": "1001 ARMED FORCES CO LTD",
     "coordinates": [
-      18.9786636,
+       18.9786636,
       16.4464722
     ],
     "material": "Denim",
@@ -18592,7 +18597,8 @@ export const dataShipments = [
     "unit": "piece",
     "prev": [],
     "next": "CN2021336XXCHG",
-    "shipmentID": "Shipment2"
+    "shipmentID": "Shipment2",
+    "orderStatus": 2
   },
   {
     "userId": 7,
@@ -18610,7 +18616,8 @@ export const dataShipments = [
       "CN2022364N63PG"
     ],
     "next": "US2023019X1TH4L",
-    "shipmentID": "Shipment2"
+    "shipmentID": "Shipment2",
+    "orderStatus": 0
   },
   {
     "userId": 8,
@@ -18628,7 +18635,8 @@ export const dataShipments = [
       "CN2021336XXCHG"
     ],
     "next": "BNG023019X1TH4L",
-    "shipmentID": "Shipment2"
+    "shipmentID": "Shipment2",
+    "orderStatus": 1
   },
   {
     "userId": 9,
@@ -18646,7 +18654,8 @@ export const dataShipments = [
       "US2023019X1TH4L"
     ],
     "next": "YYE2023019X1TH4L",
-    "shipmentID": "Shipment2"
+    "shipmentID": "Shipment2",
+    "orderStatus": 2
   },
   {
     "userId": 10,
@@ -18664,7 +18673,8 @@ export const dataShipments = [
       "BNG023019X1TH4L"
     ],
     "next": "",
-    "shipmentID": "Shipment2"
+    "shipmentID": "Shipment2",
+    "orderStatus": 0
   },
   {
     "userId": 11,
@@ -18680,7 +18690,8 @@ export const dataShipments = [
     "unit": "kg",
     "prev": [],
     "next": "US2023019X1V4J5",
-    "shipmentID": "Shipment3"
+    "shipmentID": "Shipment3",
+    "orderStatus": 1
   },
   {
     "userId": 12,
@@ -18698,7 +18709,8 @@ export const dataShipments = [
       "PT2023019ZP6R9J"
     ],
     "next": "US2023019Z2JT02",
-    "shipmentID": "Shipment3"
+    "shipmentID": "Shipment3",
+    "orderStatus": 2
   },
   {
     "userId": 13,
@@ -18716,7 +18728,8 @@ export const dataShipments = [
       "US2023019X1V4J5"
     ],
     "next": "EW2023019Z2JT02",
-    "shipmentID": "Shipment3"
+    "shipmentID": "Shipment3",
+    "orderStatus": 0
   },
   {
     "userId": 14,
@@ -18734,7 +18747,8 @@ export const dataShipments = [
       "US2023019Z2JT02"
     ],
     "next": "REW023019Z2JT02",
-    "shipmentID": "Shipment3"
+    "shipmentID": "Shipment3",
+    "orderStatus": 1
   },
   {
     "userId": 15,
@@ -18752,7 +18766,8 @@ export const dataShipments = [
       "EW2023019Z2JT02"
     ],
     "next": "",
-    "shipmentID": "Shipment3"
+    "shipmentID": "Shipment3",
+    "orderStatus": 2
   },
   {
     "userId": 16,
@@ -18770,7 +18785,8 @@ export const dataShipments = [
       ""
     ],
     "next": "PT2023018Q22FVH1",
-    "shipmentID": "Shipment4"
+    "shipmentID": "Shipment4",
+    "orderStatus": 0
   },
   {
     "userId": 17,
@@ -18788,7 +18804,8 @@ export const dataShipments = [
       "TR2022299HPQ6NT"
     ],
     "next": "US202220707WWRM1",
-    "shipmentID": "Shipment4"
+    "shipmentID": "Shipment4",
+    "orderStatus": 1
   },
   {
     "userId": 18,
@@ -18806,7 +18823,8 @@ export const dataShipments = [
       "PT2023018Q22FVH1"
     ],
     "next": "PAN02220707WWRM1",
-    "shipmentID": "Shipment4"
+    "shipmentID": "Shipment4",
+    "orderStatus": 2
   },
   {
     "userId": 19,
@@ -18824,7 +18842,8 @@ export const dataShipments = [
       "US202220707WWRM1"
     ],
     "next": "EC202220707WWRM1",
-    "shipmentID": "Shipment4"
+    "shipmentID": "Shipment4",
+    "orderStatus": 0
   },
   {
     "userId": 20,
@@ -18842,7 +18861,8 @@ export const dataShipments = [
       "PAN02220707WWRM1"
     ],
     "next": "",
-    "shipmentID": "Shipment4"
+    "shipmentID": "Shipment4",
+    "orderStatus": 1
   },
   {
     "userId": 21,
@@ -18858,7 +18878,8 @@ export const dataShipments = [
     "unit": "piece",
     "prev": [],
     "next": "CN2021336XXCHG1",
-    "shipmentID": "Shipment5"
+    "shipmentID": "Shipment5",
+    "orderStatus": 2
   },
   {
     "userId": 22,
@@ -18876,7 +18897,8 @@ export const dataShipments = [
       "CN2022364N63PG1"
     ],
     "next": "US2023019X1TH4L1",
-    "shipmentID": "Shipment5"
+    "shipmentID": "Shipment5",
+    "orderStatus": 0
   },
   {
     "userId": 23,
@@ -18894,7 +18916,8 @@ export const dataShipments = [
       "CN2021336XXCHG1"
     ],
     "next": "RAN032019X1TH4L1",
-    "shipmentID": "Shipment5"
+    "shipmentID": "Shipment5",
+    "orderStatus": 1
   },
   {
     "userId": 24,
@@ -18912,7 +18935,8 @@ export const dataShipments = [
       "US2023019X1TH4L1"
     ],
     "next": "YUF023019X1TH4L1",
-    "shipmentID": "Shipment5"
+    "shipmentID": "Shipment5",
+    "orderStatus": 2
   },
   {
     "userId": 25,
@@ -18920,7 +18944,7 @@ export const dataShipments = [
     "id": "YUF023019X1TH4L1",
     "name": "THE SPOT APPAREL, LLC",
     "coordinates": [
-      14.0814388,
+       14.0814388,
       12.8150366
     ],
     "material": "Leather",
@@ -18930,7 +18954,8 @@ export const dataShipments = [
       "RAN032019X1TH4L1"
     ],
     "next": "",
-    "shipmentID": "Shipment5"
+    "shipmentID": "Shipment5",
+    "orderStatus": 0
   }
 ];
 
