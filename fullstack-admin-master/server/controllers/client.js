@@ -185,19 +185,12 @@ export const getTransactions = async (req, res) => {
     };
     const sortFormatted = Boolean(sort) ? generateSort() : {};
 
-    // const transactions = await Shipments.find({
-    //   $or: [
-    //     { cost: { $regex: new RegExp(search, "i") } },
-    //     { userId: { $regex: new RegExp(search, "i") } },
-    //   ],
-    // })
     const transactions = await Shipments.find({
         userId:userId,
     })
       .sort(sortFormatted)
       .skip(page * pageSize)
       .limit(pageSize);
-    // const transactions = transactionsDummy;
 
     console.log(transactions);
     const total = await Shipments.countDocuments({
@@ -218,11 +211,8 @@ export const getTransactions = async (req, res) => {
 export const getRecipientTransactions = async (req, res) => {
   try {
     console.log("hit it recipient");
-    // print("here");
-    // sort should look like this: { "field": "userId", "sort": "desc"}
     const { page = 1, pageSize = 20, sort = null, search = "", userId = "1" } = req.query;
 
-    // formatted sort should look like { userId: -1 }
     const generateSort = () => {
       const sortParsed = JSON.parse(sort);
       const sortFormatted = {
@@ -257,10 +247,8 @@ export const getChainOfShipments = async (req, res) => {
     const shipmentChain = await Shipments.find({
       $or: [
         { shipmentID: chainID.chainId },
-        // { shipmentID: "Shipment1" },
       ],
     });
-    // const transactions = transactionsDummy;
 
     console.log(shipmentChain);
     res.status(200).json({
@@ -287,6 +275,55 @@ export const updateRecipients = async (req, res) => {
   }
 
 }
+
+//Function to add a new shipment or update the status of an existing shipment
+export const generateNewShipment = async (req, res) => {
+  try {
+    console.log("Generating new shipment", req.body);
+    const { id, userId, recipientId, material, amount, unit, prev, orderStatus } = req.body;
+
+    // Check if a shipment with the given ID exists
+    const existingShipment = await Shipments.findOne({ id });
+
+    const userInfo = await User.findOne({userId: userId});
+
+    if (existingShipment) {
+      // Update the existing shipment with the new data
+      existingShipment.userId = userId;
+      existingShipment.recipientId = recipientId;
+      existingShipment.name = userInfo.name;
+      existingShipment.material = material;
+      existingShipment.amount = amount;
+      existingShipment.unit = unit;
+      existingShipment.coordinates = userInfo.coordinates;
+      existingShipment.prev = prev;
+      existingShipment.orderStatus = orderStatus;
+
+      await existingShipment.save();
+      res.status(200).json({ message: "Shipment updated successfully" });
+    } else {
+      // Create a new shipment
+      const newShipment = new Shipments({
+        id,
+        userId,
+        recipientId,
+        name: userInfo.name,
+        material,
+        amount,
+        unit,
+        coordinates: userInfo.coordinates,
+        prev,
+        orderStatus,
+      });
+
+      await newShipment.save();
+      res.status(200).json({ message: "New shipment created successfully" });
+    }
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 
 
 export const getGeography = async (req, res) => {

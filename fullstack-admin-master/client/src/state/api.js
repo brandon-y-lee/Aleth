@@ -56,6 +56,14 @@ export const api = createApi({
       }),
     }),
 
+    generateNewShipment: build.mutation({
+      query: ({ id, userId, recipientId, material, amount, unit, prev, orderStatus }) => ({
+        url: "client/generateNewShipment",
+        method: "POST",
+        body: { id, userId, recipientId, material, amount, unit, prev, orderStatus },
+      }),
+    }),
+
     getRecipientTransactions: build.query({
       query: ({ page, pageSize, sort, search, userId }) => ({
         url: "client/recipientShipments",
@@ -110,6 +118,7 @@ export const {
   useGetCustomersQuery,
   useGetTransactionsQuery,
   useUpdateRecipientsMutation,
+  useGenerateNewShipmentMutation,
   useGetRecipientTransactionsQuery,
   useGetChainOfShipmentsQuery,
   useGetGeographyQuery,
