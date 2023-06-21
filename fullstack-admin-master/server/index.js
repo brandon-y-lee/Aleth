@@ -19,12 +19,7 @@ import OverallStat from "./models/OverallStat.js";
 import AffiliateStat from "./models/AffiliateStat.js";
 import {
   dataUser,
-  dataProduct,
-  dataProductStat,
-  dataTransaction,
   dataShipments,
-  dataOverallStat,
-  dataAffiliateStat,
 } from "./data/index.js";
 import Shipments from "./models/Shipments.js";
 
