@@ -1,20 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Session from 'react-session-api';
 import { 
   Box, 
-  Button, 
-  Divider, 
-  Grid,
-  IconButton, 
-  Menu,
-  MenuItem,
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableContainer, 
-  TableHead, 
-  TableRow, 
-  Collapse, 
-  Typography, 
   useMediaQuery, 
   useTheme 
 } from "@mui/material";
@@ -28,41 +15,45 @@ import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import ActionMenu from "components/ActionMenu";
 import FlexBetween from "components/FlexBetween";
 import PrimaryButtons from "components/PrimaryButtons";
-import AcceptedList from "components/AcceptedList";
-import FlexTop from "components/FlexTop";
-import Chat from "components/Chat";
-import HalfWidth from "components/HalfWidth";
-import HalfHeight from "components/HalfHeight";
+Session.set("username","2");
 
 const Transactions = () => {
+  const userName = Session.get("username");
   const theme = useTheme();
-  const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
-
   // values to be sent to the backend
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(20);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
   const [coordinates, setCoordinates] = useState([]);
+  const [selectedShipmentId, setSelectedShipmentId] = useState("TR2023019QXZZFR");
   const [selectedId, setSelectedId] = useState("TR2023019QXZZFR");
 
   const [searchInput, setSearchInput] = useState("");
+  console.log({
+    page,
+    pageSize,
+    sort: JSON.stringify(sort),
+    search,
+    userName
+  });
   const { data, isLoading } = useGetTransactionsQuery({
     page,
     pageSize,
     sort: JSON.stringify(sort),
     search,
+    userId: userName
   });
 
   // console.log(data);
-  let {data: locations, isLoading: isLoadingNew} = useGetChainOfShipmentsQuery(selectedId);
+  let {data: locations, isLoading: isLoadingNew} = useGetChainOfShipmentsQuery(selectedShipmentId);
 
   if(locations ===  undefined)
     locations = {"shipmentChain":[]}
 
   useEffect(() =>  { 
     console.log(locations);
-  },[selectedId]);
+  },[selectedShipmentId]);
 
   const columns = [
     {
@@ -103,7 +94,7 @@ const Transactions = () => {
       sortable: false,
       flex: 0.5,
       renderCell: (params) => (
-        <ActionMenu />
+        <ActionMenu receivingOrderId={selectedId}/>
       ),
     },
   ];
@@ -166,10 +157,8 @@ const Transactions = () => {
             toolbar: { searchInput, setSearchInput, setSearch },
           }}
           onRowClick={(row)=>{
-            // console.log(row.row.shipmentID);
-            // console.log(row.row.shipmentID);
-            setSelectedId(row.row.shipmentID);
-            // console.log(selectedId);
+            setSelectedShipmentId(row.row.shipmentID);
+            setSelectedId(row.row.id);
             setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
           }
         />

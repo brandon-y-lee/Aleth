@@ -1,23 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
-import InfoWindow from 'components/InfoWindow';
-import { json } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import SupplierCard from './SupplierDetails/SupplierCard';
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import { ListItemContent } from '@mui/joy';
-import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { ListItemButton } from '@mui/material';
 import Paper from '@mui/material/Paper';
-import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
+import Session from 'react-session-api'
+
 
 
 // Replace the path prop with actual data
@@ -28,6 +22,7 @@ const Map = (props) => {
     const polylineRef = useRef(null);
     const [activeMarkerIndex, setActiveMarkerIndex] = useState(null);
     const [hoveredMarkerIndex, setHoveredMarkerIndex] = useState(null);
+    const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
 
 
     const handleKeyDown = (event) => {
@@ -87,31 +82,9 @@ const Map = (props) => {
         return pairs;
     }
 
-    function getPolylinePath(shipmentArray){
-        console.log("Here");
-        const data = shipmentArray;
-        const pairs = [];
-        const idToObject = {};
-
-        // Create a dictionary to map object IDs to their corresponding objects
-        data.forEach(obj => {
-        idToObject[obj.id] = obj;
-        }); 
-
-        // Generate pairs where a.next = b.id
-        data.forEach(obj => {
-            const nextId = obj.next;
-            if (nextId && idToObject[nextId]) {
-                const a = obj.coordinates;
-                const b = idToObject[nextId].coordinates;
-                pairs.push([ [a[0].$numberDecimal,a[1].$numberDecimal], [b[0].$numberDecimal, b[1].$numberDecimal]]);
-            }
-        });
-        return pairs;
-    }
-
     const initMap = async () => {
         // Load the Maps JavaScript API library
+        console.log("Initing")
         const { Map, Marker, Polyline } = await window.google.maps.importLibrary('maps');
 
         const map = new Map(mapRef.current, {
@@ -124,11 +97,16 @@ const Map = (props) => {
         // Create markers and polyline
         if (props.locations && props.locations.shipmentChain) {
             markersRef.current = props.locations.shipmentChain.map((point, index) => {
+                console.log("Index", index);
+                console.log("HoveredCardIndex", hoveredCardIndex)
                 const marker = new window.google.maps.Marker({
                     position: {
                         lat: parseFloat(point.coordinates[0].$numberDecimal), 
                         lng: parseFloat(point.coordinates[1].$numberDecimal)
                     },
+                    icon: { url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png", scaledSize: hoveredCardIndex === index ? new window.google.maps.Size(50, 50) : new window.google.maps.Size(32, 32),
+                },
+                    color: "blue",
                     map,
                     title: `#${index + 1}`,
                 });
@@ -236,6 +214,8 @@ const Map = (props) => {
             }}
             key={elem.id}
             component="div" // Change the component from "li" to "div"
+            onMouseEnter={() => setHoveredCardIndex(index)}
+            onMouseLeave={() => setHoveredCardIndex(null)}
         >
           
             <SupplierCard place={{"name":elem.name}} selected = {1} refProp={1} color={hoveredMarkerIndex === index ? 'gainsboro' : 'transparent'}></SupplierCard>

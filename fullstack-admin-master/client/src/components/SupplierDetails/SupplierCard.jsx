@@ -68,14 +68,14 @@ const SupplierCard = ({ place, selected, refProp, color }) => {
           </Box>
         ))}
         { (
-          <Typography gutterBottom variant="body2" color="textSecondary" className={{
+          <Typography gutterBottom variant="body2" color="textSecondary" style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '10px',
           }}>
             <LocationOnIcon />{"123 Main Street, Anytown, USA"}
           </Typography>
         )}
         { (
-          <Typography variant="body2" color="textSecondary" className={{
+          <Typography variant="body2" color="textSecondary" style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           }}>
             <PhoneIcon /> {"+41-534-2352121"}

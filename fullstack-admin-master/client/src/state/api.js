@@ -28,22 +28,43 @@ export const api = createApi({
       query: (id) => `general/user/${id}`,
       providesTags: ["User"],
     }),
+
     getProducts: build.query({
       query: () => "client/templates",
       providesTags: ["Templates"],
     }),
+
     getCustomers: build.query({
       query: () => "client/entity",
       providesTags: ["Entity"],
     }),
+
     getTransactions: build.query({
-      query: ({ page, pageSize, sort, search }) => ({
+      query: ({ page, pageSize, sort, search, userId }) => ({
         url: "client/shipments",
         method: "GET",
-        params: { page, pageSize, sort, search },
+        params: { page, pageSize, sort, search, userId },
       }),
       providesTags: ["Shipments"],
     }),
+
+    updateRecipients: build.mutation({
+      query: ({ senders, receivingOrderId }) => ({
+        url: "client/updateRecipients",
+        method: "POST",
+        body: { senders, receivingOrderId },
+      }),
+    }),
+
+    getRecipientTransactions: build.query({
+      query: ({ page, pageSize, sort, search, userId }) => ({
+        url: "client/recipientShipments",
+        method: "GET",
+        params: { page, pageSize, sort, search, userId }
+      }),
+      providesTags: ["Shipments"],
+    }),
+
     getChainOfShipments: build.query({
       query: (chainId) => ({
         url: "client/chainOfShipments",
@@ -52,34 +73,44 @@ export const api = createApi({
       }),
       providesTags: ['chainOfShipments'],
     }),
+
     getGeography: build.query({
       query: () => "client/map",
       providesTags: ["Map"],
     }),
+
     getSales: build.query({
       query: () => "sales/sales",
       providesTags: ["Sales"],
     }),
+
     getAdmins: build.query({
       query: () => "management/admins",
       providesTags: ["Admins"],
     }),
+
     getUserPerformance: build.query({
       query: (id) => `management/performance/${id}`,
       providesTags: ["Performance"],
     }),
+
     getDashboard: build.query({
       query: () => "general/dashboard",
       providesTags: ["Dashboard"],
     }),
+
   }),
 });
+
+console.log(api);
 
 export const {
   useGetUserQuery,
   useGetProductsQuery,
   useGetCustomersQuery,
   useGetTransactionsQuery,
+  useUpdateRecipientsMutation,
+  useGetRecipientTransactionsQuery,
   useGetChainOfShipmentsQuery,
   useGetGeographyQuery,
   useGetSalesQuery,
