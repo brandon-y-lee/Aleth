@@ -11,57 +11,43 @@ import {
     UploadFileOutlined
   } from "@mui/icons-material";
 import FlexBetween from "components/FlexBetween";
-import Certificate from "components/Certificate/Certificate";
+import Outgoing from "components/Outgoing";
 
 const RequestsButton = () => {
-    const theme = useTheme();
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
-    const [openCertificate, setOpenCertificate] = useState(false);
+  const theme = useTheme();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const [openOutgoing, setOpenOutgoing] = useState(false);
 
-    const handleCertificateClick = () => {
-      setOpenCertificate(true);
-    };
-  
-    const handleCloseCertificate = () => {
-      setOpenCertificate(false);
-    };
+  const handleOutgoingClick = () => {
+    setOpenOutgoing(true);
+  };
 
-    return (
-        <Box>
-          <FlexBetween gap="1rem">
-            <Button
-              sx={{
-                backgroundColor: theme.palette.secondary.light,
-                color: theme.palette.background.alt,
-                fontSize: "14px",
-                fontWeight: "bold",
-                padding: "10px 20px",
-              }}
-              onClick={handleCertificateClick}
-            >
-              <UploadFileOutlined sx={{ mr: "10px" }} />
-              Your Requests
-            </Button>
-          </FlexBetween>
+  const handleCloseOutgoing = () => {
+    setOpenOutgoing(false);
+  };
 
-          <Dialog open={openCertificate} onClose={handleCloseCertificate}>
-            <DialogTitle
-              sx={{
-                textAlign: 'center',
-                fontWeight: 'semibold',
-                fontSize: '1.5rem',
-                margin: '1rem',
-              }}
-            >
-              Your Requests
-            </DialogTitle>
-            <DialogContent>
-              <Certificate />
-            </DialogContent>
-          </Dialog>
-        </Box>
-    );
+  return (
+    <Box>
+      <FlexBetween gap="1rem">
+        <Button
+          sx={{
+            backgroundColor: theme.palette.secondary.light,
+            color: theme.palette.background.alt,
+            fontSize: "14px",
+            fontWeight: "bold",
+            padding: "10px 20px",
+          }}
+          onClick={handleOutgoingClick}
+        >
+          <UploadFileOutlined sx={{ mr: "10px" }} />
+          Your Requests
+        </Button>
+      </FlexBetween>
+
+      <Outgoing open={openOutgoing} onClose={handleCloseOutgoing} />
+    </Box>
+  );
 };
 
 export default RequestsButton;

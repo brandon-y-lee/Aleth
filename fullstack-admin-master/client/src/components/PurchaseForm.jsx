@@ -90,7 +90,7 @@ const PurchaseForm = () => {
         color="primary"
         sx={{ mt: 3, mb: 2 }}
       >
-        Submit
+        Search
       </Button>
     </Box>
   );
