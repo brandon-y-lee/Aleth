@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, CardContent, Typography, Box } from "@mui/material";
+import { Button, Typography, Box } from "@mui/material";
 
 const PageThree = ({ onButtonClick }) => {
   const [singleUser, setSingleUser] = useState(false);

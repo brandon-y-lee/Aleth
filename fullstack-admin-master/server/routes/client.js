@@ -7,6 +7,7 @@ import {
   getCustomers,
   getProducts,
   getChainOfShipments,
+  getIncomingRequests,
   getRecipientTransactions
 } from "../controllers/client.js";
 
@@ -19,6 +20,7 @@ router.get("/recipientShipments", getRecipientTransactions);
 router.get("/entity", getCustomers);
 router.get("/templates", getProducts);
 router.get("/chainOfShipments", getChainOfShipments);
+router.get("/getIncomingRequests", getIncomingRequests);
 
 //POSTs
 router.post("/updateRecipients", updateRecipients);

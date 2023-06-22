@@ -8,14 +8,12 @@ import {
 import { DataGrid } from "@mui/x-data-grid";
 import { useGetTransactionsQuery, useGetChainOfShipmentsQuery } from "state/api";
 import Header from "components/Header";
-import OverviewChart from "components/OverviewChart";
 import BreakdownChart from "components/BreakdownChart";
 import OrderMap from "components/OrderMap";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
-import ActionMenu from "components/ActionMenu";
+import ActionMenu from "components/SellerView/ActionMenu";
 import FlexBetween from "components/FlexBetween";
-import CertificateButton from "components/CertificateButton";
-import AcceptedList from "components/AcceptedList";
+import CertificateButton from "components/Certificate/CertificateButton";
 
 const Order = () => {
   const theme = useTheme();

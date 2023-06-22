@@ -3,7 +3,9 @@ import ProductStat from "../models/ProductStat.js";
 import User from "../models/User.js";
 import Transaction from "../models/Transaction.js";
 import Shipments from "../models/Shipments.js";
+import OrderRequest from "../models/OrderRequest.js";
 import getCountryIso3 from "country-iso-2-to-3";
+import { OrderStatus } from "../models/OrderStatus.js";
 
   const transactionsDummy = [
     {
@@ -259,6 +261,27 @@ export const getChainOfShipments = async (req, res) => {
   }
 };
 
+export const getIncomingRequests = async (req, res) => {
+  try {
+    const userId = req.query;
+    const userData = await Users.find({
+      userId: userId,
+    });
+  
+    const orders = await OrderRequest.find({
+      material: userData.material
+    });
+
+    const newOrders = orders?orders.filter(order => order.sellerStatuses[userId]):[];
+  
+    res.status(200).json({
+      newOrders
+    });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 
 //Function for linking previous shipments 
 export const updateRecipients = async (req, res) => {
@@ -276,11 +299,99 @@ export const updateRecipients = async (req, res) => {
 
 }
 
+//Function for linking previous shipments 
+export const updateOrder = async (req, res) => {
+  try{
+    console.log("Updating purchase order", req.body);
+    const {initOrder, sellerIds, orderId, isSeller, acceptReject} = req.body;
+
+    const order = await OrderRequest.find({orderId: orderId});
+
+    if(order)
+    {
+      let sellersStatuses = order[0].sellerStatuses;
+      
+      if(isSeller)
+      {
+        if(acceptReject)
+          sellersStatuses[sellerIds[0]] = OrderStatus.SELLERACCEPT
+        else
+          sellersStatuses[sellerIds[0]] = OrderStatus.SELLERDENIED       
+      }
+
+      if(!isSeller)
+      {
+        if(acceptReject == OrderStatus.BUYERACCEPT)
+          sellersStatuses[userId] = OrderStatus.BUYERACCEPT
+        else if(acceptReject == OrderRequest.BUYERDENIED)
+          sellersStatuses[userId] = OrderStatus.BUYERDENIED       
+      }
+      await OrderRequest.updateOne({orderId},{sellerStatuses, sellerStatuses})
+    }
+
+    await OrderRequest.updateOne({},{});
+    for (const sender of senders) {
+      await Shipments.updateOne({ id: sender }, { next: receivingOrderId });
+    }
+    res.status(200).json({ message: "Order updated successfully" });
+  } catch(error) {
+    res.status(404).json({message: error.message});
+  }
+};
+
 //Function to add a new shipment or update the status of an existing shipment
 export const generateNewShipment = async (req, res) => {
   try {
     console.log("Generating new shipment", req.body);
     const { id, userId, recipientId, material, amount, unit, prev, orderStatus } = req.body;
+
+    // Check if a shipment with the given ID exists
+    const existingShipment = await Shipments.findOne({ id });
+
+    const userInfo = await User.findOne({userId: userId});
+
+    if (existingShipment) {
+      // Update the existing shipment with the new data
+      existingShipment.userId = userId;
+      existingShipment.recipientId = recipientId;
+      existingShipment.name = userInfo.name;
+      existingShipment.material = material;
+      existingShipment.amount = amount;
+      existingShipment.unit = unit;
+      existingShipment.coordinates = userInfo.coordinates;
+      existingShipment.prev = prev;
+      existingShipment.orderStatus = orderStatus;
+
+      await existingShipment.save();
+      res.status(200).json({ message: "Shipment updated successfully" });
+    } else {
+      // Create a new shipment
+      const newShipment = new Shipments({
+        id,
+        userId,
+        recipientId,
+        name: userInfo.name,
+        material,
+        amount,
+        unit,
+        coordinates: userInfo.coordinates,
+        prev,
+        orderStatus,
+      });
+
+      await newShipment.save();
+      res.status(200).json({ message: "New shipment created successfully" });
+    }
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+//Function to add a new shipment or update the status of an existing shipment
+export const createNewOrder = async (req, res) => {
+  try {
+    console.log("Generating new shipment", req.body);
+    const { userId, recipientId, material, amount, unit, prev, orderStatus } = req.body;
 
     // Check if a shipment with the given ID exists
     const existingShipment = await Shipments.findOne({ id });

@@ -1,7 +1,7 @@
-import PageOne from "components/PageOne";
-import PageTwo from "components/PageTwo";
-import PageThree from "components/PageThree";
-import PageFour from "components/PageFour";
+import PageOne from "components/Certificate/PageOne";
+import PageTwo from "components/Certificate/PageTwo";
+import PageThree from "components/Certificate/PageThree";
+import PageFour from "components/Certificate/PageFour";
 import "./Certificate.css";
 import React, { useState } from "react";
 import MultiStepProgressBar from "components/MultiStepProgressBar/MultiStepProgressBar";

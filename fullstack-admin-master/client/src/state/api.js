@@ -48,6 +48,15 @@ export const api = createApi({
       providesTags: ["Shipments"],
     }),
 
+    getEligibleOrders: build.query({
+      query: ({ page, pageSize, sort, search, userId }) => ({
+        url: "client/shipments",
+        method: "GET",
+        params: { page, pageSize, sort, search, userId },
+      }),
+      providesTags: ["Shipments"],
+    }),
+
     updateRecipients: build.mutation({
       query: ({ senders, receivingOrderId }) => ({
         url: "client/updateRecipients",
@@ -80,6 +89,15 @@ export const api = createApi({
         params: {chainId},
       }),
       providesTags: ['chainOfShipments'],
+    }),
+
+    getChainOfShipments: build.query({
+      query: (userId) => ({
+        url: "client/getIncomingRequests",
+        method: "GET",
+        params: {userId},
+      }),
+      providesTags: ['IncomingRequests'],
     }),
 
     getGeography: build.query({

@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Link from 'components/Link';
+import Link from './Link';
 
 const ActionMenu = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);

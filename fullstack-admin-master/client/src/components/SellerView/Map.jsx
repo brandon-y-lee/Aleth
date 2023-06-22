@@ -1,17 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Grid from '@mui/material/Grid';
-import SupplierCard from './SupplierDetails/SupplierCard';
-
+import SupplierCard from '../SupplierDetails/SupplierCard';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Typography from '@mui/material/Typography';
-import { ListItemButton } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import Session from 'react-session-api'
-
 
 
 // Replace the path prop with actual data

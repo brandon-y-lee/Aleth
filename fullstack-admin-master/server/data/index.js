@@ -516,7 +516,7 @@ export const userData = [
     "description": "A clothing company known for its cool and stylish shirts.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Distributors"
+    "type": "Supplier"
   },
   {
     "userId": 5,
@@ -528,7 +528,7 @@ export const userData = [
     "description": "A clothing company specializing in stylish and trendy clothes.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Logistic Providers"
+    "type": "Supplier"
   },
   {
     "userId": 6,
@@ -576,7 +576,7 @@ export const userData = [
     "description": "A fashion company known for its trendy and stylish clothing.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Distributors"
+    "type": "Supplier"
   },
   {
     "userId": 10,
@@ -588,7 +588,7 @@ export const userData = [
     "description": "A clothing company specializing in waterproof and durable clothing.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Logistic Providers"
+    "type": "Supplier"
   },
   {
     "userId": 11,
@@ -612,7 +612,7 @@ export const userData = [
     "description": "A medical company producing fabrics for medical applications.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Textile Producers"
+    "type": "Supplier"
   },
   {
     "userId": 13,
@@ -636,7 +636,7 @@ export const userData = [
     "description": "A fashion company known for its trendy and stylish clothing.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Distributors"
+    "type": "Supplier"
   },
   {
     "userId": 15,
@@ -648,7 +648,7 @@ export const userData = [
     "description": "A company specializing in wearable technology and smart clothing.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Logistic Providers"
+    "type": "Supplier"
   },
   {
     "userId": 16,
@@ -696,7 +696,7 @@ export const userData = [
     "description": "A company known for producing the best quality apparel in the market.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Distributors"
+    "type": "Supplier"
   },
   {
     "userId": 20,
@@ -708,7 +708,7 @@ export const userData = [
     "description": "A company specializing in sustainable and eco-friendly garments.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Logistic Providers"
+    "type": "Manufacturer"
   },
   {
     "userId": 21,
@@ -756,7 +756,7 @@ export const userData = [
     "description": "A gym facility located on 19th Street offering fitness services.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Distributors"
+    "type": "Supplier"
   },
   {
     "userId": 25,
@@ -768,9 +768,10 @@ export const userData = [
     "description": "A clothing company known for its trendy and fashionable clothing.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Logistic Providers"
+    "type": "Supplier"
   }
 ];
+
 
 export const dataUser = [
   {
