@@ -5,7 +5,7 @@ import {
   useMediaQuery, 
   useTheme,
   Typography,
-  Grid
+  Grid,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useGetTransactionsQuery, useGetChainOfShipmentsQuery } from "state/api";
@@ -16,15 +16,16 @@ import OrderMap from "components/OrderMap";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import ActionMenu from "components/ActionMenu";
 import FlexBetween from "components/FlexBetween";
-import CertificateButton from "components/CertificateButton";
 import PurchaseForm from "components/PurchaseForm";
 import AcceptedList from "components/AcceptedList";
+import RequestsButton from "components/RequestsButton";
 
 Session.set("username", "2");
 
 const Order = () => {
   const userName = Session.get("username");
   const theme = useTheme();
+  const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
   // values to be sent to the backend
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(20);
@@ -97,81 +98,104 @@ const Order = () => {
     <Box m="1.5rem 2.5rem">
       <FlexBetween>
         <Header title="ORDER"/>
-        <CertificateButton/>
+        <RequestsButton/>
       </FlexBetween>
 
-      <Box mt="2rem">
-        <Grid container spacing={3}> {/* Use Grid container */}
-          {/* ROW 1 */}
-          <Grid item xs={12} md={4} display="flex"> {/* Use Grid item */}
-            <PurchaseForm />
-          </Grid>
+      <Box
+        mt="20px"
+        display="grid"
+        gridTemplateColumns="repeat(12, 1fr)"
+        gridAutoRows="160px"
+        gap="20px"
+        sx={{
+          "& > div": { gridColumn: isNonMediumScreens ? undefined : "span 12" },
+        }}
+      >
+        {/* ROW 1 */}
+        <PurchaseForm />
 
-          <Grid item xs={12} md={8} display="flex">
-              <OrderMap coordinates={coordinates} locations={locations}/>
-          </Grid>
-          
-          {/* ROW 2 */}  
-          <Grid item xs={12} md={4} display="flex">
+        <Box
+          gridColumn="span 8"
+          gridRow="span 3"
+        >
+          <OrderMap coordinates={coordinates} locations={locations}/>
+        </Box>
 
-          </Grid>
-
-          <Grid item xs={12} md={8}>
-            <Box
-              height="50vh"
-              sx={{
-                "& .MuiDataGrid-root": {
-                  border: "none",
-                },
-                "& .MuiDataGrid-cell": {
-                  borderBottom: "none",
-                },
-                "& .MuiDataGrid-columnHeaders": {
-                  backgroundColor: theme.palette.background.alt,
-                  color: theme.palette.secondary[100],
-                  borderBottom: "none",
-                },
-                "& .MuiDataGrid-virtualScroller": {
-                  backgroundColor: theme.palette.primary.light,
-                },
-                "& .MuiDataGrid-footerContainer": {
-                  backgroundColor: theme.palette.background.alt,
-                  color: theme.palette.secondary[100],
-                  borderTop: "none",
-                },
-                "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-                  color: `${theme.palette.secondary[200]} !important`,
-                },
-              }}
-            >
-              <DataGrid
-                loading={isLoading || !data}
-                getRowId={(row) => Math.random()}
-                rows={(data && data.transactions) || []}
-                columns={columns}
-                rowCount={(data && data.total) || 0}
-                rowsPerPageOptions={[20,50, 100]}
-                pagination
-                page={page}
-                pageSize={pageSize}
-                paginationMode="server"
-                sortingMode="server"
-                onPageChange={(newPage) => setPage(newPage)}
-                onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-                onSortModelChange={(newSortModel) => setSort(...newSortModel)}
-                components={{ Toolbar: DataGridCustomToolbar }}
-                componentsProps={{
-                  toolbar: { searchInput, setSearchInput, setSearch },
-                }}
-                onRowClick={(row)=>{
-                  setSelectedShipmentId(row.row.shipmentID);
-                  setSelectedId(row.row.id);
-                  setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
-                }
-              />
-            </Box>
-          </Grid>
-        </Grid>
+        {/* ROW 2 */}
+        <Box
+          gridColumn="span 8"
+          gridRow="span 3"
+          sx={{
+            "& .MuiDataGrid-root": {
+              border: "none",
+            },
+            "& .MuiDataGrid-cell": {
+              borderBottom: "none",
+            },
+            "& .MuiDataGrid-columnHeaders": {
+              backgroundColor: theme.palette.background.alt,
+              color: theme.palette.secondary[100],
+              borderBottom: "none",
+            },
+            "& .MuiDataGrid-virtualScroller": {
+              backgroundColor: theme.palette.primary.light,
+            },
+            "& .MuiDataGrid-footerContainer": {
+              backgroundColor: theme.palette.background.alt,
+              color: theme.palette.secondary[100],
+              borderTop: "none",
+            },
+            "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+              color: `${theme.palette.secondary[200]} !important`,
+            },
+          }}
+        >
+          <DataGrid
+            loading={isLoading || !data}
+            getRowId={(row) => Math.random()}
+            rows={(data && data.transactions) || []}
+            columns={columns}
+            rowCount={(data && data.total) || 0}
+            rowsPerPageOptions={[20,50, 100]}
+            pagination
+            page={page}
+            pageSize={pageSize}
+            paginationMode="server"
+            sortingMode="server"
+            onPageChange={(newPage) => setPage(newPage)}
+            onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+            onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+            components={{ Toolbar: DataGridCustomToolbar }}
+            componentsProps={{
+              toolbar: { searchInput, setSearchInput, setSearch },
+            }}
+            onRowClick={(row)=>{
+              setSelectedShipmentId(row.row.shipmentID);
+              setSelectedId(row.row.id);
+              setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
+            }
+          />
+        </Box>
+        
+        <Box
+          gridColumn="span 4"
+          gridRow="span 3"
+          backgroundColor={theme.palette.background.alt}
+          p="1.5rem"
+          borderRadius="0.55rem"
+        >
+          <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
+            Sales By Category
+          </Typography>
+          <BreakdownChart isDashboard={true} />
+          <Typography
+            p="0 0.6rem"
+            fontSize="0.8rem"
+            sx={{ color: theme.palette.secondary[200] }}
+          >
+            Breakdown of total sales for this year by category.
+          </Typography>
+        </Box>
       </Box>
     </Box>
   );

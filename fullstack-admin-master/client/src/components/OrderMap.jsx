@@ -145,7 +145,7 @@ const OrderMap = (props) => {
     console.log(elems);
 
     return (
-        <div ref={mapRef} style={{ height: "60vh", width: "100%" }}/>
+        <div ref={mapRef} style={{ height: "50vh", width: "100%" }}/>
     );
 };
 

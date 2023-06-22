@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, TextField, Box } from '@mui/material';
+import { Button, TextField, Box, useTheme } from '@mui/material';
 // import { useForm } from 'react-hook-form';
 
 const PurchaseForm = () => {
+  const theme = useTheme();
   // const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = (data) => {
@@ -10,7 +11,17 @@ const PurchaseForm = () => {
   };
 
   return (
-    <Box component="form" onSubmit={onSubmit} noValidate sx={{ mt: 1 }}>
+    <Box
+      gridColumn="span 4"
+      gridRow="span 3"
+      display="flex"
+      flexDirection="column"
+      justifyContent="space-between"
+      p="1.25rem 1rem"
+      backgroundColor={theme.palette.background.alt}
+      component="form"
+      onSubmit={onSubmit}
+    >
       <TextField
         margin="normal"
         required
