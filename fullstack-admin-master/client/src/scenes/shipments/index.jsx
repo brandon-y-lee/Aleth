@@ -145,10 +145,7 @@ const Shipments = () => {
             toolbar: { searchInput, setSearchInput, setSearch },
           }}
           onRowClick={(row)=>{
-            // console.log(row.row.shipmentID);
-            // console.log(row.row.shipmentID);
             setSelectedId(row.row.shipmentID);
-            // console.log(selectedId);
             setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
           }
         />

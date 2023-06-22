@@ -132,30 +132,6 @@ const OrderMap = (props) => {
         };
     }, [props]);
 
-    const card = (
-        <React.Fragment>
-          <CardContent>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              Word of the Day
-            </Typography>
-            <Typography variant="h5" component="div">
-             temporary
-            </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              adjective
-            </Typography>
-            <Typography variant="body2">
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions>
-        </React.Fragment>
-      );
-
     const elems = props.locations.shipmentChain.map((elem,index) => (
         <ListItem
             alignItems="flex-start"
@@ -169,19 +145,7 @@ const OrderMap = (props) => {
     console.log(elems);
 
     return (
-        <Grid container spacing={2}>
-            <Grid item xs={8} display="flex">
-                <div ref={mapRef} style={{ height: "40vh", width: "100%" }}/>
-            </Grid>
-            
-            <Grid item xs={4} display="flex">
-                <Paper style={{maxHeight: "40vh", overflow: 'auto'}}>
-                    <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                        {elems}
-                    </List>
-                </Paper>
-            </Grid>
-        </Grid>
+        <div ref={mapRef} style={{ height: "70vh", width: "100%" }}/>
     );
 };
 

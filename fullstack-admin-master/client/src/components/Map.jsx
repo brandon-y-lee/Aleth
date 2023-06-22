@@ -3,7 +3,6 @@ import InfoWindow from 'components/InfoWindow';
 import { json } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import SupplierCard from './SupplierDetails/SupplierCard';
-
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import { ListItemContent } from '@mui/joy';
