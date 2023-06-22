@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Session from 'react-session-api';
 import { 
   Box, 
   useMediaQuery, 
@@ -12,36 +13,40 @@ import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import ActionMenu from "components/ActionMenu";
 import FlexBetween from "components/FlexBetween";
 import CertificateButton from "components/CertificateButton";
+import Chip from '@mui/material/Chip';
+Session.set("username","2");
 
 const Shipments = () => {
+  const userName = Session.get("username");
   const theme = useTheme();
-  const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
-
   // values to be sent to the backend
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(20);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
   const [coordinates, setCoordinates] = useState([]);
+  const [selectedShipmentId, setSelectedShipmentId] = useState("TR2023019QXZZFR");
   const [selectedId, setSelectedId] = useState("TR2023019QXZZFR");
 
   const [searchInput, setSearchInput] = useState("");
+
   const { data, isLoading } = useGetTransactionsQuery({
     page,
     pageSize,
     sort: JSON.stringify(sort),
     search,
+    userId: userName
   });
 
-  // console.log(data);
-  let {data: locations, isLoading: isLoadingNew} = useGetChainOfShipmentsQuery(selectedId);
+  console.log(data);
+  let {data: locations, isLoading: isLoadingNew} = useGetChainOfShipmentsQuery(selectedShipmentId);
 
   if(locations ===  undefined)
     locations = {"shipmentChain":[]}
 
   useEffect(() =>  { 
     console.log(locations);
-  },[selectedId]);
+  },[selectedShipmentId]);
 
   const columns = [
     {
@@ -50,14 +55,9 @@ const Shipments = () => {
       flex: 1,
     },
     {
-      field: "coordinates",
-      headerName: "Coordinates",
+      field: "recipientId",
+      headerName: "Recipient ID",
       flex: 1,
-      valueGetter: (params) => {
-        const lat = Number(Number(params.value[0].$numberDecimal).toFixed(4));
-        const lon = Number(Number(params.value[1].$numberDecimal).toFixed(4));
-        return `[${lat}, ${lon}]`;
-      },
     },
     {
       field: "material",
@@ -77,12 +77,28 @@ const Shipments = () => {
       flex: 0.5,
     },
     {
+      field: "orderStatus",
+      headerName: "Order Status",
+      flex: 0.5,
+      renderCell: (params) => {
+        console.log(params.value);
+        if(params.value == 0)
+          return (<Chip label="Draft" color="warning"/>)
+        if(params.value == 1)
+          return (<Chip label="Submitted" color="info"/>)
+        if(params.value == 2)
+          return (<Chip label="Validated" color="success"/>)
+        if(params.value == 3)
+          return (<Chip label="Error" color="error"/>)
+    },
+    },
+    {
       field: "actions",
       headerName: "Actions",
       sortable: false,
       flex: 0.5,
       renderCell: (params) => (
-        <ActionMenu />
+        <ActionMenu receivingOrderId={selectedId}/>
       ),
     },
   ];
@@ -145,7 +161,8 @@ const Shipments = () => {
             toolbar: { searchInput, setSearchInput, setSearch },
           }}
           onRowClick={(row)=>{
-            setSelectedId(row.row.shipmentID);
+            setSelectedShipmentId(row.row.shipmentID);
+            setSelectedId(row.row.id);
             setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
           }
         />
