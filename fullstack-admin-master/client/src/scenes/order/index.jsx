@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Session from 'react-session-api';
 import { 
   Box, 
   useMediaQuery, 
@@ -19,35 +20,39 @@ import CertificateButton from "components/CertificateButton";
 import PurchaseForm from "components/PurchaseForm";
 import AcceptedList from "components/AcceptedList";
 
-const Order = () => {
-  const theme = useTheme();
-  const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
+Session.set("username", "2");
 
+const Order = () => {
+  const userName = Session.get("username");
+  const theme = useTheme();
   // values to be sent to the backend
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(20);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
   const [coordinates, setCoordinates] = useState([]);
+  const [selectedShipmentId, setSelectedShipmentId] = useState("TR2023019QXZZFR");
   const [selectedId, setSelectedId] = useState("TR2023019QXZZFR");
 
   const [searchInput, setSearchInput] = useState("");
+
   const { data, isLoading } = useGetTransactionsQuery({
     page,
     pageSize,
     sort: JSON.stringify(sort),
     search,
+    userId: userName
   });
 
-  // console.log(data);
-  let {data: locations, isLoading: isLoadingNew} = useGetChainOfShipmentsQuery(selectedId);
+  console.log(data);
+  let {data: locations, isLoading: isLoadingNew} = useGetChainOfShipmentsQuery(selectedShipmentId);
 
   if(locations ===  undefined)
     locations = {"shipmentChain":[]}
 
   useEffect(() =>  { 
     console.log(locations);
-  },[selectedId]);
+  },[selectedShipmentId]);
 
   const columns = [
     {
@@ -56,14 +61,9 @@ const Order = () => {
       flex: 1,
     },
     {
-      field: "coordinates",
-      headerName: "Coordinates",
+      field: "sellerId",
+      headerName: "Seller ID",
       flex: 1,
-      valueGetter: (params) => {
-        const lat = Number(Number(params.value[0].$numberDecimal).toFixed(4));
-        const lon = Number(Number(params.value[1].$numberDecimal).toFixed(4));
-        return `[${lat}, ${lon}]`;
-      },
     },
     {
       field: "material",
@@ -88,7 +88,7 @@ const Order = () => {
       sortable: false,
       flex: 0.5,
       renderCell: (params) => (
-        <ActionMenu />
+        <ActionMenu receivingOrderId={selectedId}/>
       ),
     },
   ];
@@ -103,30 +103,22 @@ const Order = () => {
       <Box mt="2rem">
         <Grid container spacing={3}> {/* Use Grid container */}
           {/* ROW 1 */}
-          <Grid item xs={12} md={4}> {/* Use Grid item */}
-            <Box sx={{ gridRow: 'span 1' }}> {/* Set gridRow */}
-              <PurchaseForm />
-            </Box>
+          <Grid item xs={12} md={4} display="flex"> {/* Use Grid item */}
+            <PurchaseForm />
           </Grid>
 
-          <Grid item xs={12} md={8}> {/* Use Grid item */}
-            <Box sx={{ gridRow: 'span 3' }}> {/* Set gridRow */}
+          <Grid item xs={12} md={8} display="flex">
               <OrderMap coordinates={coordinates} locations={locations}/>
-            </Box>
           </Grid>
           
           {/* ROW 2 */}  
-          <Grid item xs={12} md={4}> {/* Use Grid item */}
-            <Box
-              backgroundColor={theme.palette.background.alt}
-              p="1.5rem"
-              borderRadius="0.55rem"
-              sx={{ gridRow: 'span 3'}}
-            />
+          <Grid item xs={12} md={4} display="flex">
+
           </Grid>
 
-          <Grid item xs={12} md={8}> {/* Use Grid item */}
+          <Grid item xs={12} md={8}>
             <Box
+              height="50vh"
               sx={{
                 "& .MuiDataGrid-root": {
                   border: "none",
@@ -172,7 +164,8 @@ const Order = () => {
                   toolbar: { searchInput, setSearchInput, setSearch },
                 }}
                 onRowClick={(row)=>{
-                  setSelectedId(row.row.shipmentID);
+                  setSelectedShipmentId(row.row.shipmentID);
+                  setSelectedId(row.row.id);
                   setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
                 }
               />

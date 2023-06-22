@@ -13,6 +13,7 @@ import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import ActionMenu from "components/ActionMenu";
 import FlexBetween from "components/FlexBetween";
 import CertificateButton from "components/CertificateButton";
+import NotificationButton from "components/NotificationButton";
 import Chip from '@mui/material/Chip';
 Session.set("username","2");
 
@@ -107,7 +108,12 @@ const Shipments = () => {
     <Box m="1.5rem 2.5rem">
       <FlexBetween>
         <Header title="SHIPMENTS"/>
-        <CertificateButton/>
+        <Box>
+          <FlexBetween gap="1rem">
+            <NotificationButton/>
+            <CertificateButton/>
+          </FlexBetween>
+        </Box>
       </FlexBetween>
       
       <Box mt="2rem">
@@ -115,7 +121,7 @@ const Shipments = () => {
       </Box>
       
       <Box
-        height="80vh"
+        height="50vh"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",

@@ -222,8 +222,7 @@ const Map = (props) => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={8} display="flex">
-                <div ref={mapRef} style={{ height: "70vh", width: "100%" }}>
-                </div>
+                <div ref={mapRef} style={{ height: "70vh", width: "100%" }}/>
             </Grid>
             
             <Grid item xs={4} display="flex">
