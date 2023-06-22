@@ -11,23 +11,42 @@ import {
   List,
   ListItemButton
 } from '@mui/material';
-import { useGetTransactionsQuery } from "state/api";
+import { useGetRecipientTransactionsQuery, useUpdateRecipientsMutation } from "state/api";
+import Session from 'react-session-api'
 
 
 // Need to add shipments prop
-const Link = ({ open, onClose }) => {
+const Link = ({ open, onClose, id }) => {
   const [checked, setChecked] = useState([]);
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(20);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
+  const username = Session.get("username");
 
-  const { data, isLoading } = useGetTransactionsQuery({
+  const { data, isLoading } = useGetRecipientTransactionsQuery({
     page,
     pageSize,
     sort: JSON.stringify(sort),
     search,
+    userId: username
   });
+
+  const [updateRecipients, { isLoading: isUpdatingRecipients }] = useUpdateRecipientsMutation();
+
+  const handleSubmit = () => {
+    updateRecipients({ senders: checked, receivingOrderId: id })
+      .unwrap()
+      .then(() => {
+        console.log("Recipients updated successfully!");
+        onClose();
+      })
+      .catch((error) => {
+        console.error("Error updating recipients:", error);
+      });
+  };
+
+
 
   useEffect(() => {
     if (open) {
@@ -68,15 +87,18 @@ const Link = ({ open, onClose }) => {
               <ListItemText primary={`ID: ${transaction.id}, Material: ${transaction.material}, Amount: ${transaction.amount}, Unit: ${transaction.unit}`} />
             </ListItemButton>
           ))}
+          {data && !data.transactions.length && (<p>No previous shipments found!</p>)}
         </List>
       </DialogContent>
       <DialogActions>
-        <Button onClick={ onClose }>Cancel</Button>
-        <Button onClick={() => {
-          // handle submit here
-          console.log(checked);
-          onClose();
-        }}>Confirm & Link</Button>
+        <Button style={{"backgroundColor":"#00994c"}} onClick={ onClose }>Cancel</Button>
+        <Button
+          style={{"backgroundColor":"#00994c"}}
+          onClick={handleSubmit}
+          disabled={isUpdatingRecipients}
+        >
+          {isUpdatingRecipients ? "Updating..." : "Confirm & Link"}
+        </Button>
       </DialogActions>
     </Dialog>
   );

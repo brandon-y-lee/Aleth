@@ -6,7 +6,12 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",
+<<<<<<< HEAD
     "@mui/material": "^5.13.5",
+=======
+    "@mui/joy": "^5.0.0-alpha.84",
+    "@mui/material": "^5.13.4",
+>>>>>>> 808757abc2622997abb4f4aa4470fe34e04cde40
     "@mui/system": "^5.13.5",
     "@mui/x-data-grid": "^5.17.26",
     "@nivo/bar": "^0.80.0",
@@ -36,9 +41,16 @@
     "react-datepicker": "^4.14.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+<<<<<<< HEAD
     "react-redux": "^8.1.0",
     "react-router-dom": "^6.13.0",
     "react-scripts": "^5.0.1",
+=======
+    "react-redux": "^8.0.7",
+    "react-router-dom": "^6.12.1",
+    "react-scripts": "5.0.1",
+    "react-session-api": "^1.1.0",
+>>>>>>> 808757abc2622997abb4f4aa4470fe34e04cde40
     "react-step-progress-bar": "^1.0.3",
     "web-vitals": "^2.1.4"
   },

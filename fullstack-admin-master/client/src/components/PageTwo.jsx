@@ -21,22 +21,28 @@ const PageTwo = ({ onButtonClick }) => {
         color: 'text.primary',
       }}
     >
-      <Typography variant="h4" component="h1" gutterBottom>
-        Let's define your material
-      </Typography>
-      <Typography variant="body1" gutterBottom>
-        Please select material you are working with and how much of it you want to sell.
-      </Typography>
-      <TextField
-        id="material"
-        label="Material"
-        variant="outlined"
-        placeholder="Ex: 100% organic cotton"
-        fullWidth
-        margin="normal"
-        value={material}
-        onChange={handleMaterialChange}
-      />
+      <Box sx={{ mb: 1 }}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Let's define your material
+        </Typography>
+      </Box>
+      <Box sx={{ width: '75%' }}>
+        <Typography variant="body1" gutterBottom>
+          Please select material you are working with and how much of it you want to sell.
+        </Typography>
+      </Box>
+      <Box sx={{ width: '50%', m: 4 }}>
+        <TextField
+          id="material"
+          label="Material"
+          variant="outlined"
+          placeholder="Ex: 100% organic cotton"
+          fullWidth
+          margin="normal"
+          value={material}
+          onChange={handleMaterialChange}
+        />
+      </Box>
       <Button
         variant="contained"
         color="primary"
@@ -47,7 +53,7 @@ const PageTwo = ({ onButtonClick }) => {
       >
         Continue
       </Button>
-    </Box>
+    </Box>    
   );
 };
 

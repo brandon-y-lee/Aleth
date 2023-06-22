@@ -1,24 +1,26 @@
 import mongoose from "mongoose";
+import {OrderStatus} from "./OrderStatus.js";
 
 //Data columns : ID, Seller, Material, Amount, Unit, Date, Status
 
 const ShipmentsSchema = new mongoose.Schema(
   {
     id: String,
-    // sellerName: String,
-    // recipientName: String,
+    userId: String,
+    recipientId: String,
     name: String,
     material: String,
     amount: Number,
     unit: String,
-    // products: {
-    //   type: [mongoose.Types.ObjectId],
-    //   of: Number,
-    // },
     coordinates:[mongoose.Types.Decimal128],
     prev: [String],
     next: String,
-    shipmentID: String
+    shipmentID: String,
+    orderStatus: {
+      type: Number,
+      enum: Object.values(OrderStatus),
+      default: OrderStatus.DRAFT
+    }
   },
   { timestamps: true }
 );

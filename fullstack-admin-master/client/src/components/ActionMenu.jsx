@@ -72,7 +72,7 @@ const ActionMenu = (props) => {
         <MenuItem onClick={handleLinkClick}>
             Link
         </MenuItem>
-        <Link open={openDialog} onClose={handleCloseDialog} />
+        <Link open={openDialog} onClose={handleCloseDialog} id={props.receivingOrderId} />
       </Menu>
     </div>
   );
