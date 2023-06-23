@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, TextField, Box, useTheme } from '@mui/material';
-// import { useForm } from 'react-hook-form';
+import { useFormik } from 'formik';
 
 const PurchaseForm = () => {
   const theme = useTheme();
-  // const { register, handleSubmit, formState: { errors } } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const formik = useFormik({
+    initialValues: {
+      style: '',
+      description: '',
+      material: '',
+      color: '',
+      yardPiece: '',
+    },
+    onSubmit: values => {
+      console.log(values);
+    },
+  });
 
   return (
     <Box
@@ -18,9 +26,10 @@ const PurchaseForm = () => {
       flexDirection="column"
       justifyContent="space-between"
       p="1.25rem 1rem"
+      flex="1 1 100%"
       backgroundColor={theme.palette.background.alt}
       component="form"
-      onSubmit={onSubmit}
+      onSubmit={formik.handleSubmit}
     >
       <TextField
         margin="normal"
@@ -31,9 +40,8 @@ const PurchaseForm = () => {
         name="style"
         autoComplete="style"
         autoFocus
-        // {...register('style', { required: 'Style is required' })}
-        // error={Boolean(errors.style)}
-        // helperText={errors.style?.message}
+        onChange={formik.handleChange}
+        value={formik.values.style}
       />
       <TextField
         margin="normal"
@@ -43,9 +51,8 @@ const PurchaseForm = () => {
         label="Description"
         id="description"
         autoComplete="description"
-        // {...register('description', { required: 'Description is required' })}
-        // error={Boolean(errors.description)}
-        // helperText={errors.description?.message}
+        onChange={formik.handleChange}
+        value={formik.values.description}
       />
       <TextField
         margin="normal"
@@ -55,9 +62,8 @@ const PurchaseForm = () => {
         label="Material"
         id="material"
         autoComplete="material"
-        // {...register('material', { required: 'Material is required' })}
-        // error={Boolean(errors.material)}
-        // helperText={errors.material?.message}
+        onChange={formik.handleChange}
+        value={formik.values.material}
       />
       <TextField
         margin="normal"
@@ -67,9 +73,8 @@ const PurchaseForm = () => {
         label="Color"
         id="color"
         autoComplete="color"
-        // {...register('color', { required: 'Color is required' })}
-        // error={Boolean(errors.color)}
-        // helperText={errors.color?.message}
+        onChange={formik.handleChange}
+        value={formik.values.color}
       />
       <TextField
         margin="normal"
@@ -79,9 +84,8 @@ const PurchaseForm = () => {
         label="Yard/Piece"
         id="yardPiece"
         autoComplete="yardPiece"
-        // {...register('yardPiece', { required: 'Yard/Piece is required' })}
-        // error={Boolean(errors.yardPiece)}
-        // helperText={errors.yardPiece?.message}
+        onChange={formik.handleChange}
+        value={formik.values.yardPiece}
       />
       <Button
         type="submit"

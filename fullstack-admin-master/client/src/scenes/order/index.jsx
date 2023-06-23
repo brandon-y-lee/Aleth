@@ -117,6 +117,7 @@ const Order = () => {
         <Box
           gridColumn="span 8"
           gridRow="span 3"
+          display="flex"
         >
           <OrderMap coordinates={coordinates} locations={locations}/>
         </Box>
