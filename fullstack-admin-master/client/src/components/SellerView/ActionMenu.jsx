@@ -40,7 +40,7 @@ const ActionMenu = (props) => {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        MenuProps={{
+        sx={{
           elevation: 0,
           sx: {
             overflow: 'visible',

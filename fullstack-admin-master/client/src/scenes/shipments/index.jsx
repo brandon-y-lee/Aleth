@@ -11,6 +11,7 @@ import Header from "components/Header";
 import Map from "components/SellerView/Map";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import ActionMenu from "components/SellerView/ActionMenu";
+import ActionMenuIncomingOrders from "components/SellerView/ActionMenuIncomingOrders";
 import FlexBetween from "components/FlexBetween";
 import CertificateButton from "components/Certificate/CertificateButton";
 import Chip from '@mui/material/Chip';
@@ -39,6 +40,7 @@ const Shipments = () => {
   const [selectedId, setSelectedId] = useState("TR2023019QXZZFR");
   const [value, setValue] = React.useState(0);
   const [searchInput, setSearchInput] = useState("");
+  const [selectedOrder, setSelectedOrder] = useState("");
 
   const { data, isLoading } = useGetTransactionsQuery({
     page,
@@ -165,31 +167,30 @@ const Shipments = () => {
       headerName: "Order Status",
       flex: 0.5,
       renderCell: (params) => {
-
         const sellerStatus = params.value[userId];
         console.log(sellerStatus);
-        console.log(OrderStatus.NEWORDER);
-        console.log(sellerStatus == OrderStatus.NEWORDER);
+        console.log(OrderStatus.SELLERDENIED);
+        console.log(sellerStatus == OrderStatus.SELLERDENIED);
         if(params.value[userId] == OrderStatus.SELLERACCEPT)
           return (<Chip label="You Accepted" color="info"/>)
         if(params.value[userId] == OrderStatus.NEWORDER)
           return (<Chip label="New Order" color="success"/>)
-        if(params.value == OrderStatus.BUYERACCEPT)
+        if(params.value[userId] == OrderStatus.BUYERACCEPT)
           return (<Chip label="Buyer Accepted" color="success"/>)
-        if(params.value == OrderStatus.SELLERDENIED)
+        if(params.value[userId] == OrderStatus.SELLERDENIED)
           return (<Chip label="You Rejected" color="warning"/>)
-        if(params.value == OrderStatus.BUYERDENIED)
+        if(params.value[userId] == OrderStatus.BUYERDENIED)
           return (<Chip label="Order Rejected" color="error"/>)
-    },
+      },
     },
     {
       field: "actions",
       headerName: "Actions",
       sortable: false,
       flex: 0.5,
-      renderCell: (params) => (
-        <ActionMenu receivingOrderId={selectedId}/>
-      ),
+      renderCell: (params) => {
+        console.log(params);
+        return (<ActionMenuIncomingOrders orderData={params.row}/>)},
     },
   ];
 
@@ -207,8 +208,8 @@ const Shipments = () => {
 
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Outgoing Orders" {...a11yProps(0)} />
-          <Tab label="Incoming Requests" {...a11yProps(1)} />
+          <Tab label="Outgoing Orders" {...a11yProps(0)} style={{color:"#00994c", backgroundColor:value==0?"#cccccc":"white"}}/>
+          <Tab label="Incoming Requests" {...a11yProps(1)} style={{color:"#00994c", backgroundColor:value==1?"#cccccc":"white"}}/>
         </Tabs>
       </Box>
 
@@ -318,10 +319,8 @@ const Shipments = () => {
                 toolbar: { searchInput, setSearchInput, setSearch },
               }}
               // onRowClick={(row)=>{
-              //   setSelectedShipmentId(row.row.shipmentID);
-              //   setSelectedId(row.row.id);
-              //   setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
-              // }
+              //   setSelectedOrder(row.row._id);
+              // }}
             />
           </Box>
       </TabPanel>

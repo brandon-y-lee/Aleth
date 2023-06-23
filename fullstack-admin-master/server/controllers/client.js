@@ -85,10 +85,13 @@ export const getTransactions = async (req, res) => {
 //TODO: Fix this to find out the set of eligible sellers
 export const getEligibleSellers = async (req, res) => {
   try {
-    const {orderId} = req.query;
-    const customers = await User.find({ role: "user" }).select("-password");
-    res.status(200).json(customers);
-  } catch (error) {
+    console.log("Generating new shipment", req.body);
+    const {material} = req.body;
+
+    const eligibleSellers = await UserData.find({material:material});
+    res.status(200).json({eligibleSellers});
+    }
+  catch (error) {
     res.status(404).json({ message: error.message });
   }
 };
@@ -196,7 +199,7 @@ export const updateRecipients = async (req, res) => {
 export const updateOrder = async (req, res) => {
   try{
     console.log("Updating purchase order", req.body);
-    const {requestType, sellerIds, orderId, isSeller, acceptReject} = req.body;
+    const {requestType, sellerIds, orderId, isSeller} = req.body;
 
     const order = await OrderRequest.find({orderId: orderId});
 

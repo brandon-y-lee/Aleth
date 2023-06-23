@@ -48,6 +48,15 @@ export const api = createApi({
       providesTags: ["Shipments"],
     }),
 
+    getEligibleSellers: build.query({
+      query: ({ material }) => ({
+        url: "client/eligibleSellers",
+        method: "GET",
+        params: { material },
+      }),
+      providesTags: ["eligibleSellers"],
+    }),
+
     getIncomingRequests: build.query({
       query: ({ userId }) => ({
         url: "client/incomingRequests",
@@ -62,6 +71,14 @@ export const api = createApi({
         url: "client/updateRecipients",
         method: "POST",
         body: { senders, receivingOrderId },
+      }),
+    }),
+
+    updateOrder: build.mutation({
+      query: ({requestType, sellerIds, orderId, isSeller}) => ({
+        url: "client/updateOrder",
+        method: "POST",
+        body: {requestType, sellerIds, orderId, isSeller},
       }),
     }),
 
@@ -128,6 +145,7 @@ export const {
   useGetTransactionsQuery,
   useUpdateRecipientsMutation,
   useGenerateNewShipmentMutation,
+  useUpdateOrderMutation,
   useGetRecipientTransactionsQuery,
   useGetChainOfShipmentsQuery,
   useGetIncomingRequestsQuery,

@@ -8,8 +8,9 @@ import {
   getProducts,
   getIncomingRequests,
   getChainOfShipments,
-  getRecipientTransactions
-  ,updateOrder
+  getRecipientTransactions,
+  updateOrder,
+  getEligibleSellers
 } from "../controllers/client.js";
 
 const router = express.Router();
@@ -23,11 +24,12 @@ router.get("/entity", getCustomers);
 router.get("/templates", getProducts);
 router.get("/chainOfShipments", getChainOfShipments);
 router.get("/getIncomingRequests", getIncomingRequests);
+router.get("/eligibleSellers", getEligibleSellers);
 
 //POSTs
 router.post("/updateRecipients", updateRecipients);
 router.post("/generateNewShipment", generateNewShipment);
-router.post("/updateOrderRequest", updateOrder);
+router.post("/updateOrder", updateOrder);
 
 
 export default router;
