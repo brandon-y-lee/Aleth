@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 
 // Replace the path prop with actual data
 const Map = (props) => {
-    console.log(props);
+    // console.log(props);
     const mapRef = useRef(null);
     const markersRef = useRef([]);
     const polylineRef = useRef(null);
@@ -56,7 +56,7 @@ const Map = (props) => {
     };
 
     function getPolylinePath(shipmentArray){
-        console.log("Here");
+        // console.log("Here");
         const data = shipmentArray;
         const pairs = [];
         const idToObject = {};
@@ -80,7 +80,7 @@ const Map = (props) => {
 
     const initMap = async () => {
         // Load the Maps JavaScript API library
-        console.log("Initing")
+        // console.log("Initing")
         const { Map, Marker, Polyline } = await window.google.maps.importLibrary('maps');
 
         const map = new Map(mapRef.current, {
@@ -93,8 +93,8 @@ const Map = (props) => {
         // Create markers and polyline
         if (props.locations && props.locations.shipmentChain) {
             markersRef.current = props.locations.shipmentChain.map((point, index) => {
-                console.log("Index", index);
-                console.log("HoveredCardIndex", hoveredCardIndex)
+                // console.log("Index", index);
+                // console.log("HoveredCardIndex", hoveredCardIndex)
                 const marker = new window.google.maps.Marker({
                     position: {
                         lat: parseFloat(point.coordinates[0].$numberDecimal), 
@@ -214,7 +214,7 @@ const Map = (props) => {
         </ListItem>
       ));
 
-    console.log(elems);
+    // console.log(elems);
 
     return (
         <Grid container spacing={2}>

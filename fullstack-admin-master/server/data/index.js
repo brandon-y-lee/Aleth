@@ -1,3 +1,5 @@
+// import { OrderStatus } from "../configs/OrderStatus";
+
 export const dataShipments = [
   {
     "userId": 1,
@@ -468,310 +470,271 @@ export const dataShipments = [
   }
 ];
 
-
 export const userData = [
   {
     "userId": 1,
-    "coordinates": [
-      24.6180732,
-      23.4507856
-    ],
+    "coordinates": [ 24.6180732, 23.4507856 ],
     "name": "11M ÇELİK İNŞAAT SAN. VE TİC. LTD. ŞTİ.",
     "description": "A construction company specializing in steel structures.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Supplier"
+    "type": "Supplier",
+    "material": [ "tshirts", "shorts", "jeans" ]
   },
   {
     "userId": 2,
-    "coordinates": [
-      17.2064912,
-      22.1782433
-    ],
+    "coordinates": [ 17.2064912, 22.1782433 ],
     "name": "13 STRINGS, LDA",
     "description": "A textile company producing high-quality strings.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Textile Producers"
+    "type": "Textile Producers",
+    "material": [ "cotton", "nylon", "rayon" ]
   },
   {
     "userId": 3,
-    "coordinates": [
-      24.1778298,
-      20.1569574
-    ],
+    "coordinates": [ 24.1778298, 20.1569574 ],
     "name": "100% WOOL INC",
     "description": "A company specializing in the production of 100% wool products.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Manufacturer"
+    "type": "Manufacturer",
+    "material": [ "pullover", "jackets", "trousers" ]
   },
   {
     "userId": 4,
-    "coordinates": [
-      22.1778298,
-      25.1569574
-    ],
+    "coordinates": [ 22.1778298, 25.1569574 ],
     "name": "Cool Shirt! INC",
     "description": "A clothing company known for its cool and stylish shirts.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Supplier"
+    "type": "Supplier",
+    "material": [ "tshirts", "shorts", "jeans" ]
   },
   {
     "userId": 5,
-    "coordinates": [
-      29.1778298,
-      35.1569574
-    ],
+    "coordinates": [ 29.1778298, 35.1569574 ],
     "name": "Clover Clothes INC",
     "description": "A clothing company specializing in stylish and trendy clothes.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Supplier"
+    "type": "Supplier",
+    "material": [ "tshirts", "shorts", "jeans" ]
   },
   {
     "userId": 6,
-    "coordinates": [
-      18.9786636,
-      16.4464722
-    ],
+    "coordinates": [ 18.9786636, 16.4464722 ],
     "name": "1001 ARMED FORCES CO LTD",
     "description": "A company providing clothing and equipment for armed forces.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Supplier"
+    "type": "Supplier",
+    "material": [ "tshirts", "shorts", "jeans" ]
   },
   {
     "userId": 7,
-    "coordinates": [
-      17.1651282,
-      17.6351594
-    ],
+    "coordinates": [ 17.1651282, 17.6351594 ],
     "name": "10TH BRANCH OF GUANGZHOU FANGYING JEWELRY CO LTD",
     "description": "A branch of Guangzhou Fangying Jewelry Co Ltd specializing in jewelry.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Textile Producers"
+    "type": "Textile Producers",
+    "material": [ "cotton", "nylon", "rayon" ]
   },
   {
     "userId": 8,
-    "coordinates": [
-      18.7714388,
-      16.8150366
-    ],
+    "coordinates": [ 18.7714388, 16.8150366 ],
     "name": "10TH STREET GYM, LLC",
     "description": "A gym facility providing fitness and training services.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Manufacturer"
+    "type": "Manufacturer",
+    "material": [ "pullover", "jackets", "trousers" ]
   },
   {
     "userId": 9,
-    "coordinates": [
-      17.7714388,
-      13.8150366
-    ],
+    "coordinates": [ 17.7714388, 13.8150366 ],
     "name": "11TH STREET Fashion, LLC",
     "description": "A fashion company known for its trendy and stylish clothing.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Supplier"
+    "type": "Supplier",
+    "material": [ "tshirts", "shorts", "jeans" ]
   },
   {
     "userId": 10,
-    "coordinates": [
-      14.7714388,
-      15.8150366
-    ],
+    "coordinates": [ 14.7714388, 15.8150366 ],
     "name": "Driponomics Major Clothing, LLC",
     "description": "A clothing company specializing in waterproof and durable clothing.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Supplier"
+    "type": "Supplier",
+    "material": [ "tshirts", "shorts", "jeans" ]
   },
   {
     "userId": 11,
-    "coordinates": [
-      24.1462883,
-      15.530527
-    ],
+    "coordinates": [ 24.1462883, 15.530527 ],
     "name": "14WE, UNIPESSOAL, LDA",
     "description": "A company specializing in the production of high-quality cotton garments.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Supplier"
+    "type": "Supplier",
+    "material": [ "tshirts", "shorts", "jeans" ]
   },
   {
     "userId": 12,
-    "coordinates": [
-      23.0028753,
-      18.8600144
-    ],
+    "coordinates": [ 23.0028753, 18.8600144 ],
     "name": "10TH FABRIC MEDICAL",
     "description": "A medical company producing fabrics for medical applications.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Supplier"
+    "type": "Supplier",
+    "material": [ "tshirts", "shorts", "jeans" ]
   },
   {
     "userId": 13,
-    "coordinates": [
-      22.9924469,
-      20.1272764
-    ],
+    "coordinates": [ 22.9924469, 20.1272764 ],
     "name": "808, INC.",
     "description": "A company specializing in the production of high-quality denim products.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Manufacturer"
+    "type": "Manufacturer",
+    "material": [ "pullover", "jackets", "trousers" ]
   },
   {
     "userId": 14,
-    "coordinates": [
-      21.0024469,
-      19.1272764
-    ],
+    "coordinates": [ 21.0024469, 19.1272764 ],
     "name": "101 Style, INC.",
     "description": "A fashion company known for its trendy and stylish clothing.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Supplier"
+    "type": "Supplier",
+    "material": [ "tshirts", "shorts", "jeans" ]
   },
   {
     "userId": 15,
-    "coordinates": [
-      24.9924469,
-      22.1272764
-    ],
+    "coordinates": [ 24.9924469, 22.1272764 ],
     "name": "Wearable Thread, INC.",
     "description": "A company specializing in wearable technology and smart clothing.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Supplier"
+    "type": "Supplier",
+    "material": [ "tshirts", "shorts", "jeans" ]
   },
   {
     "userId": 16,
-    "coordinates": [
-      22.6400492,
-      23.9828272
-    ],
-    "name": "Yes Clothing. VE TİC. LTD. ŞTİ.",
-    "description": "A clothing company offering a wide range of fashionable clothing.",
+    "coordinates": [ 19.9954181, 19.6701798 ],
+    "name": "12th STREET CLOTHES, LLC",
+    "description": "A clothing company providing a variety of clothing options for men and women.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Supplier"
+    "type": "Textile Producers",
+    "material": [ "cotton", "nylon", "rayon" ]
   },
   {
     "userId": 17,
-    "coordinates": [
-      25.5612545,
-      19.212993
-    ],
-    "name": "16 STRINGS, LDA",
-    "description": "A textile company producing high-quality strings.",
+    "coordinates": [ 20.9954181, 18.6701798 ],
+    "name": "1000 Islands Clothing, LLC",
+    "description": "A clothing company known for its island-inspired designs.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Textile Producers"
+    "type": "Manufacturer",
+    "material": [ "pullover", "jackets", "trousers" ]
   },
   {
     "userId": 18,
-    "coordinates": [
-      20.9038371,
-      14.2978584
-    ],
-    "name": "Comfy Clothing INC",
-    "description": "A clothing company specializing in comfortable and cozy clothing.",
+    "coordinates": [ 21.9954181, 17.6701798 ],
+    "name": "Stylish You, INC.",
+    "description": "A fashion company known for its stylish and trendy clothing.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Manufacturer"
+    "type": "Supplier",
+    "material": [ "tshirts", "shorts", "jeans" ]
   },
   {
     "userId": 19,
-    "coordinates": [
-      16.9038371,
-      14.2978584
-    ],
-    "name": "The Best Apparel INC",
-    "description": "A company known for producing the best quality apparel in the market.",
+    "coordinates": [ 23.9954181, 16.6701798 ],
+    "name": "ProFashion, INC.",
+    "description": "A professional clothing company for modern businessmen and businesswomen.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Supplier"
+    "type": "Supplier",
+    "material": [ "tshirts", "shorts", "jeans" ]
   },
   {
     "userId": 20,
-    "coordinates": [
-      15.9038371,
-      19.2978584
-    ],
-    "name": "Sustainable Garments INC",
-    "description": "A company specializing in sustainable and eco-friendly garments.",
+    "coordinates": [ 24.8844898, 19.0259375 ],
+    "name": "100% LUXURY FASHION",
+    "description": "A company providing luxury fashion items for high-end clientele.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Manufacturer"
+    "type": "Textile Producers",
+    "material": [ "cotton", "nylon", "rayon" ]
   },
   {
     "userId": 21,
-    "coordinates": [
-      28.6883354,
-      10.4599867
-    ],
-    "name": "1001 NAVAL FORCES CO LTD",
-    "description": "A company providing clothing and equipment for naval forces.",
+    "coordinates": [ 23.8844898, 18.0259375 ],
+    "name": "21st Century Wear, LLC",
+    "description": "A clothing company providing modern and contemporary styles.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Supplier"
+    "type": "Manufacturer",
+    "material": [ "pullover", "jackets", "trousers" ]
   },
   {
     "userId": 22,
-    "coordinates": [
-      8.1612447,
-      24.4597336
-    ],
-    "name": "5TH BRANCH OF GUANGZHOU FANGYING FASHION CO LTD",
-    "description": "A branch of Guangzhou Fangying Fashion Co Ltd specializing in fashion.",
+    "coordinates": [ 22.8844898, 17.0259375 ],
+    "name": "Speedy Sports, INC.",
+    "description": "A sports clothing company known for its performance and durability.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Textile Producers"
+    "type": "Supplier",
+    "material": [ "tshirts", "shorts", "jeans" ]
   },
   {
     "userId": 23,
-    "coordinates": [
-      18.7714388,
-      16.8150366
-    ],
-    "name": "10TH STREET GYM, LLC",
-    "description": "A gym facility providing fitness and training services.",
+    "coordinates": [ 21.8844898, 16.0259375 ],
+    "name": "Outdoor Explorer, INC.",
+    "description": "A clothing company specializing in outdoorgear.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Manufacturer"
+    "type": "Supplier",
+    "material": [ "tshirts", "shorts", "jeans" ]
   },
   {
     "userId": 24,
-    "coordinates": [
-      16.7714388,
-      16.3250366
-    ],
-    "name": "19TH STREET GYM, LLC",
-    "description": "A gym facility located on 19th Street offering fitness services.",
+    "coordinates": [ 20.8844898, 15.0259375 ],
+    "name": "Smooth Silk, INC.",
+    "description": "A textile company known for its high-quality silk products.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Supplier"
+    "type": "Textile Producers",
+    "material": [ "cotton", "nylon", "rayon" ]
   },
   {
     "userId": 25,
-    "coordinates": [
-      14.0814388,
-      12.8150366
-    ],
-    "name": "THE SPOT APPAREL, LLC",
-    "description": "A clothing company known for its trendy and fashionable clothing.",
+    "coordinates": [ 19.8844898, 14.0259375 ],
+    "name": "Casual Comfort, LLC",
+    "description": "A clothing company focusing on comfort and casual style.",
     "city": "Unknown",
     "country": "Unknown",
-    "type": "Supplier"
+    "type": "Manufacturer",
+    "material": [ "pullover", "jackets", "trousers" ]
   }
 ];
 
+export const dataOrderRequests = [
+  {
+    buyerId: "1",
+    buyerType: "Textile Producers",
+    material: "tshirts",
+    quantity: 2,
+    orderStatus: 0,
+    sellerStatuses: {
+      "2":1
+    },
+  }
+];
 
 export const dataUser = [
   {

@@ -48,13 +48,13 @@ export const api = createApi({
       providesTags: ["Shipments"],
     }),
 
-    getEligibleOrders: build.query({
-      query: ({ page, pageSize, sort, search, userId }) => ({
-        url: "client/shipments",
+    getIncomingRequests: build.query({
+      query: ({ userId }) => ({
+        url: "client/incomingRequests",
         method: "GET",
-        params: { page, pageSize, sort, search, userId },
+        params: { userId },
       }),
-      providesTags: ["Shipments"],
+      providesTags: ["IncomingRequests"],
     }),
 
     updateRecipients: build.mutation({
@@ -89,15 +89,6 @@ export const api = createApi({
         params: {chainId},
       }),
       providesTags: ['chainOfShipments'],
-    }),
-
-    getChainOfShipments: build.query({
-      query: (userId) => ({
-        url: "client/getIncomingRequests",
-        method: "GET",
-        params: {userId},
-      }),
-      providesTags: ['IncomingRequests'],
     }),
 
     getGeography: build.query({
@@ -139,6 +130,7 @@ export const {
   useGenerateNewShipmentMutation,
   useGetRecipientTransactionsQuery,
   useGetChainOfShipmentsQuery,
+  useGetIncomingRequestsQuery,
   useGetGeographyQuery,
   useGetSalesQuery,
   useGetAdminsQuery,

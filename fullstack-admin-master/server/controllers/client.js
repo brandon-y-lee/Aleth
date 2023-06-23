@@ -1,143 +1,13 @@
 import Product from "../models/Product.js";
 import ProductStat from "../models/ProductStat.js";
 import User from "../models/User.js";
+import UserData from "../models/UserData.js";
 import Transaction from "../models/Transaction.js";
 import Shipments from "../models/Shipments.js";
 import OrderRequest from "../models/OrderRequest.js";
 import getCountryIso3 from "country-iso-2-to-3";
 import { OrderStatus } from "../configs/OrderStatus.js";
 import {RequestType} from "../configs/RequestType.js";
-import OrderRequest from "../models/OrderRequest.js";
-import User from "../models/User.js";
-
-  const transactionsDummy = [
-    {
-      "id": "TR2022299HPQ6NS",
-      "name": "11M ÇELİK İNŞAAT SAN. VE TİC. LTD. ŞTİ.",
-      "coordinates": [
-        29.2583382,
-        40.8861988
-      ],
-      "material": "Synthetic",
-      "amount": 65.1,
-      "unit": "piece",
-      "prev": ["PT2023019Z2JT02"],
-      "next": [],
-      "shipmentID": "Shipment1"
-    },
-    {
-      "id": "PT2023018Q22FVH",
-      "name": "13 STRINGS, LDA",
-      "coordinates": [
-        -8.6134982,
-        41.1488419
-      ],
-      "material": "Cotton",
-      "amount": 23.78,
-      "unit": "kg",
-      "prev": [],
-      "next": ["US202220707WWRM"],
-      "shipmentID": "Shipment2"
-    },
-    {
-      "id": "US202220707WWRM",
-      "name": "100% WOOL INC",
-      "coordinates": [
-        -77.3672675,
-        38.9025279
-      ],
-      "material": "Silk",
-      "amount": 78.22,
-      "unit": "lb",
-      "prev": ["PT2023018Q22FVH"],
-      "next": [],
-      "shipmentID": "Shipment2"
-    },
-    {
-      "id": "CN2022364N63PG",
-      "name": "1001 ARMED FORCES CO LTD",
-      "coordinates": [
-        120.597458,
-        32.395402
-      ],
-      "material": "Denim",
-      "amount": 56.3,
-      "unit": "piece",
-      "prev": [],
-      "next": [],
-      "shipmentID": "Shipment3"
-    },
-    {
-      "id": "CN2021336XXCHG",
-      "name": "10TH BRANCH OF GUANGZHOU FANGYING JEWELRY CO LTD",
-      "coordinates": [
-        113.33138,
-        22.91954
-      ],
-      "material": "Wool",
-      "amount": 45.78,
-      "unit": "kg",
-      "prev": [],
-      "next": ["US2023019X1TH4L"],
-      "shipmentID": "Shipment4"
-    },
-    {
-      "id": "US2023019X1TH4L",
-      "name": "10TH STREET GYM, LLC",
-      "coordinates": [
-        -74.080204,
-        39.329255
-      ],
-      "material": "Leather",
-      "amount": 89.32,
-      "unit": "lb",
-      "prev": ["CN2021336XXCHG"],
-      "next": [],
-      "shipmentID": "Shipment4"
-    },
-    {
-      "id": "PT2023019ZP6R9J",
-      "name": "14WE, UNIPESSOAL, LDA",
-      "coordinates": [
-        -9.0364333,
-        38.7050576
-      ],
-      "material": "Cotton",
-      "amount": 123.21,
-      "unit": "kg",
-      "prev": [],
-      "next": ["US2023019X1V4J5"],
-      "shipmentID": "Shipment5"
-    },
-    {
-      "id": "US2023019X1V4J5",
-      "name": "10TH STREET MEDICAL",
-      "coordinates": [
-        -75.663985,
-        38.663179
-      ],
-      "material": "Cotton",
-      "amount": 321.45,
-      "unit": "lb",
-      "prev": ["PT2023019ZP6R9J"],
-      "next": [],
-      "shipmentID": "Shipment5"
-    },
-    {
-      "id": "US2023019Z2JT02",
-      "name": "111, INC.",
-      "coordinates": [
-        -75.213424,
-        39.952401
-      ],
-      "material": "Denim",
-      "amount": 123.45,
-      "unit": "piece",
-      "prev": [],
-      "next": ["TR2022299HPQ6NS"],
-      "shipmentID": "Shipment1"
-    }
-  ];
 
 
 export const getProducts = async (req, res) => {
@@ -258,6 +128,8 @@ export const getRecipientTransactions = async (req, res) => {
   }
 };
 
+
+//Fetch the chain of orders which share a common Shipment ID
 export const getChainOfShipments = async (req, res) => {
   try {
     const chainID = req.query;
@@ -276,18 +148,24 @@ export const getChainOfShipments = async (req, res) => {
   }
 };
 
+//Shipments Page (Seller View) - Fetch all purchase orders that the logged in user is eligible for.
 export const getIncomingRequests = async (req, res) => {
   try {
-    const userId = req.query;
-    const userData = await User.find({
-      userId: userId,
+    const {userId} = req.query;
+    console.log(userId);
+    console.log("Getting incoming requests", req.query);
+    const userData = await UserData.find({
+      userId: "2",
     });
-  
+    
+    //TODO - Either find all the orders or the subset that the user is eligible for directly
     const orders = await OrderRequest.find({
-      material: userData.material
+      // material: userData.material
     });
 
-    const newOrders = orders?orders.filter(order => order.sellerStatuses[userId]):[];
+    console.log(orders);
+
+    const newOrders = orders?orders.filter(order => order.sellerStatuses[userId]!==undefined):[];
   
     res.status(200).json({
       newOrders
@@ -298,7 +176,7 @@ export const getIncomingRequests = async (req, res) => {
 };
 
 
-//Function for linking previous shipments 
+//On the shipments page, for linking previous shipments to the current visible shipment 
 export const updateRecipients = async (req, res) => {
   try{
     console.log("Update Recipients", req.body);
@@ -396,7 +274,7 @@ export const generateNewShipment = async (req, res) => {
     // Check if a shipment with the given ID exists
     const existingShipment = await Shipments.findOne({ id });
 
-    const userInfo = await User.findOne({userId: userId});
+    const userInfo = await UserData.findOne({userId: userId});
 
     if (existingShipment) {
       // Update the existing shipment with the new data
@@ -439,15 +317,21 @@ export const generateNewShipment = async (req, res) => {
 export const createNewOrder = async (req, res) => {
   try {
     console.log("Generating new shipment", req.body);
-    const { userId, recipientId, material, quantity, unit, prev, orderStatus } = req.body;
+    const { userId, material, quantity} = req.body;
 
-    const eligibleSellers = User.find({material:material});
+    const eligibleSellers = await UserData.find({material:material});
+    let sellerStatuses = {};
+
+    //Set stasuses of eligible sellers as NEWORDER
+    for(const eligibleSeller of eligibleSellers)
+      sellerStatuses[eligibleSeller.userId] = OrderStatus.NEWORDER;
+
     const newOrder = new OrderRequest({
       buyerId : userId,
       buyerType: " ",
       material: material,
       quantity: quantity,
-      sellerStatuses: {},
+      sellerStatuses: sellerStatuses,
     });
 
     await newOrder.save();

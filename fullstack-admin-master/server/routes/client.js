@@ -6,8 +6,8 @@ import {
   generateNewShipment,
   getCustomers,
   getProducts,
-  getChainOfShipments,
   getIncomingRequests,
+  getChainOfShipments,
   getRecipientTransactions
   ,updateOrder
 } from "../controllers/client.js";
@@ -18,6 +18,7 @@ const router = express.Router();
 router.get("/map", getGeography);
 router.get("/shipments", getTransactions);
 router.get("/recipientShipments", getRecipientTransactions);
+router.get("/incomingRequests", getIncomingRequests);
 router.get("/entity", getCustomers);
 router.get("/templates", getProducts);
 router.get("/chainOfShipments", getChainOfShipments);

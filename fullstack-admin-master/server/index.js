@@ -17,11 +17,16 @@ import ProductStat from "./models/ProductStat.js";
 import Transaction from "./models/Transaction.js";
 import OverallStat from "./models/OverallStat.js";
 import AffiliateStat from "./models/AffiliateStat.js";
+import UserData from "./models/UserData.js";
+import OrderRequest from "./models/OrderRequest.js";
+
 import {
-  dataUser,
+  userData,
   dataShipments,
+  dataOrderRequests,
 } from "./data/index.js";
 import Shipments from "./models/Shipments.js";
+import { OrderStatus } from "./configs/OrderStatus.js";
 
 /* CONFIGURATION */
 dotenv.config();
@@ -61,6 +66,8 @@ mongoose
     // print(dataShipments);
     // Shipments.insertMany(dataShipments);
     // User.insertMany(dataUser);
+    // UserData.insertMany(userData);
+    // OrderRequest.insertMany(dataOrderRequests);
   })
   .catch((error) => console.log(`${error} Did not connect`));
 
