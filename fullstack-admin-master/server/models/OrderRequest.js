@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {OrderStatus} from "./OrderStatus.js";
+import {OrderStatus} from "../configs/OrderStatus.js";
 
 const OrderRequestSchema = new mongoose.Schema(
   {

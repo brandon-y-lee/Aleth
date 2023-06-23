@@ -18,7 +18,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import TabPanel from 'components/Common/TabPanel';
 import { makeStyles } from '@mui/styles';
-import { OrderStatus } from "components/SellerView/OrderStatus";
+import { OrderStatus } from "configs/OrderStatus";
+import { RequestType } from "configs/RequestType";
 import Order from "scenes/order";
 
 Session.set("username","2");

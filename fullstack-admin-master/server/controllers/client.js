@@ -5,7 +5,8 @@ import Transaction from "../models/Transaction.js";
 import Shipments from "../models/Shipments.js";
 import OrderRequest from "../models/OrderRequest.js";
 import getCountryIso3 from "country-iso-2-to-3";
-import { OrderStatus } from "../models/OrderStatus.js";
+import { OrderStatus } from "../configs/OrderStatus.js";
+import {RequestType} from "../configs/RequestType.js";
 
   const transactionsDummy = [
     {
@@ -299,39 +300,72 @@ export const updateRecipients = async (req, res) => {
 
 }
 
-//Function for linking previous shipments 
+//Function for updating order requests on init/accept/reject operations by sellers/buyers
 export const updateOrder = async (req, res) => {
   try{
     console.log("Updating purchase order", req.body);
-    const {initOrder, sellerIds, orderId, isSeller, acceptReject} = req.body;
+    const {requestType, sellerIds, orderId, isSeller, acceptReject} = req.body;
 
     const order = await OrderRequest.find({orderId: orderId});
 
     if(order)
     {
-      let sellersStatuses = order[0].sellerStatuses;
+      let sellerStatuses = order[0].sellerStatuses;
+
+      //Buyer initiating the order, expressing interest in a subset of all possible sellers
+      if(requestType == RequestType.INITORDER){
+        let sellerStatuses = {};
+
+        for(const sellerId of sellerIds)
+          sellerStatuses[sellerId] = OrderStatus.NEWORDER;
+      }
+
+      //Buyer sending accept to one or many sellers of the subset of the sellers
+      if(requestType == RequestType.BUYERACCEPT)
+      {
+        //Sanity Check
+        if(isBuyer)
+        {
+          //Accept the ones the buyer sent
+          for(const sellerId of sellerIds)
+            sellerStatuses[sellerId] = OrderStatus.BUYERACCEPT;
+          
+          //Reject the others
+          for (let key of sellerStatuses.keys()) {
+              if(sellerStatuses[key] != OrderStatus.BUYERACCEPT)
+                sellerStatuses[key] = OrderStatus.BUYERDENIED;
+            }
+        }
+      }
+
+      //Buyer sending reject request to one or many sellers of the subset of sellers
+      if(requestType == RequestType.BUYERDENIED)
+      {
+        //Sanity Check
+        if(isBuyer)
+        {
+          //Accept the ones the buyer sent
+          for(const sellerId of sellerIds)
+            sellerStatuses[sellerId] = OrderStatus.BUYERDENIED;
+        }
+      }
+
+      //Seller sending accept request to the buyer
+      if(requestType == RequestType.SELLERACCPET)
+      {
+        if(isSeller)
+            sellerStatuses[sellerIds[0]] = OrderStatus.SELLERACCEPT; 
+      }
+
+      //Seller sending reject request to the buyer
+      if(requestType == RequestType.SELLERREJECT)
+      {
+        if(isSeller)
+            sellerStatuses[sellerIds[0]] = OrderStatus.SELLERDENIED;   
+      }
       
-      if(isSeller)
-      {
-        if(acceptReject)
-          sellersStatuses[sellerIds[0]] = OrderStatus.SELLERACCEPT
-        else
-          sellersStatuses[sellerIds[0]] = OrderStatus.SELLERDENIED       
-      }
-
-      if(!isSeller)
-      {
-        if(acceptReject == OrderStatus.BUYERACCEPT)
-          sellersStatuses[userId] = OrderStatus.BUYERACCEPT
-        else if(acceptReject == OrderRequest.BUYERDENIED)
-          sellersStatuses[userId] = OrderStatus.BUYERDENIED       
-      }
+      //Set the updated seller statuses for the order
       await OrderRequest.updateOne({orderId},{sellerStatuses, sellerStatuses})
-    }
-
-    await OrderRequest.updateOne({},{});
-    for (const sender of senders) {
-      await Shipments.updateOne({ id: sender }, { next: receivingOrderId });
     }
     res.status(200).json({ message: "Order updated successfully" });
   } catch(error) {

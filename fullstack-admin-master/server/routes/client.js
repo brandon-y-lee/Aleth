@@ -9,6 +9,7 @@ import {
   getChainOfShipments,
   getIncomingRequests,
   getRecipientTransactions
+  ,updateOrder
 } from "../controllers/client.js";
 
 const router = express.Router();
@@ -25,6 +26,7 @@ router.get("/getIncomingRequests", getIncomingRequests);
 //POSTs
 router.post("/updateRecipients", updateRecipients);
 router.post("/generateNewShipment", generateNewShipment);
+router.post("/updateOrderRequest", updateOrder);
 
 
 export default router;
