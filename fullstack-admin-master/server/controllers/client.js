@@ -7,6 +7,8 @@ import OrderRequest from "../models/OrderRequest.js";
 import getCountryIso3 from "country-iso-2-to-3";
 import { OrderStatus } from "../configs/OrderStatus.js";
 import {RequestType} from "../configs/RequestType.js";
+import OrderRequest from "../models/OrderRequest.js";
+import User from "../models/User.js";
 
   const transactionsDummy = [
     {
@@ -210,6 +212,18 @@ export const getTransactions = async (req, res) => {
 };
 
 
+//TODO: Fix this to find out the set of eligible sellers
+export const getEligibleSellers = async (req, res) => {
+  try {
+    const {orderId} = req.query;
+    const customers = await User.find({ role: "user" }).select("-password");
+    res.status(200).json(customers);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+
 //Shipments where the recipient is the userID provided
 export const getRecipientTransactions = async (req, res) => {
   try {
@@ -265,7 +279,7 @@ export const getChainOfShipments = async (req, res) => {
 export const getIncomingRequests = async (req, res) => {
   try {
     const userId = req.query;
-    const userData = await Users.find({
+    const userData = await User.find({
       userId: userId,
     });
   
@@ -421,54 +435,28 @@ export const generateNewShipment = async (req, res) => {
   }
 };
 
-//Function to add a new shipment or update the status of an existing shipment
+//Function to add a new order request
 export const createNewOrder = async (req, res) => {
   try {
     console.log("Generating new shipment", req.body);
-    const { userId, recipientId, material, amount, unit, prev, orderStatus } = req.body;
+    const { userId, recipientId, material, quantity, unit, prev, orderStatus } = req.body;
 
-    // Check if a shipment with the given ID exists
-    const existingShipment = await Shipments.findOne({ id });
+    const eligibleSellers = User.find({material:material});
+    const newOrder = new OrderRequest({
+      buyerId : userId,
+      buyerType: " ",
+      material: material,
+      quantity: quantity,
+      sellerStatuses: {},
+    });
 
-    const userInfo = await User.findOne({userId: userId});
-
-    if (existingShipment) {
-      // Update the existing shipment with the new data
-      existingShipment.userId = userId;
-      existingShipment.recipientId = recipientId;
-      existingShipment.name = userInfo.name;
-      existingShipment.material = material;
-      existingShipment.amount = amount;
-      existingShipment.unit = unit;
-      existingShipment.coordinates = userInfo.coordinates;
-      existingShipment.prev = prev;
-      existingShipment.orderStatus = orderStatus;
-
-      await existingShipment.save();
-      res.status(200).json({ message: "Shipment updated successfully" });
-    } else {
-      // Create a new shipment
-      const newShipment = new Shipments({
-        id,
-        userId,
-        recipientId,
-        name: userInfo.name,
-        material,
-        amount,
-        unit,
-        coordinates: userInfo.coordinates,
-        prev,
-        orderStatus,
-      });
-
-      await newShipment.save();
-      res.status(200).json({ message: "New shipment created successfully" });
+    await newOrder.save();
+    res.status(200).json({ message: "New order created successfully" });
     }
-  } catch (error) {
+  catch (error) {
     res.status(404).json({ message: error.message });
   }
 };
-
 
 
 export const getGeography = async (req, res) => {
