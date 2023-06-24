@@ -6,21 +6,32 @@ import {
   useTheme 
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import { useGetTransactionsQuery, useGetChainOfShipmentsQuery } from "state/api";
+import { useGetTransactionsQuery, useGetChainOfShipmentsQuery, useGetIncomingRequestsQuery } from "state/api";
 import Header from "components/Header";
-import Map from "components/Map";
+import Map from "components/SellerView/Map";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
-import ActionMenu from "components/ActionMenu";
+import ActionMenu from "components/SellerView/ActionMenu";
+import ActionMenuIncomingOrders from "components/SellerView/ActionMenuIncomingOrders";
 import FlexBetween from "components/FlexBetween";
-import CertificateButton from "components/CertificateButton";
+import CertificateButton from "components/Certificate/CertificateButton";
 import NotificationButton from "components/NotificationButton";
 import Chip from '@mui/material/Chip';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import TabPanel from 'components/Common/TabPanel';
+import { makeStyles } from '@mui/styles';
+import { OrderStatus } from "configs/OrderStatus";
+import { RequestType } from "configs/RequestType";
+import Order from "scenes/order";
+
 Session.set("username","2");
 
 const Shipments = () => {
-  const userName = Session.get("username");
+  const userId = Session.get("username");
   const theme = useTheme();
-  // values to be sent to the backend
+
+
+  // HOOKS 
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(20);
   const [sort, setSort] = useState({});
@@ -28,28 +39,53 @@ const Shipments = () => {
   const [coordinates, setCoordinates] = useState([]);
   const [selectedShipmentId, setSelectedShipmentId] = useState("TR2023019QXZZFR");
   const [selectedId, setSelectedId] = useState("TR2023019QXZZFR");
-
+  const [value, setValue] = React.useState(0);
   const [searchInput, setSearchInput] = useState("");
+  const [selectedOrder, setSelectedOrder] = useState("");
 
   const { data, isLoading } = useGetTransactionsQuery({
     page,
     pageSize,
     sort: JSON.stringify(sort),
     search,
-    userId: userName
+    userId: userId
   });
 
-  console.log(data);
+  // console.log(userId);
   let {data: locations, isLoading: isLoadingNew} = useGetChainOfShipmentsQuery(selectedShipmentId);
+  let {data: incomingOrders, isLoading: isLoadingIncomingOrders} = useGetIncomingRequestsQuery({userId});
+
+  // console.log(incomingOrders);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  function a11yProps(index) {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+    };
+  }
+
+  useEffect(() =>  { 
+    // console.log(locations);
+  },[selectedShipmentId]);
+
+  
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+      backgroundColor: theme.palette.background.paper,
+    },
+  }));
+    
 
   if(locations ===  undefined)
     locations = {"shipmentChain":[]}
 
-  useEffect(() =>  { 
-    console.log(locations);
-  },[selectedShipmentId]);
 
-  const columns = [
+  const outgoingShipmentColumns = [
     {
       field: "id",
       headerName: "ID",
@@ -104,6 +140,62 @@ const Shipments = () => {
     },
   ];
 
+  const incomingRequestColumns = [
+    {
+      field: "_id",
+      headerName: "OrderID",
+      flex: 1,
+    },
+    {
+      field: "buyerId",
+      headerName: "Buyer ID",
+      flex: 1,
+    },
+    {
+      field: "material",
+      headerName: "Material",
+      flex: 1,
+    },
+    {
+      field: "quantity",
+      headerName: "Quantity",
+      flex: 0.5,
+      sortable: false,
+      renderCell: (params) => params.value.length,
+    },
+    {
+      field: "sellerStatuses",
+      headerName: "Order Status",
+      flex: 0.5,
+      renderCell: (params) => {
+        const sellerStatus = params.value[userId];
+        console.log(sellerStatus);
+        console.log(OrderStatus.SELLERDENIED);
+        console.log(sellerStatus == OrderStatus.SELLERDENIED);
+        if(params.value[userId] == OrderStatus.SELLERACCEPT)
+          return (<Chip label="You Accepted" color="info"/>)
+        if(params.value[userId] == OrderStatus.NEWORDER)
+          return (<Chip label="New Order" color="success"/>)
+        if(params.value[userId] == OrderStatus.BUYERACCEPT)
+          return (<Chip label="Buyer Accepted" color="success"/>)
+        if(params.value[userId] == OrderStatus.SELLERDENIED)
+          return (<Chip label="You Rejected" color="warning"/>)
+        if(params.value[userId] == OrderStatus.BUYERDENIED)
+          return (<Chip label="Order Rejected" color="error"/>)
+      },
+    },
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      flex: 0.5,
+      renderCell: (params) => {
+        console.log(params);
+        return (<ActionMenuIncomingOrders orderData={params.row}/>)},
+    },
+  ];
+
+
   return (
     <Box m="1.5rem 2.5rem">
       <FlexBetween>
@@ -119,60 +211,127 @@ const Shipments = () => {
       <Box mt="2rem">
         <Map coordinates={coordinates} locations={locations}/>
       </Box>
-      
-      <Box
-        height="50vh"
-        sx={{
-          "& .MuiDataGrid-root": {
-            border: "none",
-          },
-          "& .MuiDataGrid-cell": {
-            borderBottom: "none",
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: theme.palette.background.alt,
-            color: theme.palette.secondary[100],
-            borderBottom: "none",
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: theme.palette.primary.light,
-          },
-          "& .MuiDataGrid-footerContainer": {
-            backgroundColor: theme.palette.background.alt,
-            color: theme.palette.secondary[100],
-            borderTop: "none",
-          },
-          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-            color: `${theme.palette.secondary[200]} !important`,
-          },
-        }}
-      >
-        <DataGrid
-          loading={isLoading || !data}
-          getRowId={(row) => Math.random()}
-          rows={(data && data.transactions) || []}
-          columns={columns}
-          rowCount={(data && data.total) || 0}
-          rowsPerPageOptions={[20, 50, 100]}
-          pagination
-          page={page}
-          pageSize={pageSize}
-          paginationMode="server"
-          sortingMode="server"
-          onPageChange={(newPage) => setPage(newPage)}
-          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-          onSortModelChange={(newSortModel) => setSort(...newSortModel)}
-          components={{ Toolbar: DataGridCustomToolbar }}
-          componentsProps={{
-            toolbar: { searchInput, setSearchInput, setSearch },
-          }}
-          onRowClick={(row)=>{
-            setSelectedShipmentId(row.row.shipmentID);
-            setSelectedId(row.row.id);
-            setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
-          }
-        />
+
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tab label="Outgoing Orders" {...a11yProps(0)} style={{color:"#00994c", backgroundColor:value==0?"#cccccc":"white"}}/>
+          <Tab label="Incoming Requests" {...a11yProps(1)} style={{color:"#00994c", backgroundColor:value==1?"#cccccc":"white"}}/>
+        </Tabs>
       </Box>
+
+
+      <TabPanel value={value} index={0}>
+        
+          <Box
+            height="80vh"
+            sx={{
+              "& .MuiDataGrid-root": {
+                border: "none",
+              },
+              "& .MuiDataGrid-cell": {
+                borderBottom: "none",
+              },
+              "& .MuiDataGrid-columnHeaders": {
+                backgroundColor: theme.palette.background.alt,
+                color: theme.palette.secondary[100],
+                borderBottom: "none",
+              },
+              "& .MuiDataGrid-virtualScroller": {
+                backgroundColor: theme.palette.primary.light,
+              },
+              "& .MuiDataGrid-footerContainer": {
+                backgroundColor: theme.palette.background.alt,
+                color: theme.palette.secondary[100],
+                borderTop: "none",
+              },
+              "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                color: `${theme.palette.secondary[200]} !important`,
+              },
+            }}
+          >
+            <DataGrid
+              loading={isLoading || !data}
+              getRowId={(row) => Math.random()}
+              rows={(data && data.transactions) || []}
+              columns={outgoingShipmentColumns}
+              rowCount={(data && data.total) || 0}
+              rowsPerPageOptions={[20, 50, 100]}
+              pagination
+              page={page}
+              pageSize={pageSize}
+              paginationMode="server"
+              sortingMode="server"
+              onPageChange={(newPage) => setPage(newPage)}
+              onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+              onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+              components={{ Toolbar: DataGridCustomToolbar }}
+              componentsProps={{
+                toolbar: { searchInput, setSearchInput, setSearch },
+              }}
+              onRowClick={(row)=>{
+                setSelectedShipmentId(row.row.shipmentID);
+                setSelectedId(row.row.id);
+                setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
+              }
+            />
+          </Box>
+      </TabPanel>
+
+      <TabPanel value={value} index={1}>
+      <Box
+            height="80vh"
+            sx={{
+              "& .MuiDataGrid-root": {
+                border: "none",
+              },
+              "& .MuiDataGrid-cell": {
+                borderBottom: "none",
+              },
+              "& .MuiDataGrid-columnHeaders": {
+                backgroundColor: theme.palette.background.alt,
+                color: theme.palette.secondary[100],
+                borderBottom: "none",
+              },
+              "& .MuiDataGrid-virtualScroller": {
+                backgroundColor: theme.palette.primary.light,
+              },
+              "& .MuiDataGrid-footerContainer": {
+                backgroundColor: theme.palette.background.alt,
+                color: theme.palette.secondary[100],
+                borderTop: "none",
+              },
+              "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                color: `${theme.palette.secondary[200]} !important`,
+              },
+            }}
+          >
+            <DataGrid
+              loading={isLoadingIncomingOrders || !incomingOrders}
+              getRowId={(row) => Math.random()}
+              rows={(incomingOrders && incomingOrders.newOrders) || []}
+              columns={incomingRequestColumns}
+              rowCount={(1) || 0}
+              rowsPerPageOptions={[20, 50, 100]}
+              pagination
+              page={1}
+              pageSize={20}
+              paginationMode="server"
+              sortingMode="server"
+              // onPageChange={(newPage) => setPage(newPage)}
+              // onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+              // onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+              components={{ Toolbar: DataGridCustomToolbar }}
+              componentsProps={{
+                toolbar: { searchInput, setSearchInput, setSearch },
+              }}
+              // onRowClick={(row)=>{
+              //   setSelectedOrder(row.row._id);
+              // }}
+            />
+          </Box>
+      </TabPanel>
+      
+
     </Box>
   );
 };

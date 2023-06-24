@@ -10,14 +10,12 @@ import {
 import { DataGrid } from "@mui/x-data-grid";
 import { useGetTransactionsQuery, useGetChainOfShipmentsQuery } from "state/api";
 import Header from "components/Header";
-import OverviewChart from "components/OverviewChart";
 import BreakdownChart from "components/BreakdownChart";
 import OrderMap from "components/OrderMap";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
-import ActionMenu from "components/ActionMenu";
+import ActionMenu from "components/SellerView/ActionMenu";
 import FlexBetween from "components/FlexBetween";
-import PurchaseForm from "components/PurchaseForm";
-import AcceptedList from "components/AcceptedList";
+import PurchaseForm from "components/Certificate/PurchaseForm";
 import RequestsButton from "components/RequestsButton";
 
 Session.set("username", "2");

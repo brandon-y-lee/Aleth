@@ -1,21 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Grid from '@mui/material/Grid';
-import SupplierCard from './SupplierDetails/SupplierCard';
+import SupplierCard from '../SupplierDetails/SupplierCard';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Typography from '@mui/material/Typography';
-import { ListItemButton } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import Session from 'react-session-api'
-
 
 
 // Replace the path prop with actual data
 const Map = (props) => {
-    console.log(props);
+    // console.log(props);
     const mapRef = useRef(null);
     const markersRef = useRef([]);
     const polylineRef = useRef(null);
@@ -59,7 +56,7 @@ const Map = (props) => {
     };
 
     function getPolylinePath(shipmentArray){
-        console.log("Here");
+        // console.log("Here");
         const data = shipmentArray;
         const pairs = [];
         const idToObject = {};
@@ -83,7 +80,7 @@ const Map = (props) => {
 
     const initMap = async () => {
         // Load the Maps JavaScript API library
-        console.log("Initing")
+        // console.log("Initing")
         const { Map, Marker, Polyline } = await window.google.maps.importLibrary('maps');
 
         const map = new Map(mapRef.current, {
@@ -96,8 +93,8 @@ const Map = (props) => {
         // Create markers and polyline
         if (props.locations && props.locations.shipmentChain) {
             markersRef.current = props.locations.shipmentChain.map((point, index) => {
-                console.log("Index", index);
-                console.log("HoveredCardIndex", hoveredCardIndex)
+                // console.log("Index", index);
+                // console.log("HoveredCardIndex", hoveredCardIndex)
                 const marker = new window.google.maps.Marker({
                     position: {
                         lat: parseFloat(point.coordinates[0].$numberDecimal), 
@@ -217,12 +214,13 @@ const Map = (props) => {
         </ListItem>
       ));
 
-    console.log(elems);
+    // console.log(elems);
 
     return (
         <Grid container spacing={2}>
             <Grid item xs={8} display="flex">
-                <div ref={mapRef} style={{ height: "70vh", width: "100%" }}/>
+                <div ref={mapRef} style={{ height: "70vh", width: "100%" }}>
+                </div>
             </Grid>
             
             <Grid item xs={4} display="flex">

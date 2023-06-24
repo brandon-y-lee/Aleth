@@ -1,17 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import {
-  List,
-  ListItem,
-  ListItemText,
-  ListItemAvatar,
-  Avatar,
-  Typography,
-  Divider,
-  Radio,
-  RadioGroup,
-  FormControlLabel,
-  Button
-} from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
 
 const columns = [
@@ -30,11 +17,6 @@ const AcceptedList = (props) => {
   console.log(props);
   const [accepted, setAccepted] = useState([]);
   const [selected, setSelected] = useState(null);
-
-  useEffect(() => {
-    // Fetch stakeholders from your backend
-    // setAccepted(fetchAccepted);
-  }, []);
 
   const handleRowClick = (param, event) => {
     setSelected(param.row);

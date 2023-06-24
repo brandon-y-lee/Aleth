@@ -6,8 +6,11 @@ import {
   generateNewShipment,
   getCustomers,
   getProducts,
+  getIncomingRequests,
   getChainOfShipments,
-  getRecipientTransactions
+  getRecipientTransactions,
+  updateOrder,
+  getEligibleSellers
 } from "../controllers/client.js";
 
 const router = express.Router();
@@ -16,13 +19,17 @@ const router = express.Router();
 router.get("/map", getGeography);
 router.get("/shipments", getTransactions);
 router.get("/recipientShipments", getRecipientTransactions);
+router.get("/incomingRequests", getIncomingRequests);
 router.get("/entity", getCustomers);
 router.get("/templates", getProducts);
 router.get("/chainOfShipments", getChainOfShipments);
+router.get("/getIncomingRequests", getIncomingRequests);
+router.get("/eligibleSellers", getEligibleSellers);
 
 //POSTs
 router.post("/updateRecipients", updateRecipients);
 router.post("/generateNewShipment", generateNewShipment);
+router.post("/updateOrder", updateOrder);
 
 
 export default router;

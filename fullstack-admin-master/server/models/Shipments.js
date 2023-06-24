@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {OrderStatus} from "./OrderStatus.js";
+import {ShipmentStatus} from "./ShipmentStatus.js";
 
 //Data columns : ID, Seller, Material, Amount, Unit, Date, Status
 
@@ -18,8 +18,8 @@ const ShipmentsSchema = new mongoose.Schema(
     shipmentID: String,
     orderStatus: {
       type: Number,
-      enum: Object.values(OrderStatus),
-      default: OrderStatus.DRAFT
+      enum: Object.values(ShipmentStatus),
+      default: ShipmentStatus.DRAFT
     }
   },
   { timestamps: true }

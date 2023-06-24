@@ -7,7 +7,6 @@ import {
   Button,
   Checkbox,
   ListItemText,
-  ListItem,
   List,
   ListItemButton
 } from '@mui/material';

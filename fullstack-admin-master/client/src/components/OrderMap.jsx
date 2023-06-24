@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import InfoWindow from 'components/InfoWindow';
-import { json } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import PurchaseForm from 'components/PurchaseForm';
 
