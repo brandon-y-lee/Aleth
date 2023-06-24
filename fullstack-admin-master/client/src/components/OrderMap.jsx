@@ -2,32 +2,20 @@ import React, { useEffect, useRef, useState } from 'react';
 import InfoWindow from 'components/InfoWindow';
 import { json } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
-import SupplierCard from './SupplierDetails/SupplierCard';
-
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import { ListItemContent } from '@mui/joy';
-import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
-import { ListItemButton } from '@mui/material';
-import Paper from '@mui/material/Paper';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
+import PurchaseForm from 'components/PurchaseForm';
 
 
 // Replace the path prop with actual data
 const OrderMap = (props) => {
-    console.log(props);
     const mapRef = useRef(null);
     const markersRef = useRef([]);
     const [activeMarkerIndex, setActiveMarkerIndex] = useState(null);
     const [hoveredMarkerIndex, setHoveredMarkerIndex] = useState(null);
 
+    const handleSearch = (values) => {
+        {/* Call your backend API with the form values
+            Update the map markers with the response */}
+    }
 
     const handleKeyDown = (event) => {
         // Check if the target of the event is a marker
@@ -132,20 +120,15 @@ const OrderMap = (props) => {
         };
     }, [props]);
 
-    const elems = props.locations.shipmentChain.map((elem,index) => (
-        <ListItem
-            alignItems="flex-start"
-            key={elem.id}
-            component="div" // Change the component from "li" to "div"
-        >
-            <SupplierCard place={{"name":elem.name}} selected = {1} refProp={1} color={hoveredMarkerIndex === index ? 'gainsboro' : 'transparent'}/>
-        </ListItem>
-      ));
-
-    console.log(elems);
-
     return (
-        <div ref={mapRef} style={{ height: "100%", width: "100%" }}/>
+        <Grid container spacing={2}>
+            <Grid item xs={8}>
+                <div ref={mapRef} style={{ height: "100%", width: "100%", borderRadius: "0.55rem" }}/>
+            </Grid>
+            <Grid item xs={4}>
+                <PurchaseForm onSearch={handleSearch} />
+            </Grid>
+        </Grid>
     );
 };
 

@@ -112,10 +112,8 @@ const Order = () => {
         }}
       >
         {/* ROW 1 */}
-        <PurchaseForm />
-
         <Box
-          gridColumn="span 8"
+          gridColumn="span 12"
           gridRow="span 3"
           display="flex"
         >
@@ -190,7 +188,6 @@ const Order = () => {
           </Typography>
           <BreakdownChart isDashboard={true} />
           <Typography
-            p="0 0.6rem"
             fontSize="0.8rem"
             sx={{ color: theme.palette.secondary[200] }}
           >
