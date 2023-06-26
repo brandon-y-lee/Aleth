@@ -197,163 +197,172 @@ const Shipments = () => {
     },
   ];
 
-
   return (
-    <Box m="1.5rem 2.5rem">
-      <FlexBetween>
-        <Header title="SHIPMENTS"/>
+    <Box>
+      <Box 
+        height="17vh"
+        p="2.5rem 2.5rem"
+        sx={{
+          background: `linear-gradient(215deg, ${theme.palette.secondary[400]} 30%, ${theme.palette.primary[500]} 90%)`,
+        }}
+      >
+        <FlexBetween>
+          <Header title="SHIPMENTS" subtitle="Manage and Track your Shipments" />
           <CertificateButton/>
-      </FlexBetween>
-      
-      <Box mt="2rem">
-        <Map coordinates={coordinates} locations={locations}/>
+        </FlexBetween>
       </Box>
 
-      <Box>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
+      <Box m="1.5rem 2.5rem">
+        <Box mt="2rem">
+          <Map coordinates={coordinates} locations={locations}/>
+        </Box>
+
+        <Box>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+          >
+            <Tab
+              label="Outgoing Orders"
+              {...a11yProps(0)}
+              sx={{
+                color:"#00994c",
+                backgroundColor : value === 0 ? "#cccccc" : "white",
+                borderColor: 'divider',
+                borderBottom: 1,
+                '&:hover': {
+                  backgroundColor: '#e0e0e0', // Change this to the color you want when hovering
+                },
+              }}
+            />
           <Tab
-            label="Outgoing Orders"
-            {...a11yProps(0)}
+            label="Incoming Requests"
+            {...a11yProps(1)}
             sx={{
               color:"#00994c",
-              backgroundColor : value === 0 ? "#cccccc" : "white",
+              backgroundColor : value === 1 ? "#cccccc" : "white",
               borderColor: 'divider',
-              borderBottom: 1,
-              '&:hover': {
-                backgroundColor: '#e0e0e0', // Change this to the color you want when hovering
+                borderBottom: 1,
+                '&:hover': {
+                  backgroundColor: '#e0e0e0', // Change this to the color you want when hovering
+                },
+              }}
+            />
+          </Tabs>
+        </Box>
+
+
+        <TabPanel value={value} index={0}>
+          <Box
+            height="80vh"
+            sx={{
+              "& .MuiDataGrid-root": {
+                border: "none",
+              },
+              "& .MuiDataGrid-cell": {
+                borderBottom: "none",
+              },
+              "& .MuiDataGrid-columnHeaders": {
+                backgroundColor: theme.palette.background.alt,
+                color: theme.palette.secondary[100],
+                borderBottom: "none",
+              },
+              "& .MuiDataGrid-virtualScroller": {
+                backgroundColor: theme.palette.primary.light,
+              },
+              "& .MuiDataGrid-footerContainer": {
+                backgroundColor: theme.palette.background.alt,
+                color: theme.palette.secondary[100],
+                borderTop: "none",
+              },
+              "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                color: `${theme.palette.secondary[200]} !important`,
               },
             }}
-          />
-        <Tab
-          label="Incoming Requests"
-          {...a11yProps(1)}
-          sx={{
-            color:"#00994c",
-            backgroundColor : value === 1 ? "#cccccc" : "white",
-            borderColor: 'divider',
-              borderBottom: 1,
-              '&:hover': {
-                backgroundColor: '#e0e0e0', // Change this to the color you want when hovering
+          >
+            <DataGrid
+              loading={isLoading || !data}
+              getRowId={(row) => Math.random()}
+              rows={(data && data.transactions) || []}
+              columns={outgoingShipmentColumns}
+              rowCount={(data && data.total) || 0}
+              rowsPerPageOptions={[20, 50, 100]}
+              pagination
+              page={page}
+              pageSize={pageSize}
+              paginationMode="server"
+              sortingMode="server"
+              onPageChange={(newPage) => setPage(newPage)}
+              onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+              onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+              components={{ Toolbar: DataGridCustomToolbar }}
+              componentsProps={{
+                toolbar: { searchInput, setSearchInput, setSearch },
+              }}
+              onRowClick={(row)=>{
+                setSelectedShipmentId(row.row.shipmentID);
+                setSelectedId(row.row.id);
+                setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
+              }
+            />
+          </Box>
+        </TabPanel>
+
+        <TabPanel value={value} index={1}>
+          <Box
+            height="80vh"
+            sx={{
+              "& .MuiDataGrid-root": {
+                border: "none",
+              },
+              "& .MuiDataGrid-cell": {
+                borderBottom: "none",
+              },
+              "& .MuiDataGrid-columnHeaders": {
+                backgroundColor: theme.palette.background.alt,
+                color: theme.palette.secondary[100],
+                borderBottom: "none",
+              },
+              "& .MuiDataGrid-virtualScroller": {
+                backgroundColor: theme.palette.primary.light,
+              },
+              "& .MuiDataGrid-footerContainer": {
+                backgroundColor: theme.palette.background.alt,
+                color: theme.palette.secondary[100],
+                borderTop: "none",
+              },
+              "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                color: `${theme.palette.secondary[200]} !important`,
               },
             }}
-          />
-        </Tabs>
+          >
+            <DataGrid
+              loading={isLoadingIncomingOrders || !incomingOrders}
+              getRowId={(row) => Math.random()}
+              rows={(incomingOrders && incomingOrders.newOrders) || []}
+              columns={incomingRequestColumns}
+              rowCount={(1) || 0}
+              rowsPerPageOptions={[20, 50, 100]}
+              pagination
+              page={1}
+              pageSize={20}
+              paginationMode="server"
+              sortingMode="server"
+              // onPageChange={(newPage) => setPage(newPage)}
+              // onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+              // onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+              components={{ Toolbar: DataGridCustomToolbar }}
+              componentsProps={{
+                toolbar: { searchInput, setSearchInput, setSearch },
+              }}
+              // onRowClick={(row)=>{
+              //   setSelectedOrder(row.row._id);
+              // }}
+            />
+          </Box>
+        </TabPanel>
       </Box>
-
-
-      <TabPanel value={value} index={0}>
-        <Box
-          height="80vh"
-          sx={{
-            "& .MuiDataGrid-root": {
-              border: "none",
-            },
-            "& .MuiDataGrid-cell": {
-              borderBottom: "none",
-            },
-            "& .MuiDataGrid-columnHeaders": {
-              backgroundColor: theme.palette.background.alt,
-              color: theme.palette.secondary[100],
-              borderBottom: "none",
-            },
-            "& .MuiDataGrid-virtualScroller": {
-              backgroundColor: theme.palette.primary.light,
-            },
-            "& .MuiDataGrid-footerContainer": {
-              backgroundColor: theme.palette.background.alt,
-              color: theme.palette.secondary[100],
-              borderTop: "none",
-            },
-            "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-              color: `${theme.palette.secondary[200]} !important`,
-            },
-          }}
-        >
-          <DataGrid
-            loading={isLoading || !data}
-            getRowId={(row) => Math.random()}
-            rows={(data && data.transactions) || []}
-            columns={outgoingShipmentColumns}
-            rowCount={(data && data.total) || 0}
-            rowsPerPageOptions={[20, 50, 100]}
-            pagination
-            page={page}
-            pageSize={pageSize}
-            paginationMode="server"
-            sortingMode="server"
-            onPageChange={(newPage) => setPage(newPage)}
-            onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-            onSortModelChange={(newSortModel) => setSort(...newSortModel)}
-            components={{ Toolbar: DataGridCustomToolbar }}
-            componentsProps={{
-              toolbar: { searchInput, setSearchInput, setSearch },
-            }}
-            onRowClick={(row)=>{
-              setSelectedShipmentId(row.row.shipmentID);
-              setSelectedId(row.row.id);
-              setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
-            }
-          />
-        </Box>
-      </TabPanel>
-
-      <TabPanel value={value} index={1}>
-        <Box
-          height="80vh"
-          sx={{
-            "& .MuiDataGrid-root": {
-              border: "none",
-            },
-            "& .MuiDataGrid-cell": {
-              borderBottom: "none",
-            },
-            "& .MuiDataGrid-columnHeaders": {
-              backgroundColor: theme.palette.background.alt,
-              color: theme.palette.secondary[100],
-              borderBottom: "none",
-            },
-            "& .MuiDataGrid-virtualScroller": {
-              backgroundColor: theme.palette.primary.light,
-            },
-            "& .MuiDataGrid-footerContainer": {
-              backgroundColor: theme.palette.background.alt,
-              color: theme.palette.secondary[100],
-              borderTop: "none",
-            },
-            "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-              color: `${theme.palette.secondary[200]} !important`,
-            },
-          }}
-        >
-          <DataGrid
-            loading={isLoadingIncomingOrders || !incomingOrders}
-            getRowId={(row) => Math.random()}
-            rows={(incomingOrders && incomingOrders.newOrders) || []}
-            columns={incomingRequestColumns}
-            rowCount={(1) || 0}
-            rowsPerPageOptions={[20, 50, 100]}
-            pagination
-            page={1}
-            pageSize={20}
-            paginationMode="server"
-            sortingMode="server"
-            // onPageChange={(newPage) => setPage(newPage)}
-            // onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-            // onSortModelChange={(newSortModel) => setSort(...newSortModel)}
-            components={{ Toolbar: DataGridCustomToolbar }}
-            componentsProps={{
-              toolbar: { searchInput, setSearchInput, setSearch },
-            }}
-            // onRowClick={(row)=>{
-            //   setSelectedOrder(row.row._id);
-            // }}
-          />
-        </Box>
-      </TabPanel>
     </Box>
   );
 };

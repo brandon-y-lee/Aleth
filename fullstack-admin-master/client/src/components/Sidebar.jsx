@@ -178,15 +178,15 @@ const Sidebar = ({
                       {icon}
                     </ListItemIcon>
                     {isSidebarOpen && <ListItemText primary={text} />}
+                    {active === lcText && (
+                      <IconButton
+                        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                        sx={{ ml: "auto" }}
+                      >
+                        <ChevronRightOutlined sx={{ ml: "auto" }} />
+                      </IconButton>
+                    )}
                   </ListItemButton>
-                  {active === lcText && (
-                    <IconButton
-                      onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                      sx={{ ml: "auto" }}
-                    >
-                      <ChevronRightOutlined sx={{ ml: "auto" }} />
-                    </IconButton>
-                  )}
                 </ListItem>
               );
             })}
