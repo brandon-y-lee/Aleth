@@ -13,7 +13,7 @@ import {
 import FlexBetween from "components/FlexBetween";
 import Certificate from "components/Certificate/Certificate";
 
-const CertificateButton = () => {
+const NotificationButton = () => {
     const theme = useTheme();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -41,21 +41,20 @@ const CertificateButton = () => {
               onClick={handleCertificateClick}
             >
               <UploadFileOutlined sx={{ mr: "10px" }} />
-              Create Certificate
+              Incoming Requests
             </Button>
           </FlexBetween>
 
           <Dialog open={openCertificate} onClose={handleCloseCertificate}>
             <DialogTitle
               sx={{
-                fontFamily: 'Poppins, sans-serif',
                 textAlign: 'center',
-                fontWeight: 500,
+                fontWeight: 'semibold',
                 fontSize: '1.5rem',
                 margin: '1rem',
               }}
             >
-              Create Your Shipment Certificate
+              Incoming Requests
             </DialogTitle>
             <DialogContent>
               <Certificate />
@@ -65,4 +64,4 @@ const CertificateButton = () => {
     );
 };
 
-export default CertificateButton;
+export default NotificationButton;

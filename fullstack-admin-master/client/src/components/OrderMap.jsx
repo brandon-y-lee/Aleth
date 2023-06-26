@@ -1,23 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Grid from '@mui/material/Grid';
-import SupplierCard from './SupplierDetails/SupplierCard';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
+import PurchaseForm from 'components/PurchaseForm';
 
 
 // Replace the path prop with actual data
 const OrderMap = (props) => {
-    console.log(props);
     const mapRef = useRef(null);
     const markersRef = useRef([]);
     const [activeMarkerIndex, setActiveMarkerIndex] = useState(null);
     const [hoveredMarkerIndex, setHoveredMarkerIndex] = useState(null);
 
+    const handleSearch = (values) => {
+        {/* Call your backend API with the form values
+            Update the map markers with the response */}
+    }
 
     const handleKeyDown = (event) => {
         // Check if the target of the event is a marker
@@ -122,54 +118,13 @@ const OrderMap = (props) => {
         };
     }, [props]);
 
-    const card = (
-        <React.Fragment>
-          <CardContent>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              Word of the Day
-            </Typography>
-            <Typography variant="h5" component="div">
-             temporary
-            </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              adjective
-            </Typography>
-            <Typography variant="body2">
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions>
-        </React.Fragment>
-      );
-
-    const elems = props.locations.shipmentChain.map((elem,index) => (
-        <ListItem
-            alignItems="flex-start"
-            key={elem.id}
-            component="div" // Change the component from "li" to "div"
-        >
-            <SupplierCard place={{"name":elem.name}} selected = {1} refProp={1} color={hoveredMarkerIndex === index ? 'gainsboro' : 'transparent'}/>
-        </ListItem>
-      ));
-
-    console.log(elems);
-
     return (
         <Grid container spacing={2}>
-            <Grid item xs={8} display="flex">
-                <div ref={mapRef} style={{ height: "40vh", width: "100%" }}/>
+            <Grid item xs={8}>
+                <div ref={mapRef} style={{ height: "100%", width: "100%" }}/>
             </Grid>
-            
-            <Grid item xs={4} display="flex">
-                <Paper style={{maxHeight: "40vh", overflow: 'auto'}}>
-                    <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                        {elems}
-                    </List>
-                </Paper>
+            <Grid item xs={4}>
+                <PurchaseForm onSearch={handleSearch} />
             </Grid>
         </Grid>
     );

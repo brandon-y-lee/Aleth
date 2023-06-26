@@ -1,13 +1,16 @@
+import React, { useState } from "react";
 import PageOne from "components/Certificate/PageOne";
 import PageTwo from "components/Certificate/PageTwo";
 import PageThree from "components/Certificate/PageThree";
 import PageFour from "components/Certificate/PageFour";
-import "./Certificate.css";
-import React, { useState } from "react";
 import MultiStepProgressBar from "components/MultiStepProgressBar/MultiStepProgressBar";
+import "./Certificate.css";
 
 function Certificate() {
   const [page, setPage] = useState("pageone");
+  const [recipient, setRecipient] = useState("");
+  const [material, setMaterial] = useState("");
+  const [files, setFiles] = useState([]);
 
   const nextPage = (page) => {
     setPage(page);
@@ -37,10 +40,10 @@ function Certificate() {
       <MultiStepProgressBar page={page} onPageNumberClick={nextPageNumber} />
       {
         {
-          pageone: <PageOne onButtonClick={nextPage} />,
-          pagetwo: <PageTwo onButtonClick={nextPage} />,
-          pagethree: <PageThree onButtonClick={nextPage} />,
-          pagefour: <PageFour />,
+          pageone: <PageOne onButtonClick={nextPage} setRecipient={setRecipient} />,
+          pagetwo: <PageTwo onButtonClick={nextPage} setMaterial={setMaterial} />,
+          pagethree: <PageThree onButtonClick={nextPage} setFiles={setFiles} />,
+          pagefour: <PageFour recipient={recipient} material={material} files={files} />,
         }[page]
       }
     </div>

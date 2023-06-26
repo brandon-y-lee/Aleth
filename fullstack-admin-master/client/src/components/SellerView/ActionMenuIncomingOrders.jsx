@@ -128,7 +128,7 @@ const ActionMenuIncomingOrders = (props) => {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
     
-    {acceptRejectMenu}
+      {acceptRejectMenu}
         
       </Menu>
     </div>

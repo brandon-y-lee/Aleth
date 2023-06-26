@@ -18,6 +18,7 @@ const router = express.Router();
 //GETs
 router.get("/map", getGeography);
 router.get("/shipments", getTransactions);
+router.get("/order", getTransactions);
 router.get("/recipientShipments", getRecipientTransactions);
 router.get("/incomingRequests", getIncomingRequests);
 router.get("/entity", getCustomers);

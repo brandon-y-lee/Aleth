@@ -1,7 +1,12 @@
 import React from "react";
 import { Button, TextField, Typography, Box } from "@mui/material";
 
-const PageOne = ({ onButtonClick }) => {
+const PageOne = ({ onButtonClick, setRecipient }) => {
+
+  const handleRecipientChange = (event) => {
+    setRecipient(event.target.value);
+  };
+
   return (
     <Box
       sx={{
@@ -19,7 +24,7 @@ const PageOne = ({ onButtonClick }) => {
         <Typography 
           variant="h4"
           component="h1"
-          gutterBottom
+          gutterTop
           sx={{
             fontFamily: 'Poppins, sans-serif',
             fontStyle: 'normal',
@@ -41,13 +46,13 @@ const PageOne = ({ onButtonClick }) => {
           sx={{
             fontFamily: 'Poppins, sans-serif',
             fontStyle: 'normal',
-            fontWeight: 600,
+            fontWeight: 550,
             fontSize: '20px',
             lineHeight: '30px',
             textAlign: 'center',
             letterSpacing: '0.01em',
             color: '#000000',
-        }}
+          }}
         >
           Let's start by finding the recipient of your Certificate
         </Typography>
@@ -79,8 +84,10 @@ const PageOne = ({ onButtonClick }) => {
           placeholder="Contact Name or ID"
           fullWidth
           margin="normal"
+          onChange={handleRecipientChange}
         />
       </Box>
+
       <Button
         variant="contained"
         color="primary"
