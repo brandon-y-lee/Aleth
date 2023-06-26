@@ -48,13 +48,14 @@ const CertificateButton = () => {
           <Dialog open={openCertificate} onClose={handleCloseCertificate}>
             <DialogTitle
               sx={{
+                fontFamily: 'Poppins, sans-serif',
                 textAlign: 'center',
-                fontWeight: 'semibold',
+                fontWeight: 500,
                 fontSize: '1.5rem',
                 margin: '1rem',
               }}
             >
-              Create Certificate
+              Create Your Shipment Certificate
             </DialogTitle>
             <DialogContent>
               <Certificate />

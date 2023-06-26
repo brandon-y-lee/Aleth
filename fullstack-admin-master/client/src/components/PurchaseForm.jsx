@@ -33,7 +33,6 @@ const PurchaseForm = ({ onSearch }) => {
         justifyContent="space-between"
         p="1.25rem 1rem"
         flex="1 1 100%"
-        borderRadius="0.55rem"
         backgroundColor={theme.palette.background.alt}
         component="form"
         onSubmit={formik.handleSubmit}

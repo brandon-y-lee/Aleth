@@ -31,9 +31,9 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/order" element={<Order />} />
               <Route path="/shipments" element={<Shipments />} />
-              <Route path="/entity" element={<Customers />} />
-              <Route path="/templates" element={<Products />} />
-              <Route path="/overview" element={<Overview />} />
+              <Route path="/tracing" element={<Customers />} />
+              <Route path="/templates" element={<Overview />} />
+              <Route path="/products" element={<Products />} />
               <Route path="/daily" element={<Daily />} />
               <Route path="/monthly" element={<Monthly />} />
               <Route path="/breakdown" element={<Breakdown />} />

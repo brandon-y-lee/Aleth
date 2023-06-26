@@ -1,137 +1,241 @@
-import React, { useState } from "react";
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  Collapse,
-  Button,
-  Typography,
-  Rating,
-  useTheme,
-  useMediaQuery,
+import React, { useState, useEffect } from "react";
+import Session from 'react-session-api';
+import { 
+  Box, 
+  useMediaQuery, 
+  useTheme 
 } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
+import { useGetTransactionsQuery, useGetChainOfShipmentsQuery, useGetIncomingRequestsQuery } from "state/api";
 import Header from "components/Header";
-import { useGetProductsQuery } from "state/api";
+import Map from "components/SellerView/Map";
+import DataGridCustomToolbar from "components/DataGridCustomToolbar";
+import ActionMenu from "components/SellerView/ActionMenu";
+import ActionMenuIncomingOrders from "components/SellerView/ActionMenuIncomingOrders";
+import FlexBetween from "components/FlexBetween";
+import CertificateButton from "components/Certificate/CertificateButton";
+import Chip from '@mui/material/Chip';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import TabPanel from 'components/Common/TabPanel';
+import { OrderStatus } from "configs/OrderStatus";
+import { RequestType } from "configs/RequestType";
+import Order from "scenes/order";
 
-const Product = ({
-  _id,
-  name,
-  description,
-  price,
-  rating,
-  category,
-  supply,
-  stat,
-}) => {
-  const theme = useTheme();
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  return (
-    <Card
-      sx={{
-        backgroundImage: "none",
-        backgroundColor: theme.palette.background.alt,
-        borderRadius: "0.55rem",
-      }}
-    >
-      <CardContent>
-        <Typography
-          sx={{ fontSize: 14 }}
-          color={theme.palette.secondary[700]}
-          gutterBottom
-        >
-          {category}
-        </Typography>
-        <Typography variant="h5" component="div">
-          {name}
-        </Typography>
-        <Typography sx={{ mb: "1.5rem" }} color={theme.palette.secondary[400]}>
-          ${Number(price).toFixed(2)}
-        </Typography>
-        <Rating value={rating} readOnly />
-
-        <Typography variant="body2">{description}</Typography>
-      </CardContent>
-      <CardActions>
-        <Button
-          variant="primary"
-          size="small"
-          onClick={() => setIsExpanded(!isExpanded)}
-        >
-          See More
-        </Button>
-      </CardActions>
-      <Collapse
-        in={isExpanded}
-        timeout="auto"
-        unmountOnExit
-        sx={{
-          color: theme.palette.neutral[300],
-        }}
-      >
-        <CardContent>
-          <Typography>id: {_id}</Typography>
-          <Typography>Supply Left: {supply}</Typography>
-          <Typography>
-            Yearly Sales This Year: {stat.yearlySalesTotal}
-          </Typography>
-          <Typography>
-            Yearly Units Sold This Year: {stat.yearlyTotalSoldUnits}
-          </Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
-  );
-};
+Session.set("username","2");
 
 const Products = () => {
-  const { data, isLoading } = useGetProductsQuery();
-  const isNonMobile = useMediaQuery("(min-width: 1000px)");
+  const userId = Session.get("username");
+  const theme = useTheme();
+
+  /* HOOKS */
+  const [page, setPage] = useState(0);
+  const [pageSize, setPageSize] = useState(20);
+
+  const [sort, setSort] = useState({});
+  const [search, setSearch] = useState("");
+  const [coordinates, setCoordinates] = useState([]);
+  const [selectedShipmentId, setSelectedShipmentId] = useState("TR2023019QXZZFR");
+  const [selectedId, setSelectedId] = useState("TR2023019QXZZFR");
+  const [value, setValue] = React.useState(0);
+  const [searchInput, setSearchInput] = useState("");
+  const [selectedOrder, setSelectedOrder] = useState("");
+
+  const { data, isLoading } = useGetTransactionsQuery({
+    page,
+    pageSize,
+    sort: JSON.stringify(sort),
+    search,
+    userId: userId
+  });
+  
+  let {data: locations, isLoading: isLoadingNew} = useGetChainOfShipmentsQuery(selectedShipmentId);
+  let {data: incomingOrders, isLoading: isLoadingIncomingOrders} = useGetIncomingRequestsQuery({userId});
+
+  if(locations ===  undefined)
+    locations = {"shipmentChain":[]}
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  function a11yProps(index) {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+    };
+  }
+
+  useEffect(() =>  { 
+  }, [selectedShipmentId]);
+
+  const outgoingShipmentColumns = [
+    {
+      field: "id",
+      headerName: "ID",
+      flex: 1,
+    },
+    {
+      field: "recipientId",
+      headerName: "Recipient ID",
+      flex: 1,
+    },
+    {
+      field: "material",
+      headerName: "Material",
+      flex: 1,
+    },
+    {
+      field: "amount",
+      headerName: "Amount",
+      flex: 0.5,
+      sortable: false,
+      renderCell: (params) => params.value.length,
+    },
+    {
+      field: "unit",
+      headerName: "Unit",
+      flex: 0.5,
+    },
+    {
+      field: "orderStatus",
+      headerName: "Order Status",
+      flex: 0.5,
+      renderCell: (params) => {
+        console.log(params.value);
+        if(params.value == 0)
+          return (<Chip label="Draft" color="warning"/>)
+        if(params.value == 1)
+          return (<Chip label="Submitted" color="info"/>)
+        if(params.value == 2)
+          return (<Chip label="Validated" color="success"/>)
+        if(params.value == 3)
+          return (<Chip label="Error" color="error"/>)
+    },
+    },
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      flex: 0.5,
+      renderCell: (params) => (
+        <ActionMenu receivingOrderId={selectedId}/>
+      ),
+    },
+  ];
+
+  const incomingRequestColumns = [
+    {
+      field: "_id",
+      headerName: "OrderID",
+      flex: 1,
+    },
+    {
+      field: "buyerId",
+      headerName: "Buyer ID",
+      flex: 1,
+    },
+    {
+      field: "material",
+      headerName: "Material",
+      flex: 1,
+    },
+    {
+      field: "quantity",
+      headerName: "Quantity",
+      flex: 0.5,
+      sortable: false,
+      renderCell: (params) => params.value.length,
+    },
+    {
+      field: "sellerStatuses",
+      headerName: "Order Status",
+      flex: 0.5,
+      renderCell: (params) => {
+        const sellerStatus = params.value[userId];
+        console.log(sellerStatus);
+        console.log(OrderStatus.SELLERDENIED);
+        console.log(sellerStatus == OrderStatus.SELLERDENIED);
+        if(params.value[userId] == OrderStatus.SELLERACCEPT)
+          return (<Chip label="You Accepted" color="info"/>)
+        if(params.value[userId] == OrderStatus.NEWORDER)
+          return (<Chip label="New Order" color="success"/>)
+        if(params.value[userId] == OrderStatus.BUYERACCEPT)
+          return (<Chip label="Buyer Accepted" color="success"/>)
+        if(params.value[userId] == OrderStatus.SELLERDENIED)
+          return (<Chip label="You Rejected" color="warning"/>)
+        if(params.value[userId] == OrderStatus.BUYERDENIED)
+          return (<Chip label="Order Rejected" color="error"/>)
+      },
+    },
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      flex: 0.5,
+      renderCell: (params) => {
+        console.log(params);
+        return (<ActionMenuIncomingOrders orderData={params.row}/>)},
+    },
+  ];
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="PRODUCTS" subtitle="See your list of products." />
-      {data || !isLoading ? (
-        <Box
-          mt="20px"
-          display="grid"
-          gridTemplateColumns="repeat(4, minmax(0, 1fr))"
-          justifyContent="space-between"
-          rowGap="20px"
-          columnGap="1.33%"
-          sx={{
-            "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+      <Header title="PRODUCTS"/>
+
+      <Box
+        height="80vh"
+        sx={{
+          "& .MuiDataGrid-root": {
+            border: "none",
+          },
+          "& .MuiDataGrid-cell": {
+            borderBottom: "none",
+          },
+          "& .MuiDataGrid-columnHeaders": {
+            backgroundColor: theme.palette.background.alt,
+            color: theme.palette.secondary[100],
+            borderBottom: "none",
+          },
+          "& .MuiDataGrid-virtualScroller": {
+            backgroundColor: theme.palette.primary.light,
+          },
+          "& .MuiDataGrid-footerContainer": {
+            backgroundColor: theme.palette.background.alt,
+            color: theme.palette.secondary[100],
+            borderTop: "none",
+          },
+          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+            color: `${theme.palette.secondary[200]} !important`,
+          },
+        }}
+      >
+        <DataGrid
+          loading={isLoading || !data}
+          getRowId={(row) => Math.random()}
+          rows={(data && data.transactions) || []}
+          columns={outgoingShipmentColumns}
+          rowCount={(data && data.total) || 0}
+          rowsPerPageOptions={[20, 50, 100]}
+          pagination
+          page={page}
+          pageSize={pageSize}
+          paginationMode="server"
+          sortingMode="server"
+          onPageChange={(newPage) => setPage(newPage)}
+          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+          onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+          components={{ Toolbar: DataGridCustomToolbar }}
+          componentsProps={{
+            toolbar: { searchInput, setSearchInput, setSearch },
           }}
-        >
-          {data.map(
-            ({
-              _id,
-              name,
-              description,
-              price,
-              rating,
-              category,
-              supply,
-              stat,
-            }) => (
-              <Product
-                key={_id}
-                _id={_id}
-                name={name}
-                description={description}
-                price={price}
-                rating={rating}
-                category={category}
-                supply={supply}
-                stat={stat}
-              />
-            )
-          )}
-        </Box>
-      ) : (
-        <>Loading...</>
-      )}
+          onRowClick={(row)=>{
+            setSelectedShipmentId(row.row.shipmentID);
+            setSelectedId(row.row.id);
+            setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
+          }
+        />
+      </Box>
     </Box>
   );
 };

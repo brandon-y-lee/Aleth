@@ -121,7 +121,7 @@ const OrderMap = (props) => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={8}>
-                <div ref={mapRef} style={{ height: "100%", width: "100%", borderRadius: "0.55rem" }}/>
+                <div ref={mapRef} style={{ height: "100%", width: "100%" }}/>
             </Grid>
             <Grid item xs={4}>
                 <PurchaseForm onSearch={handleSearch} />
