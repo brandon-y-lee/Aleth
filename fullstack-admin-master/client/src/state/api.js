@@ -67,12 +67,12 @@ export const api = createApi({
     }),
 
     getOrderSellerDetails: build.query({
-      query: ({ sellerStatuses }) => ({
+      query: ({ orderId }) => ({
         url: "client/orderSellerDetails",
         method: "GET",
-        params: { sellerStatuses },
+        params: { orderId },
       }),
-      providesTags: ["IncomingRequests"],
+      providesTags: ["SellerDetails"],
     }),
 
     getPurchaseOrders: build.query({
@@ -165,6 +165,7 @@ export const {
   useGenerateNewShipmentMutation,
   useGetPurchaseOrdersQuery,
   useGetEligibleSellersQuery,
+  useGetOrderSellerDetailsQuery,
   useUpdateOrderMutation,
   useGetRecipientTransactionsQuery,
   useGetChainOfShipmentsQuery,

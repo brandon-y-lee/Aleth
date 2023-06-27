@@ -129,15 +129,13 @@ const OrderMap = (props) => {
         };
     }, [props]);
 
-    const formComponent = props.value===0?<PurchaseForm onSearch={props.handleSearch} /> : <OrderDetails orders={props.purchaseOrders}/>
-
     return (
         <Grid container spacing={2}>
             <Grid item xs={8}>
                 <div ref={mapRef} style={{ height: "50vh", width: "100%" }}/>
             </Grid>
             <Grid item xs={4}>
-                {props.selectedTab === 0 ? <PurchaseForm onSearch={props.handleSearch} /> : <SupplierList orderId="12345" pending="10" accepted="5" rejected="2" locations="fetch locations for PO ID" />}
+                {props.selectedTab === 0 ? <PurchaseForm onSearch={props.handleSearch} /> : <SupplierList orderId={props.orderId}/>}
             </Grid>
         </Grid>
     );

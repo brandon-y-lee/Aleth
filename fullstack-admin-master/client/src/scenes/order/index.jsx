@@ -179,7 +179,7 @@ const Order = () => {
       
       <Box m="1.5rem 2.5rem">
         <Box mt="2rem">
-          <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResults} value={value} handleSearch={handleSearch} purchaseOrders={purchaseOrders}/>
+          <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResults} handleSearch={handleSearch} purchaseOrders={purchaseOrders} orderId={orderId}/>
         </Box>
 
         <Box>
@@ -319,6 +319,7 @@ const Order = () => {
                 toolbar: { searchInput, setSearchInput, setSearch },
               }}
               onRowClick={(row)=>{
+                console.log(row.row);
                   setOrderId(row.row._id);
                 }}
             />
