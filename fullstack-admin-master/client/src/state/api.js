@@ -66,6 +66,15 @@ export const api = createApi({
       providesTags: ["IncomingRequests"],
     }),
 
+    getOrderSellerDetails: build.query({
+      query: ({ sellerStatuses }) => ({
+        url: "client/orderSellerDetails",
+        method: "GET",
+        params: { sellerStatuses },
+      }),
+      providesTags: ["IncomingRequests"],
+    }),
+
     getPurchaseOrders: build.query({
       query: ({ userId }) => ({
         url: "client/getPurchaseOrders",

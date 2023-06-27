@@ -100,10 +100,11 @@ export const getEligibleSellers = async (req, res) => {
 //TODO: Fix this to find out the set of eligible sellers
 export const getPurchaseOrders = async (req, res) => {
   try {
-    console.log("Fetching purchase orders", req.body);
-    const {userId} = req.body;
+    console.log("Fetching purchase orders", req.query);
+    const {userId} = req.query;
 
     const allOrders = await OrderRequest.find({buyerId:userId});
+    console.log(allOrders);
     res.status(200).json({allOrders});
     }
   catch (error) {
@@ -146,6 +147,23 @@ export const getRecipientTransactions = async (req, res) => {
   }
 };
 
+//Get the details of the sellers who have accepted or rejected the purchase orders
+export const getOrderSellerDetails = async (req, res) => {
+  try {
+    const {sellerList} = req.query;
+    let userData = [];
+    for(const seller of sellerList)
+    {
+      const userDeet = await UserData.find({userId:seller});
+      userData.push(userDeet); 
+    }    
+    res.status(200).json({
+      userData
+    });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 
 //Fetch the chain of orders which share a common Shipment ID
 export const getChainOfShipments = async (req, res) => {

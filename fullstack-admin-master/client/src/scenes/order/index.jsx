@@ -35,7 +35,7 @@ const Order = () => {
   const [pageSize, setPageSize] = useState(20);
   const [sort, setSort] = useState({});
   const [value, setValue] = React.useState(0);
-
+  const [orderId, setOrderId] = useState();
   const [search, setSearch] = useState("");
   const [selectedTab, setSelectedTab] = useState(0);
 
@@ -44,7 +44,7 @@ const Order = () => {
 
   let {data: purchaseOrders, isLoading: isLoadingPurchaseOrders} = useGetPurchaseOrdersQuery({userId});
   let {data: searchResults, isLoading: isLoadingSearchResults} = useGetEligibleSellersQuery({material: formData.material ? formData.material : undefined})
-
+  
   const getSearchCoordinates = (data) => {
     if(data === undefined)
       return {};
@@ -73,16 +73,16 @@ const Order = () => {
       headerName: "OrderID",
       flex: 1,
     },
-    {
-      field: "style",
-      headerName: "Style",
-      flex: 0.75,
-    },
-    {
-      field: "description",
-      headerName: "Description",
-      flex: 1,
-    },
+    // {
+    //   field: "style",
+    //   headerName: "Style",
+    //   flex: 0.75,
+    // },
+    // {
+    //   field: "description",
+    //   headerName: "Description",
+    //   flex: 1,
+    // },
     {
       field: "material",
       headerName: "Material",
@@ -98,7 +98,7 @@ const Order = () => {
       headerName: "Amount",
       flex: 0.5,
       sortable: false,
-      renderCell: (params) => params.value.length,
+      // renderCell: (params) => params.value.length,
     },
     {
       field: "unit",
@@ -161,7 +161,7 @@ const Order = () => {
       headerName: "Location",
       flex: 0.5,
       sortable: false,
-      renderCell: (params) => params.value.length,
+      // renderCell: (params) => params.value.length,
     }
   ];
 
@@ -179,7 +179,7 @@ const Order = () => {
       
       <Box m="1.5rem 2.5rem">
         <Box mt="2rem">
-          <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResults} handleSearch={handleSearch}/>
+          <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResults} value={value} handleSearch={handleSearch} purchaseOrders={purchaseOrders}/>
         </Box>
 
         <Box>
@@ -318,9 +318,9 @@ const Order = () => {
               componentsProps={{
                 toolbar: { searchInput, setSearchInput, setSearch },
               }}
-              /* onRowClick={(row) => {
-                  setSelectedOrder(row.row._id);
-                } */
+              onRowClick={(row)=>{
+                  setOrderId(row.row._id);
+                }}
             />
           </Box>
         </TabPanel>
