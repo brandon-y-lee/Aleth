@@ -6,15 +6,11 @@ import SupplierList from './SupplierList';
 
 // Replace the path prop with actual data
 const OrderMap = (props) => {
+    console.log(props);
     const mapRef = useRef(null);
     const markersRef = useRef([]);
     const [activeMarkerIndex, setActiveMarkerIndex] = useState(null);
     const [hoveredMarkerIndex, setHoveredMarkerIndex] = useState(null);
-
-    const handleSearch = (values) => {
-        {/* Call your backend API with the form values
-            Update the map markers with the response */}
-    }
 
     const handleKeyDown = (event) => {
         // Check if the target of the event is a marker
@@ -61,9 +57,9 @@ const OrderMap = (props) => {
 
         var bounds = new window.google.maps.LatLngBounds();
 
-        // Create markers and polyline
-        if (props.locations && props.locations.shipmentChain) {
-            markersRef.current = props.locations.shipmentChain.map((point, index) => {
+        // Create markers
+        if (props.locations && props.locations.eligibleSellers) {
+            markersRef.current = props.locations.eligibleSellers.map((point, index) => {
                 const position = {
                     lat: parseFloat(point.coordinates[0].$numberDecimal), 
                     lng: parseFloat(point.coordinates[1].$numberDecimal)
@@ -96,6 +92,19 @@ const OrderMap = (props) => {
                 return marker;
             });
 
+            markersRef.current.push(
+                new window.google.maps.Marker({
+                    position: { lat: props.coordinates[0], lng: props.coordinates[1] },
+                    map,
+                    title: "Your Location",
+                    icon: {
+                        url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+                    },
+                })
+            );            
+
+            console.log(markersRef.current);            
+
             map.fitBounds(bounds);
         }
 
@@ -125,7 +134,7 @@ const OrderMap = (props) => {
                 <div ref={mapRef} style={{ height: "100%", width: "100%" }}/>
             </Grid>
             <Grid item xs={4}>
-                {props.selectedTab === 0 ? <PurchaseForm onSearch={handleSearch} /> : <SupplierList orderId="12345" pending="10" accepted="5" rejected="2" locations={props.locations.shipmentChain} />}
+                {props.selectedTab === 0 ? <PurchaseForm onSearch={props.handleSearch} /> : <SupplierList orderId="12345" pending="10" accepted="5" rejected="2" locations="fetch locations for PO ID" />}
             </Grid>
         </Grid>
     );

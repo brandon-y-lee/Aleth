@@ -3,26 +3,25 @@ import { Avatar, Box, Typography, Card, CardContent, CardHeader } from '@mui/mat
 
 const SupplierList = ({ orderId, pending, accepted, rejected, locations }) => {
   return (
-    <Card sx={{ boxShadow: 1, minHeight: '550px', maxHeight: '100%', overflow: 'auto' }}>
+    <Card sx={{ boxShadow: 1, minHeight: '490px', maxHeight: '100%', overflow: 'auto' }}>
       <CardHeader
         title={`Order Request ID: ${orderId}`}
         subheader={`Pending: ${pending} | Accepted: ${accepted} | Rejected: ${rejected}`}
       />
       <CardContent>
-        <Box>
+        {/* <Box>
           {locations.map((location, index) => (
             <Box key={index} display="flex" alignItems="center" mb={2}>
-              <Avatar src={location.avatar} /> {/* Replace with actual avatar path if available */}
-              <Box ml={2}>
+              <Avatar src={location.avatar} /> 
                 <Typography variant="body1">{location.name}</Typography>
-                <Typography variant="body2" color="textSecondary">{location.material}</Typography> {/* Display material */}
+                <Typography variant="body2" color="textSecondary">{location.material}</Typography>
               </Box>
               <Box ml="auto">
-                <Typography variant="body1">{location.amount}</Typography> {/* Replace with actual amount if available */}
+                <Typography variant="body1">{location.amount}</Typography>
               </Box>
             </Box>
           ))}
-        </Box>
+        </Box> */}
       </CardContent>
     </Card>
   );

@@ -28,6 +28,7 @@ const ActionMenuIncomingOrders = (props) => {
     };
 
     const handleAccept = () => {
+        window.confirm("Accept Order?");
         updateOrder({ requestType: RequestType.SELLERACCPET, sellerIds:[userId], orderId:[props.orderData._id], isSeller: true })
           .unwrap()
           .then(() => {
@@ -41,6 +42,7 @@ const ActionMenuIncomingOrders = (props) => {
       };
 
     const handleReject = () => {
+        // console.log(this);
         updateOrder({ requestType: RequestType.SELLERREJECT, sellerIds:[userId], orderId:[props.orderData._id], isSeller: true })
           .unwrap()
           .then(() => {

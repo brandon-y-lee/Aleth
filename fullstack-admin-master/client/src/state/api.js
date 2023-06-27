@@ -66,6 +66,15 @@ export const api = createApi({
       providesTags: ["IncomingRequests"],
     }),
 
+    getPurchaseOrders: build.query({
+      query: ({ userId }) => ({
+        url: "client/getPurchaseOrders",
+        method: "GET",
+        params: { userId },
+      }),
+      providesTags: ["PurchaseOrders"],
+    }),
+
     updateRecipients: build.mutation({
       query: ({ senders, receivingOrderId }) => ({
         url: "client/updateRecipients",
@@ -145,6 +154,8 @@ export const {
   useGetTransactionsQuery,
   useUpdateRecipientsMutation,
   useGenerateNewShipmentMutation,
+  useGetPurchaseOrdersQuery,
+  useGetEligibleSellersQuery,
   useUpdateOrderMutation,
   useGetRecipientTransactionsQuery,
   useGetChainOfShipmentsQuery,

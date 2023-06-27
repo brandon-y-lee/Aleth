@@ -25,7 +25,7 @@ const PurchaseForm = ({ onSearch }) => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <Box
+      {/* <Box
         gridColumn="span 4"
         gridRow="span 3"
         display="flex"
@@ -36,7 +36,7 @@ const PurchaseForm = ({ onSearch }) => {
         backgroundColor={theme.palette.background.alt}
         component="form"
         onSubmit={formik.handleSubmit}
-      >
+      > */}
         <TextField
           margin="normal"
           required
@@ -111,7 +111,7 @@ const PurchaseForm = ({ onSearch }) => {
         >
           Reset
         </Button>
-      </Box>
+      {/* </Box> */}
     </form>
   );
 };
