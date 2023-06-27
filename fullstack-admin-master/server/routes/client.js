@@ -8,6 +8,7 @@ import {
   getProducts,
   getIncomingRequests,
   getChainOfShipments,
+  getPurchaseOrders,
   getRecipientTransactions,
   updateOrder,
   getEligibleSellers
@@ -25,6 +26,7 @@ router.get("/entity", getCustomers);
 router.get("/templates", getProducts);
 router.get("/chainOfShipments", getChainOfShipments);
 router.get("/getIncomingRequests", getIncomingRequests);
+router.get("/getPurchaseOrders", getPurchaseOrders)
 router.get("/eligibleSellers", getEligibleSellers);
 
 //POSTs

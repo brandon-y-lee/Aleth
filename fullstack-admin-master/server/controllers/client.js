@@ -85,11 +85,26 @@ export const getTransactions = async (req, res) => {
 //TODO: Fix this to find out the set of eligible sellers
 export const getEligibleSellers = async (req, res) => {
   try {
-    console.log("Generating new shipment", req.body);
-    const {material} = req.body;
+    console.log("Finding Eligible Sellers", req.query);
+    const {material} = req.query;
 
     const eligibleSellers = await UserData.find({material:material});
+    console.log(eligibleSellers);
     res.status(200).json({eligibleSellers});
+    }
+  catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+//TODO: Fix this to find out the set of eligible sellers
+export const getPurchaseOrders = async (req, res) => {
+  try {
+    console.log("Fetching purchase orders", req.body);
+    const {userId} = req.body;
+
+    const allOrders = await OrderRequest.find({buyerId:userId});
+    res.status(200).json({allOrders});
     }
   catch (error) {
     res.status(404).json({ message: error.message });
