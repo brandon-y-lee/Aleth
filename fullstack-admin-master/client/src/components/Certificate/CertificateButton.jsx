@@ -32,10 +32,10 @@ const CertificateButton = () => {
           <FlexBetween gap="1rem">
             <Button
               sx={{
-                backgroundColor: theme.palette.secondary.light,
-                color: theme.palette.background.alt,
+                backgroundColor: theme.palette.secondary[200],
+                color: "white",
                 fontSize: "14px",
-                fontWeight: "bold",
+                fontWeight: "semibold",
                 padding: "10px 20px",
               }}
               onClick={handleCertificateClick}

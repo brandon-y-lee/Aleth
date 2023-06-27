@@ -76,21 +76,31 @@ const Order = () => {
     console.log(locations);
   },[selectedShipmentId]);
 
-  const outgoingShipmentColumns = [
+  const orderRequestColumns = [
     {
-      field: "id",
-      headerName: "ID",
-      flex: 1,
+      field: "orderId",
+      headerName: "Order ID",
+      flex: 0.75,
     },
     {
-      field: "recipientId",
-      headerName: "Recipient ID",
+      field: "style",
+      headerName: "Style",
+      flex: 0.75,
+    },
+    {
+      field: "description",
+      headerName: "Description",
       flex: 1,
     },
     {
       field: "material",
       headerName: "Material",
-      flex: 1,
+      flex: 0.75,
+    },
+    {
+      field: "color",
+      headerName: "Color",
+      flex: 0.75,
     },
     {
       field: "amount",
@@ -102,6 +112,11 @@ const Order = () => {
     {
       field: "unit",
       headerName: "Unit",
+      flex: 0.5,
+    },
+    {
+      field: "price",
+      headerName: "Price",
       flex: 0.5,
     },
     {
@@ -189,7 +204,7 @@ const Order = () => {
   return (
     <Box>
       <Box 
-        height="17vh"
+        height="16vh"
         p="2.5rem 2.5rem"
         sx={{
           background: `linear-gradient(215deg, ${theme.palette.secondary[400]} 30%, ${theme.palette.primary[500]} 90%)`,
@@ -214,11 +229,11 @@ const Order = () => {
               {...a11yProps(0)}
               sx={{
                 color: "#00994c",
-                backgroundColor: value === 0 ? "#cccccc" : "white",
+                backgroundColor: value === 0 ? "#00cc69" : "white",
                 borderColor: 'divider',
                 borderBottom: 1,
                 '&:hover': {
-                  backgroundColor: '#e0e0e0', // Change this to the color you want when hovering
+                  backgroundColor: '#00cc69', // Change this to the color you want when hovering
                 },
               }}
             />
@@ -227,7 +242,7 @@ const Order = () => {
               {...a11yProps(1)}
               sx={{
                 color: "#00994c",
-                backgroundColor: value === 1 ? "#cccccc" : "white",
+                backgroundColor: value === 1 ? "#00cc69" : "white",
                 borderColor: 'divider',
                 borderBottom: 1,
                 '&:hover': {
@@ -270,7 +285,7 @@ const Order = () => {
               loading={isLoading || !data}
               getRowId={(row) => Math.random()}
               rows={(data && data.transactions) || []}
-              columns={outgoingShipmentColumns}
+              columns={orderRequestColumns}
               rowCount={(data && data.total) || 0}
               rowsPerPageOptions={[20, 50, 100]}
               pagination
@@ -332,17 +347,19 @@ const Order = () => {
               pagination
               page={1}
               pageSize={20}
+              checkboxSelection
               paginationMode="server"
               sortingMode="server"
-              // onPageChange={(newPage) => setPage(newPage)}
-              // onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-              // onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+              onPageChange={(newPage) => setPage(newPage)}
+              onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+              onSortModelChange={(newSortModel) => setSort(...newSortModel)}
               components={{ Toolbar: DataGridCustomToolbar }}
               componentsProps={{
                 toolbar: { searchInput, setSearchInput, setSearch },
               }}
-              // onRowClick={(row)=>{
-              //   setSelectedOrder(row.row._id);
+              /* onRowClick={(row)=>{
+                  setSelectedOrder(row.row._id);
+                } */
             />
           </Box>
         </TabPanel>
