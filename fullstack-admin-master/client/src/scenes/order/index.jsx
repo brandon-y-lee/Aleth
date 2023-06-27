@@ -42,6 +42,7 @@ const Order = () => {
   const [coordinates, setCoordinates] = useState([]);
   const [selectedShipmentId, setSelectedShipmentId] = useState("TR2023019QXZZFR");
   const [selectedId, setSelectedId] = useState("TR2023019QXZZFR");
+  const [selectedTab, setSelectedTab] = useState(0);
 
   const [searchInput, setSearchInput] = useState("");
 
@@ -53,16 +54,19 @@ const Order = () => {
     userId: userId
   });
 
-  console.log(data);
+  // console.log(data);
+
   let {data: locations, isLoading: isLoadingNew} = useGetChainOfShipmentsQuery(selectedShipmentId);
   let {data: incomingOrders, isLoading: isLoadingIncomingOrders} = useGetIncomingRequestsQuery({userId});
 
+  console.log(locations);
 
   if(locations ===  undefined)
     locations = {"shipmentChain":[]}
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    setSelectedTab(newValue);
   };
 
   function a11yProps(index) {
@@ -215,7 +219,7 @@ const Order = () => {
       
       <Box m="1.5rem 2.5rem">
         <Box mt="2rem">
-          <OrderMap coordinates={coordinates} locations={locations}/>
+          <OrderMap selectedTab={selectedTab} coordinates={coordinates} locations={locations}/>
         </Box>
 
         <Box>
@@ -225,7 +229,7 @@ const Order = () => {
             aria-label="basic tabs example"
           >
             <Tab 
-              label="Order Requests"
+              label="Search Results"
               {...a11yProps(0)}
               sx={{
                 color: "#00994c",
@@ -238,7 +242,7 @@ const Order = () => {
               }}
             />
             <Tab
-              label="Search Results"
+              label="Order Requests"
               {...a11yProps(1)}
               sx={{
                 color: "#00994c",
@@ -253,7 +257,7 @@ const Order = () => {
           </Tabs>
         </Box>
 
-        <TabPanel value={value} index={0}>
+        <TabPanel value={value} index={1}>
           <Box
             height="70vh"
             sx={{
@@ -309,7 +313,7 @@ const Order = () => {
           </Box>
         </TabPanel>
 
-        <TabPanel value={value} index={1}>
+        <TabPanel value={value} index={0}>
           <Box
             height="70vh"
             sx={{
