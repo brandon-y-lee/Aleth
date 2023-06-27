@@ -200,7 +200,7 @@ const Shipments = () => {
   return (
     <Box>
       <Box 
-        height="17vh"
+        height="16vh"
         p="2.5rem 2.5rem"
         sx={{
           background: `linear-gradient(215deg, ${theme.palette.secondary[400]} 30%, ${theme.palette.primary[500]} 90%)`,
@@ -228,7 +228,7 @@ const Shipments = () => {
               {...a11yProps(0)}
               sx={{
                 color:"#00994c",
-                backgroundColor : value === 0 ? "#cccccc" : "white",
+                backgroundColor : value === 0 ? "#00cc69" : "white",
                 borderColor: 'divider',
                 borderBottom: 1,
                 '&:hover': {
@@ -241,7 +241,7 @@ const Shipments = () => {
             {...a11yProps(1)}
             sx={{
               color:"#00994c",
-              backgroundColor : value === 1 ? "#cccccc" : "white",
+              backgroundColor : value === 1 ? "#00cc69" : "white",
               borderColor: 'divider',
                 borderBottom: 1,
                 '&:hover': {

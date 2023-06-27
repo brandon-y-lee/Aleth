@@ -24,7 +24,7 @@ import { OrderStatus } from "configs/OrderStatus";
 
 
 Session.set("username", "2");
-Session.set("coordinates", [17.2064912,22.1782433])
+Session.set("coordinates", [17.2064912,22.1782433]);
 
 const Order = () => {
   const userId = Session.get("username");
@@ -79,16 +79,41 @@ const Order = () => {
       flex: 1,
     },
     {
-      field: "material",
-      headerName: "Material",
+      field: "style",
+      headerName: "Style",
+      flex: 0.75,
+    },
+    {
+      field: "description",
+      headerName: "Description",
       flex: 1,
     },
     {
-      field: "quantity",
-      headerName: "Quantity",
+      field: "material",
+      headerName: "Material",
+      flex: 0.75,
+    },
+    {
+      field: "color",
+      headerName: "Color",
+      flex: 0.75,
+    },
+    {
+      field: "amount",
+      headerName: "Amount",
       flex: 0.5,
       sortable: false,
       renderCell: (params) => params.value.length,
+    },
+    {
+      field: "unit",
+      headerName: "Unit",
+      flex: 0.5,
+    },
+    {
+      field: "price",
+      headerName: "Price",
+      flex: 0.5,
     },
     {
       field: "orderStatus",
@@ -148,7 +173,7 @@ const Order = () => {
   return (
     <Box>
       <Box 
-        height="17vh"
+        height="16vh"
         p="2.5rem 2.5rem"
         sx={{
           background: `linear-gradient(215deg, ${theme.palette.secondary[400]} 30%, ${theme.palette.primary[500]} 90%)`,
@@ -173,11 +198,11 @@ const Order = () => {
               {...a11yProps(0)}
               sx={{
                 color: "#00994c",
-                backgroundColor: value === 0 ? "#cccccc" : "white",
+                backgroundColor: value === 0 ? "#00cc69" : "white",
                 borderColor: 'divider',
                 borderBottom: 1,
                 '&:hover': {
-                  backgroundColor: '#e0e0e0', // Change this to the color you want when hovering
+                  backgroundColor: '#00cc69', // Change this to the color you want when hovering
                 },
               }}
             />
@@ -186,7 +211,7 @@ const Order = () => {
               {...a11yProps(1)}
               sx={{
                 color: "#00994c",
-                backgroundColor: value === 1 ? "#cccccc" : "white",
+                backgroundColor: value === 1 ? "#00cc69" : "white",
                 borderColor: 'divider',
                 borderBottom: 1,
                 '&:hover': {
@@ -195,77 +220,9 @@ const Order = () => {
               }}
             />
 
-            {/* <Tab
-              label="Search Results"
-              {...a11yProps(2)}
-              sx={{
-                color: "#00994c",
-                backgroundColor: value === 1 ? "#cccccc" : "white",
-                borderColor: 'divider',
-                borderBottom: 1,
-                '&:hover': {
-                  backgroundColor: '#e0e0e0', // Change this to the color you want when hovering
-                },
-              }}
-            /> */}
+      
           </Tabs>
         </Box>
-
-        {/* <TabPanel value={value} index={0}>
-          <Box
-            height="70vh"
-            sx={{
-              "& .MuiDataGrid-root": {
-                border: "none",
-              },
-              "& .MuiDataGrid-cell": {
-                borderBottom: "none",
-              },
-              "& .MuiDataGrid-columnHeaders": {
-                backgroundColor: theme.palette.background.alt,
-                color: theme.palette.secondary[100],
-                borderBottom: "none",
-              },
-              "& .MuiDataGrid-virtualScroller": {
-                backgroundColor: theme.palette.primary.light,
-              },
-              "& .MuiDataGrid-footerContainer": {
-                backgroundColor: theme.palette.background.alt,
-                color: theme.palette.secondary[100],
-                borderTop: "none",
-              },
-              "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-                color: `${theme.palette.secondary[200]} !important`,
-              },
-            }}
-          >
-            <DataGrid
-              loading={isLoading || !data}
-              getRowId={(row) => Math.random()}
-              rows={(data && data.transactions) || []}
-              columns={outgoingShipmentColumns}
-              rowCount={(data && data.total) || 0}
-              rowsPerPageOptions={[20, 50, 100]}
-              pagination
-              page={page}
-              pageSize={pageSize}
-              paginationMode="server"
-              sortingMode="server"
-              onPageChange={(newPage) => setPage(newPage)}
-              onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-              onSortModelChange={(newSortModel) => setSort(...newSortModel)}
-              components={{ Toolbar: DataGridCustomToolbar }}
-              componentsProps={{
-                toolbar: { searchInput, setSearchInput, setSearch },
-              }}
-              onRowClick={(row)=>{
-                setSelectedShipmentId(row.row.shipmentID);
-                setSelectedId(row.row.id);
-                setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
-              }
-            />
-          </Box>
-        </TabPanel> */}
 
         <TabPanel value={value} index={0}>
           <Box
@@ -358,17 +315,19 @@ const Order = () => {
               pagination
               page={1}
               pageSize={20}
+              checkboxSelection
               paginationMode="server"
               sortingMode="server"
-              // onPageChange={(newPage) => setPage(newPage)}
-              // onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-              // onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+              onPageChange={(newPage) => setPage(newPage)}
+              onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+              onSortModelChange={(newSortModel) => setSort(...newSortModel)}
               components={{ Toolbar: DataGridCustomToolbar }}
               componentsProps={{
                 toolbar: { searchInput, setSearchInput, setSearch },
               }}
-              // onRowClick={(row)=>{
-              //   setSelectedOrder(row.row._id);
+              /* onRowClick={(row)=>{
+                  setSelectedOrder(row.row._id);
+                } */
             />
           </Box>
         </TabPanel>
