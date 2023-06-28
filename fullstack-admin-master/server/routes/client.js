@@ -11,7 +11,8 @@ import {
   getPurchaseOrders,
   getRecipientTransactions,
   updateOrder,
-  getEligibleSellers
+  getEligibleSellers,
+  getOrderSellerDetails
 } from "../controllers/client.js";
 
 const router = express.Router();
@@ -28,6 +29,7 @@ router.get("/chainOfShipments", getChainOfShipments);
 router.get("/getIncomingRequests", getIncomingRequests);
 router.get("/getPurchaseOrders", getPurchaseOrders)
 router.get("/eligibleSellers", getEligibleSellers);
+router.get("/orderSellerDetails", getOrderSellerDetails);
 
 //POSTs
 router.post("/updateRecipients", updateRecipients);

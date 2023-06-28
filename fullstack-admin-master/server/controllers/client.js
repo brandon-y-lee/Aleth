@@ -8,6 +8,7 @@ import OrderRequest from "../models/OrderRequest.js";
 import getCountryIso3 from "country-iso-2-to-3";
 import { OrderStatus } from "../configs/OrderStatus.js";
 import {RequestType} from "../configs/RequestType.js";
+import mongoose from "mongoose";
 
 
 export const getProducts = async (req, res) => {
@@ -100,10 +101,11 @@ export const getEligibleSellers = async (req, res) => {
 //TODO: Fix this to find out the set of eligible sellers
 export const getPurchaseOrders = async (req, res) => {
   try {
-    console.log("Fetching purchase orders", req.body);
-    const {userId} = req.body;
+    console.log("Fetching purchase orders", req.query);
+    const {userId} = req.query;
 
     const allOrders = await OrderRequest.find({buyerId:userId});
+    console.log(allOrders);
     res.status(200).json({allOrders});
     }
   catch (error) {
@@ -146,6 +148,58 @@ export const getRecipientTransactions = async (req, res) => {
   }
 };
 
+//Get the details of the sellers who have accepted or rejected the purchase orders
+export const getOrderSellerDetails = async (req, res) => {
+  try {
+    const {orderId} = req.query;
+    console.log(req.query);
+    console.log("OrderID: ", orderId);
+    let userData = {};
+    userData['stats'] = {"pending":0, "accepted":0, "rejected":0};
+    userData['userDetails'] = [];
+    const order = await OrderRequest.find({_id: new mongoose.Types.ObjectId(orderId)});
+    console.log("Order:");
+    console.log(order);
+    if(order.length)
+    {
+      const sellerList = order[0].sellerStatuses;
+      console.log("SellerList:");
+      console.log(sellerList);
+      for(let seller in sellerList)
+      {
+        console.log("Seller:");
+        console.log(seller);
+        console.log({userId:seller});
+        const status = sellerList[seller];
+        const userDeet = await UserData.findOne({userId:seller.replace(/["']/g, "")});
+        console.log("User Deet:", userDeet);
+        console.log(status === OrderStatus.SELLERACCEPT);
+        if(userDeet)
+        {
+          if(status === OrderStatus.NEWORDER)
+            userData['stats']['pending'] += 1;
+        
+          if(status === OrderStatus.SELLERACCEPT)
+          {
+            userData['stats']['accepted'] += 1;
+            console.log("Seller accept");
+          }
+
+          if(status === OrderStatus.SELLERDENIED)
+            userData['stats']['rejected'] += 1;
+          
+          userData['userDetails'].push(userDeet); 
+        }
+      }
+      console.log(userData);    
+      res.status(200).json({
+        userData
+      });
+    }
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 
 //Fetch the chain of orders which share a common Shipment ID
 export const getChainOfShipments = async (req, res) => {

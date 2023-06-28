@@ -1,7 +1,15 @@
 import React from 'react';
 import { Avatar, Box, Typography, Card, CardContent, CardHeader } from '@mui/material';
 
-const SupplierList = ({ orderId, pending, accepted, rejected, locations }) => {
+import { useGetPurchaseOrdersQuery, useGetEligibleSellersQuery, useGetOrderSellerDetailsQuery } from "state/api";
+
+const SupplierList = ({ orderId}) => {
+  console.log(orderId);
+    let {data: sellerDetails, isLoading: isLoadingSellerDetails} = useGetOrderSellerDetailsQuery({orderId});
+    console.log(sellerDetails);
+    const pending = sellerDetails?.userData?.stats.pending;
+    const accepted = sellerDetails?.userData?.stats.accepted;
+    const rejected = sellerDetails?.userData?.stats.rejected;
   return (
     <Card sx={{ boxShadow: 1, minHeight: '490px', maxHeight: '100%', overflow: 'auto' }}>
       <CardHeader

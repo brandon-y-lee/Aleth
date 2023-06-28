@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import PurchaseForm from 'components/PurchaseForm';
+import OrderDetails from './OrderDetails';
 import SupplierList from './SupplierList';
 
 
@@ -131,10 +132,10 @@ const OrderMap = (props) => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={8}>
-                <div ref={mapRef} style={{ height: "100%", width: "100%" }}/>
+                <div ref={mapRef} style={{ height: "50vh", width: "100%" }}/>
             </Grid>
             <Grid item xs={4}>
-                {props.selectedTab === 0 ? <PurchaseForm onSearch={props.handleSearch} /> : <SupplierList orderId="12345" pending="10" accepted="5" rejected="2" locations="fetch locations for PO ID" />}
+                {props.selectedTab === 0 ? <PurchaseForm onSearch={props.handleSearch} /> : <SupplierList orderId={props.orderId}/>}
             </Grid>
         </Grid>
     );
