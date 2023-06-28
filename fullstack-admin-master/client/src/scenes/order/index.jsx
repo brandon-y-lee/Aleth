@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Session from 'react-session-api';
 import { 
-  Box, 
-  useMediaQuery, 
+  Box,
+  Button,
+  useMediaQuery,
   useTheme,
   Typography,
   Grid,
 } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridFooterContainer, GridFooter } from "@mui/x-data-grid";
 import { useGetTransactionsQuery, useGetChainOfShipmentsQuery, useGetIncomingRequestsQuery } from "state/api";
 import { useGetPurchaseOrdersQuery, useGetEligibleSellersQuery } from "state/api";
 import Header from "components/Header";
@@ -38,6 +39,7 @@ const Order = () => {
 
   const [search, setSearch] = useState("");
   const [selectedTab, setSelectedTab] = useState(0);
+  const [selectedRows, setSelectedRows] = useState([]);
 
   const [formData, setFormData] = useState({});
   const [searchInput, setSearchInput] = useState("");
@@ -67,21 +69,50 @@ const Order = () => {
     };
   }
 
+  const CustomFooter = (props) => {
+    const { selectedRows } = props;
+
+    /* If not rows are selected */
+    if (!selectedRows || selectedRows.length === 0) {
+      console.log("Getting here");
+      return (
+        <GridFooterContainer>
+          <GridFooter />
+        </GridFooterContainer>
+      );
+    }
+  
+    /* If rows are selected */
+    return (
+      <GridFooterContainer>
+        <GridFooter sx={{ border: 'none' }} />
+        <Button
+          onClick={() => { console.log("Submitted Request") }}
+          sx={{
+            backgroundColor: theme.palette.secondary[300],
+            color: 'white',
+            '&:hover': {
+              backgroundColor: theme.palette.secondary[200],
+            },
+            mr: 2,
+          }}
+        >
+          Confirm Selection
+        </Button>
+      </GridFooterContainer>
+    );
+  };
+
   const purchaseOrdersColumns = [
     {
       field: "_id",
-      headerName: "OrderID",
-      flex: 1,
+      headerName: "Order ID",
+      flex: 0.5,
     },
     {
       field: "style",
       headerName: "Style",
-      flex: 0.75,
-    },
-    {
-      field: "description",
-      headerName: "Description",
-      flex: 1,
+      flex: 0.5,
     },
     {
       field: "material",
@@ -91,23 +122,23 @@ const Order = () => {
     {
       field: "color",
       headerName: "Color",
-      flex: 0.75,
+      flex: 0.5,
     },
     {
       field: "amount",
       headerName: "Amount",
-      flex: 0.5,
+      flex: 0.25,
       sortable: false,
       renderCell: (params) => params.value.length,
     },
     {
       field: "unit",
       headerName: "Unit",
-      flex: 0.5,
+      flex: 0.25,
     },
     {
       field: "price",
-      headerName: "Price",
+      headerName: "Avg Price",
       flex: 0.5,
     },
     {
@@ -144,17 +175,12 @@ const Order = () => {
     {
       field: "userId",
       headerName: "Seller ID",
-      flex: 1,
+      flex: 0.5,
     },
     {
       field: "name",
       headerName: "Name",
-      flex: 1,
-    },
-    {
-      field: "type",
-      headerName: "Seller Type",
-      flex: 1,
+      flex: 0.5,
     },
     {
       field: "city",
@@ -162,7 +188,12 @@ const Order = () => {
       flex: 0.5,
       sortable: false,
       renderCell: (params) => params.value.length,
-    }
+    },
+    {
+      field: "type",
+      headerName: "Seller Type",
+      flex: 0.5,
+    },
   ];
 
   return (
@@ -191,28 +222,26 @@ const Order = () => {
             <Tab 
               label="Search Results"
               {...a11yProps(0)}
-              sx={{
+              sx={(theme) => ({
                 color: "#00994c",
                 backgroundColor: value === 0 ? "#00cc69" : "white",
-                borderColor: 'divider',
-                borderBottom: 1,
+                boxShadow: value === 0 ? theme.shadows[1] : theme.shadows[2],
                 '&:hover': {
-                  backgroundColor: '#e0e0e0',
+                  backgroundColor: value === 0 ? '#00cc69' : '#e0e0e0',
                 },
-              }}
+              })}
             />
             <Tab
               label="Purchase Orders"
               {...a11yProps(1)}
-              sx={{
+              sx={(theme) => ({
                 color: "#00994c",
                 backgroundColor: value === 1 ? "#00cc69" : "white",
-                borderColor: 'divider',
-                borderBottom: 1,
+                boxShadow: value === 1 ? theme.shadows[1] : theme.shadows[2],
                 '&:hover': {
-                  backgroundColor: '#e0e0e0',
+                  backgroundColor: value === 1 ? '#00cc69' : '#e0e0e0',
                 }
-              }}
+              })}
             />
           </Tabs>
         </Box>
@@ -255,14 +284,22 @@ const Order = () => {
               pagination
               page={1}
               pageSize={20}
+              checkboxSelection
               paginationMode="server"
               sortingMode="server"
+              onSelectionModelChange={(newSelection) => {
+                setSelectedRows(newSelection);
+              }}
               /* onPageChange={(newPage) => setPage(newPage)}
               onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
               onSortModelChange={(newSortModel) => setSort(...newSortModel)} */
-              components={{ Toolbar: DataGridCustomToolbar }}
+              components={{ 
+                Toolbar: DataGridCustomToolbar,
+                Footer: CustomFooter,
+              }}
               componentsProps={{
                 toolbar: { searchInput, setSearchInput, setSearch },
+                footer: { selectedRows },
               }}
               // onRowClick={(row)=>{
               //   setSelectedOrder(row.row._id);
@@ -308,7 +345,6 @@ const Order = () => {
               pagination
               page={1}
               pageSize={20}
-              checkboxSelection
               paginationMode="server"
               sortingMode="server"
               onPageChange={(newPage) => setPage(newPage)}

@@ -53,17 +53,6 @@ const PurchaseForm = ({ onSearch }) => {
           margin="normal"
           required
           fullWidth
-          name="description"
-          label="Description"
-          id="description"
-          autoComplete="description"
-          onChange={formik.handleChange}
-          value={formik.values.description}
-        />
-        <TextField
-          margin="normal"
-          required
-          fullWidth
           name="material"
           label="Material"
           id="material"
@@ -81,6 +70,17 @@ const PurchaseForm = ({ onSearch }) => {
           autoComplete="color"
           onChange={formik.handleChange}
           value={formik.values.color}
+        />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          name="amount"
+          label="Amount"
+          id="amount"
+          autoComplete="amount"
+          onChange={formik.handleChange}
+          value={formik.values.amount}
         />
         <TextField
           margin="normal"
