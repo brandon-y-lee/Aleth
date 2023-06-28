@@ -8,6 +8,9 @@ import Session from 'react-session-api';
 import { useUpdateOrderMutation } from "state/api";
 import { OrderStatus } from "configs/OrderStatus";
 import { RequestType } from "configs/RequestType";
+import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import {  Button } from '@mui/material'; // Updated import statements
+
 
 const ActionMenuIncomingOrders = (props) => {
 
@@ -28,11 +31,11 @@ const ActionMenuIncomingOrders = (props) => {
     };
 
     const handleAccept = () => {
-        window.confirm("Accept Order?");
+        console.log(props);
         updateOrder({ requestType: RequestType.SELLERACCPET, sellerIds:[userId], orderId:[props.orderData._id], isSeller: true })
           .unwrap()
           .then(() => {
-            window.location.reload(false);
+            // window.location.reload(false);
             console.log("Order Accepted Successfully successfully!");
             // onClose();
           })
@@ -61,25 +64,29 @@ const ActionMenuIncomingOrders = (props) => {
 
     let acceptRejectMenu = [];
     if(props.orderData.sellerStatuses[userId] == OrderStatus.NEWORDER)
+    {
         acceptRejectMenu.push(
-            <>
-            <MenuItem onClick={handleAccept}>
+            <MenuItem key="1" onClick={handleAccept}>
                 Accept Order
             </MenuItem>
-            <MenuItem onClick={handleReject}>
+        );
+
+        acceptRejectMenu.push(
+          <MenuItem key="2" onClick={handleReject}>
                 Reject Order
             </MenuItem>
-            </>
-        )
+        );
+    }
+
     else if(props.orderData.sellerStatuses[userId] == OrderStatus.SELLERACCEPT)
         acceptRejectMenu.push(
-            <MenuItem onClick={handleReject}>
+            <MenuItem key="1" onClick={handleReject}>
                 Reject Order
             </MenuItem>
         )
     else if(props.orderData.sellerStatuses[userId] == OrderStatus.SELLERDENIED)
         acceptRejectMenu.push(
-            <MenuItem onClick={handleAccept}>
+            <MenuItem key="1" onClick={handleAccept}>
                 Accept Order
             </MenuItem>
         )
@@ -129,6 +136,18 @@ const ActionMenuIncomingOrders = (props) => {
       >
     
       {acceptRejectMenu}
+      <Dialog open={openDialog}>
+        <DialogTitle>Check Status</DialogTitle>
+        <DialogContent>
+          {/* Add content here */}
+          {/* <Typography>Status: {text} </Typography> */}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setOpenDialog(false)} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
         
       </Menu>
     </div>

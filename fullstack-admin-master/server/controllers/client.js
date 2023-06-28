@@ -47,8 +47,6 @@ export const getTransactions = async (req, res) => {
   try {
     const { page=1, pageSize=20, sort=null, search="", userId="" } = req.query;
     console.log("Get Transactions");
-    console.log(req.query);
-    console.log(page, pageSize, sort, search, userId);
 
     // formatted sort should look like { userId: -1 }
     const generateSort = () => {
@@ -68,7 +66,6 @@ export const getTransactions = async (req, res) => {
       .skip(page * pageSize)
       .limit(pageSize);
 
-    console.log(transactions);
     const total = await Shipments.countDocuments({
       name: { $regex: search, $options: "i" },
     });
@@ -90,7 +87,6 @@ export const getEligibleSellers = async (req, res) => {
     const {material} = req.query;
 
     const eligibleSellers = await UserData.find({material:material});
-    console.log(eligibleSellers);
     res.status(200).json({eligibleSellers});
     }
   catch (error) {
@@ -105,7 +101,6 @@ export const getPurchaseOrders = async (req, res) => {
     const {userId} = req.query;
 
     const allOrders = await OrderRequest.find({buyerId:userId});
-    console.log(allOrders);
     res.status(200).json({allOrders});
     }
   catch (error) {
@@ -117,7 +112,6 @@ export const getPurchaseOrders = async (req, res) => {
 //Shipments where the recipient is the userID provided
 export const getRecipientTransactions = async (req, res) => {
   try {
-    console.log("hit it recipient");
     const { page = 1, pageSize = 20, sort = null, search = "", userId = "1" } = req.query;
 
     const generateSort = () => {
@@ -150,39 +144,35 @@ export const getRecipientTransactions = async (req, res) => {
 
 //Get the details of the sellers who have accepted or rejected the purchase orders
 export const getOrderSellerDetails = async (req, res) => {
+  //TODO: Fix .replace() calls
   try {
     const {orderId} = req.query;
     console.log(req.query);
-    console.log("OrderID: ", orderId);
+
     let userData = {};
     userData['stats'] = {"pending":0, "accepted":0, "rejected":0};
     userData['userDetails'] = [];
+    userData['userStatus'] = {};
     const order = await OrderRequest.find({_id: new mongoose.Types.ObjectId(orderId)});
-    console.log("Order:");
-    console.log(order);
+
     if(order.length)
     {
       const sellerList = order[0].sellerStatuses;
-      console.log("SellerList:");
-      console.log(sellerList);
+
       for(let seller in sellerList)
       {
-        console.log("Seller:");
-        console.log(seller);
-        console.log({userId:seller});
         const status = sellerList[seller];
-        const userDeet = await UserData.findOne({userId:seller.replace(/["']/g, "")});
-        console.log("User Deet:", userDeet);
-        console.log(status === OrderStatus.SELLERACCEPT);
+        let userDeet = await UserData.findOne({userId:seller.replace(/["']/g, "")});
+        
         if(userDeet)
         {
+          userData['userStatus'][seller.replace(/["']/g, "")] = status;
           if(status === OrderStatus.NEWORDER)
             userData['stats']['pending'] += 1;
         
           if(status === OrderStatus.SELLERACCEPT)
           {
             userData['stats']['accepted'] += 1;
-            console.log("Seller accept");
           }
 
           if(status === OrderStatus.SELLERDENIED)
@@ -190,8 +180,7 @@ export const getOrderSellerDetails = async (req, res) => {
           
           userData['userDetails'].push(userDeet); 
         }
-      }
-      console.log(userData);    
+      }   
       res.status(200).json({
         userData
       });
@@ -211,7 +200,7 @@ export const getChainOfShipments = async (req, res) => {
       ],
     });
 
-    console.log(shipmentChain);
+    // console.log(shipmentChain);
     res.status(200).json({
       shipmentChain,
     });
@@ -224,7 +213,7 @@ export const getChainOfShipments = async (req, res) => {
 export const getIncomingRequests = async (req, res) => {
   try {
     const {userId} = req.query;
-    console.log(userId);
+    // console.log(userId);
     console.log("Getting incoming requests", req.query);
     const userData = await UserData.find({
       userId: "2",
@@ -235,7 +224,7 @@ export const getIncomingRequests = async (req, res) => {
       // material: userData.material
     });
 
-    console.log(orders);
+    // console.log(orders);
 
     const newOrders = orders?orders.filter(order => order.sellerStatuses[userId]!==undefined):[];
   
@@ -253,7 +242,6 @@ export const updateRecipients = async (req, res) => {
   try{
     console.log("Update Recipients", req.body);
     const {senders, receivingOrderId} = req.body;
-    console.log(senders, receivingOrderId);
     for (const sender of senders) {
       await Shipments.updateOne({ id: sender }, { next: receivingOrderId });
     }
@@ -269,13 +257,14 @@ export const updateOrder = async (req, res) => {
   try{
     console.log("Updating purchase order", req.body);
     const {requestType, sellerIds, orderId, isSeller} = req.body;
-
-    const order = await OrderRequest.find({orderId: orderId});
-
+    console.log(sellerIds);
+    console.log(orderId);
+    const order = await OrderRequest.find({_id: new mongoose.Types.ObjectId(orderId[0])});
+    console.log(order);
     if(order)
     {
       let sellerStatuses = order[0].sellerStatuses;
-
+      console.log("Seller Statuses", sellerStatuses);
       //Buyer initiating the order, expressing interest in a subset of all possible sellers
       if(requestType == RequestType.INITORDER){
         let sellerStatuses = {};
@@ -288,7 +277,7 @@ export const updateOrder = async (req, res) => {
       if(requestType == RequestType.BUYERACCEPT)
       {
         //Sanity Check
-        if(isBuyer)
+        if(!isSeller)
         {
           //Accept the ones the buyer sent
           for(const sellerId of sellerIds)
@@ -299,6 +288,8 @@ export const updateOrder = async (req, res) => {
               if(sellerStatuses[key] != OrderStatus.BUYERACCEPT)
                 sellerStatuses[key] = OrderStatus.BUYERDENIED;
             }
+
+          //TODO: change the order status to BUYERACCEPT here. Do an UpdateOne call.
         }
       }
 
@@ -327,9 +318,9 @@ export const updateOrder = async (req, res) => {
         if(isSeller)
             sellerStatuses[sellerIds[0]] = OrderStatus.SELLERDENIED;   
       }
-      
+      console.log("Final Status", sellerStatuses);
       //Set the updated seller statuses for the order
-      await OrderRequest.updateOne({orderId},{sellerStatuses, sellerStatuses})
+      await OrderRequest.updateOne({_id: new mongoose.Types.ObjectId(orderId[0])},{sellerStatuses: sellerStatuses})
     }
     res.status(200).json({ message: "Order updated successfully" });
   } catch(error) {

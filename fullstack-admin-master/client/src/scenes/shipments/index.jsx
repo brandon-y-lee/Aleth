@@ -24,7 +24,7 @@ import { OrderStatus } from "configs/OrderStatus";
 import { RequestType } from "configs/RequestType";
 import Order from "scenes/order";
 
-Session.set("username","2");
+// Session.set("username","2");
 
 const Shipments = () => {
   const userId = Session.get("username");
@@ -147,6 +147,7 @@ const Shipments = () => {
       field: "_id",
       headerName: "OrderID",
       flex: 1,
+      // renderCell: (params) => params.row.buyerType
     },
     {
       field: "buyerId",
@@ -171,9 +172,6 @@ const Shipments = () => {
       flex: 0.5,
       renderCell: (params) => {
         const sellerStatus = params.value[userId];
-        console.log(sellerStatus);
-        console.log(OrderStatus.SELLERDENIED);
-        console.log(sellerStatus == OrderStatus.SELLERDENIED);
         if(params.value[userId] == OrderStatus.SELLERACCEPT)
           return (<Chip label="You Accepted" color="info"/>)
         if(params.value[userId] == OrderStatus.NEWORDER)
@@ -193,7 +191,8 @@ const Shipments = () => {
       flex: 0.5,
       renderCell: (params) => {
         console.log(params);
-        return (<ActionMenuIncomingOrders orderData={params.row}/>)},
+      return (<ActionMenuIncomingOrders orderData={params.row}/>)
+    },
     },
   ];
 
@@ -356,9 +355,9 @@ const Shipments = () => {
               componentsProps={{
                 toolbar: { searchInput, setSearchInput, setSearch },
               }}
-              // onRowClick={(row)=>{
-              //   setSelectedOrder(row.row._id);
-              // }}
+              onRowClick={(row)=>{
+                console.log("Here");
+              }}
             />
           </Box>
         </TabPanel>

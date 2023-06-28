@@ -23,7 +23,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import TabPanel from 'components/Common/TabPanel';
 
-Session.set("username", "2");
+// Session.set("username", "2");
 Session.set("coordinates", [17.2064912,22.1782433]);
 
 const Order = () => {

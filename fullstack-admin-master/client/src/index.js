@@ -9,7 +9,7 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import { api } from "state/api";
 import Session from 'react-session-api'
 
-Session.set("username","2");
+// Session.set("username","2");
 
 const store = configureStore({
   reducer: {

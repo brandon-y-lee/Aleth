@@ -5,7 +5,7 @@ import { useGetTransactionsQuery, useGetChainOfShipmentsQuery } from "state/api"
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import ActionMenu from "components/SellerView/ActionMenu";
 import Chip from '@mui/material/Chip';
-Session.set("username","2");
+// Session.set("username","2");
 
 const OutgoingOrders = () => {
   const userName = Session.get("username");

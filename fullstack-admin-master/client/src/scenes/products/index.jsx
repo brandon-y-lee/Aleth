@@ -22,7 +22,7 @@ import { OrderStatus } from "configs/OrderStatus";
 import { RequestType } from "configs/RequestType";
 import Order from "scenes/order";
 
-Session.set("username","2");
+// Session.set("username","2");
 
 const Products = () => {
   const userId = Session.get("username");

@@ -5,18 +5,31 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Chip, Checkbox, Button, Card, CardContent, Box } from "@mui/material";
-import { useGetOrderSellerDetailsQuery } from "state/api";
+import { useGetOrderSellerDetailsQuery, useUpdateOrderMutation } from "state/api";
+import { RequestType } from 'configs/RequestType';
 
 
 export default function OrderDetails({orderId}) {
   const [expanded, setExpanded] = React.useState(false);
   const [selected, setSelected] = React.useState({}); // add this line
+  const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
 
   let {data: sellerDetails, isLoading: isLoadingSellerDetails} = useGetOrderSellerDetailsQuery({orderId});
   console.log(sellerDetails);
   const pending = sellerDetails?.userData?.stats.pending;
   const accepted = sellerDetails?.userData?.stats.accepted;
   const rejected = sellerDetails?.userData?.stats.rejected;
+  const certificates = [
+    "(ISO) 9001",
+    "Global Organic Textile Standard (GOTS)",
+    "Fair Trade",
+    "SA8000",
+    "ECO PASSPORT",
+    "Worldwide Responsible Apparel Production (WRAP)",
+    "Bluesign",
+    "Zero Discharge of Hazardous Chemicals (ZDHC)",
+    "Responsible Care"
+  ];
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -26,17 +39,24 @@ export default function OrderDetails({orderId}) {
     setSelected(prevState => ({ ...prevState, [index]: event.target.checked }));
   }
 
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
     const selectedIds = sellerDetails?.userData?.userDetails
       .filter((elem, index) => selected[index])
-      .map(elem => elem._id);
-
+      .map(elem => elem.userId);
+    await updateOrder({ requestType: RequestType.BUYERACCEPT, sellerIds:selectedIds, orderId: orderId, isSeller: false })
     console.log(selectedIds);
     // Do something with selectedIds here...
   }
 
-  const elems = sellerDetails?.userData?.userDetails.map((elem, index) => (
-    <Accordion expanded={expanded === ('panel'+ index)} onChange={handleChange('panel'+index)}>
+  const elems = sellerDetails?.userData?.userDetails.map((elem, index) => {
+
+    const certIndex = Math.floor(Math.random()*(certificates.length-1));
+    console.log(elem.userId);
+    console.log(sellerDetails.userData);
+    const disabled = (sellerDetails.userData.userStatus[elem.userId] !== RequestType.SELLERACCPET)?true:false;
+    
+    return (
+    <Accordion key={index} expanded={expanded === ('panel'+ index)} onChange={handleChange('panel'+index)}>
         <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1bh-content"
@@ -45,6 +65,7 @@ export default function OrderDetails({orderId}) {
             <Checkbox
               checked={selected[index] || false}
               onChange={(event) => handleCheckboxChange(event, index)}
+              disabled = {disabled}
             />
             <Typography sx={{ width: '50%', flexShrink: 0 }}>
                 {elem.name}
@@ -52,16 +73,19 @@ export default function OrderDetails({orderId}) {
             <Typography sx={{ color: 'black' }}>Aleth Score: {9 + Math.round(Math.random()*4)}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-                <Card sx={{ width: '75%', m: 4 }}>
+                <Card sx={{ width: '100%', m: 1, backgroundColor: "#d6dedb" }}>
                     <CardContent>
                         <Typography variant="h6">On-time delivery rate: 86%</Typography>
                         <Typography variant="h6">Average Lead Time: 4d</Typography>
-                        <Typography variant="h6">Aleth Certified: Yes</Typography>
+                        <Typography variant="h6">Certificates: <li> {certificates[certIndex]} </li> <li> {certificates[certIndex+1]} </li></Typography>
                     </CardContent>
                 </Card>
         </AccordionDetails>
   </Accordion>
-  ));
+  )});
+  
+  if(!orderId)
+    return (<></>);
 
   return (
     <div>
@@ -94,7 +118,14 @@ export default function OrderDetails({orderId}) {
       </Accordion>
 
       {elems}
-      <Button style={{"backgroundColor":"#00994c"}} onClick={handleButtonClick}>Send Confirmation</Button>
+
+      <Button type="button"
+          fullWidth
+          variant="contained"
+          color="secondary" onClick={handleButtonClick}>
+        Send Confirmation
+      </Button>
+
       {/* <Button onClick={handleButtonClick}>Get Selected IDs</Button> */}
     </div>
   );
