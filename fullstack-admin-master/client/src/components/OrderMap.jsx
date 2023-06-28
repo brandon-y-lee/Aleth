@@ -135,7 +135,8 @@ const OrderMap = (props) => {
                 <div ref={mapRef} style={{ height: "50vh", width: "100%" }}/>
             </Grid>
             <Grid item xs={4}>
-                {props.selectedTab === 0 ? <PurchaseForm onSearch={props.handleSearch} /> : <SupplierList orderId={props.orderId}/>}
+                {/* {props.selectedTab === 0 ? <PurchaseForm onSearch={props.handleSearch} /> : <SupplierList orderId={props.orderId}/>} */}
+                {props.selectedTab === 0 ? <PurchaseForm onSearch={props.handleSearch} /> : <OrderDetails orderId={props.orderId}/>}
             </Grid>
         </Grid>
     );

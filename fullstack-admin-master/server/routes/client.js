@@ -11,6 +11,7 @@ import {
   getPurchaseOrders,
   getRecipientTransactions,
   updateOrder,
+  createNewOrder,
   getEligibleSellers,
   getOrderSellerDetails
 } from "../controllers/client.js";
@@ -35,6 +36,7 @@ router.get("/orderSellerDetails", getOrderSellerDetails);
 router.post("/updateRecipients", updateRecipients);
 router.post("/generateNewShipment", generateNewShipment);
 router.post("/updateOrder", updateOrder);
+router.post("/createNewOrder", createNewOrder);
 
 
 export default router;

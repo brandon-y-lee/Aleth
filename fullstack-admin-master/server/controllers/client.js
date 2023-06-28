@@ -388,15 +388,17 @@ export const generateNewShipment = async (req, res) => {
 //Function to add a new order request
 export const createNewOrder = async (req, res) => {
   try {
-    console.log("Generating new shipment", req.body);
-    const { userId, material, quantity} = req.body;
+    console.log("Generating new order", req.body);
+    const { userId, material, quantity, sellers} = req.body;
 
-    const eligibleSellers = await UserData.find({material:material});
+    // const eligibleSellers = await UserData.find({material:material});
     let sellerStatuses = {};
+    for(const seller of sellers)
+      sellerStatuses[seller] = OrderStatus.NEWORDER;
 
-    //Set stasuses of eligible sellers as NEWORDER
-    for(const eligibleSeller of eligibleSellers)
-      sellerStatuses[eligibleSeller.userId] = OrderStatus.NEWORDER;
+    // //Set stasuses of eligible sellers as NEWORDER
+    // for(const eligibleSeller of eligibleSellers)
+    //   sellerStatuses[eligibleSeller.userId] = OrderStatus.NEWORDER;
 
     const newOrder = new OrderRequest({
       buyerId : userId,

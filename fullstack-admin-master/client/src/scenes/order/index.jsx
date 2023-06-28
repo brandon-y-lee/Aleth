@@ -10,18 +10,18 @@ import {
 } from "@mui/material";
 import { DataGrid, GridFooterContainer, GridFooter } from "@mui/x-data-grid";
 import { useGetTransactionsQuery, useGetChainOfShipmentsQuery, useGetIncomingRequestsQuery } from "state/api";
-import { useGetPurchaseOrdersQuery, useGetEligibleSellersQuery } from "state/api";
+import { useGetPurchaseOrdersQuery, useGetEligibleSellersQuery, useUpdateOrderMutation, useCreateNewOrderMutation } from "state/api";
 import Header from "components/Header";
 import OrderMap from "components/OrderMap";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import ActionMenu from "components/SellerView/ActionMenu";
 import ActionMenuIncomingOrders from "components/SellerView/ActionMenuIncomingOrders";
-
+import { OrderStatus } from "configs/OrderStatus";
+import { RequestType } from "configs/RequestType";
 import Chip from '@mui/material/Chip';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import TabPanel from 'components/Common/TabPanel';
-import { OrderStatus } from "configs/OrderStatus";
 
 Session.set("username", "2");
 Session.set("coordinates", [17.2064912,22.1782433]);
@@ -46,6 +46,9 @@ const Order = () => {
 
   let {data: purchaseOrders, isLoading: isLoadingPurchaseOrders} = useGetPurchaseOrdersQuery({userId});
   let {data: searchResults, isLoading: isLoadingSearchResults} = useGetEligibleSellersQuery({material: formData.material ? formData.material : undefined})
+  const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
+  const [createOrder, { isLoading: creatingOrder }] = useCreateNewOrderMutation();
+
   
   const getSearchCoordinates = (data) => {
     if(data === undefined)
@@ -87,7 +90,11 @@ const Order = () => {
       <GridFooterContainer>
         <GridFooter sx={{ border: 'none' }} />
         <Button
-          onClick={() => { console.log("Submitted Request") }}
+          onClick= { async () => { 
+            await createOrder({userId, material: formData.material, quantity:10, sellers: selectedRows});
+            // console.log(orderData);
+            // await updateOrder({ requestType: RequestType.INITORDER, sellerIds:selectedRows, orderId:[props.orderData._id], isSeller: false })
+            console.log(selectedRows); console.log("Submitted Request"); }}
           sx={{
             backgroundColor: theme.palette.secondary[300],
             color: 'white',
@@ -187,7 +194,7 @@ const Order = () => {
       headerName: "Location",
       flex: 0.5,
       sortable: false,
-      // renderCell: (params) => params.value.length,
+      // renderCell: (params) => {params.value.length},
     },
     {
       field: "type",
@@ -276,7 +283,7 @@ const Order = () => {
           >
             <DataGrid
               loading={isLoadingSearchResults || !searchResults}
-              getRowId={(row) => Math.random()}
+              getRowId={(row) => row["userId"]}
               rows={(searchResults && searchResults.eligibleSellers) || []}
               columns={eligibleSellersColumns}
               rowCount={(1) || 0}
@@ -301,8 +308,8 @@ const Order = () => {
                 toolbar: { searchInput, setSearchInput, setSearch },
                 footer: { selectedRows },
               }}
-              // onRowClick={(row)=>{
-              //   setSelectedOrder(row.row._id);
+              onRowClick={(row)=>{
+                console.log(row.row["userId"])}}
             />
           </Box>
         </TabPanel>
