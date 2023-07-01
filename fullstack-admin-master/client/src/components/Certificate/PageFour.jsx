@@ -1,7 +1,18 @@
 import React from "react";
 import { Button, Card, CardContent, Typography, Box } from "@mui/material";
+import { useGenerateNewShipmentMutation } from "state/api";
+import Session from 'react-session-api';
+
 
 const PageFour = ({ recipient, material, files }) => {
+  const userId = Session.get("username");
+  const [generateShipment, { isLoading: generatingShipment }] = useGenerateNewShipmentMutation();
+
+  const handlePublish = () => {
+    generateShipment({userId, recipientId:recipient, material:material, amount:10, unit:"lb", orderStatus:1 });
+    window.location.reload();
+  }
+
   return (
     <Box
       sx={{
@@ -91,6 +102,7 @@ const PageFour = ({ recipient, material, files }) => {
         sx={{
           mt: 3,
         }}
+        onClick={handlePublish}
       >
         Publish Certificate
       </Button>

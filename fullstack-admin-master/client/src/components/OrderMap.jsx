@@ -52,9 +52,10 @@ const OrderMap = (props) => {
         const { Map, Marker } = await window.google.maps.importLibrary('maps');
 
         const map = new Map(mapRef.current, {
-            center: { lat: 10.99835602, lng: 77.01502627 },
-            zoom: 5,
+            center: { lat: 50.99835602, lng: 77.01502627 },
+            zoom: 4,
         });
+        
 
         var bounds = new window.google.maps.LatLngBounds();
 
@@ -102,11 +103,14 @@ const OrderMap = (props) => {
                         url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
                     },
                 })
-            );            
+            );   
+            
+            bounds.extend({ lat: props.coordinates[0], lng: props.coordinates[1] });
 
             console.log(markersRef.current);            
 
             map.fitBounds(bounds);
+            console.log(map);
         }
 
         // Clean up on unmount

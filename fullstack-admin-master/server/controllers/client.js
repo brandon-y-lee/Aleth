@@ -153,34 +153,40 @@ export const getOrderSellerDetails = async (req, res) => {
     userData['stats'] = {"pending":0, "accepted":0, "rejected":0};
     userData['userDetails'] = [];
     userData['userStatus'] = {};
+    userData['userNotes'] = {};
     const order = await OrderRequest.find({_id: new mongoose.Types.ObjectId(orderId)});
-
+    console.log(order);
     if(order.length)
     {
       const sellerList = order[0].sellerStatuses;
+      const sellerNoteList = order[0].sellerNotes;
 
       for(let seller in sellerList)
       {
         const status = sellerList[seller];
+        const note = sellerNoteList[seller.replace(/["']/g, "")];
         let userDeet = await UserData.findOne({userId:seller.replace(/["']/g, "")});
         
         if(userDeet)
         {
           userData['userStatus'][seller.replace(/["']/g, "")] = status;
+          userData['userNotes'][seller.replace(/["']/g, "")] = note;
+    
           if(status === OrderStatus.NEWORDER)
             userData['stats']['pending'] += 1;
         
-          if(status === OrderStatus.SELLERACCEPT)
+          if(status === OrderStatus.SELLERACCEPT || status === OrderStatus.BUYERACCEPT)
           {
             userData['stats']['accepted'] += 1;
           }
 
-          if(status === OrderStatus.SELLERDENIED)
+          if(status === OrderStatus.SELLERDENIED || status === OrderStatus.BUYERDENIED)
             userData['stats']['rejected'] += 1;
           
           userData['userDetails'].push(userDeet); 
         }
-      }   
+      }
+      console.log(userData);   
       res.status(200).json({
         userData
       });
@@ -241,10 +247,11 @@ export const getIncomingRequests = async (req, res) => {
 export const updateRecipients = async (req, res) => {
   try{
     console.log("Update Recipients", req.body);
-    const {senders, receivingOrderId} = req.body;
+    const {senders, receivingOrderId, shipmentID} = req.body;
     for (const sender of senders) {
       await Shipments.updateOne({ id: sender }, { next: receivingOrderId });
     }
+    await Shipments.updateOne({id: receivingOrderId}, {shipmentID:shipmentID});
     res.status(200).json({ message: "Recipients updated successfully" });
   } catch(error) {
     res.status(404).json({message: error.message});
@@ -256,21 +263,28 @@ export const updateRecipients = async (req, res) => {
 export const updateOrder = async (req, res) => {
   try{
     console.log("Updating purchase order", req.body);
-    const {requestType, sellerIds, orderId, isSeller} = req.body;
+    const {requestType, sellerIds, orderId, isSeller, notes} = req.body;
     console.log(sellerIds);
     console.log(orderId);
     const order = await OrderRequest.find({_id: new mongoose.Types.ObjectId(orderId[0])});
     console.log(order);
+    let orderStatus = OrderStatus.INITORDER;
     if(order)
     {
       let sellerStatuses = order[0].sellerStatuses;
+      let sellerNotes = order[0].sellerNotes;
       console.log("Seller Statuses", sellerStatuses);
       //Buyer initiating the order, expressing interest in a subset of all possible sellers
       if(requestType == RequestType.INITORDER){
+        orderStatus = OrderStatus.INITORDER;
         let sellerStatuses = {};
+        let sellerNotes = {};
 
         for(const sellerId of sellerIds)
+        {
           sellerStatuses[sellerId] = OrderStatus.NEWORDER;
+          sellerNotes[sellerId] = "";
+        }
       }
 
       //Buyer sending accept to one or many sellers of the subset of the sellers
@@ -279,16 +293,16 @@ export const updateOrder = async (req, res) => {
         //Sanity Check
         if(!isSeller)
         {
+          orderStatus = OrderStatus.BUYERACCEPT;
           //Accept the ones the buyer sent
           for(const sellerId of sellerIds)
             sellerStatuses[sellerId] = OrderStatus.BUYERACCEPT;
-          
+        
           //Reject the others
-          for (let key of sellerStatuses.keys()) {
+          for (let key of Object.keys(sellerStatuses)) {
               if(sellerStatuses[key] != OrderStatus.BUYERACCEPT)
                 sellerStatuses[key] = OrderStatus.BUYERDENIED;
             }
-
           //TODO: change the order status to BUYERACCEPT here. Do an UpdateOne call.
         }
       }
@@ -309,7 +323,11 @@ export const updateOrder = async (req, res) => {
       if(requestType == RequestType.SELLERACCPET)
       {
         if(isSeller)
+        {
+            orderStatus = OrderStatus.SELLERACCEPT;
             sellerStatuses[sellerIds[0]] = OrderStatus.SELLERACCEPT; 
+            sellerNotes[sellerIds[0]] = notes;
+        }
       }
 
       //Seller sending reject request to the buyer
@@ -320,7 +338,7 @@ export const updateOrder = async (req, res) => {
       }
       console.log("Final Status", sellerStatuses);
       //Set the updated seller statuses for the order
-      await OrderRequest.updateOne({_id: new mongoose.Types.ObjectId(orderId[0])},{sellerStatuses: sellerStatuses})
+      await OrderRequest.updateOne({_id: new mongoose.Types.ObjectId(orderId[0])},{sellerStatuses: sellerStatuses, sellerNotes: sellerNotes})
     }
     res.status(200).json({ message: "Order updated successfully" });
   } catch(error) {
@@ -332,45 +350,46 @@ export const updateOrder = async (req, res) => {
 export const generateNewShipment = async (req, res) => {
   try {
     console.log("Generating new shipment", req.body);
-    const { id, userId, recipientId, material, amount, unit, prev, orderStatus } = req.body;
+    const { userId, recipientId, material, amount, unit, orderStatus } = req.body;
 
     // Check if a shipment with the given ID exists
-    const existingShipment = await Shipments.findOne({ id });
+    const total = await Shipments.countDocuments({});
+    const newId = generateID();
 
     const userInfo = await UserData.findOne({userId: userId});
 
-    if (existingShipment) {
-      // Update the existing shipment with the new data
-      existingShipment.userId = userId;
-      existingShipment.recipientId = recipientId;
-      existingShipment.name = userInfo.name;
-      existingShipment.material = material;
-      existingShipment.amount = amount;
-      existingShipment.unit = unit;
-      existingShipment.coordinates = userInfo.coordinates;
-      existingShipment.prev = prev;
-      existingShipment.orderStatus = orderStatus;
+    // if (existingShipment) {
+    //   // Update the existing shipment with the new data
+    //   existingShipment.userId = userId;
+    //   existingShipment.recipientId = recipientId;
+    //   existingShipment.name = userInfo.name;
+    //   existingShipment.material = material;
+    //   existingShipment.amount = amount;
+    //   existingShipment.unit = unit;
+    //   existingShipment.coordinates = userInfo.coordinates;
+    //   existingShipment.prev = "";
+    //   existingShipment.orderStatus = orderStatus;
 
-      await existingShipment.save();
-      res.status(200).json({ message: "Shipment updated successfully" });
-    } else {
-      // Create a new shipment
-      const newShipment = new Shipments({
-        id,
-        userId,
-        recipientId,
-        name: userInfo.name,
-        material,
-        amount,
-        unit,
-        coordinates: userInfo.coordinates,
-        prev,
-        orderStatus,
-      });
+    //   await existingShipment.save();
+    //   res.status(200).json({ message: "Shipment updated successfully" });
+    // } else {
+    // Create a new shipment
+    const newShipment = new Shipments({
+      id: newId,
+      userId,
+      recipientId,
+      name: userInfo.name,
+      material,
+      amount,
+      unit,
+      coordinates: userInfo.coordinates,
+      prev: "",
+      orderStatus,
+    });
 
       await newShipment.save();
       res.status(200).json({ message: "New shipment created successfully" });
-    }
+    
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -384,8 +403,12 @@ export const createNewOrder = async (req, res) => {
 
     // const eligibleSellers = await UserData.find({material:material});
     let sellerStatuses = {};
+    let sellerNotes = {};
     for(const seller of sellers)
+    {
       sellerStatuses[seller] = OrderStatus.NEWORDER;
+      sellerNotes[seller] = "";
+    }
 
     // //Set stasuses of eligible sellers as NEWORDER
     // for(const eligibleSeller of eligibleSellers)
@@ -397,6 +420,7 @@ export const createNewOrder = async (req, res) => {
       material: material,
       quantity: quantity,
       sellerStatuses: sellerStatuses,
+      sellerNotes: sellerNotes
     });
 
     await newOrder.save();
@@ -432,3 +456,25 @@ export const getGeography = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+function generateID() {
+  // get current year
+  const year = new Date().getFullYear();
+  
+  // generate a 3-digit random number
+  const randomDigits = Math.floor(Math.random() * 899) + 100; // This will generate a number between 100 and 999
+  
+  // generate 2 random uppercase letters
+  const randomChars = String.fromCharCode(
+    65 + Math.floor(Math.random() * 26), // This will generate a number between 65(A) and 90(Z)
+    65 + Math.floor(Math.random() * 26)
+  );
+  
+  // concatenate the parts
+  const id = 'PT' + year + randomDigits + randomChars;
+  
+  return id;
+}
+
+console.log(generateID()); // e.g., PT2023756HS
+

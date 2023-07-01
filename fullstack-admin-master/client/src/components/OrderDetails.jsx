@@ -7,12 +7,28 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Chip, Checkbox, Button, Card, CardContent, Box } from "@mui/material";
 import { useGetOrderSellerDetailsQuery, useUpdateOrderMutation } from "state/api";
 import { RequestType } from 'configs/RequestType';
+import { Dialog, DialogTitle, DialogContent, DialogContentText, IconButton } from "@mui/material";
+import NoteIcon from '@mui/icons-material/Note';
+
 
 
 export default function OrderDetails({orderId}) {
+  console.log(orderId);
   const [expanded, setExpanded] = React.useState(false);
   const [selected, setSelected] = React.useState({}); // add this line
   const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
+  const [openNotes, setOpenNotes] = React.useState(false);
+  const [currentNotes, setCurrentNotes] = React.useState('');
+
+
+  const handleOpenNotes = (notes) => {
+    setCurrentNotes(notes);
+    setOpenNotes(true);
+  };
+
+  const handleCloseNotes = () => {
+    setOpenNotes(false);
+  };
 
   let {data: sellerDetails, isLoading: isLoadingSellerDetails} = useGetOrderSellerDetailsQuery({orderId});
   console.log(sellerDetails);
@@ -43,35 +59,49 @@ export default function OrderDetails({orderId}) {
     const selectedIds = sellerDetails?.userData?.userDetails
       .filter((elem, index) => selected[index])
       .map(elem => elem.userId);
-    await updateOrder({ requestType: RequestType.BUYERACCEPT, sellerIds:selectedIds, orderId: orderId, isSeller: false })
+    await updateOrder({ requestType: RequestType.BUYERACCEPT, sellerIds:selectedIds, orderId: [orderId], isSeller: false, notes: " "});
     console.log(selectedIds);
+    window.location.reload();
     // Do something with selectedIds here...
   }
 
   const elems = sellerDetails?.userData?.userDetails.map((elem, index) => {
 
     const certIndex = Math.floor(Math.random()*(certificates.length-1));
-    console.log(elem.userId);
-    console.log(sellerDetails.userData);
     const disabled = (sellerDetails.userData.userStatus[elem.userId] !== RequestType.SELLERACCPET)?true:false;
+    const checked = (sellerDetails.userData.userStatus[elem.userId] === RequestType.BUYERACCEPT)?true:false;
+    const sellerNotes = sellerDetails.userData.userNotes[elem.userId];
+    const status = (sellerDetails.userData.userStatus[elem.userId] === RequestType.BUYERACCEPT)?1:0;
+    const statusColor = status==1?"#2f7c327a":"";
+    console.log(statusColor);
     
     return (
-    <Accordion key={index} expanded={expanded === ('panel'+ index)} onChange={handleChange('panel'+index)}>
+    <Accordion key={index} expanded={expanded === ('panel'+ index)} onChange={handleChange('panel'+index)} sx={{ backgroundColor: statusColor}}>
         <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1bh-content"
         id="panel1bh-header"
         >
+      <Box display="flex" width="100%" justifyContent="space-around" alignItems="center">
+        <Box display="flex"></Box>
             <Checkbox
-              checked={selected[index] || false}
+              checked={selected[index] || checked}
               onChange={(event) => handleCheckboxChange(event, index)}
               disabled = {disabled}
             />
             <Typography sx={{ width: '50%', flexShrink: 0 }}>
                 {elem.name}
             </Typography>
-            <Typography sx={{ color: 'black' }}>Aleth Score: {9 + Math.round(Math.random()*4)}</Typography>
+            
+            <IconButton sx={{ width: '10%', flexShrink: 0, margin: "2px" }} edge="end" aria-label="notes" onClick={() => handleOpenNotes(sellerNotes)}>
+              <NoteIcon />
+            </IconButton>
+
+            <Typography sx={{ width: '30%', flexShrink: 0, color: 'black' }} >Aleth Score: {9 + Math.round(Math.random()*4)}</Typography>
+        </Box>
+
         </AccordionSummary>
+
         <AccordionDetails>
                 <Card sx={{ width: '100%', m: 1, backgroundColor: "#d6dedb" }}>
                     <CardContent>
@@ -81,6 +111,15 @@ export default function OrderDetails({orderId}) {
                     </CardContent>
                 </Card>
         </AccordionDetails>
+
+        <Dialog open={openNotes} onClose={handleCloseNotes}>
+    <DialogTitle>Seller Notes</DialogTitle>
+    <DialogContent>
+      <DialogContentText>
+      {currentNotes}
+      </DialogContentText>
+    </DialogContent>
+  </Dialog>
   </Accordion>
   )});
   

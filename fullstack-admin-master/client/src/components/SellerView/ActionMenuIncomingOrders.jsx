@@ -9,6 +9,7 @@ import { useUpdateOrderMutation } from "state/api";
 import { OrderStatus } from "configs/OrderStatus";
 import { RequestType } from "configs/RequestType";
 import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import TextField from '@mui/material/TextField';
 import {  Button } from '@mui/material'; // Updated import statements
 
 
@@ -20,6 +21,8 @@ const ActionMenuIncomingOrders = (props) => {
     const userId = Session.get("username");
     const [openDialog, setOpenDialog] = useState(false);
     const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
+    const [notes, setNotes] = React.useState('');
+
     
 
     const handleClick = (event) => {
@@ -31,17 +34,17 @@ const ActionMenuIncomingOrders = (props) => {
     };
 
     const handleAccept = () => {
-        console.log(props);
-        updateOrder({ requestType: RequestType.SELLERACCPET, sellerIds:[userId], orderId:[props.orderData._id], isSeller: true })
-          .unwrap()
-          .then(() => {
-            // window.location.reload(false);
-            console.log("Order Accepted Successfully successfully!");
-            // onClose();
-          })
-          .catch((error) => {
-            console.error("Error accepting order:", error);
-          });
+        setOpenDialog(true);
+        // updateOrder({ requestType: RequestType.SELLERACCPET, sellerIds:[userId], orderId:[props.orderData._id], isSeller: true })
+        //   .unwrap()
+        //   .then(() => {
+        //     // window.location.reload(false);
+        //     console.log("Order Accepted Successfully successfully!");
+        //     // onClose();
+        //   })
+        //   .catch((error) => {
+        //     console.error("Error accepting order:", error);
+        //   });
       };
 
     const handleReject = () => {
@@ -50,7 +53,7 @@ const ActionMenuIncomingOrders = (props) => {
           .unwrap()
           .then(() => {
             window.location.reload(false);
-            console.log("Order Accepted Successfully successfully!");
+            console.log("Order rejected Successfully successfully!");
             // onClose();
           })
           .catch((error) => {
@@ -136,18 +139,75 @@ const ActionMenuIncomingOrders = (props) => {
       >
     
       {acceptRejectMenu}
-      <Dialog open={openDialog}>
-        <DialogTitle>Check Status</DialogTitle>
+      {/* <Dialog open={openDialog} onClose={() => {setOpenDialog(false)}}fullWidth maxWidth="md">
+        <DialogTitle>Confirm order?</DialogTitle>
         <DialogContent>
-          {/* Add content here */}
-          {/* <Typography>Status: {text} </Typography> */}
+
+          <TextField 
+            id="outlined-basic" 
+            label="Add Notes (optional)" 
+            variant="outlined" 
+            fullWidth
+            onChange={(e) => setNotes(e.target.value)}
+          />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpenDialog(false)} color="primary">
-            Close
+        <Button type="button"
+          fullWidth
+          variant="contained"
+          color="secondary" 
+          onClick={() => {
+              setOpenDialog(false);
+              updateOrder({ requestType: RequestType.SELLERACCPET, sellerIds:[userId], orderId:[props.orderData._id], isSeller: true})
+              .unwrap()
+              .then(() => {
+                // window.location.reload(false);
+                console.log("Order Accepted Successfully successfully!");
+                // onClose();
+              })
+              .catch((error) => {
+                console.error("Error accepting order:", error);
+              });
+            }}
+          >
+            Confirm Order
           </Button>
         </DialogActions>
-      </Dialog>
+      </Dialog> */}
+
+<Dialog open={openDialog} onClose={() => {setOpenDialog(false)}} fullWidth maxWidth="md">
+  <DialogTitle>Check Status</DialogTitle>
+  <DialogContent>
+    {/* Add content here */}
+    <TextField 
+      id="outlined-basic" 
+      label="Add Notes" 
+      variant="outlined" 
+      fullWidth
+      onChange={(e) => setNotes(e.target.value)}
+    />
+  </DialogContent>
+  <DialogActions>
+    <Button onClick={() => setOpenDialog(false)} color="secondary">
+      Close
+    </Button>
+    <Button onClick={() => {
+        setOpenDialog(false);
+        updateOrder({ requestType: RequestType.SELLERACCPET, sellerIds:[userId], orderId:[props.orderData._id], isSeller: true, notes })
+        .unwrap()
+        .then(() => {
+          console.log("Order Accepted Successfully successfully!");
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.error("Error accepting order:", error);
+        });
+      }
+    } color="secondary">
+      Confirm Order
+    </Button>
+  </DialogActions>
+</Dialog>
         
       </Menu>
     </div>

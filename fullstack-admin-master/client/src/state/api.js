@@ -85,18 +85,18 @@ export const api = createApi({
     }),
 
     updateRecipients: build.mutation({
-      query: ({ senders, receivingOrderId }) => ({
+      query: ({ senders, receivingOrderId, shipmentID }) => ({
         url: "client/updateRecipients",
         method: "POST",
-        body: { senders, receivingOrderId },
+        body: { senders, receivingOrderId, shipmentID },
       }),
     }),
 
     updateOrder: build.mutation({
-      query: ({requestType, sellerIds, orderId, isSeller}) => ({
+      query: ({requestType, sellerIds, orderId, isSeller, notes}) => ({
         url: "client/updateOrder",
         method: "POST",
-        body: {requestType, sellerIds, orderId, isSeller},
+        body: {requestType, sellerIds, orderId, isSeller, notes},
       }),
     }),
 
@@ -109,10 +109,10 @@ export const api = createApi({
     }),
 
     generateNewShipment: build.mutation({
-      query: ({ id, userId, recipientId, material, amount, unit, prev, orderStatus }) => ({
+      query: ({ userId, recipientId, material, amount, unit, orderStatus }) => ({
         url: "client/generateNewShipment",
         method: "POST",
-        body: { id, userId, recipientId, material, amount, unit, prev, orderStatus },
+        body: { userId, recipientId, material, amount, unit, orderStatus },
       }),
     }),
 

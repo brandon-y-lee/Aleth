@@ -12,7 +12,8 @@ const OrderRequestSchema = new mongoose.Schema(
         enum: Object.values(OrderStatus),
         default: OrderStatus.NEWORDER
       },
-    sellerStatuses: {}
+    sellerStatuses: {},
+    sellerNotes: {}
   },
   { timestamps: true }
 );

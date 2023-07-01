@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {ShipmentStatus} from "./ShipmentStatus.js";
+import {ShipmentStatus} from "../configs/ShipmentStatus.js";
 
 //Data columns : ID, Seller, Material, Amount, Unit, Date, Status
 

@@ -17,7 +17,7 @@ import Breakdown from "scenes/breakdown";
 import Admin from "scenes/admin";
 import Performance from "scenes/performance";
 import Session from 'react-session-api';
-Session.set("username","2");
+Session.set("username","20");
 
 function App() {
   const mode = useSelector((state) => state.global.mode);

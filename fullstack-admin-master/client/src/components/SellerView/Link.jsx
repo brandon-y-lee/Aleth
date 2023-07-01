@@ -17,6 +17,7 @@ import Session from 'react-session-api'
 // Need to add shipments prop
 const Link = ({ open, onClose, id }) => {
   const [checked, setChecked] = useState([]);
+  const [checkedShipmentId, setCheckedShipmentId] = useState([]);
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(20);
   const [sort, setSort] = useState({});
@@ -34,11 +35,13 @@ const Link = ({ open, onClose, id }) => {
   const [updateRecipients, { isLoading: isUpdatingRecipients }] = useUpdateRecipientsMutation();
 
   const handleSubmit = () => {
-    updateRecipients({ senders: checked, receivingOrderId: id })
+    // console.log(checkedShipmentId);
+    updateRecipients({ senders: checked, receivingOrderId: id, shipmentID: checkedShipmentId[0] })
       .unwrap()
       .then(() => {
         console.log("Recipients updated successfully!");
         onClose();
+        window.location.reload();
       })
       .catch((error) => {
         console.error("Error updating recipients:", error);
@@ -50,20 +53,26 @@ const Link = ({ open, onClose, id }) => {
   useEffect(() => {
     if (open) {
       setChecked([]);
+      setCheckedShipmentId([]);
     }
   }, [open]);
 
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
+  const handleToggle = (id, shipmentId) => () => {
+    console.log(id, shipmentId);
+    const currentIndex = checked.indexOf(id);
     const newChecked = [...checked];
+    const newCheckedShipmentId = [...checkedShipmentId];
 
     if (currentIndex === -1) {
-      newChecked.push(value);
+      newChecked.push(id);
+      newCheckedShipmentId.push(shipmentId);
     } else {
       newChecked.splice(currentIndex, 1);
+      newCheckedShipmentId.splice(currentIndex, 1);
     }
 
     setChecked(newChecked);
+    setCheckedShipmentId(newCheckedShipmentId);
   };
 
   useEffect(() => {
@@ -76,7 +85,7 @@ const Link = ({ open, onClose, id }) => {
       <DialogContent>
         <List>
           {data && data.transactions.map((transaction) => (
-            <ListItemButton key={transaction.id} onClick={handleToggle(transaction.id)}>
+            <ListItemButton key={transaction.id} onClick={handleToggle(transaction.id, transaction.shipmentID)}>
               <Checkbox
                 edge="start"
                 checked={checked.indexOf(transaction.id) !== -1}
@@ -93,7 +102,7 @@ const Link = ({ open, onClose, id }) => {
         <Button style={{"backgroundColor":"#00994c"}} onClick={ onClose }>Cancel</Button>
         <Button
           style={{"backgroundColor":"#00994c"}}
-          onClick={handleSubmit}
+          onClick={() => handleSubmit()}
           disabled={isUpdatingRecipients}
         >
           {isUpdatingRecipients ? "Updating..." : "Confirm & Link"}

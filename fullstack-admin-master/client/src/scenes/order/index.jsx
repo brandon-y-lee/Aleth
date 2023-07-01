@@ -94,7 +94,9 @@ const Order = () => {
             await createOrder({userId, material: formData.material, quantity:10, sellers: selectedRows});
             // console.log(orderData);
             // await updateOrder({ requestType: RequestType.INITORDER, sellerIds:selectedRows, orderId:[props.orderData._id], isSeller: false })
-            console.log(selectedRows); console.log("Submitted Request"); }}
+            console.log(selectedRows); console.log("Submitted Request"); 
+            window.location.reload();
+          }}
           sx={{
             backgroundColor: theme.palette.secondary[300],
             color: 'white',
@@ -130,43 +132,46 @@ const Order = () => {
       field: "color",
       headerName: "Color",
       flex: 0.5,
+      renderCell: (params) => "Red"
     },
     {
       field: "amount",
       headerName: "Amount",
       flex: 0.25,
       sortable: false,
-      // renderCell: (params) => params.value.length,
+      renderCell: (params) => "2000",
     },
     {
       field: "unit",
       headerName: "Unit",
       flex: 0.25,
+      renderCell: (params) => "lb"
     },
     {
       field: "price",
       headerName: "Avg Price",
       flex: 0.5,
+      renderCell: (params) => "N/A"
     },
-    {
-      field: "orderStatus",
-      headerName: "Order Status",
-      flex: 0.5,
-      renderCell: (params) => {
-        const sellerStatus = params.value;
-        console.log(sellerStatus);
-        if(params.value[userId] == OrderStatus.SELLERACCEPT)
-          return (<Chip label="You Accepted" color="info"/>)
-        if(params.value[userId] == OrderStatus.NEWORDER)
-          return (<Chip label="New Order" color="success"/>)
-        if(params.value[userId] == OrderStatus.BUYERACCEPT)
-          return (<Chip label="Buyer Accepted" color="success"/>)
-        if(params.value[userId] == OrderStatus.SELLERDENIED)
-          return (<Chip label="You Rejected" color="warning"/>)
-        if(params.value[userId] == OrderStatus.BUYERDENIED)
-          return (<Chip label="Order Rejected" color="error"/>)
-      },
-    },
+    // {
+    //   field: "orderStatus",
+    //   headerName: "Order Status",
+    //   flex: 0.5,
+    //   renderCell: (params) => {
+    //     const sellerStatus = params.value;
+    //     console.log(sellerStatus);
+    //     if(params.value[userId] == OrderStatus.SELLERACCEPT)
+    //       return (<Chip label="You Accepted" color="info"/>)
+    //     if(params.value[userId] == OrderStatus.NEWORDER)
+    //       return (<Chip label="New Order" color="success"/>)
+    //     if(params.value[userId] == OrderStatus.BUYERACCEPT)
+    //       return (<Chip label="Buyer Accepted" color="success"/>)
+    //     if(params.value[userId] == OrderStatus.SELLERDENIED)
+    //       return (<Chip label="You Rejected" color="warning"/>)
+    //     if(params.value[userId] == OrderStatus.BUYERDENIED)
+    //       return (<Chip label="Order Rejected" color="error"/>)
+    //   },
+    // },
     {
       field: "actions",
       headerName: "Actions",

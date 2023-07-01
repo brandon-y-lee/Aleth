@@ -164,7 +164,7 @@ const Shipments = () => {
       headerName: "Quantity",
       flex: 0.5,
       sortable: false,
-      renderCell: (params) => params.value.length,
+      renderCell: (params) => 1000,
     },
     {
       field: "sellerStatuses",
