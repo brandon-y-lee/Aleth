@@ -97,8 +97,15 @@ const PurchaseForm = ({ onSearch }) => {
           type="submit"
           fullWidth
           variant="contained"
-          color="secondary"
-          sx={{ mt: 3, mb: 2 }}
+          sx={{ 
+            mt: 3, 
+            mb: 2,
+            backgroundColor: theme.palette.secondary[300],
+            color: 'white',
+            '&:hover': {
+              backgroundColor: theme.palette.secondary[400],
+            },
+          }}
         >
           Search
         </Button>

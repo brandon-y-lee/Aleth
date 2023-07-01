@@ -260,7 +260,7 @@ const Order = () => {
 
         <TabPanel value={value} index={0}>
           <Box
-            height="70vh"
+            height="60vh"
             sx={{
               "& .MuiDataGrid-root": {
                 border: "none",
@@ -321,7 +321,7 @@ const Order = () => {
 
         <TabPanel value={value} index={1}>
           <Box
-            height="70vh"
+            height="60vh"
             sx={{
               "& .MuiDataGrid-root": {
                 border: "none",
