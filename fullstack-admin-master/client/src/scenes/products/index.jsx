@@ -124,117 +124,74 @@ const Products = () => {
     },
   ];
 
-  const incomingRequestColumns = [
-    {
-      field: "_id",
-      headerName: "OrderID",
-      flex: 1,
-    },
-    {
-      field: "buyerId",
-      headerName: "Buyer ID",
-      flex: 1,
-    },
-    {
-      field: "material",
-      headerName: "Material",
-      flex: 1,
-    },
-    {
-      field: "quantity",
-      headerName: "Quantity",
-      flex: 0.5,
-      sortable: false,
-      renderCell: (params) => params.value.length,
-    },
-    {
-      field: "sellerStatuses",
-      headerName: "Order Status",
-      flex: 0.5,
-      renderCell: (params) => {
-        const sellerStatus = params.value[userId];
-        console.log(sellerStatus);
-        console.log(OrderStatus.SELLERDENIED);
-        console.log(sellerStatus == OrderStatus.SELLERDENIED);
-        if(params.value[userId] == OrderStatus.SELLERACCEPT)
-          return (<Chip label="You Accepted" color="info"/>)
-        if(params.value[userId] == OrderStatus.NEWORDER)
-          return (<Chip label="New Order" color="success"/>)
-        if(params.value[userId] == OrderStatus.BUYERACCEPT)
-          return (<Chip label="Buyer Accepted" color="success"/>)
-        if(params.value[userId] == OrderStatus.SELLERDENIED)
-          return (<Chip label="You Rejected" color="warning"/>)
-        if(params.value[userId] == OrderStatus.BUYERDENIED)
-          return (<Chip label="Order Rejected" color="error"/>)
-      },
-    },
-    {
-      field: "actions",
-      headerName: "Actions",
-      sortable: false,
-      flex: 0.5,
-      renderCell: (params) => {
-        console.log(params);
-        return (<ActionMenuIncomingOrders orderData={params.row}/>)},
-    },
-  ];
-
   return (
-    <Box m="1.5rem 2.5rem">
-      <Header title="PRODUCTS"/>
-
-      <Box
-        height="80vh"
+    <Box>
+      <Box 
+        height="16vh"
+        p="2.5rem 2.5rem"
         sx={{
-          "& .MuiDataGrid-root": {
-            border: "none",
-          },
-          "& .MuiDataGrid-cell": {
-            borderBottom: "none",
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: theme.palette.background.alt,
-            color: theme.palette.secondary[100],
-            borderBottom: "none",
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: theme.palette.primary.light,
-          },
-          "& .MuiDataGrid-footerContainer": {
-            backgroundColor: theme.palette.background.alt,
-            color: theme.palette.secondary[100],
-            borderTop: "none",
-          },
-          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-            color: `${theme.palette.secondary[200]} !important`,
-          },
+          background: `linear-gradient(215deg, ${theme.palette.secondary[400]} 30%, ${theme.palette.primary[500]} 90%)`,
         }}
       >
-        <DataGrid
-          loading={isLoading || !data}
-          getRowId={(row) => Math.random()}
-          rows={(data && data.transactions) || []}
-          columns={outgoingShipmentColumns}
-          rowCount={(data && data.total) || 0}
-          rowsPerPageOptions={[20, 50, 100]}
-          pagination
-          page={page}
-          pageSize={pageSize}
-          paginationMode="server"
-          sortingMode="server"
-          onPageChange={(newPage) => setPage(newPage)}
-          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-          onSortModelChange={(newSortModel) => setSort(...newSortModel)}
-          components={{ Toolbar: DataGridCustomToolbar }}
-          componentsProps={{
-            toolbar: { searchInput, setSearchInput, setSearch },
+        <Header title="PRODUCTS" subtitle="View Transactions and Track Inventory" />
+      </Box>
+
+      <Box m="1.5rem 2.5rem">
+        <Header title="PRODUCTS"/>
+
+        <Box
+          height="80vh"
+          sx={{
+            "& .MuiDataGrid-root": {
+              border: "none",
+            },
+            "& .MuiDataGrid-cell": {
+              borderBottom: "none",
+            },
+            "& .MuiDataGrid-columnHeaders": {
+              backgroundColor: theme.palette.background.alt,
+              color: theme.palette.secondary[100],
+              borderBottom: "none",
+            },
+            "& .MuiDataGrid-virtualScroller": {
+              backgroundColor: theme.palette.primary.light,
+            },
+            "& .MuiDataGrid-footerContainer": {
+              backgroundColor: theme.palette.background.alt,
+              color: theme.palette.secondary[100],
+              borderTop: "none",
+            },
+            "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+              color: `${theme.palette.secondary[200]} !important`,
+            },
           }}
-          onRowClick={(row)=>{
-            setSelectedShipmentId(row.row.shipmentID);
-            setSelectedId(row.row.id);
-            setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
-          }
-        />
+        >
+          <DataGrid
+            loading={isLoading || !data}
+            getRowId={(row) => Math.random()}
+            rows={(data && data.transactions) || []}
+            columns={outgoingShipmentColumns}
+            rowCount={(data && data.total) || 0}
+            rowsPerPageOptions={[20, 50, 100]}
+            pagination
+            page={page}
+            pageSize={pageSize}
+            paginationMode="server"
+            sortingMode="server"
+            onPageChange={(newPage) => setPage(newPage)}
+            onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+            onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+            components={{ Toolbar: DataGridCustomToolbar }}
+            componentsProps={{
+              toolbar: { searchInput, setSearchInput, setSearch },
+            }}
+            onRowClick={(row)=>{
+              setSelectedShipmentId(row.row.shipmentID);
+              setSelectedId(row.row.id);
+              setCoordinates([{"$numberDecimal":Math.random()*100}, {"$numberDecimal":Math.random()*100}])}
+            }
+          />
+        </Box>
       </Box>
     </Box>
   );
