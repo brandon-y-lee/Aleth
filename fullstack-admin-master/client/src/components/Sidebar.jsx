@@ -86,7 +86,7 @@ const navItems = [
     icon: null,
   },
   {
-    text: "Admin",
+    text: "Authentication",
     icon: <AdminPanelSettingsOutlined />,
   },
   {
