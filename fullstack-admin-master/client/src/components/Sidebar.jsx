@@ -27,6 +27,7 @@ import {
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,
   PieChartOutlined,
+  InventoryOutlined,
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -53,8 +54,8 @@ const navItems = [
     icon: <Inventory2Outlined />,
   },
   {
-    text: "Entity",
-    icon: <PeopleAltOutlined />,
+    text: "Products",
+    icon: <InventoryOutlined />,
   },
   {
     text: "Templates",
@@ -65,7 +66,7 @@ const navItems = [
     icon: null,
   },
   {
-    text: "Products",
+    text: "Entity",
     icon: <PointOfSaleOutlined />,
   },
   {
@@ -85,7 +86,7 @@ const navItems = [
     icon: null,
   },
   {
-    text: "Admin",
+    text: "Authentication",
     icon: <AdminPanelSettingsOutlined />,
   },
   {
