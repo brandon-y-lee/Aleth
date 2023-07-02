@@ -70,7 +70,7 @@ mongoose
     // User.insertMany(dataUser);
     // UserData.insertMany(userData);
     // OrderRequest.insertMany(dataOrderRequests);
-    SupplierData.insertMany(supplierdata);
+    // SupplierData.insertMany(supplierdata);
     console.log("Inserted")
   })
   .catch((error) => console.log(`${error} Did not connect`));

@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { DataGrid, GridFooterContainer, GridFooter } from "@mui/x-data-grid";
 import { useGetTransactionsQuery, useGetChainOfShipmentsQuery, useGetIncomingRequestsQuery } from "state/api";
-import { useGetPurchaseOrdersQuery, useGetEligibleSellersQuery, useUpdateOrderMutation, useCreateNewOrderMutation } from "state/api";
+import { useGetPurchaseOrdersQuery, useGetEligibleSellersQuery, useUpdateOrderMutation, useCreateNewOrderMutation, useGetEligibleSellersAdvancedQuery } from "state/api";
 import Header from "components/Header";
 import OrderMap from "components/OrderMap";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
@@ -46,6 +46,13 @@ const Order = () => {
 
   let {data: purchaseOrders, isLoading: isLoadingPurchaseOrders} = useGetPurchaseOrdersQuery({userId});
   let {data: searchResults, isLoading: isLoadingSearchResults} = useGetEligibleSellersQuery({material: formData.material ? formData.material : undefined})
+  let {data: searchResultsAdvanced, isLoading: isLoadingSearchResultsAdvanced} = useGetEligibleSellersAdvancedQuery({
+    products: formData.productCategory ? formData.productCategory : undefined, 
+    material: formData.materialType ? formData.materialType : undefined,
+    fabricConstruction: formData.fabricConstruction ?formData.fabricConstruction : undefined,
+    certifications : ""
+   })
+
   const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
   const [createOrder, { isLoading: creatingOrder }] = useCreateNewOrderMutation();
 
@@ -153,25 +160,6 @@ const Order = () => {
       flex: 0.5,
       renderCell: (params) => "N/A"
     },
-    // {
-    //   field: "orderStatus",
-    //   headerName: "Order Status",
-    //   flex: 0.5,
-    //   renderCell: (params) => {
-    //     const sellerStatus = params.value;
-    //     console.log(sellerStatus);
-    //     if(params.value[userId] == OrderStatus.SELLERACCEPT)
-    //       return (<Chip label="You Accepted" color="info"/>)
-    //     if(params.value[userId] == OrderStatus.NEWORDER)
-    //       return (<Chip label="New Order" color="success"/>)
-    //     if(params.value[userId] == OrderStatus.BUYERACCEPT)
-    //       return (<Chip label="Buyer Accepted" color="success"/>)
-    //     if(params.value[userId] == OrderStatus.SELLERDENIED)
-    //       return (<Chip label="You Rejected" color="warning"/>)
-    //     if(params.value[userId] == OrderStatus.BUYERDENIED)
-    //       return (<Chip label="Order Rejected" color="error"/>)
-    //   },
-    // },
     {
       field: "actions",
       headerName: "Actions",

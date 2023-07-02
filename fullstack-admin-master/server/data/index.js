@@ -791,7 +791,7 @@ export const supplierdata = [
      "YearFounded":1999.0,
      "ExportMarkets":"Asia",
      "Description":"Distributor of fasteners, abrasives, cutting tools, hydraulic/pneumatic fittings, adhesives, lubricants, electrical, material handling, janitorial and outdoor products. Secondary services such as kitting, packaging, sourcing and supply chain management solutions are also offered. Serves the construction, military, hospitality and automotive industries",
-     "Products":"['Adapters', 'Bushings', 'Caps', 'Connectors', 'Couplers and Couplings', 'Crosses', 'Elbows', 'Fittings', 'Nipples', 'Plugs and Stoppers', 'Tees', 'Unions', 'Wyes', 'Packaging Services', 'Manufacturing Services', 'Private Label Manufacturing', 'Rods', 'Bolts', 'Janitorial Equipment', 'Janitorial Supplies', 'Safety Equipment', 'Anchors', 'Bits', 'COVID-19 Response', 'Fasteners', 'Gloves', 'Medical Personal Protective Equipment (PPE)', 'Nails and Brads', 'Nuts (Fasteners)', 'Rivets']"
+     "Products":['Adapters', 'Bushings', 'Caps', 'Connectors', 'Couplers and Couplings', 'Crosses', 'Elbows', 'Fittings', 'Nipples', 'Plugs and Stoppers', 'Tees', 'Unions', 'Wyes', 'Packaging Services', 'Manufacturing Services', 'Private Label Manufacturing', 'Rods', 'Bolts', 'Janitorial Equipment', 'Janitorial Supplies', 'Safety Equipment', 'Anchors', 'Bits', 'COVID-19 Response', 'Fasteners', 'Gloves', 'Medical Personal Protective Equipment (PPE)', 'Nails and Brads', 'Nuts (Fasteners)', 'Rivets']
   },
   {
      "Company":"Shawmut Corporation",
@@ -812,7 +812,7 @@ export const supplierdata = [
      "YearFounded":1916.0,
      "ExportMarkets":"Africa, Asia, Australia, Canada, Europe, Mexico, Middle East, Western Europe",
      "Description":"QS 9000 and ISO 9002 certified. Manufacturer of molded and die-cut soft-trim components, rigid molded components, and laminated products such as headliners, sunroofs, body cloths, electrometric films, sheeting, inserts, pillar wraps, packaging trays, and cup holders. Visor, child seat pad, sunshade, blood pressure cuff, air-loss mattress, orthopedic barrier fabric, breathable barrier, molded insole, and garment laminated products are also offered. Materials include wood-filled polypropylene, vinyl, urethane, closed-cell polyethylene, polypropylene foam, laminated textiles, polymer films, and non-woven. Capabilities include flame and thermoplastic adhesive lamination, pressure-sensitive adhesive development, integrating sheeting, solvent and water-based coating, rewinding, slitting, die cutting and blanking, thermal, and compression molding, heat sealing, vacuum forming, RF, and dielectric welding. A2LA certified material testing services.",
-     "Products":"[\\'Manufacturing Services\\', \\'Laminating Services\\', \\'Fabrics and Cloths\\', \\'Composites\\', \\'COVID-19 Response\\', \\'Tier 2 Medical Mfg. Supplies, Materials, Components & Services\\', \\'Finishing Services\\', \\'Coating Services\\', \\'Converting Services\\', \\'Film\\', \\'Foams\\', \\'Laminations\\', \\'Medical Equipment\\', \\'Medical Products and Hospital Equipment\\', \\'Prototyping Services\\', \\'Automotive Parts\\', \\'Barriers\\', \\'Clothing\\', \\'Controls and Controllers\\', \\'Covers\\', \\'Cuffs\\', \\'Cutting Services\\', \\'Disposable Products\\', \\'Draperies\\', \\'Fabrication Services\\', \\'Fiber\\', \\'Finishes\\', \"Fire Fighters\\' Personal Protective Equipment (PPE)\", \\'Flexible Materials\\', \\'Foam Products\\']"
+     "Products": ['Manufacturing Services', 'Laminating Services', 'Fabrics and Cloths', 'Composites', 'COVID-19 Response', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Finishing Services', 'Coating Services', 'Converting Services', 'Film', 'Foams', 'Laminations', 'Medical Equipment', 'Medical Products and Hospital Equipment', 'Prototyping Services', 'Automotive Parts', 'Barriers', 'Clothing', 'Controls and Controllers', 'Covers', 'Cuffs', 'Cutting Services', 'Disposable Products', 'Draperies', 'Fabrication Services', 'Fiber', 'Finishes', "Fire Fighters' Personal Protective Equipment (PPE)", 'Flexible Materials', 'Foam Products'],
   },
   {
      "Company":"Burlington Safety Laboratory, Inc.",
@@ -833,7 +833,7 @@ export const supplierdata = [
      "YearFounded":1971.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of industrial electrical and personal safety equipment and supplies. Products include line and hose covers, blankets, guards, covers, outage and personal protection products, grounding equipment, hot sticks, insulators, arc flash protection and safety kits. Grounding equipment includes clamps, ferrules, cables, grounding sets and voltage detectors. Personal protection products include gloves, sleeves, footwear, eye and head protection and safety clothing. Arc flash protection products include arc flash hood and hat kits, protective coveralls, jacket and safety kits. Services include testing, calibration and repair. Laboratory testing services are available for high voltage rubber products including gloves, sleeves, blankets, hose, insulation and matting, hot stick and hot line tools, insulating plastic guards and insulating aerial devices. Testing services meet ANSI/ASTM standards.",
-     "Products":"[\\'Gloves\\', \\'Safety Equipment\\', \\'Clothing\\', \\'Testing Services\\', \\'COVID-19 Response\\', \\'Medical Personal Protective Equipment (PPE)\\', \\'Protectors\\', \\'Clamps\\', \\'Laboratories\\', \"Linemen\\'s Equipment\", \\'Air Filtration Equipment & Supplies\\', \\'Applicators\\', \\'Aprons\\', \\'Backpacks\\', \\'Bags\\', \\'Barriers\\', \\'Binders\\', \\'Blankets\\', \\'Boots\\', \\'Brackets\\', \\'Brushes\\', \\'Buckets\\', \\'Buttons\\', \\'Calibration Services\\', \\'Canisters\\', \\'Cans\\', \\'Caps\\', \\'Cartridges\\', \\'Cases\\', \\'Chargers\\']"
+     "Products":['Gloves', 'Safety Equipment', 'Clothing', 'Testing Services', 'COVID-19 Response', 'Medical Personal Protective Equipment (PPE)', 'Protectors', 'Clamps', 'Laboratories', "Linemen's Equipment", 'Air Filtration Equipment & Supplies', 'Applicators', 'Aprons', 'Backpacks', 'Bags', 'Barriers', 'Binders', 'Blankets', 'Boots', 'Brackets', 'Brushes', 'Buckets', 'Buttons', 'Calibration Services', 'Canisters', 'Cans', 'Caps', 'Cartridges', 'Cases', 'Chargers']
   },
   {
      "Company":"Atlantic Paper & Supply",
@@ -854,7 +854,7 @@ export const supplierdata = [
      "YearFounded":1948.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of shipping supplies and vendor managed inventory specialists. Standard and custom sizes available for packaging, janitorial, safety, maintenance, repair and office supplies. Products include bags, VCI and corrosion prevention products, printed and plain boxes, cartons, mailers, cable ties, packaging and cushion machines, loose fill peanuts, napkins, wraps, cutlery, plates, bowls, cups, dryers, hand soaps, sanitizers, recycling containers, material handling equipment, odor controls, mopping systems, ice melts, brooms, brushes, floor finishes, mattings, scissors, staplers, trash bags, industrial paper and tissues. Receptacles, batteries, ladders, labels, badges, volatile corrosion inhibitors, envelopes, dispensers, feminine products, wipers, rags, seat covers, first-aid, hydration drinks, disposable clothing, eye and ear protection, sorbents, gloves, knives, tapes and tools are also available. Capabilities include custom box printing, vendor inventory management and package designing. Markets served include medical, military, laboratory, industrial and electronics.",
-     "Products":"['Boxes', 'Tapes', 'Bags', 'Film', 'Packaging Materials', 'Safety Equipment', 'Inhibitors', 'Janitorial Supplies', 'MRO Replenishment Services', 'Shipping Room Equipment', 'Cushions', 'Absorbers', 'Adhesives', 'Air Fresheners', 'Air Handlers', 'Aluminum', 'Applicators', 'Aprons', 'Bandages', 'Bands', 'Barrels and Drums', 'Baskets', 'Batteries', 'Bins', 'Blades', 'Bleaches', 'Blocks', 'Booms', 'Bottles', 'Bowls']"
+     "Products":['Boxes', 'Tapes', 'Bags', 'Film', 'Packaging Materials', 'Safety Equipment', 'Inhibitors', 'Janitorial Supplies', 'MRO Replenishment Services', 'Shipping Room Equipment', 'Cushions', 'Absorbers', 'Adhesives', 'Air Fresheners', 'Air Handlers', 'Aluminum', 'Applicators', 'Aprons', 'Bandages', 'Bands', 'Barrels and Drums', 'Baskets', 'Batteries', 'Bins', 'Blades', 'Bleaches', 'Blocks', 'Booms', 'Bottles', 'Bowls']
   },
   {
      "Company":"The Cary Company",
@@ -875,7 +875,7 @@ export const supplierdata = [
      "YearFounded":1895.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of packaging, raw materials, specialty chemicals and spill control products. Various products available include bottles, jars, jugs, cans, bins, drums, barrels, totes, caps, closures, filter bags, strainers, suits, socks, berms, filters, guards, covers, dikes, mailers, boxes, cartons, blankets, cables, heaters, receptacles, cords and protectors. Designing, labeling, logistic, products sourcing, warehousing and used tote disposal services also offered. Most items available in stock.",
-     "Products":"['Barrels and Drums', 'Bottles', 'Janitorial Supplies', 'Buckets', 'Caps', 'Containers', 'Disaster Preparedness Supplies', 'Hurricane Response', 'Absorbers', 'Aids', 'Air Filtration Equipment & Supplies', 'Alarms', 'Applicators', 'Aprons', 'Arms', 'Bags', 'Bands', 'Basins', 'Baskets', 'Berms', 'Binders', 'Bins', 'Blades', 'Blankets', 'Booms', 'Boxes', 'Brooms', 'Brushes', 'Cabinets', 'Cages']"
+     "Products":['Barrels and Drums', 'Bottles', 'Janitorial Supplies', 'Buckets', 'Caps', 'Containers', 'Disaster Preparedness Supplies', 'Hurricane Response', 'Absorbers', 'Aids', 'Air Filtration Equipment & Supplies', 'Alarms', 'Applicators', 'Aprons', 'Arms', 'Bags', 'Bands', 'Basins', 'Baskets', 'Berms', 'Binders', 'Bins', 'Blades', 'Blankets', 'Booms', 'Boxes', 'Brooms', 'Brushes', 'Cabinets', 'Cages']
   },
   {
      "Company":"American Stitchco, Inc.",
@@ -896,7 +896,7 @@ export const supplierdata = [
      "YearFounded":1983.0,
      "ExportMarkets":"Africa, Asia, Australia, Canada, Europe, Latin America/Caribbean, Mexico, Middle East, Western Europe",
      "Description":"ISO 14001 certified. Manufacturer of auto accessories & components, specializing in products made of fabric, vinyl, or leather, which are stitched, stuffed, heat sealed, screen printed, or embroidered. Products include skintight auto front masks, car bras, seat covers, car covers, soft & hard spare tire covers, luggage carriers, cargo liners, shifter boots, consoles, Tonneau covers, floor mats, security curtains & cabanas, specialty bags, stuffed & sewn pillows, spa pump filters, hot tub liners. & hail protection canopies. TS-16949, ISO 14001, Ford QI, tier 1 & 2 supplier to auto manufacturers.",
-     "Products":"['Sewing Services', 'Printing and Marking Services', 'Boots', 'Assembly Services', 'Automotive Parts', 'Bags', 'Beds', 'Belts', 'Blouses', 'Cabanas', 'Canopies', 'Canvas Products', 'Carriers', 'Clothing', 'Coats', 'Consoles', 'Containers', 'Covers', 'COVID-19 Response', 'Cutting Services', 'Diapers', 'Disaster Preparedness Supplies', 'Dresses', 'Embossing Services', 'Embroidery Equipment', 'Embroidery Services', 'Filters', 'Fulfillment Services', 'Greenhouses', 'Handles, Pulls and Levers']"
+     "Products":['Sewing Services', 'Printing and Marking Services', 'Boots', 'Assembly Services', 'Automotive Parts', 'Bags', 'Beds', 'Belts', 'Blouses', 'Cabanas', 'Canopies', 'Canvas Products', 'Carriers', 'Clothing', 'Coats', 'Consoles', 'Containers', 'Covers', 'COVID-19 Response', 'Cutting Services', 'Diapers', 'Disaster Preparedness Supplies', 'Dresses', 'Embossing Services', 'Embroidery Equipment', 'Embroidery Services', 'Filters', 'Fulfillment Services', 'Greenhouses', 'Handles, Pulls and Levers']
   },
   {
      "Company":"Zooby Promotional",
@@ -917,7 +917,7 @@ export const supplierdata = [
      "YearFounded":2008.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of promotional products including apparel, headwear, sunglasses, watches, shoes, awards, bags, and drinkware. Coolers, chairs, blankets, umbrellas, fans, towels, balls, toys, backpacks, mugs, mats, wipes, covers, markers, and pads are available. Candles, pedometers, desk items, labels, magnets, holders, pens, erasers, personal protective equipment (PPE), flash drives, cables, cords, universal serial bus (USB) hubs, adapters, power banks, speakers, and chargers are also offered. Custom logo imprinting options are provided. Some products are made in the USA and FDA approved.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Backpacks', 'Disaster Preparedness Supplies', 'Hurricane Response', 'Janitorial Supplies', 'Mugs', 'Pads', 'Wipes and Wipers', 'Adapters', 'Aggregates', 'Air Fresheners', 'Albums', 'Amenities', 'Aprons', 'Artwork', 'Atomizers', 'Awards', 'Awnings', 'Baby Accessories', 'Badges', 'Bags', 'Balloons', 'Balls', 'Balms', 'Bandages', 'Bandanas', 'Bands', 'Banks', 'Banners', 'Bar Supplies']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Backpacks', 'Disaster Preparedness Supplies', 'Hurricane Response', 'Janitorial Supplies', 'Mugs', 'Pads', 'Wipes and Wipers', 'Adapters', 'Aggregates', 'Air Fresheners', 'Albums', 'Amenities', 'Aprons', 'Artwork', 'Atomizers', 'Awards', 'Awnings', 'Baby Accessories', 'Badges', 'Bags', 'Balloons', 'Balls', 'Balms', 'Bandages', 'Bandanas', 'Bands', 'Banks', 'Banners', 'Bar Supplies']
   },
   {
      "Company":"Coast-Line International",
@@ -938,7 +938,7 @@ export const supplierdata = [
      "YearFounded":1960.0,
      "ExportMarkets":"Canada, Europe, Latin America/Caribbean, Mexico, Western Europe",
      "Description":"Distributor of various products for aerospace, armor, automotive, defense, glass, industrial, marine, printed circuit board, and R & D industries. Products include vacuum bagging materials, tooling, sealants, technical fabrics & fibers, core materials, adhesives, cutting tools, abrasives, pressure sensitive tapes, vacuum pumps, health & safety products, aerosol products, spray paint, wipes, hot bonders, air tools, primers, packaging materials, material racks, penetrants, clean room products, and more.",
-     "Products":"['Adhesives', 'Composites', 'Fabrics and Cloths', 'Film', 'Tapes', 'Cutting Services', 'Cleanroom Equipment', 'Epoxies', 'Hose', 'Mats', 'Pumps', 'Racks', 'Tooling', 'Abrasive Compounds / Media', 'Accelerators', 'Aerosols', 'Agents', 'Applicators', 'Bagging Machinery', 'Belts', 'Blades', 'Bonders', 'Breathers', 'Chemicals', 'Cleaning Compounds and Chemicals', 'Clothing', 'Coatings', 'Cores', 'Countersinks', 'COVID-19 Response']"
+     "Products":['Adhesives', 'Composites', 'Fabrics and Cloths', 'Film', 'Tapes', 'Cutting Services', 'Cleanroom Equipment', 'Epoxies', 'Hose', 'Mats', 'Pumps', 'Racks', 'Tooling', 'Abrasive Compounds / Media', 'Accelerators', 'Aerosols', 'Agents', 'Applicators', 'Bagging Machinery', 'Belts', 'Blades', 'Bonders', 'Breathers', 'Chemicals', 'Cleaning Compounds and Chemicals', 'Clothing', 'Coatings', 'Cores', 'Countersinks', 'COVID-19 Response']
   },
   {
      "Company":"Longbehn & Co., Inc.",
@@ -959,7 +959,7 @@ export const supplierdata = [
      "YearFounded":1954.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of imprinted promotional and advertising products. Products include apparel, tools, planners, lanyards, awards, holders, cards, kits, and bags. Available in various sizes, shapes, styles, colors, and designs. Products are made of metal, cloth, plastic, wood, and ceramic. Suitable for use in applications such as tradeshows, conventions, corporate and sporting events, and seminars.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Backpacks', 'Bags', 'Calendars', 'Cups', 'Disaster Preparedness Supplies', 'Hurricane Response', 'Mugs', 'Sportswear', 'Adapters', 'Albums', 'Aprons', 'Awards', 'Badges', 'Balloons', 'Balls', 'Balms', 'Bandanas', 'Bands', 'Banks', 'Banners', 'Barbecue Equipment', 'Barware', 'Baskets', 'Bibs', 'Binders', 'Blankets', 'Boards', 'Bookmarks', 'Books']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Backpacks', 'Bags', 'Calendars', 'Cups', 'Disaster Preparedness Supplies', 'Hurricane Response', 'Mugs', 'Sportswear', 'Adapters', 'Albums', 'Aprons', 'Awards', 'Badges', 'Balloons', 'Balls', 'Balms', 'Bandanas', 'Bands', 'Banks', 'Banners', 'Barbecue Equipment', 'Barware', 'Baskets', 'Bibs', 'Binders', 'Blankets', 'Boards', 'Bookmarks', 'Books']
   },
   {
      "Company":"Carolina Glove Co.",
@@ -980,7 +980,7 @@ export const supplierdata = [
      "YearFounded":1946.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of standard and custom gloves including palm coated, safety, reflective, disposable, steel grip, chore, gauntlet cuff, work, and golf. Flannel, hot mill, jersey, oil, string knit, utility, and welder gloves are also provided. Some gloves are distributed. Aprons, boots, caps, coveralls, covers, displays, eyeglasses, fabrics, goggles, and hairnets are offered. Hats, liners, masks, pads, earplugs, ponchos, racks, scarves, sleeves, and vests are available. Serves automotive, construction, electrical, mining, military, agricultural, chemical, medical, oil, and gas industries. Made in the USA.",
-     "Products":"[\\'Gloves\\', \\'COVID-19 Response\\', \\'Medical Personal Protective Equipment (PPE)\\', \\'Advertising Specialties, Novelties, and Promotional Products\\', \\'Aprons\\', \\'Belts\\', \\'Boots\\', \\'Canvas\\', \\'Canvas Products\\', \\'Caps\\', \\'Clothing\\', \\'Coveralls\\', \\'Covers\\', \\'Disaster Preparedness Supplies\\', \\'Displays\\', \\'Disposable Products\\', \\'Eyeglasses\\', \\'Fabrics and Cloths\\', \"Fire Fighters\\' Personal Protective Equipment (PPE)\", \\'Flannels\\', \\'Foundry Equipment\\', \\'Goggles\\', \\'Hairnets\\', \\'Hats\\', \\'Helmets\\', \\'Hurricane Personal Protective Equipment\\', \\'Hurricane Response\\', \\'Janitorial Equipment\\', \\'Janitorial Supplies\\', \\'Liners\\']"
+     "Products":['Gloves', 'COVID-19 Response', 'Medical Personal Protective Equipment (PPE)', 'Advertising Specialties, Novelties, and Promotional Products', 'Aprons', 'Belts', 'Boots', 'Canvas', 'Canvas Products', 'Caps', 'Clothing', 'Coveralls', 'Covers', 'Disaster Preparedness Supplies', 'Displays', 'Disposable Products', 'Eyeglasses', 'Fabrics and Cloths', "Fire Fighters' Personal Protective Equipment (PPE)", 'Flannels', 'Foundry Equipment', 'Goggles', 'Hairnets', 'Hats', 'Helmets', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Janitorial Equipment', 'Janitorial Supplies', 'Liners']
   },
   {
      "Company":"Stanley Supply Online",
@@ -1001,7 +1001,7 @@ export const supplierdata = [
      "YearFounded":1986.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of fasteners and safety supplies. Products include masonry or chemical anchors, screws, drill bits, blades, saws, and nuts. Firestops, arbors, cutters, shims, pins, and power tools are also offered. Material handling, rigging, cleaning, testing, and measurement equipment are provided. Laser systems, carabiners, wood fillers, polyethylene sheeting, lights, sealants, and adhesives are available. Serves the construction, manufacturing, and maintenance industries.",
-     "Products":"['Adapters', 'Adhesives', 'Anchors', 'Arbors', 'Bags', 'Batteries', 'Bearings', 'Bits', 'Blades', 'Blankets', 'Blocks', 'Bolts', 'Boots', 'Brackets', 'Brushes', 'Buckets', 'Cans', 'Capsules', 'Cartridges', 'Caulk', 'Cells', 'Chargers', 'Cleaning Accessories', 'Cleaning Compounds and Chemicals', 'Clips', 'Clothing', 'Collars', 'Connectors', 'Coolers', 'Cord and Cordage']"
+     "Products":['Adapters', 'Adhesives', 'Anchors', 'Arbors', 'Bags', 'Batteries', 'Bearings', 'Bits', 'Blades', 'Blankets', 'Blocks', 'Bolts', 'Boots', 'Brackets', 'Brushes', 'Buckets', 'Cans', 'Capsules', 'Cartridges', 'Caulk', 'Cells', 'Chargers', 'Cleaning Accessories', 'Cleaning Compounds and Chemicals', 'Clips', 'Clothing', 'Collars', 'Connectors', 'Coolers', 'Cord and Cordage']
   },
   {
      "Company":"California Industrial Rubber Co.",
@@ -1022,7 +1022,7 @@ export const supplierdata = [
      "YearFounded":1958.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of hose, clamps, couplings, nipples, brass inserts, valves, adapters, adhesives, aerosols, coatings, lubricants, mats, strip curtains, films, foams, sponges, timing belts, lacing, idlers, bearings, pulleys, chains, sprockets, variable speed drives and electric motors. Protective products including coveralls, rainwear, respirators, masks, safety glasses, goggles, aprons, footwear and gloves are also distributed. Custom manufacturer of pillow pads, slings, cylinders, seals, wire rakes, mounts, fan blades, end caps, liners, conveyor belts, rollers, idlers, tarps, covers, flaps, T, scoop cleat and V guides. Turnkey system integrator for conveyor systems. Capabilities include CNC machining, waterjet or die cutting, punching, tube bending, MIG and stick welding. 24-7 belt repair services are also offered. Serves the agriculture, food processing, mining, construction and poultry industries.",
-     "Products":"['Belts', 'COVID-19 Response', 'Extrusion Services', 'Hose', 'Plastics', 'Polycarbonate', 'Polyethylene (PE)', 'Rubber', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Adapters', 'Adhesives', 'Aprons', 'Bands', 'Bearings', 'Bending Services', 'Blades', 'Boots', 'Buckles', 'Caps', 'Chains', 'Chutes', 'Clamps', 'Cleats', 'Clothing', 'Coatings', 'Connectors', 'Conveyor Belt Idlers', 'Conveyors', 'Cord and Cordage', 'Couplers and Couplings']"
+     "Products":['Belts', 'COVID-19 Response', 'Extrusion Services', 'Hose', 'Plastics', 'Polycarbonate', 'Polyethylene (PE)', 'Rubber', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Adapters', 'Adhesives', 'Aprons', 'Bands', 'Bearings', 'Bending Services', 'Blades', 'Boots', 'Buckles', 'Caps', 'Chains', 'Chutes', 'Clamps', 'Cleats', 'Clothing', 'Coatings', 'Connectors', 'Conveyor Belt Idlers', 'Conveyors', 'Cord and Cordage', 'Couplers and Couplings']
   },
   {
      "Company":"Worksman Cycles",
@@ -1043,7 +1043,7 @@ export const supplierdata = [
      "YearFounded":1898.0,
      "ExportMarkets":"Africa, Asia, Australia, Canada, Europe, Mexico, Middle East, Western Europe",
      "Description":"Manufacturer of heavy duty industrial, recreational, electric, and delivery bicycles and tricycles. Types of tricycles include front load, cargo, tandem, folding, and side by side team dual tricycles, personal activity vehicles (PAV), and port-o-trikes. Special needs bicycles and tricycles for riders with physical challenges are also offered. Vending, hot dog, and ice cream carts are available. Bicycle and tricycle accessories including front and rear baskets, chime bells, pedal extenders, helmets, cable locks, pedals, seats, heavy haul trailers, pushcart umbrellas, and wheels are also offered. Made in the USA.",
-     "Products":"['Bicycles', 'Tricycles', 'Trucks and Carts', 'Carriers', 'Baskets', 'Bells', 'Clothing', 'Extenders', 'Foodservice Equipment', 'Handling Equipment', 'Helmets', 'Horns', 'Janitorial Supplies', 'Kits', 'Locks', 'Pedals', 'Racks', 'Seats', 'Shirts', 'Trailers', 'Umbrellas', 'Wheels']"
+     "Products":['Bicycles', 'Tricycles', 'Trucks and Carts', 'Carriers', 'Baskets', 'Bells', 'Clothing', 'Extenders', 'Foodservice Equipment', 'Handling Equipment', 'Helmets', 'Horns', 'Janitorial Supplies', 'Kits', 'Locks', 'Pedals', 'Racks', 'Seats', 'Shirts', 'Trailers', 'Umbrellas', 'Wheels']
   },
   {
      "Company":"AdCapitol",
@@ -1064,7 +1064,7 @@ export const supplierdata = [
      "YearFounded":1955.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of advertising novelty products including aprons, bags, bandanas, towels, blankets, banners, signs, and cloth banners. Vinyl banners, flags, hats, accessories, dress shirts, uniforms, sweats, coats, scrubs, medical, t-shirts, danger flags, and tablecloths are also available.",
-     "Products":"['Sewing Services', 'Slitting Services', 'Advertising Specialties, Novelties, and Promotional Products', 'Aprons', 'Bags', 'Bindings', 'Fabrics and Cloths', 'Vests', 'Backpacks', 'Badges', 'Bandanas', 'Banners', 'Bases', 'Bibs', 'Blankets', 'Boots', 'Brackets', 'Buttons', 'Capes', 'Caps', 'Carriers', 'Cases', 'Clothing', 'Coats', 'Covers', 'COVID-19 Response', 'Cutters and Cutting Machinery', 'Decals', 'Disaster Preparedness Supplies', 'Displays']"
+     "Products":['Sewing Services', 'Slitting Services', 'Advertising Specialties, Novelties, and Promotional Products', 'Aprons', 'Bags', 'Bindings', 'Fabrics and Cloths', 'Vests', 'Backpacks', 'Badges', 'Bandanas', 'Banners', 'Bases', 'Bibs', 'Blankets', 'Boots', 'Brackets', 'Buttons', 'Capes', 'Caps', 'Carriers', 'Cases', 'Clothing', 'Coats', 'Covers', 'COVID-19 Response', 'Cutters and Cutting Machinery', 'Decals', 'Disaster Preparedness Supplies', 'Displays']
   },
   {
      "Company":"Traffic Safety Warehouse",
@@ -1085,7 +1085,7 @@ export const supplierdata = [
      "YearFounded":2010.0,
      "ExportMarkets":"Canada, Europe",
      "Description":"Distributor of traffic, work zone, pedestrian and crew safety equipment. Various products include parking curbs/blocks, speed bumps, traffic cones, barricades, channelizers, safety vests, fences, lights, wheel chocks, sign stands, tapes, flags, ropes, security mirrors, anchors, adhesives, delineators, dispensers, dock plates, fences, flashlights, markers, mats, posts, reflectors, sleeves, anti-slip solutions, spikes, stencils, straps and sweatshirts. Most of the products are made in the USA.",
-     "Products":"['Barricades', 'Barriers', 'Speed Bumps', 'Cones', 'Adhesives', 'Airport Equipment', 'Anchors', 'Bags', 'Banners', 'Barrels and Drums', 'Bases', 'Batons', 'Batteries', 'Belts', 'Bits', 'Blankets', 'Blocks', 'Blowers', 'Boards', 'Bollards', 'Bolts', 'Booms', 'Boxes', 'Brackets', 'Brooms', 'Brushes', 'Buckets', 'Bulbs', 'Bumpers', 'Cabinets']"
+     "Products":['Barricades', 'Barriers', 'Speed Bumps', 'Cones', 'Adhesives', 'Airport Equipment', 'Anchors', 'Bags', 'Banners', 'Barrels and Drums', 'Bases', 'Batons', 'Batteries', 'Belts', 'Bits', 'Blankets', 'Blocks', 'Blowers', 'Boards', 'Bollards', 'Bolts', 'Booms', 'Boxes', 'Brackets', 'Brooms', 'Brushes', 'Buckets', 'Bulbs', 'Bumpers', 'Cabinets']
   },
   {
      "Company":"Worx Industrial Solutions",
@@ -1106,7 +1106,7 @@ export const supplierdata = [
      "YearFounded":2012.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of personal safety products including gloves, coveralls, face masks, shielding, and cleaning wipes. Eyeglasses, hand scrubs, sanitizers, pads, mats, earplugs, and respirators are also available. Towels, shirts, jackets, vests, rags, bouffant caps, and aprons are offered. Biodegradable degreasers and cleaners are provided. Serves automotive, chemical, manufacturing, agriculture, aviation, marine, and construction industries.",
-     "Products":"['Janitorial Supplies', 'Gloves', 'COVID-19 Response', 'Medical Personal Protective Equipment (PPE)', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Medical/Hospital Consumable Supplies', 'Wipes and Wipers', 'Cleaning Compounds and Chemicals', 'Rags', 'Towels', 'Aprons', 'Clothing', 'Coveralls', 'Degreasers', 'Disaster Preparedness Supplies', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Eyeglasses', 'Goggles', 'Hairnets', 'Jackets', 'Masks', 'Mats', 'Pads', 'Personal Care Products', 'Plugs and Stoppers', 'Protectors', 'Safety Equipment', 'Sanitizers', 'Scrubs']"
+     "Products":['Janitorial Supplies', 'Gloves', 'COVID-19 Response', 'Medical Personal Protective Equipment (PPE)', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Medical/Hospital Consumable Supplies', 'Wipes and Wipers', 'Cleaning Compounds and Chemicals', 'Rags', 'Towels', 'Aprons', 'Clothing', 'Coveralls', 'Degreasers', 'Disaster Preparedness Supplies', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Eyeglasses', 'Goggles', 'Hairnets', 'Jackets', 'Masks', 'Mats', 'Pads', 'Personal Care Products', 'Plugs and Stoppers', 'Protectors', 'Safety Equipment', 'Sanitizers', 'Scrubs']
   },
   {
      "Company":"Addison Building Materials",
@@ -1127,7 +1127,7 @@ export const supplierdata = [
      "YearFounded":1947.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of commercial and industrial supplies. Products include building materials, lumber, masonry, paint, hand tools, power tools, paper products, audio visual, ice melt products, builder's hardware, fasteners, electrical supplies, plumbing, lawn and garden supplies, clothing and janitorial supplies. Products available are cleaning chemicals, oven cleaners, dispensers, lotions, soap, protectors, scrubbers, rags, absorbents, sprayers, pails, polish, removers, fresheners, sponges, chain snaps, door locks and latches, door and window hardware, door push plates, holders, pulls, flashlights, metal flashings, replacement keys, peg board hooks, rope and twine, springs, signs, letters, screw eyes, eye bolts, hooks, brass hinges, two ear brackets, one ear brackets, two piece brackets, U brackets, surface mounted slide latches and door pulls. Rental services are available. JIT delivery available.",
-     "Products":"['Lumber', 'Building Products', 'Concrete Products', 'Hardware', 'Abrasive Blast Equipment', 'Abrasive Compounds / Media', 'Absorbers', 'Accelerators', 'Adapters', 'Additives', 'Adhesives', 'Agents', 'Aggregates', 'Air Fresheners', 'Anchors', 'Angles', 'Anti-Seize', 'Antifreeze', 'Applicators', 'Aprons', 'Audio Visual (AV) Equipment', 'Automotive Parts', 'Awls', 'Axes', 'Bags', 'Ballasts', 'Barricades', 'Bars', 'Bases', 'Basins']"
+     "Products":['Lumber', 'Building Products', 'Concrete Products', 'Hardware', 'Abrasive Blast Equipment', 'Abrasive Compounds / Media', 'Absorbers', 'Accelerators', 'Adapters', 'Additives', 'Adhesives', 'Agents', 'Aggregates', 'Air Fresheners', 'Anchors', 'Angles', 'Anti-Seize', 'Antifreeze', 'Applicators', 'Aprons', 'Audio Visual (AV) Equipment', 'Automotive Parts', 'Awls', 'Axes', 'Bags', 'Ballasts', 'Barricades', 'Bars', 'Bases', 'Basins']
   },
   {
      "Company":"Broner Glove & Safety Company",
@@ -1148,7 +1148,7 @@ export const supplierdata = [
      "YearFounded":1933.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of personal protective equipment, safety products and plant safety/identification products. Safety products such as hats, gloves, sleeves, earmuffs, earplugs, face shields, headgear, welding goggles, safety glasses, side shields, hard hats, boots, aprons, protective clothing, back and knee supports, respirators, harnesses and lanyards are available. Plant safety products include first aid kits, beverages, matting, emergency showers, eye/face wash equipment, flashlights, flares, mirrors, knives, welding curtains, blankets, safety cans, cabinets, sorbents and wipers. Plant identification products such as signs, tapes, cones, wheel chocks and protective shields are available. Capabilities include inventory management, stock level-turn measurements, transaction analysis, noise level/fit testing and reporting. Training and warehousing services available. Customized signs and labels are also available. Safety products are OSHA compliant.",
-     "Products":"['COVID-19 Response', 'Medical Personal Protective Equipment (PPE)', 'Protectors', 'Gloves', 'Safety Equipment', 'Absorbers', 'Adapters', 'Air Filtration Equipment & Supplies', 'Alarms', 'Analgesics', 'Analyzers', 'Anchors', 'Antacids', 'Antiseptics', 'Applicators', 'Aprons', 'Aspirin', 'Bandages', 'Bandanas', 'Bands', 'Banners', 'Barrels and Drums', 'Barricades', 'Barriers', 'Bases', 'Baths', 'Batteries', 'Belts', 'Berms', 'Blankets']"
+     "Products":['COVID-19 Response', 'Medical Personal Protective Equipment (PPE)', 'Protectors', 'Gloves', 'Safety Equipment', 'Absorbers', 'Adapters', 'Air Filtration Equipment & Supplies', 'Alarms', 'Analgesics', 'Analyzers', 'Anchors', 'Antacids', 'Antiseptics', 'Applicators', 'Aprons', 'Aspirin', 'Bandages', 'Bandanas', 'Bands', 'Banners', 'Barrels and Drums', 'Barricades', 'Barriers', 'Bases', 'Baths', 'Batteries', 'Belts', 'Berms', 'Blankets']
   },
   {
      "Company":"Classic Caps & Embroidery",
@@ -1169,7 +1169,7 @@ export const supplierdata = [
      "YearFounded":1986.0,
      "ExportMarkets":"nan",
      "Description":"Private label manufacturer of caps and hats for fashion, wholesale, retail, promotion, and sports applications. Products include headwear, patches, insignia, and woven labels. Face masks, face shiels, and metal badges, are offered. Screen printing and embroidery services are also provided. Made in the USA.",
-     "Products":"['Manufacturing Services', 'Printing and Marking Services', 'Private Label Manufacturing', 'Hats', 'Clothing', 'Embroidery Services', 'Patches', 'Badges', 'Caps', 'COVID-19 Response', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Insignia', 'Labels', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Pins', 'Shielding', 'Visors']"
+     "Products":['Manufacturing Services', 'Printing and Marking Services', 'Private Label Manufacturing', 'Hats', 'Clothing', 'Embroidery Services', 'Patches', 'Badges', 'Caps', 'COVID-19 Response', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Insignia', 'Labels', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Pins', 'Shielding', 'Visors']
   },
   {
      "Company":"Fix Supply",
@@ -1190,7 +1190,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Distributor of personal safety, fire protection, rehabilitation, packaging, janitorial, or medical supplies. Products include sanitizers, removers, cleaners, soaps, mops, brushes, dispensers, and detergents. Goggles, overboots, gloves, hard hats, ear muffs, and plugs are offered. Welding, arc, flame, rain, cold, and chemical protective clothing are provided. Plastic, composite, foam, graphite, rubber, felt, and gasket materials are also available. Tubing, pipe, hose fittings, sealing, gasketing, sealants, tables, tools, lighting, and material handling or outdoor equipment are available.",
-     "Products":"['Rubber', 'Acrylic', 'Miscellaneous Plastics', 'Plastics', 'Polycarbonate', 'Acetal', 'Acrylonitrile Butadiene Styrene (ABS)', 'COVID-19 Response', 'Foams', 'Nylon', 'Polyester', 'Polyetheretherketone (PEEK)', 'Polyethylene (PE)', 'Polyimide', 'Polypropylene (PP)', 'Polystyrene (PS)', 'Polytetrafluoroethylene (PTFE)', 'Polyurethane', 'Polyvinyl Chloride (PVC)', 'Rubber Goods', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Absorbers', 'Adapters', 'Additive Manufacturing Materials', 'Adhesives', 'Air Filtration Equipment & Supplies', 'Alarms', 'Angles', 'Antacids', 'Antiseptics']"
+     "Products":['Rubber', 'Acrylic', 'Miscellaneous Plastics', 'Plastics', 'Polycarbonate', 'Acetal', 'Acrylonitrile Butadiene Styrene (ABS)', 'COVID-19 Response', 'Foams', 'Nylon', 'Polyester', 'Polyetheretherketone (PEEK)', 'Polyethylene (PE)', 'Polyimide', 'Polypropylene (PP)', 'Polystyrene (PS)', 'Polytetrafluoroethylene (PTFE)', 'Polyurethane', 'Polyvinyl Chloride (PVC)', 'Rubber Goods', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Absorbers', 'Adapters', 'Additive Manufacturing Materials', 'Adhesives', 'Air Filtration Equipment & Supplies', 'Alarms', 'Angles', 'Antacids', 'Antiseptics']
   },
   {
      "Company":"Traffic Safety Store",
@@ -1211,7 +1211,7 @@ export const supplierdata = [
      "YearFounded":1997.0,
      "ExportMarkets":"Asia, Australia, Canada, Europe, Mexico, South America",
      "Description":"Distributor of safety and traffic supplies. Products available include traffic cones, speed bumps and humps, parking blocks, safety vests, safety glasses, construction signs, traffic barricades, water-filled barriers, barricade lights, traffic wands, flags and paddles, road markers, triangle reflector kits, and workwear. Custom stenciling and lettering is available.",
-     "Products":"['Cones', 'Speed Bumps', 'Barriers', 'Blocks', 'Parking Lot Products', 'Bags', 'Barrels and Drums', 'Barricades', 'Bases', 'Batteries', 'Bits', 'Bolts', 'Caps', 'Chains', 'Clothing', 'Connectors', 'Controls and Controllers', 'COVID-19 Response', 'Cushions', 'Delineators', 'Disaster Preparedness Supplies', 'Emergency Power & Lighting Supplies', 'Emergency Products', 'Eyeglasses', 'Fasteners', 'Fire Fighting Equipment', 'Fire Protection Products', 'Flags', 'Flashers', 'Hardware']"
+     "Products":['Cones', 'Speed Bumps', 'Barriers', 'Blocks', 'Parking Lot Products', 'Bags', 'Barrels and Drums', 'Barricades', 'Bases', 'Batteries', 'Bits', 'Bolts', 'Caps', 'Chains', 'Clothing', 'Connectors', 'Controls and Controllers', 'COVID-19 Response', 'Cushions', 'Delineators', 'Disaster Preparedness Supplies', 'Emergency Power & Lighting Supplies', 'Emergency Products', 'Eyeglasses', 'Fasteners', 'Fire Fighting Equipment', 'Fire Protection Products', 'Flags', 'Flashers', 'Hardware']
   },
   {
      "Company":"CleanFreak.com",
@@ -1232,7 +1232,7 @@ export const supplierdata = [
      "YearFounded":1950.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of residential, commercial & industrial cleaning equipment, products & supplies. Carpet cleaning chemicals, carpet cleaner equipment, floor care chemicals, brushes, pads & bonnets, floor cleaning equipment, cleaning supplies, mops, brooms, brushes, power washers, restroom cleaners & supplies, safety supplies, sweepers, vacuum cleaners, window cleaning equipment & supplies are available. Floor cleaning equipment includes automatic scrubbers, buffers, stripping machines, extractors, sweepers, vacuum cleaners & rotary floor machines. Restroom products such as deodorizers, dispensers, drain maintenance products, facial tissue, garbage bags, wipes, hand dryers, hand sanitizers, soaps, shampoos, carts, paper towels, surface cleansers/cleaners, sanitary supplies, toilet bowl cleaners, toilet paper, trash cans, containers & recycling bins, urinal/toilet floor mats, seat covers, urinal screens/blocks & vomit & puke absorbents are available.",
-     "Products":"['Janitorial Supplies', 'Cleaning Compounds and Chemicals', 'Cleaning Equipment', 'Floor Machines', 'Scrubbers', 'Buffers', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Disinfectants', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Hurricane Response', 'Polishers', 'Absorbers', 'Applicators', 'Aprons', 'Bags', 'Baskets', 'Belts', 'Bibs', 'Bins', 'Blades', 'Blocks', 'Blowers', 'Bonnets', 'Boots', 'Brooms', 'Brushes', 'Buckets', 'Burnishers', 'Cabinets']"
+     "Products":['Janitorial Supplies', 'Cleaning Compounds and Chemicals', 'Cleaning Equipment', 'Floor Machines', 'Scrubbers', 'Buffers', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Disinfectants', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Hurricane Response', 'Polishers', 'Absorbers', 'Applicators', 'Aprons', 'Bags', 'Baskets', 'Belts', 'Bibs', 'Bins', 'Blades', 'Blocks', 'Blowers', 'Bonnets', 'Boots', 'Brooms', 'Brushes', 'Buckets', 'Burnishers', 'Cabinets']
   },
   {
      "Company":"Madagoni LLC",
@@ -1253,7 +1253,7 @@ export const supplierdata = [
      "YearFounded":2018.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of surgical and personal protective products. Masks, isolation and examination gowns are offered. Gowns are available in different sizes. Serves healthcare and medical sectors. Staffing Services are offered in all industries including healthcare, life sciences, engineering, warehousing and more.",
-     "Products":"['COVID-19 Response', 'Gowns', 'Medical Personal Protective Equipment (PPE)', 'Staffing Services', 'Clothing', 'Disposable Products', 'Masks', 'Medical/Hospital Consumable Supplies', 'Safety Equipment', 'Surgical Equipment', 'Surgical Goods']"
+     "Products":['COVID-19 Response', 'Gowns', 'Medical Personal Protective Equipment (PPE)', 'Staffing Services', 'Clothing', 'Disposable Products', 'Masks', 'Medical/Hospital Consumable Supplies', 'Safety Equipment', 'Surgical Equipment', 'Surgical Goods']
   },
   {
      "Company":"ProImage Apparel, LLC",
@@ -1274,7 +1274,7 @@ export const supplierdata = [
      "YearFounded":2007.0,
      "ExportMarkets":"nan",
      "Description":"Dist of clothing, apparel, bags, drinkware, office, tradeshow and event products. Headband, bandanas, sunglasses, hats or caps, jackets, sweatshirts, polo shirts and T-shirts are available. Backpacks, briefcases or messenger, drawstring, fanny, lunch, paper, plastic and tote bags are offered. Drinkware products include mugs, BPA free bottles, coasters, plastic cups, tumblers and thermoses. Awards, caddies, card holders, calculators, magnets, buttons, displays, mousepads or notepads are also provided. Writing or drawing products include chalk, crayons, pens, pencils, highlighters, markers and sharpeners. COVID-19 response products include gloves, gowns, protective masks, hand sanitizers, disposable face shields, thermometers and wipes. Advertising and promotional products are also distributed. Services include custom embroidery and screen printing.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Shirts', 'Clothing', 'Embroidery Services', 'Printing and Marking Services', 'Air Fresheners', 'Aprons', 'Awards', 'Backpacks', 'Bags', 'Baked Goods', 'Balls', 'Balms', 'Bandanas', 'Bands', 'Binders', 'Bottles', 'Brushes', 'Caddies', 'Calculators', 'Calendars', 'Cameras', 'Chalk', 'Clipboards', 'Clocks', 'Coasters', 'Computer Accessories', 'Computer Mice (Mouses)', 'COVID-19 Response', 'Crayons']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Shirts', 'Clothing', 'Embroidery Services', 'Printing and Marking Services', 'Air Fresheners', 'Aprons', 'Awards', 'Backpacks', 'Bags', 'Baked Goods', 'Balls', 'Balms', 'Bandanas', 'Bands', 'Binders', 'Bottles', 'Brushes', 'Caddies', 'Calculators', 'Calendars', 'Cameras', 'Chalk', 'Clipboards', 'Clocks', 'Coasters', 'Computer Accessories', 'Computer Mice (Mouses)', 'COVID-19 Response', 'Crayons']
   },
   {
      "Company":"Schermerhorn Bros. Co.",
@@ -1295,7 +1295,7 @@ export const supplierdata = [
      "YearFounded":1893.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of packaging materials and supplies. Products include bags, covers, cords, rope, bands, strapping, stretch film, tape, twine, wire and others. Available in various specifications, colors and materials. Suitable for cash handling, dairy, direct mail, door-to-door, flooring, furniture, masonry, painting and resale applications. Serves the agricultural, packaging, electrical, general manufacturing, HVAC, marine, printing and retail industries. Some products are made in the USA.",
-     "Products":"['Mechanical Wire, Cable and Rope', 'Bags', 'Bands', 'Film', 'Packaging Materials', 'Sleeves', 'Straps', 'Tapes', 'Tubes', 'Aprons', 'Clothing', 'Coveralls', 'Covers', 'COVID-19 Response', 'Envelopes', 'Gloves', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Jackets', 'Janitorial Supplies', 'Liners', 'Mailers', 'Medical Components', 'Medical Personal Protective Equipment (PPE)', 'Medical/Hospital Consumable Supplies', 'Overalls', 'Pants', 'Sheets', 'Thread', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services']"
+     "Products":['Mechanical Wire, Cable and Rope', 'Bags', 'Bands', 'Film', 'Packaging Materials', 'Sleeves', 'Straps', 'Tapes', 'Tubes', 'Aprons', 'Clothing', 'Coveralls', 'Covers', 'COVID-19 Response', 'Envelopes', 'Gloves', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Jackets', 'Janitorial Supplies', 'Liners', 'Mailers', 'Medical Components', 'Medical Personal Protective Equipment (PPE)', 'Medical/Hospital Consumable Supplies', 'Overalls', 'Pants', 'Sheets', 'Thread', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services']
   },
   {
      "Company":"White Horse Research and Development, INC.",
@@ -1316,7 +1316,7 @@ export const supplierdata = [
      "YearFounded":1988.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of protection products for military, law enforcement, security, and shooting range applications. Available protection products include body armor, bullet-resistant backpack inserts, and modular metal defense panels. Protective products resist impacts from handgun rounds to .50 caliber armor piercing bullets depending on model. Also offers weapons clearing systems and threat vehicle targets for training purposes. Protective products comply with various NIJ standards.",
-     "Products":"['Armor', 'Barriers', 'Fabrics and Cloths', 'Law Enforcement Equipment', 'Military Equipment', 'Plates', 'Targets', 'Testers', 'Vests', 'Aids', 'Belts', 'Blankets', 'Bullet Resistant Products', 'Bullet Resistant Systems', 'Clothing', 'COVID-19 Response', 'Inserts', 'Medical Personal Protective Equipment (PPE)', 'Panels', 'Protectors', 'Uniforms', 'Weapon Systems']"
+     "Products":['Armor', 'Barriers', 'Fabrics and Cloths', 'Law Enforcement Equipment', 'Military Equipment', 'Plates', 'Targets', 'Testers', 'Vests', 'Aids', 'Belts', 'Blankets', 'Bullet Resistant Products', 'Bullet Resistant Systems', 'Clothing', 'COVID-19 Response', 'Inserts', 'Medical Personal Protective Equipment (PPE)', 'Panels', 'Protectors', 'Uniforms', 'Weapon Systems']
   },
   {
      "Company":"Expert Brand",
@@ -1337,7 +1337,7 @@ export const supplierdata = [
      "YearFounded":1993.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of blank and custom active lifestyle apparel, including t-shirts, hoodies, tank tops, jackets, pants, leggings, shorts, polos, long-sleeve t-shirts, sweatshirts, and sweatpants.",
-     "Products":"['Bottoms', 'Clothing', 'Jackets', 'Leggings', 'Manufacturing Services', 'Pants', 'Private Label Manufacturing', 'Shirts', 'Shorts', 'Sportswear']"
+     "Products":['Bottoms', 'Clothing', 'Jackets', 'Leggings', 'Manufacturing Services', 'Pants', 'Private Label Manufacturing', 'Shirts', 'Shorts', 'Sportswear']
   },
   {
      "Company":"Important Papers",
@@ -1358,7 +1358,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Distributor of advertising or promotional headwear, drinkware, kitchenware, jewelry, apparel, stationary, furniture, and packaging supplies. Products include bags, boxes, containers, cameras, lights, heaters, and hygrometers. Lanyards, magnets, balls, calculators, calendars, speakers, cigar humidors, and mobile mounts are offered. Printers, displays, labels, decals, signs, keychains, and awards are also provided. Secondary services such as consulting, designing, screen printing, fulfillment, sublimation, and embroidery are available. Salts, spices, seasonings, racks, bookends, parasols, cages, and hammocks are also offered. Suitable for sports, office, school, college, business, automotive, decorative, camping, tradeshow, personal, and healthcare applications.",
-     "Products":"['ADA Compliant Products', 'Adapters', 'Adhesives', 'Advertising Specialties, Novelties, and Promotional Products', 'Air Filtration Equipment & Supplies', 'Air Fresheners', 'Aircraft', 'Alarms', 'Albums', 'Amplifiers', 'Analyzers', 'Anemometers', 'Anklets', 'Appliances', 'Aprons', 'Aromatherapy Products', 'Awards', 'Backboards', 'Backgammon', 'Backpacks', 'Badges', 'Baffles', 'Bags', 'Bait', 'Baked Goods', 'Balancers', 'Balloons', 'Balls', 'Balms', 'Bandages']"
+     "Products":['ADA Compliant Products', 'Adapters', 'Adhesives', 'Advertising Specialties, Novelties, and Promotional Products', 'Air Filtration Equipment & Supplies', 'Air Fresheners', 'Aircraft', 'Alarms', 'Albums', 'Amplifiers', 'Analyzers', 'Anemometers', 'Anklets', 'Appliances', 'Aprons', 'Aromatherapy Products', 'Awards', 'Backboards', 'Backgammon', 'Backpacks', 'Badges', 'Baffles', 'Bags', 'Bait', 'Baked Goods', 'Balancers', 'Balloons', 'Balls', 'Balms', 'Bandages']
   },
   {
      "Company":"Joseph Fazzio, Inc.",
@@ -1379,7 +1379,7 @@ export const supplierdata = [
      "YearFounded":1965.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of steel, metals and industrial products. Metal materials include beams, plates, flat sheets, grating material, pipe, square tubing, round tubing, bars and metal roofing. Industrial products offered include abrasives, hardware, building materials, lubricants, electrical supplies, construction supplies, janitorial supplies, plumbing supplies, tools and safety products. Equipment featured includes backhoes, excavators, dozers, forklifts, rollers, lifts, light towers, sweepers and trucks. Equipment accessories include snow pushers, backhoe buckets, excavator buckets, thumbs and skid steer attachments. Used surplus equipment and metals available. Saw cutting, shearing, punching, bend forming, CNC flame cutting, plasma cutting and machining with drilling or beveling capabilities are offered.",
-     "Products":"['Abrasive Compounds / Media', 'Adapters', 'Adhesives', 'Alumina (Aluminum Oxide)', 'Aluminum', 'Anchors', 'Angles', 'Anti-Seize', 'Antifreeze', 'Applicators', 'Arbors', 'Arms', 'Attachments', 'Axes', 'Axles', 'Backhoes', 'Bags', 'Balls', 'Bases', 'Batteries', 'Beams', 'Bearings', 'Benches', 'Benders', 'Binders', 'Bits', 'Blades', 'Blankets', 'Blocks', 'Bolts']"
+     "Products":['Abrasive Compounds / Media', 'Adapters', 'Adhesives', 'Alumina (Aluminum Oxide)', 'Aluminum', 'Anchors', 'Angles', 'Anti-Seize', 'Antifreeze', 'Applicators', 'Arbors', 'Arms', 'Attachments', 'Axes', 'Axles', 'Backhoes', 'Bags', 'Balls', 'Bases', 'Batteries', 'Beams', 'Bearings', 'Benches', 'Benders', 'Binders', 'Bits', 'Blades', 'Blankets', 'Blocks', 'Bolts']
   },
   {
      "Company":"Moses Enterprise LLC",
@@ -1400,7 +1400,7 @@ export const supplierdata = [
      "YearFounded":2015.0,
      "ExportMarkets":"nan",
      "Description":"Sourcing services of medical supplies including face masks, PPE vending machines, nitrile gloves and isolation gowns. Commodity products including nuts, spices, cooking oil, rice and sugar are provided. Surgical supplies, clothing, shoes, jewelry and wedding items or decorations are also offered.",
-     "Products":"['Clothing', 'COVID-19 Response', 'Decorations', 'Diagnostic Equipment', 'Food', 'Gloves', 'Gowns', 'Grains & Rice', 'Hospital Equipment', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Janitorial Supplies', 'Jewelry', 'Kits', 'Masks', 'Medical Equipment', 'Medical Personal Protective Equipment (PPE)', 'Medical Products and Hospital Equipment', 'Medical Testing Equipment', 'Medical/Hospital Consumable Supplies', 'Nuts (Food)', 'Oils', 'Protectors', 'Safety Equipment', 'Shoes', 'Sourcing Services', 'Surgical Equipment', 'Syringes', 'Vending Machines']"
+     "Products":['Clothing', 'COVID-19 Response', 'Decorations', 'Diagnostic Equipment', 'Food', 'Gloves', 'Gowns', 'Grains & Rice', 'Hospital Equipment', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Janitorial Supplies', 'Jewelry', 'Kits', 'Masks', 'Medical Equipment', 'Medical Personal Protective Equipment (PPE)', 'Medical Products and Hospital Equipment', 'Medical Testing Equipment', 'Medical/Hospital Consumable Supplies', 'Nuts (Food)', 'Oils', 'Protectors', 'Safety Equipment', 'Shoes', 'Sourcing Services', 'Surgical Equipment', 'Syringes', 'Vending Machines']
   },
   {
      "Company":"OasisMade",
@@ -1421,7 +1421,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Manufacturer of standard and custom sustainable packaging and private-label products. Made from cotton, polylactic acid (PLA), recycled polyethylene terephthalate (RPET), woven and non-woven polypropylene materials. Reusable bags, emergency response essentials, garments and uniforms are offered. Packaging and paper products are also available. Cannabis packaging products are also provided.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Backpacks', 'Bags', 'Bottles', 'Boxes', 'Candles', 'Cannabis Products', 'Clothing', 'COVID-19 Response', 'Cups', 'Decanters', 'Disaster Preparedness Supplies', 'Emergency Power & Lighting Supplies', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Infusion Equipment', 'Jars', 'Kettles', 'Mailers', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Mugs', 'N95 Respirators', 'Packaging Materials', 'Private Label Manufacturing', 'Straws', 'Tumblers']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Backpacks', 'Bags', 'Bottles', 'Boxes', 'Candles', 'Cannabis Products', 'Clothing', 'COVID-19 Response', 'Cups', 'Decanters', 'Disaster Preparedness Supplies', 'Emergency Power & Lighting Supplies', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Infusion Equipment', 'Jars', 'Kettles', 'Mailers', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Mugs', 'N95 Respirators', 'Packaging Materials', 'Private Label Manufacturing', 'Straws', 'Tumblers']
   },
   {
      "Company":"Apex Mills Corp.",
@@ -1442,7 +1442,7 @@ export const supplierdata = [
      "YearFounded":1943.0,
      "ExportMarkets":"Europe, Middle East, Western Europe",
      "Description":"Manufacturer of industrial and commercial textiles including mesh/netting, solid knits and 3D spacer fabrics. Designed for high performance and engineered applications. Production in the USA,. Provides in-person collaboration, on-site development and quick response. Supports customers ranging from aerospace, automotive and military to medical, safety, office furniture, footwear and more.",
-     "Products":"['Fabrics and Cloths', 'COVID-19 Response', 'Screens', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Nets and Netting', 'Research, Design and Development Services', 'Additive Manufacturing Materials', 'Aquaculture Equipment', 'Bags', 'Barriers', 'Belts', 'Canvas', 'Composites', 'Covers', 'Curtains', 'Filters', 'Gauze', 'Geosynthetics', 'Golf Equipment', 'Hairnets', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Liners', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Nylon', 'Nylon Products', 'Polyester', 'Scrims', 'Strainers']"
+     "Products":['Fabrics and Cloths', 'COVID-19 Response', 'Screens', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Nets and Netting', 'Research, Design and Development Services', 'Additive Manufacturing Materials', 'Aquaculture Equipment', 'Bags', 'Barriers', 'Belts', 'Canvas', 'Composites', 'Covers', 'Curtains', 'Filters', 'Gauze', 'Geosynthetics', 'Golf Equipment', 'Hairnets', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Liners', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Nylon', 'Nylon Products', 'Polyester', 'Scrims', 'Strainers']
   },
   {
      "Company":"Eastex Products, LLC",
@@ -1463,7 +1463,7 @@ export const supplierdata = [
      "YearFounded":1999.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of textile products including fabrics, neoprene sheets, laminates, webbing, hook and loop fastening systems and netting. Types of fabrics are cast-coated, nylon, polyester, slip-not grip, spacer, vinyl, weldable, wide loop and spandex. Suitable for backpacks, tents, custom laminations, luggage, bags, medical and healthcare, military, tactical, sporting goods, tarps, covers and other applications. Stocking programs available.",
-     "Products":"['Fabrics and Cloths', 'COVID-19 Response', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Hook and Loop Fasteners', 'Fasteners', 'Rubber', 'Laminating Services', 'Miscellaneous Materials', 'Tapes', 'Additive Manufacturing Materials', 'Canvas', 'Clothing', 'Elastics', 'Nets and Netting', 'Polyurethane', 'Straps', 'Treads', 'Abrasion Resistant Materials', 'Closures', 'Coatings', 'Coins', 'Laminates', 'Laminations', 'Military Equipment', 'Miscellaneous Fasteners', 'Neoprene Products', 'Nylon Products', 'Plastics', 'Pressure Sensitive Products', 'Rubber Goods']"
+     "Products":['Fabrics and Cloths', 'COVID-19 Response', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Hook and Loop Fasteners', 'Fasteners', 'Rubber', 'Laminating Services', 'Miscellaneous Materials', 'Tapes', 'Additive Manufacturing Materials', 'Canvas', 'Clothing', 'Elastics', 'Nets and Netting', 'Polyurethane', 'Straps', 'Treads', 'Abrasion Resistant Materials', 'Closures', 'Coatings', 'Coins', 'Laminates', 'Laminations', 'Military Equipment', 'Miscellaneous Fasteners', 'Neoprene Products', 'Nylon Products', 'Plastics', 'Pressure Sensitive Products', 'Rubber Goods']
   },
   {
      "Company":"Fifield, Inc.",
@@ -1484,7 +1484,7 @@ export const supplierdata = [
      "YearFounded":1924.0,
      "ExportMarkets":"Asia, Australia, Canada, Europe, Latin America/Caribbean, Mexico, Middle East, Western Europe",
      "Description":"Manufacturer of standard and custom fabric including leather, suede, velvet, and flannel. Suitable for backdrops, back walls, book covers, linings, display pads, jewelry boxes, wraps, menu covers, stuffed toys, and pouches. Used for scrapbooks, plush toys, picture frame cloth, handbag lining, and brand packaging applications.",
-     "Products":"['Fabrics and Cloths', 'Leather', 'Flannels', 'Coverings', 'COVID-19 Response', 'Flocked Products', 'Tarnish Prevention Products', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Velvets']"
+     "Products":['Fabrics and Cloths', 'Leather', 'Flannels', 'Coverings', 'COVID-19 Response', 'Flocked Products', 'Tarnish Prevention Products', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Velvets']
   },
   {
      "Company":"Tabb Textile Company Inc.",
@@ -1505,7 +1505,7 @@ export const supplierdata = [
      "YearFounded":1972.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer and distributor of fabrics including jersey cloth, denims, duck, elastics, polypropylene, polyethylene, flannels and mesh. Poplin, spandex, terrycloth, thread, twill and vinyl fabrics available. Beddings and personal protective equipment fabric also available. Beddings include pillowcases, towels, washcloths, blanket and bed sheets. Serves the workwear and apparel, healthcare, fashion, commercial laundry, military, hospitality, correctional facilities and government industries. Meets ASTM standards. GSA approved.",
-     "Products":"['Fabrics and Cloths', 'Blankets', 'Bedding', 'Canvas', 'Cases', 'Covers', 'COVID-19 Response', 'Denims', 'Elastics', 'Flannels', 'Janitorial Supplies', 'Linens', 'Poplin', 'Screens', 'Sheets', 'Spandex', 'Thread', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Towels']"
+     "Products":['Fabrics and Cloths', 'Blankets', 'Bedding', 'Canvas', 'Cases', 'Covers', 'COVID-19 Response', 'Denims', 'Elastics', 'Flannels', 'Janitorial Supplies', 'Linens', 'Poplin', 'Screens', 'Sheets', 'Spandex', 'Thread', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Towels']
   },
   {
      "Company":"TVF",
@@ -1526,7 +1526,7 @@ export const supplierdata = [
      "YearFounded":1974.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer and distributor of industrial, apparel, print media, and home decor fabrics. Product lines include fabrics ranging from polyester to nylon, vinyl, canvas, natural fibers, and more. Capable of running customer specific specs.",
-     "Products":"['Fabrics and Cloths', 'Canvas', 'Polyester', 'Vinyl', 'Additive Manufacturing Materials', 'Arts and Crafts Supplies', 'Awnings', 'Camouflage', 'Canopies', 'Canvas Products', 'Clothing', 'Controls and Controllers', 'Converting Services', 'Cotton', 'Cotton Goods', 'Covers', 'COVID-19 Response', 'Emergency Shelters & Shelter Supplies', 'Fiber', 'Hurricane Response', 'Leather', 'Liners', 'Nylon', 'Nylon Products', 'Polyvinyl Chloride (PVC)', 'Tarps', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Tops', 'Vinyl Products']"
+     "Products":['Fabrics and Cloths', 'Canvas', 'Polyester', 'Vinyl', 'Additive Manufacturing Materials', 'Arts and Crafts Supplies', 'Awnings', 'Camouflage', 'Canopies', 'Canvas Products', 'Clothing', 'Controls and Controllers', 'Converting Services', 'Cotton', 'Cotton Goods', 'Covers', 'COVID-19 Response', 'Emergency Shelters & Shelter Supplies', 'Fiber', 'Hurricane Response', 'Leather', 'Liners', 'Nylon', 'Nylon Products', 'Polyvinyl Chloride (PVC)', 'Tarps', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Tops', 'Vinyl Products']
   },
   {
      "Company":"Continental Steel & Tube Co.",
@@ -1547,7 +1547,7 @@ export const supplierdata = [
      "YearFounded":1984.0,
      "ExportMarkets":"China, Latin America/Caribbean, Pacific Rim, South America, Western Europe",
      "Description":"ISO 9001:2015 certified distributor of industrial metal products, metals, and alloys. Metals available include aluminum, titanium, nickel, steel, stainless, tool, and structural steel, brass, and copper. Metals and alloys available in pipes, bars, tubes and tubing, wires, rods, sheets, plates, coils, angles, channels, springs, blanks, flanges, frames, inserts, columns, cylinders, discs, moldings, beams, ends, pins, plugs, rings, rolls, saws, shells, studs, and strips. Products are available in metric and imperial. Services include slitting, coil and tension leveling, shearing and slearing, plate burning, annealing, turning and polishing, warehousing and re-packaging, painting, milling, plasma, saw, and laser cutting, heat treating, honing, galvanizing, centerless grinding, exporting, shipping, and export packaging. Markets served include chemical, automotive, aircraft and aerospace, medical, mechanical, and food and beverage.",
-     "Products":"['Steel', 'Tubes', 'Titanium', 'Aluminum', 'Pipes', 'Copper', 'Nickel', 'Inconel®', 'Electric Wire, Cable and Cable Assemblies', 'Brass', 'Bronze', 'Monel®', 'Hastelloy®', 'Extrusion Services', 'Incoloy®', 'Invar®', 'Abrasion Resistant Materials', 'Acetal', 'Additive Manufacturing Materials', 'Aircraft Parts', 'Angles', 'Anodes', 'Antimony', 'Assemblies', 'Automotive Parts', 'Babbitt Alloy', 'Balls', 'Bars', 'Bases', 'Beams']"
+     "Products":['Steel', 'Tubes', 'Titanium', 'Aluminum', 'Pipes', 'Copper', 'Nickel', 'Inconel®', 'Electric Wire, Cable and Cable Assemblies', 'Brass', 'Bronze', 'Monel®', 'Hastelloy®', 'Extrusion Services', 'Incoloy®', 'Invar®', 'Abrasion Resistant Materials', 'Acetal', 'Additive Manufacturing Materials', 'Aircraft Parts', 'Angles', 'Anodes', 'Antimony', 'Assemblies', 'Automotive Parts', 'Babbitt Alloy', 'Balls', 'Bars', 'Bases', 'Beams']
   },
   {
      "Company":"Dunham Rubber & Belting Corp.",
@@ -1568,7 +1568,7 @@ export const supplierdata = [
      "YearFounded":1965.0,
      "ExportMarkets":"nan",
      "Description":"Industrial distributor, fabricator and manufacturer of a wide range of belting products and services, including; European style light duty, plied rubber belts, monofilament, material handling, food grade, polyurethane, thermoplastic and PVC belting. Lacing distributor for all mechanical fastener needs. Offer on-site belt installation for truly endless applications. Hydraulic distributor for all hose, fitting and adapter needs. Products for air, water and chemical applications. Sheet rubber products including neoprene, gum and silicone rubber. Custom made urethane products.",
-     "Products":"['Hose', 'Belts', 'Couplers and Couplings', 'Adapters', 'Bushings', 'Caps', 'Connectors', 'Crosses', 'Elbows', 'Fittings', 'Nipples', 'Plugs and Stoppers', 'Stems', 'Tees', 'Unions', 'Gaskets', 'Rubber', 'Cutting Services', 'Conveyors', 'Conduits and Ducts', 'Miscellaneous Fittings', 'Tubes', 'COVID-19 Response', 'Fasteners', 'Mats', 'Miscellaneous Fasteners', 'Molding Services', 'Rolls and Rollers', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Urethane']"
+     "Products":['Hose', 'Belts', 'Couplers and Couplings', 'Adapters', 'Bushings', 'Caps', 'Connectors', 'Crosses', 'Elbows', 'Fittings', 'Nipples', 'Plugs and Stoppers', 'Stems', 'Tees', 'Unions', 'Gaskets', 'Rubber', 'Cutting Services', 'Conveyors', 'Conduits and Ducts', 'Miscellaneous Fittings', 'Tubes', 'COVID-19 Response', 'Fasteners', 'Mats', 'Miscellaneous Fasteners', 'Molding Services', 'Rolls and Rollers', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Urethane']
   },
   {
      "Company":"Emco Industrial Plastics, Inc.",
@@ -1589,7 +1589,7 @@ export const supplierdata = [
      "YearFounded":1983.0,
      "ExportMarkets":"nan",
      "Description":"Supplier of plastic sheet, rod, tubing and film including Delrin, nylon, PTFE, PEEK, Torlon and Vespel. Specialized machining of all thermoplastics including CNC routing, milling and turning. Fabrication services include precision cutting, line bending, oven bending, assembly, polishing, drilling, thermoforming, die cutting, vacuum forming, decorating and screw machining. Fabrication from prototype to production runs of point of purchase displays and fixtures. Welding of tanks, hoods, covers, trays, scrubbers and wet benches from PVC, PP, PE and FM4910 approved materials. Trained technical support and engineering. ITAR certified.",
-     "Products":"['Fabrication Services', 'Additive Manufacturing Materials', 'Polycarbonate', 'Polyethylene (PE)', 'COVID-19 Response', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Acetal', 'Nylon', 'Polyvinyl Chloride (PVC)', 'Machining', 'Plastics', 'Polypropylene (PP)', 'Acrylic', 'Displays', 'Phenolic', 'Polyvinylidene Fluoride (PVDF)', 'Acrylonitrile Butadiene Styrene (ABS)', 'Ethylene Chlorotrifluoroethylene (ECTFE)', 'Guards', 'Micarta®', 'Polyetheretherketone (PEEK)', 'Polysulfone (PSU)', 'Polyurethane', 'Bushings', 'Cases', 'Cutting Services', 'ETFE Products', 'Ethylene Vinyl Acetate (EVA)', 'Fiberglass Reinforced Plastic (FRP)', 'Forming Services']"
+     "Products":['Fabrication Services', 'Additive Manufacturing Materials', 'Polycarbonate', 'Polyethylene (PE)', 'COVID-19 Response', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Acetal', 'Nylon', 'Polyvinyl Chloride (PVC)', 'Machining', 'Plastics', 'Polypropylene (PP)', 'Acrylic', 'Displays', 'Phenolic', 'Polyvinylidene Fluoride (PVDF)', 'Acrylonitrile Butadiene Styrene (ABS)', 'Ethylene Chlorotrifluoroethylene (ECTFE)', 'Guards', 'Micarta®', 'Polyetheretherketone (PEEK)', 'Polysulfone (PSU)', 'Polyurethane', 'Bushings', 'Cases', 'Cutting Services', 'ETFE Products', 'Ethylene Vinyl Acetate (EVA)', 'Fiberglass Reinforced Plastic (FRP)', 'Forming Services']
   },
   {
      "Company":"Jason Mills, LLC",
@@ -1610,7 +1610,7 @@ export const supplierdata = [
      "YearFounded":2007.0,
      "ExportMarkets":"Africa, Asia, Australia, Canada, Europe, Mexico, Middle East, Western Europe",
      "Description":"Manufacturer of standard & custom polyester & nylon knit mesh fabrics & textiles. Products include bird barriers, cages, clothing, wet mops, nets, netting, lacrosse, patient slings, truck tarps & adhesive or bandage backing. Capabilities include dye processing, finishing, slitting & dye cutting. Stock items are also available.",
-     "Products":"['Fabrics and Cloths', 'COVID-19 Response', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Screens', 'Additive Manufacturing Materials', 'Geosynthetics', 'Nets and Netting', 'Nylon', 'Polyester', 'Aquaculture Equipment', 'Backs and Backing', 'Barriers', 'Cages', 'Covers', 'Emergency Shelters & Shelter Supplies', 'Fasteners', 'Filters', 'Finishing Services', 'Golf Equipment', 'Hurricane Response', 'Janitorial Equipment', 'Janitorial Supplies', 'Knitters', 'Laminating Services', 'Miscellaneous Fasteners', 'Nylon Products', 'Research, Design and Development Services', 'Scrims', 'Slings', 'Slitting Services']"
+     "Products":['Fabrics and Cloths', 'COVID-19 Response', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Screens', 'Additive Manufacturing Materials', 'Geosynthetics', 'Nets and Netting', 'Nylon', 'Polyester', 'Aquaculture Equipment', 'Backs and Backing', 'Barriers', 'Cages', 'Covers', 'Emergency Shelters & Shelter Supplies', 'Fasteners', 'Filters', 'Finishing Services', 'Golf Equipment', 'Hurricane Response', 'Janitorial Equipment', 'Janitorial Supplies', 'Knitters', 'Laminating Services', 'Miscellaneous Fasteners', 'Nylon Products', 'Research, Design and Development Services', 'Scrims', 'Slings', 'Slitting Services']
   },
   {
      "Company":"JBC Technologies, Inc.",
@@ -1631,7 +1631,7 @@ export const supplierdata = [
      "YearFounded":1988.0,
      "ExportMarkets":"Australia, China, Latin America/Caribbean, Pacific Rim, South America, Western Europe",
      "Description":"Converting services for electronics, automotive, appliance, medical, aerospace, heat shielding, electric vehicle battery, and HVAC industries. Works with fabric, paper, electrical or thermal insulation, foam, sponge rubber, aluminum foil, gasket, silicone, pressure-sensitive tape or adhesive, and plastic materials. Secondary services include vendor managed inventory (VMI), kitting, laminating, embossing, and surface treating. Prototypes and high, large, or short run production volumes are available. Suitable for thermal and electrical heat shielding applications.",
-     "Products":"['Cutting Services', 'Tapes', 'Converting Services', 'Foams', 'Hurricane Response', 'Insulation', 'Laminating Services', 'Medical & First Aid Supplies', 'Adhesives', 'Aluminum', 'Gaskets', 'Heat Shields', 'Prototyping Services', 'Acoustical Materials', 'Foils', 'Aerospace Components', 'Barriers', 'Blankets', 'COVID-19 Response', 'Fabrication Services', 'Fabrics and Cloths', 'Fasteners', 'Felt', 'Fiber', 'Film', 'Finishing Services', 'Fishpaper', 'Flock', 'Guards', 'Hook and Loop Fasteners']"
+     "Products":['Cutting Services', 'Tapes', 'Converting Services', 'Foams', 'Hurricane Response', 'Insulation', 'Laminating Services', 'Medical & First Aid Supplies', 'Adhesives', 'Aluminum', 'Gaskets', 'Heat Shields', 'Prototyping Services', 'Acoustical Materials', 'Foils', 'Aerospace Components', 'Barriers', 'Blankets', 'COVID-19 Response', 'Fabrication Services', 'Fabrics and Cloths', 'Fasteners', 'Felt', 'Fiber', 'Film', 'Finishing Services', 'Fishpaper', 'Flock', 'Guards', 'Hook and Loop Fasteners']
   },
   {
      "Company":"Bally Ribbon Mills",
@@ -1652,7 +1652,7 @@ export const supplierdata = [
      "YearFounded":1923.0,
      "ExportMarkets":"Asia, Australia, Europe, Middle East, Western Europe",
      "Description":"ISO 9001:2015 and AS9100D certified. Manufacturer of standard and custom fabrics, webbing, straps, and tapes. Made from nylon, polyester, polypropylene, Nomex®, Spectra®, Technora®, Vectran®, Kevlar® ceramic, polyester, carbon, and graphite. Utilizes shuttle, needle, and jacquard weaving technologies along with flat, collapsed, assembled biaxial, and triaxial braiding methods. Basket, plain, satin, and twill weave types are available. Post-weave processes include dyeing, hole punching, laser cutting, sonic welding, heat setting, scouring, pre-shrinking, resin treating, and finishing. Fabrication services are also offered. Serves the aerospace, defense, medical, automotive, and commercial industries. Lean manufacturing capable. Meets Mil-Spec and NFPA standards. Six Sigma certified. UL listed. Made in the USA.",
-     "Products":"[\\'Webbing\\', \\'Fabrics and Cloths\\', \\'COVID-19 Response\\', \\'Straps\\', \\'Tier 2 Medical Mfg. Supplies, Materials, Components & Services\\', \\'Fabrication Services\\', \\'Composites\\', \\'Tapes\\', \\'Structures\\', \\'Tie-Downs\\', \\'Anchors\\', \\'Belts\\', \\'Bindings\\', \\'Braces\\', \\'Carbon Products\\', \\'Ceramic Products\\', \\'Climbing Equipment\\', \\'Fiber\\', \\'Filters\\', \"Fire Fighters\\' Personal Protective Equipment (PPE)\", \\'Fittings\\', \\'Gaskets\\', \\'Handles, Pulls and Levers\\', \\'Hardware\\', \\'Harnesses\\', \\'Helmet Parts\\', \\'Hurricane Response\\', \\'Insulation\\', \\'Job Shop Services\\', \\'Joints\\']"
+     "Products":['Webbing', 'Fabrics and Cloths', 'COVID-19 Response', 'Straps', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Fabrication Services', 'Composites', 'Tapes', 'Structures', 'Tie-Downs', 'Anchors', 'Belts', 'Bindings', 'Braces', 'Carbon Products', 'Ceramic Products', 'Climbing Equipment', 'Fiber', 'Filters', "Fire Fighters' Personal Protective Equipment (PPE)", 'Fittings', 'Gaskets', 'Handles, Pulls and Levers', 'Hardware', 'Harnesses', 'Helmet Parts', 'Hurricane Response', 'Insulation', 'Job Shop Services', 'Joints']
   },
   {
      "Company":"CS Hyde Company",
@@ -1673,7 +1673,7 @@ export const supplierdata = [
      "YearFounded":1996.0,
      "ExportMarkets":"nan",
      "Description":"Woman-owned manufacturer, converter and worldwide distributor of high performance tapes, films, fabrics, belting, silicone, threads and cords. Specializes in custom-converting, slitting, die-cutting, die-less cut, lamination of adhesive and sheeting materials. Stock items include PTFE, Kapton®, UHMW, Ultem®, PTFE coated fiberglass, polyester, PEEK, PVDF, and Mylar products. No minimums and same day shipping.",
-     "Products":"['Tapes', 'Film', 'Washers (Fastener & Hardware)', 'Cutting Services', 'Fasteners', 'Rubber', 'Adhesives', 'Fabrics and Cloths', 'Foams', 'Additive Manufacturing Materials', 'Miscellaneous Fasteners', 'Polytetrafluoroethylene (PTFE)', 'Silicone', 'Converting Services', 'Film Products', 'Gaskets', 'Polycarbonate', 'Polyetheretherketone (PEEK)', 'Polyethylene (PE)', 'PTFE Products', 'Abrasion Resistant Materials', 'Acrylic Products', 'Acrylonitrile Butadiene Styrene (ABS)', 'Additive Manufacturing Services', 'Assembly Machinery', 'Barriers', 'Belts', 'Bumpers', 'Coatings', 'Composites']"
+     "Products":['Tapes', 'Film', 'Washers (Fastener & Hardware)', 'Cutting Services', 'Fasteners', 'Rubber', 'Adhesives', 'Fabrics and Cloths', 'Foams', 'Additive Manufacturing Materials', 'Miscellaneous Fasteners', 'Polytetrafluoroethylene (PTFE)', 'Silicone', 'Converting Services', 'Film Products', 'Gaskets', 'Polycarbonate', 'Polyetheretherketone (PEEK)', 'Polyethylene (PE)', 'PTFE Products', 'Abrasion Resistant Materials', 'Acrylic Products', 'Acrylonitrile Butadiene Styrene (ABS)', 'Additive Manufacturing Services', 'Assembly Machinery', 'Barriers', 'Belts', 'Bumpers', 'Coatings', 'Composites']
   },
   {
      "Company":"E2Global",
@@ -1694,7 +1694,7 @@ export const supplierdata = [
      "YearFounded":2013.0,
      "ExportMarkets":"nan",
      "Description":"Custom manufacturer of bags, containers, boxes, applicators, bottles, tins, tips, and swabs. Standard tubings are also offered. Blow molding and contract manufacturing services are provided. Child resistant packaging are also available. Secondary services include engineering and prototyping. Serves the health, beauty, medical, dental, and pets industries.",
-     "Products":"['Bottles', 'Packaging Materials', 'Caps', 'Tubes', 'Cannabis Products', 'Boxes', 'Disposable Products', 'Tins', 'Containers', 'COVID-19 Response', 'Jars', 'Medical Laboratory Consumable Supplies', 'Medical/Hospital Consumable Supplies', 'Swabs', 'Applicators', 'Bags', 'Brochures', 'Cans', 'Cases', 'Clothing', 'Coveralls', 'Cryogenic Equipment', 'Dental Equipment', 'Disaster Preparedness Supplies', 'Displays', 'Fabrics and Cloths', 'Gloves', 'Gowns', 'Hurricane Personal Protective Equipment', 'Hurricane Response']"
+     "Products":['Bottles', 'Packaging Materials', 'Caps', 'Tubes', 'Cannabis Products', 'Boxes', 'Disposable Products', 'Tins', 'Containers', 'COVID-19 Response', 'Jars', 'Medical Laboratory Consumable Supplies', 'Medical/Hospital Consumable Supplies', 'Swabs', 'Applicators', 'Bags', 'Brochures', 'Cans', 'Cases', 'Clothing', 'Coveralls', 'Cryogenic Equipment', 'Dental Equipment', 'Disaster Preparedness Supplies', 'Displays', 'Fabrics and Cloths', 'Gloves', 'Gowns', 'Hurricane Personal Protective Equipment', 'Hurricane Response']
   },
   {
      "Company":"Fabri-Tech Components, Inc.",
@@ -1715,7 +1715,7 @@ export const supplierdata = [
      "YearFounded":1993.0,
      "ExportMarkets":"nan",
      "Description":"Custom manufacturer of precision electromechanical components and assemblies. Products include gaskets, seals, shielding, labels, insulators, fabrics and protective films. Polyurethane, polyethylene, polyester, polyimide, polypropylene, Nomex®, foam, adhesive and thermal interface materials used. Capabilities include fabrication, laser and die cutting, printing and hot stamping. Finishing services such as coating, laminating and converting are also provided. Prototype and small to large run production offered. Serves the electronics, telecommunications, medical, dental and automotive industries.",
-     "Products":"['Cutting Services', 'Gaskets', 'Tapes', 'Foams', 'Fabrication Services', 'Adhesives', 'Shielding', 'Converting Services', 'Slitting Services', 'COVID-19 Response', 'Medical Components', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Hurricane Response', 'Medical & First Aid Supplies', 'Film', 'Disposable Products', 'Insulation', 'Acoustical Materials', 'Aluminum', 'Assemblies', 'Assembly Services', 'Coating Services', 'Coatings', 'Conductive Materials', 'Conductors', 'Control Products', 'Copper', 'Covers', 'Cushions', 'Dampers']"
+     "Products":['Cutting Services', 'Gaskets', 'Tapes', 'Foams', 'Fabrication Services', 'Adhesives', 'Shielding', 'Converting Services', 'Slitting Services', 'COVID-19 Response', 'Medical Components', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Hurricane Response', 'Medical & First Aid Supplies', 'Film', 'Disposable Products', 'Insulation', 'Acoustical Materials', 'Aluminum', 'Assemblies', 'Assembly Services', 'Coating Services', 'Coatings', 'Conductive Materials', 'Conductors', 'Control Products', 'Copper', 'Covers', 'Cushions', 'Dampers']
   },
   {
      "Company":"Jelliff Corp.",
@@ -1736,7 +1736,7 @@ export const supplierdata = [
      "YearFounded":1880.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of standard and custom wire, wire cloth, fabricated-mesh products and electrical resistance wires. Other products include strainers, filters, cartridges, mesh, filter media, screens and gauze. Fabrication services also offered. Automotive, aerospace, electrical, electronics, printing, chemical, refining, pharmaceutical, water purification, OEM mining, paints and coatings and petroleum industries served. Stock items available. On-time delivery.",
-     "Products":"['Filters', 'Screens', 'Mechanical Wire, Cable and Rope', 'Media', 'Fabrics and Cloths', 'COVID-19 Response', 'Nickel', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Electric Wire, Cable and Cable Assemblies', 'Strainers', 'Air Filtration Equipment & Supplies', 'Automotive Parts', 'Baskets', 'Copper', 'Discs', 'Electronics', 'Engine Parts', 'Fabrication Services', 'Filter Components', 'Fluid Conditioning Equipment', 'Forming Services', 'Gauze', 'Inserts', 'Manganese', 'Metals', 'Miscellaneous Metals', 'Molding Services', 'Nylon Products', 'Plastics', 'Printers']"
+     "Products":['Filters', 'Screens', 'Mechanical Wire, Cable and Rope', 'Media', 'Fabrics and Cloths', 'COVID-19 Response', 'Nickel', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Electric Wire, Cable and Cable Assemblies', 'Strainers', 'Air Filtration Equipment & Supplies', 'Automotive Parts', 'Baskets', 'Copper', 'Discs', 'Electronics', 'Engine Parts', 'Fabrication Services', 'Filter Components', 'Fluid Conditioning Equipment', 'Forming Services', 'Gauze', 'Inserts', 'Manganese', 'Metals', 'Miscellaneous Metals', 'Molding Services', 'Nylon Products', 'Plastics', 'Printers']
   },
   {
      "Company":"ArtUSA Noise Control Products",
@@ -1757,7 +1757,7 @@ export const supplierdata = [
      "YearFounded":1995.0,
      "ExportMarkets":"Africa, Asia, Australia, Canada, Europe, Mexico, Middle East, Western Europe",
      "Description":"Manufacturer of standard & custom noise control products, vibration isolation products, sound damping products & air quality products. Distributor of adhesives & sealants. Types of noise control products include acoustical enclosures, fences & walls, baffles, banners, curtains, blankets, sound blocking barriers, wall panels & ceiling tiles. Other products such as acoustical doors & windows, foam, fabrics, sound diffusers, air flow silencers & floor underlayments are available. Vibration isolation products include clips, pads, hangers, mounts & cup mounts. Applications include anechoic chambers, animal shelters, auditoriums, theaters, architectural, call centers, conference rooms, courtrooms, gymnasiums, industrial, office buildings, restaurants, nightclubs, classrooms & training-rooms, shooting & firing ranges, water treatment facilities & swimming pools. Services include design engineering, fabricating, shipping, installation & consulting.",
-     "Products":"['Barriers', 'Panels', 'Rubber', 'Controls and Controllers', 'Acoustical Materials', 'Enclosures', 'Foams', 'Insulation', 'Curtains', 'Baffles', 'Blankets', 'Fabrics and Cloths', 'Tile', 'Walls', 'Abatement Systems', 'Absorbers', 'Adhesives', 'Analyzers', 'Applicators', 'Attenuators', 'Banners', 'Booths', 'Bottoms', 'Building Products', 'Caulk', 'Clips', 'Collectors', 'Compounds', 'Cones', 'Construction Equipment']"
+     "Products":['Barriers', 'Panels', 'Rubber', 'Controls and Controllers', 'Acoustical Materials', 'Enclosures', 'Foams', 'Insulation', 'Curtains', 'Baffles', 'Blankets', 'Fabrics and Cloths', 'Tile', 'Walls', 'Abatement Systems', 'Absorbers', 'Adhesives', 'Analyzers', 'Applicators', 'Attenuators', 'Banners', 'Booths', 'Bottoms', 'Building Products', 'Caulk', 'Clips', 'Collectors', 'Compounds', 'Cones', 'Construction Equipment']
   },
   {
      "Company":"Consolidated Cordage Corporation",
@@ -1778,7 +1778,7 @@ export const supplierdata = [
      "YearFounded":1993.0,
      "ExportMarkets":"Australia, Canada, China, Europe, Latin America/Caribbean, Mexico, Pacific Rim, South America, Western Europe",
      "Description":"ISO 9001 & AS 9120 certified 8(m)WOSB certified diversity manufacturer of various military specification, aeronautical, electrical, safety, commercial and recycled ropes, cords, twines, bungees, lacing tapes, nets, narrow fabrics, shock cords, blasting mats, safety nets, slings, industrial textile products and related assemblies. MRO parts manufacturer. Manufactures 1/64 in. to 6 in. dia. twisted rope, braided cord, bungee shock cord, electrical, motor and stator lacing tapes, twine, narrow fabrics (hook and loop, tape, webbing) and related assemblies to customer specifications and drawings. Other products offered include aircraft interior cargo and stowage nets, aerostat mooring, flying and tether lines, aeronautical parachute cords, lacing tapes and cords, aircraft evacuation system assemblies, aircraft rescue, cargo and interior assemblies, apparel cords, apparel textile product assemblies and hardware awning cords and tapes, backpack cords, and climbing, fall protection and barrier nets. Face mask elastic. Face shield straps available in various widths, lengths and military specifications. Expedited availability.",
-     "Products":"['Cord and Cordage', 'Hook and Loop Fasteners', 'Fasteners', 'Mechanical Wire, Cable and Rope', 'Webbing', 'Braid', 'Lanyards', 'Tapes', 'Nets and Netting', 'Electric Wire, Cable and Cable Assemblies', 'Mats', 'Twine', 'Aircraft Parts', 'Assemblies', 'Bags', 'Belts', 'Bindings', 'Bumpers', 'Camera Parts', 'Casting Services', 'Chains', 'Climbing Equipment', 'COVID-19 Response', 'Cutters and Cutting Machinery', 'Elastics', 'Electrical Equipment', 'Fabrics and Cloths', 'Farm Equipment', 'Fiber', 'Fishing Tackle']"
+     "Products":['Cord and Cordage', 'Hook and Loop Fasteners', 'Fasteners', 'Mechanical Wire, Cable and Rope', 'Webbing', 'Braid', 'Lanyards', 'Tapes', 'Nets and Netting', 'Electric Wire, Cable and Cable Assemblies', 'Mats', 'Twine', 'Aircraft Parts', 'Assemblies', 'Bags', 'Belts', 'Bindings', 'Bumpers', 'Camera Parts', 'Casting Services', 'Chains', 'Climbing Equipment', 'COVID-19 Response', 'Cutters and Cutting Machinery', 'Elastics', 'Electrical Equipment', 'Fabrics and Cloths', 'Farm Equipment', 'Fiber', 'Fishing Tackle']
   },
   {
      "Company":"Southern Packaging LP",
@@ -1799,7 +1799,7 @@ export const supplierdata = [
      "YearFounded":2004.0,
      "ExportMarkets":"nan",
      "Description":"North American distributor of industrial bags and bulk shipping supplies. Products include: FIBC (Flexible Intermediate Bulk Container or Bulk Bag), FIBC Liners, UN Certified FIBC, Food Grade FIBC, Sea Bulk Container Liners, Multi-Wall Paper Packaging, Valve Bags, Pinch Bottom Open Mouth Bags (PBOM), Sewn Open Mouth Bags (SOM), Webb Pinch Open Mouth Bags, UN Certified Multi-Wall Paper Packaging, Biaxially Oriented Polypropylene Bags (BOPP), Paper / Poly Bags, Poly Packaging, AD*STAR Woven Poly Valve Bags, PE Valve Bags, Batch Inclusion Bags, Metalized Poly Bags, Slip Sheets, Stretch Film, Air Dunnage Bags and Void Filler. Services include Vendor Managed Inventory programs and Packaging Design assistance.",
-     "Products":"['Bags', 'Containers', 'Film', 'Liners', 'Packaging Materials', 'Hurricane Response', 'Infrastructure Protection Supplies', 'Dunnage', 'Sheets', 'Bottles', 'COVID-19 Response', 'Fabrics and Cloths', 'Hazardous Waste Equipment, Supplies & Services', 'Labels', 'Pallets', 'Paperboard', 'Protectors', 'Shipping Room Equipment', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Totes', 'Warehousing Services', 'Wrap']"
+     "Products":['Bags', 'Containers', 'Film', 'Liners', 'Packaging Materials', 'Hurricane Response', 'Infrastructure Protection Supplies', 'Dunnage', 'Sheets', 'Bottles', 'COVID-19 Response', 'Fabrics and Cloths', 'Hazardous Waste Equipment, Supplies & Services', 'Labels', 'Pallets', 'Paperboard', 'Protectors', 'Shipping Room Equipment', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Totes', 'Warehousing Services', 'Wrap']
   },
   {
      "Company":"Tarps Now",
@@ -1820,7 +1820,7 @@ export const supplierdata = [
      "YearFounded":2010.0,
      "ExportMarkets":"nan",
      "Description":"Specializing in the manufacture of precision custom tarps and covers for the agriculture, mining, manufacturing, construction, warehousing, trucking, military, defense and aerospace industries. Wholesale supplier of heavy duty standard sized tarps, covers and industrial curtains fabricated in a wide range of fabrics, weights, colors, grades and specifications that includes grommets, eyelets, metallic fasteners, non-metallic fasteners, straps, ratchets, glues, repair materials and other tarp accessories. Tarp fabrics are available by the yard or by the roll. Types offered include canvas tarps, poly tarps, mesh tarps, shade tarps, polyethylene tarps, high temperature tarps, vinyl tarps, fire retardant tarps, insulated tarps, military spec tarps, clear vinyl tarps, PVC tarps, industrial tarps, heavy duty tarps, waterproof tarps and breathable tarps. Concrete curing blankets, industrial divider curtains, fence screens, safety netting, welding blankets, noise control products, tarp covers, canvas covers, canvas bags, painters drop cloths, truck tarps, baseball tarps, gym floor covers, boxing / MMA covers and accessories and industrial curtain track are also available. Made in the U.S.A.",
-     "Products":"['Covers', 'Tarps', 'Curtains', 'Fabrics and Cloths', 'Bags', 'Canvas', 'Emergency Shelters & Shelter Supplies', 'Hurricane Response', 'COVID-19 Response', 'Dividers', 'Doors', 'Medical Personal Protective Equipment (PPE)', 'Other Fire Fighting Equipment', 'Tracks', 'Wildfire Response', 'Acoustical Materials', 'Adhesives', 'Balls', 'Banners', 'Barriers', 'Blankets', 'Brackets', 'Buttons', 'Canvas Products', 'Caps', 'Casters', 'Clips', 'Connectors', 'Cord and Cordage', 'Coverings']"
+     "Products":['Covers', 'Tarps', 'Curtains', 'Fabrics and Cloths', 'Bags', 'Canvas', 'Emergency Shelters & Shelter Supplies', 'Hurricane Response', 'COVID-19 Response', 'Dividers', 'Doors', 'Medical Personal Protective Equipment (PPE)', 'Other Fire Fighting Equipment', 'Tracks', 'Wildfire Response', 'Acoustical Materials', 'Adhesives', 'Balls', 'Banners', 'Barriers', 'Blankets', 'Brackets', 'Buttons', 'Canvas Products', 'Caps', 'Casters', 'Clips', 'Connectors', 'Cord and Cordage', 'Coverings']
   },
   {
      "Company":"XTO, Inc.",
@@ -1841,7 +1841,7 @@ export const supplierdata = [
      "YearFounded":1978.0,
      "ExportMarkets":"Africa, Asia, Australia, Canada, Europe, Mexico, Middle East, Pacific Rim, Western Europe",
      "Description":"Custom manufacturer and converter of EMI/RF shielding, thermal insulation, electrical insulators, coatings, epoxies, lubricants, thermal interface pads, adhesives, sealants, abrasives, microwave absorbers and waterproofing, double coated and conductive tapes. Custom gaskets also available. CNC flash, kiss, die and waterjet cutting, laminating and tape slitting services are also offered.",
-     "Products":"['Cutting Services', 'Gaskets', 'Shielding', 'Laminating Services', 'Seals', 'Adhesives', 'Insulation', 'Fabrication Services', 'Foams', 'Tapes', 'Insulators', 'Pads', 'Slitting Services', 'Thermal Interface Materials', 'Thermal Management Materials', 'Abrasion Resistant Materials', 'Abrasive Compounds / Media', 'Absorbers', 'Barriers', 'Cleaning Compounds and Chemicals', 'Coatings', 'Cold Chain Equipment', 'Converting Services', 'Cork Materials', 'Dies', 'Disaster Preparedness Supplies', 'Dispensers', 'Doors', 'Epoxies', 'Fabrics and Cloths']"
+     "Products":['Cutting Services', 'Gaskets', 'Shielding', 'Laminating Services', 'Seals', 'Adhesives', 'Insulation', 'Fabrication Services', 'Foams', 'Tapes', 'Insulators', 'Pads', 'Slitting Services', 'Thermal Interface Materials', 'Thermal Management Materials', 'Abrasion Resistant Materials', 'Abrasive Compounds / Media', 'Absorbers', 'Barriers', 'Cleaning Compounds and Chemicals', 'Coatings', 'Cold Chain Equipment', 'Converting Services', 'Cork Materials', 'Dies', 'Disaster Preparedness Supplies', 'Dispensers', 'Doors', 'Epoxies', 'Fabrics and Cloths']
   },
   {
      "Company":"Gaskets, Inc.",
@@ -1862,7 +1862,7 @@ export const supplierdata = [
      "YearFounded":1961.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of high and low temperature products for the OEM, power plant, electric turbine, kiln, heat exchanger, chemical, aerospace, pulp and paper, cryogenic, foundry and metal manufacturing industries. Products available include tadpole and extruded silicone seals, expansion joints, tapes, high temperature materials and fiberglass and ceramic rope. High temperature materials such as fiberglass and ceramic paper, cloth, insulation, film and silicone rubber sheets are provided. Custom products also offered. Made in the USA.",
-     "Products":"['Tapes', 'Gaskets', 'Seals', 'Fabrics and Cloths', 'Joints', 'Mechanical Wire, Cable and Rope', 'Silicone', 'Conduits and Ducts', 'Refractories', 'Sleeves', 'Adhesives', 'Blankets', 'Braid', 'Ceramic Products', 'Connectors', 'Cord and Cordage', 'Covers', 'COVID-19 Response', 'Curtains', 'Extrusion Services', 'Film', 'Heaters', 'Insulation', 'Liners', 'Packing', 'Paper', 'Rubber', 'Sheets']"
+     "Products":['Tapes', 'Gaskets', 'Seals', 'Fabrics and Cloths', 'Joints', 'Mechanical Wire, Cable and Rope', 'Silicone', 'Conduits and Ducts', 'Refractories', 'Sleeves', 'Adhesives', 'Blankets', 'Braid', 'Ceramic Products', 'Connectors', 'Cord and Cordage', 'Covers', 'COVID-19 Response', 'Curtains', 'Extrusion Services', 'Film', 'Heaters', 'Insulation', 'Liners', 'Packing', 'Paper', 'Rubber', 'Sheets']
   },
   {
      "Company":"Just Tape and Converting",
@@ -1883,7 +1883,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Distributor of tapes, adhesives, custom label stocks, films, foils, and fabrics. Other products include belts, sheets, shielding, boxes, mats, and bags. Die cutting, converting, precision slitting, and lamination services are also available. Serves the aerospace, solar, manufacturing, agricultural, mining, building construction, transportation, and trade industries.",
-     "Products":"['Cutting Services', 'Tapes', 'Adhesives', 'Converting Services', 'Foams', 'Aluminum', 'Bags', 'Belts', 'Boxes', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Dispensers', 'Disposable Products', 'Envelopes', 'ESD Products', 'Fabrics and Cloths', 'Fasteners', 'Film', 'Foils', 'Gaskets', 'Hook and Loop Fasteners', 'Hurricane Response', 'Insulation', 'Labels', 'Laminates', 'Laminating Services', 'Laminations', 'Mats', 'Medical & First Aid Supplies', 'Medical Personal Protective Equipment (PPE)']"
+     "Products":['Cutting Services', 'Tapes', 'Adhesives', 'Converting Services', 'Foams', 'Aluminum', 'Bags', 'Belts', 'Boxes', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Dispensers', 'Disposable Products', 'Envelopes', 'ESD Products', 'Fabrics and Cloths', 'Fasteners', 'Film', 'Foils', 'Gaskets', 'Hook and Loop Fasteners', 'Hurricane Response', 'Insulation', 'Labels', 'Laminates', 'Laminating Services', 'Laminations', 'Mats', 'Medical & First Aid Supplies', 'Medical Personal Protective Equipment (PPE)']
   },
   {
      "Company":"Thermal Products Company, Inc.",
@@ -1904,7 +1904,7 @@ export const supplierdata = [
      "YearFounded":1984.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer, fabricator and distributor of high temperature products rated to 3000F with ISO 9001 and 9002 certifications. Various thermal products include ceramic fiber blankets, paper, board, textiles such as cloth, tape, rope and braid, liquids such as coating cement and moldable, bulk fiber, anchored and bonded modules, fireproof grease duct and ventilation duct insulation, fiberglass and silica textiles and silicon carbide heating elements. Fabricated shapes from these products include large size modules, blanket strips, die cut gaskets and machined boards. High temperature thermal products have numerous applications in the following industries: aerospace, aluminum, appliance, automotive, boiler, brick, cement, ceramic, chemical, fire protection, foundry, gaskets, glass, heat treating, metal, metal fabricating, petrochemical, power and steel.",
-     "Products":"['Insulation', 'Blankets', 'Ceramics', 'Refractories', 'Braid', 'Elements', 'Fabrics and Cloths', 'Fiber', 'Mechanical Wire, Cable and Rope', 'Tapes', 'Adhesives', 'Anchors', 'Boards', 'Boiler Parts', 'Brick', 'Cement', 'Ceramic Products', 'Coatings', 'Cutting Services', 'Duct Work Equipment', 'Fabrication Services', 'Felt', 'Fiberboard', 'Fire Protection Products', 'Firestops', 'Foundry Equipment', 'Gaskets', 'Heat Shields', 'Insulators', 'Ladles']"
+     "Products":['Insulation', 'Blankets', 'Ceramics', 'Refractories', 'Braid', 'Elements', 'Fabrics and Cloths', 'Fiber', 'Mechanical Wire, Cable and Rope', 'Tapes', 'Adhesives', 'Anchors', 'Boards', 'Boiler Parts', 'Brick', 'Cement', 'Ceramic Products', 'Coatings', 'Cutting Services', 'Duct Work Equipment', 'Fabrication Services', 'Felt', 'Fiberboard', 'Fire Protection Products', 'Firestops', 'Foundry Equipment', 'Gaskets', 'Heat Shields', 'Insulators', 'Ladles']
   },
   {
      "Company":"TPC Packaging Solutions",
@@ -1925,7 +1925,7 @@ export const supplierdata = [
      "YearFounded":1967.0,
      "ExportMarkets":"nan",
      "Description":"Distributor and design, fabrication and installation of conveyors, strappers, sealers, palletizers, cartoners, baggers, loaders, case formers, tape dispensers, labelers, case erectors and wrappers. Also a distributor and converter of packaging such as tapes, labels, shrink, stretch and electrostatic discharge (ESD) film, bubble wraps, air pillows, pallet wraps, mailers, liners, covers and poly bags. Inkjet printers and laser coders are also provided. Capabilities include converting, perforating, die and precision cutting, slitting, printing, and laminating. Serves the automotive, cosmetic, pharmaceuticals, food and beverage industries. Inventory managed programs (VMI) available. Blanket orders accepted. JIT delivery.",
-     "Products":"['Packaging Machinery', 'Film', 'Tapes', 'Labelers', 'Erectors', 'Automation Systems', 'Packaging Materials', 'Sealing Equipment', 'Wrapping Machinery', 'Converting Services', 'Forming Machinery', 'Palletizers', 'Adhesives', 'Applicators', 'Assembly Machinery', 'Bagging Machinery', 'Bags', 'Banding Machinery', 'Belts', 'Bundlers', 'Caps', 'Cartoners', 'Closers', 'Clothing', 'Coders', 'Coilers', 'Cold Chain Packaging Supplies', 'Controls and Controllers', 'Conveyor Parts', 'Conveyors']"
+     "Products":['Packaging Machinery', 'Film', 'Tapes', 'Labelers', 'Erectors', 'Automation Systems', 'Packaging Materials', 'Sealing Equipment', 'Wrapping Machinery', 'Converting Services', 'Forming Machinery', 'Palletizers', 'Adhesives', 'Applicators', 'Assembly Machinery', 'Bagging Machinery', 'Bags', 'Banding Machinery', 'Belts', 'Bundlers', 'Caps', 'Cartoners', 'Closers', 'Clothing', 'Coders', 'Coilers', 'Cold Chain Packaging Supplies', 'Controls and Controllers', 'Conveyor Parts', 'Conveyors']
   },
   {
      "Company":"Chicago Canvas & Supply",
@@ -1946,7 +1946,7 @@ export const supplierdata = [
      "YearFounded":1948.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of standard and custom fabrics, cloths, dividers, scrims, webbings, canvas, covers, curtains, and tarps. Backdrops, burlap,  tapes, tracks, trolleys, and track end stops are offered. Fabrication services are provided. Suitable for cargo covers, work sites, art projects, awnings, construction, and agriculture applications. Made in the USA.",
-     "Products":"['Tarps', 'Emergency Shelters & Shelter Supplies', 'Hurricane Response', 'Fabrics and Cloths', 'Absorbers', 'Acoustical Materials', 'Additive Manufacturing Materials', 'Awnings', 'Bags', 'Banners', 'Blankets', 'Burlap', 'Camouflage', 'Canopies', 'Canvas', 'Canvas Products', 'Clamps', 'Connectors', 'Cord and Cordage', 'Coveralls', 'Covers', 'COVID-19 Response', 'Curtains', 'Disaster Preparedness Supplies', 'Dividers', 'Dyes', 'Fabrication Services', 'Fittings', 'Flannels', 'Gauze']"
+     "Products":['Tarps', 'Emergency Shelters & Shelter Supplies', 'Hurricane Response', 'Fabrics and Cloths', 'Absorbers', 'Acoustical Materials', 'Additive Manufacturing Materials', 'Awnings', 'Bags', 'Banners', 'Blankets', 'Burlap', 'Camouflage', 'Canopies', 'Canvas', 'Canvas Products', 'Clamps', 'Connectors', 'Cord and Cordage', 'Coveralls', 'Covers', 'COVID-19 Response', 'Curtains', 'Disaster Preparedness Supplies', 'Dividers', 'Dyes', 'Fabrication Services', 'Fittings', 'Flannels', 'Gauze']
   },
   {
      "Company":"MJ May Material Specialists Inc.",
@@ -1967,7 +1967,7 @@ export const supplierdata = [
      "YearFounded":2001.0,
      "ExportMarkets":"nan",
      "Description":"Custom manufacturer of round, flat, and V-belts made from urethane, silicon, EPDM, and Viton® materials. Hook and loop fasteners, straps, closures, coins, PTFE-coated fiberglass fabrics, tapes, discs, washers, gaskets, shafts, bumpers, and films are offered. Converting services for tapes, films, fabrics, rubber, and metals are provided. Capabilities include sheeting, laminating, slitting, and strip, die, and waterjet cutting. Also, a raw material manufacturer of acetal, nylon, high density polyethylene, high-temperature fiberglass, PTFE, Kapton® (polyimide), and UHMW. Prototype and low to high volume production runs available. Serves the aerospace, agriculture, automotive, chemical, electronics, electrical, food, marine, medical, military, mining, nuclear, pharmaceutical, robotics, and transportation industries.",
-     "Products":"['Fasteners', 'Hook and Loop Fasteners', 'Acetal', 'Additive Manufacturing Materials', 'Belts', 'Boards', 'Bronze', 'Bumpers', 'Coins', 'Converting Services', 'COVID-19 Response', 'Cutting Services', 'Discs', 'Fabrics and Cloths', 'Film', 'Finishing Services', 'Gaskets', 'Laminating Services', 'Metals', 'Miscellaneous Plastics', 'Nylon', 'Plastics', 'Polyethylene (PE)', 'Polyimide', 'Polytetrafluoroethylene (PTFE)', 'Polyurethane', 'Power Transmission Equipment', 'Prototyping Services', 'Rods', 'Rubber']"
+     "Products":['Fasteners', 'Hook and Loop Fasteners', 'Acetal', 'Additive Manufacturing Materials', 'Belts', 'Boards', 'Bronze', 'Bumpers', 'Coins', 'Converting Services', 'COVID-19 Response', 'Cutting Services', 'Discs', 'Fabrics and Cloths', 'Film', 'Finishing Services', 'Gaskets', 'Laminating Services', 'Metals', 'Miscellaneous Plastics', 'Nylon', 'Plastics', 'Polyethylene (PE)', 'Polyimide', 'Polytetrafluoroethylene (PTFE)', 'Polyurethane', 'Power Transmission Equipment', 'Prototyping Services', 'Rods', 'Rubber']
   },
   {
      "Company":"Phoenix Filtration",
@@ -1988,7 +1988,7 @@ export const supplierdata = [
      "YearFounded":2005.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of filtration equipment.",
-     "Products":"['Separators', 'Filters', 'Belts', 'COVID-19 Response', 'Fabrics and Cloths', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services']"
+     "Products":['Separators', 'Filters', 'Belts', 'COVID-19 Response', 'Fabrics and Cloths', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services']
   },
   {
      "Company":"Acoustical Surfaces",
@@ -2009,7 +2009,7 @@ export const supplierdata = [
      "YearFounded":1980.0,
      "ExportMarkets":"Africa, Asia, Australia, Canada, Europe, Mexico, Middle East, Western Europe",
      "Description":"Distributor and manufacturer of standard and custom soundproofing, noise control, vibration and acoustical control materials and products. Noise control curtains, acoustical baffles and banners, equipment enclosures, fire retardant acoustics, acoustical sealants or adhesives, acoustical fabric wall panels, sound level meters, white noise machines, acoustical gasket tapes, sound isolation clips, soundproof walls, sound control doors and wall or ceiling acoustical foam available. Services include sound testing and acoustical analysis and recording studio construction. Products are used in commercial, hospital, recording or broadcasting studio, gymnasium, conference room, restaurant, lunchroom, auditorium, stadium, educational, house of worship, OEM and home theater applications. Meets non-flammable ASTM E84 class A-1 standards. One year warranty.",
-     "Products":"['Acoustical Materials', 'Absorbers', 'Noise Control Services', 'Panels', 'Building Materials', 'Controls and Controllers', 'Enclosures', 'Engineering Services', 'Tile', 'Walls', 'Windows', 'Actuators', 'ADA Compliant Products', 'Adhesives', 'Airport Equipment', 'Amplifiers', 'Analytical Services', 'Analyzers', 'Audio Visual (AV) Equipment', 'Baffles', 'Banners', 'Barriers', 'Blades', 'Blankets', 'Boards', 'Borescopes', 'Cabinets', 'Cafeteria Equipment', 'Cameras', 'Cancellers']"
+     "Products":['Acoustical Materials', 'Absorbers', 'Noise Control Services', 'Panels', 'Building Materials', 'Controls and Controllers', 'Enclosures', 'Engineering Services', 'Tile', 'Walls', 'Windows', 'Actuators', 'ADA Compliant Products', 'Adhesives', 'Airport Equipment', 'Amplifiers', 'Analytical Services', 'Analyzers', 'Audio Visual (AV) Equipment', 'Baffles', 'Banners', 'Barriers', 'Blades', 'Blankets', 'Boards', 'Borescopes', 'Cabinets', 'Cafeteria Equipment', 'Cameras', 'Cancellers']
   },
   {
      "Company":"National Wiper Alliance, a business of Ecolab",
@@ -2030,7 +2030,7 @@ export const supplierdata = [
      "YearFounded":1996.0,
      "ExportMarkets":"Australia, Europe, Western Europe",
      "Description":"Custom manufacturer of reusable & disposable cleaning & wiping products. Private label manufacturing, custom converting & packaging & product development services available. Manufactured in the USA.",
-     "Products":"['Wipes and Wipers', 'Janitorial Supplies', 'Disaster Preparedness Supplies', 'Fabrics and Cloths', 'Hurricane Response', 'COVID-19 Response', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Absorbers', 'Blankets', 'Cleaning Compounds and Chemicals', 'Cleaning Equipment', 'Converting Services', 'Disposable Products', 'Janitorial Equipment', 'Manufacturing Services', 'Napkins', 'Packaging Materials', 'Packaging Services', 'Painting Equipment', 'Private Label Manufacturing', 'Rags', 'Scrims', 'Sheets', 'Tissue', 'Towels']"
+     "Products":['Wipes and Wipers', 'Janitorial Supplies', 'Disaster Preparedness Supplies', 'Fabrics and Cloths', 'Hurricane Response', 'COVID-19 Response', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Absorbers', 'Blankets', 'Cleaning Compounds and Chemicals', 'Cleaning Equipment', 'Converting Services', 'Disposable Products', 'Janitorial Equipment', 'Manufacturing Services', 'Napkins', 'Packaging Materials', 'Packaging Services', 'Painting Equipment', 'Private Label Manufacturing', 'Rags', 'Scrims', 'Sheets', 'Tissue', 'Towels']
   },
   {
      "Company":"Macro International Co.",
@@ -2051,7 +2051,7 @@ export const supplierdata = [
      "YearFounded":1984.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of neoprene sheets, rolls, and foams for watersport, medical, military, pet, and orthopedic applications. Spacers and nitrile butadiene rubber (NBR) foams for a variety of medical products, fashion brands, sporting products, and military goods. Secondary services include consultation, packaging, and tagging. Prototype and production runs are available.",
-     "Products":"['Rubber', 'COVID-19 Response', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Braces', 'Fabrics and Cloths', 'Foams', 'Manufacturing Services', 'Neoprene Products', 'Rubber Goods', 'Absorbers', 'Finishes', 'Insoles', 'Insulation', 'Medical Equipment', 'Medical Products and Hospital Equipment', 'Molding Services', 'Orthotics', 'Plastics', 'Prototyping Services', 'Rolls and Rollers', 'Sheets', 'Sleeves', 'Supports']"
+     "Products":['Rubber', 'COVID-19 Response', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Braces', 'Fabrics and Cloths', 'Foams', 'Manufacturing Services', 'Neoprene Products', 'Rubber Goods', 'Absorbers', 'Finishes', 'Insoles', 'Insulation', 'Medical Equipment', 'Medical Products and Hospital Equipment', 'Molding Services', 'Orthotics', 'Plastics', 'Prototyping Services', 'Rolls and Rollers', 'Sheets', 'Sleeves', 'Supports']
   },
   {
      "Company":"SAE Manufacturing Specialties Corp",
@@ -2072,7 +2072,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Manufacturer of special chemicals, energetic materials, polytechnics, ordnance or aerospace components and systems. Products include special chemicals, energetic materials, pyrotechnics, ordnance and aerospace components and systems. Additional products include electronic systems, equipment, enforcement products and an EOD full line of products and solutions. Other services such as research and development for aerospace pyrotechnic devices are also offered. Serves the defense and aerospace industries. Some products meet military specifications.",
-     "Products":"['Grease', 'Lubricants', 'Oils', 'Solid Film Lubricants', 'Chemicals', 'Abrasive Blast Equipment', 'Accelerometers', 'Acetaminophen', 'Actuators', 'Additive Manufacturing Materials', 'Adhesives', 'Agents', 'Aggregates', 'Aluminum', 'Ammeters', 'Ammunition', 'Amplifiers', 'Analyzers', 'Anesthesia Equipment', 'Antennas', 'Anti-Seize', 'Antimony', 'Armor', 'Arresters', 'Asphalt', 'Aspirin', 'Bags', 'Barite', 'Barrels and Drums', 'Batons']"
+     "Products":['Grease', 'Lubricants', 'Oils', 'Solid Film Lubricants', 'Chemicals', 'Abrasive Blast Equipment', 'Accelerometers', 'Acetaminophen', 'Actuators', 'Additive Manufacturing Materials', 'Adhesives', 'Agents', 'Aggregates', 'Aluminum', 'Ammeters', 'Ammunition', 'Amplifiers', 'Analyzers', 'Anesthesia Equipment', 'Antennas', 'Anti-Seize', 'Antimony', 'Armor', 'Arresters', 'Asphalt', 'Aspirin', 'Bags', 'Barite', 'Barrels and Drums', 'Batons']
   },
   {
      "Company":"Stickon Packaging Systems, Inc.",
@@ -2093,7 +2093,7 @@ export const supplierdata = [
      "YearFounded":1976.0,
      "ExportMarkets":"nan",
      "Description":"Custom manufacturer and distributor of new and used packaging supplies and equipment. Various products include boxes, boards, mailers, tapes, bumpers, gaskets, labels, tubes and sealers. Capabilities include fabrication, coating, repair, packaging, cutting, printing, slitting, converting, laminating, warehousing and maintenance. Retail, HVAC, auto, marine, aerospace, arts, entertainment and special events industries served. Most items available in stock. Same day shipping.",
-     "Products":"['Tapes', 'Adhesives', 'Bags', 'Banding Machinery', 'Belts', 'Blankets', 'Boards', 'Boxes', 'Bumpers', 'Bundlers', 'Coating Services', 'Coatings', 'Coders', 'Converting Services', 'Cork Materials', 'Cutting Services', 'Disaster Preparedness Supplies', 'Dispensers', 'Ethylene Vinyl Acetate (EVA)', 'Fabrication Services', 'Fabrics and Cloths', 'Fasteners', 'Felt', 'Film', 'Foam Products', 'Foams', 'Gaskets', 'Hook and Loop Fasteners', 'Hurricane Response', 'Janitorial Supplies']"
+     "Products":['Tapes', 'Adhesives', 'Bags', 'Banding Machinery', 'Belts', 'Blankets', 'Boards', 'Boxes', 'Bumpers', 'Bundlers', 'Coating Services', 'Coatings', 'Coders', 'Converting Services', 'Cork Materials', 'Cutting Services', 'Disaster Preparedness Supplies', 'Dispensers', 'Ethylene Vinyl Acetate (EVA)', 'Fabrication Services', 'Fabrics and Cloths', 'Fasteners', 'Felt', 'Film', 'Foam Products', 'Foams', 'Gaskets', 'Hook and Loop Fasteners', 'Hurricane Response', 'Janitorial Supplies']
   },
   {
      "Company":"Keder Solutions",
@@ -2114,7 +2114,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Manufacturer of standard and custom rails, cords, keders, hangers, hooks, caps, and fabrics. Other products such as zippers, rings, rivet setting plates, holders, splices, fasteners, buckles, guides, anchors, wrenches, tool kits, keys, tapes, clamps, and webbing are also available. Converting and slitting services are provided. Suitable for structure, marine, canvas, soft signage, banner, tenting, printing, and awning applications. Stock items offered.",
-     "Products":"['Extrusion Services', 'Fabrics and Cloths', 'Anchors', 'Buckles', 'Buttons', 'Caps', 'Clamps', 'Clips', 'Converting Services', 'Cord and Cordage', 'Fasteners', 'Fastening Systems', 'Fittings', 'Guides', 'Hangers', 'Hardware', 'Holders', 'Hook and Loop Fasteners', 'Hooks', 'Keders', 'Keys', 'Kits', 'Manufacturing Services', 'Miscellaneous Fasteners', 'Miscellaneous Materials', 'Nylon', 'Plates', 'Rails', 'Rings', 'Slitting Services']"
+     "Products":['Extrusion Services', 'Fabrics and Cloths', 'Anchors', 'Buckles', 'Buttons', 'Caps', 'Clamps', 'Clips', 'Converting Services', 'Cord and Cordage', 'Fasteners', 'Fastening Systems', 'Fittings', 'Guides', 'Hangers', 'Hardware', 'Holders', 'Hook and Loop Fasteners', 'Hooks', 'Keders', 'Keys', 'Kits', 'Manufacturing Services', 'Miscellaneous Fasteners', 'Miscellaneous Materials', 'Nylon', 'Plates', 'Rails', 'Rings', 'Slitting Services']
   },
   {
      "Company":"Lapmaster Wolters",
@@ -2135,7 +2135,7 @@ export const supplierdata = [
      "YearFounded":1948.0,
      "ExportMarkets":"Africa, Asia, Australia, Canada, Europe, Mexico, Middle East, Western Europe",
      "Description":"Manufacturer of machinery including abrasive cutters, precision saws, mounting presses, microscopes, and ultrasonic cleaners. Lapping, polishing, honing, grinding, and buffing machines are also offered. Cleaning chemicals include ultrasonic degreasers, optical or metal cleaners, cuffing compound removers, and rust strippers. Aluminum oxide, silicon carbide, boron carbide, and diamond materials are available in powder form. Ballast, clips, nozzles, pads, beakers, plates, sprays, stands, tools, baskets, racks, yokes, studs, and bolts are also provided. Other services include contract lapping, grinding, polishing, repairing, inspection, and honing. Serves electro-optics, automotive, aerospace, bearing, semiconductor, medical device, education, and research industries.",
-     "Products":"['Abrasive Compounds / Media', 'Agents', 'Alumina (Aluminum Oxide)', 'Applicators', 'Assembly Machinery', 'Ballasts', 'Bases', 'Baskets', 'Beakers', 'Bearings', 'Belts', 'Blades', 'Blocks', 'Bolts', 'Bottles', 'Buffers', 'Cabinets', 'Cameras', 'Capacitors', 'Carriers', 'Charts', 'Chemicals', 'Cleaning Compounds and Chemicals', 'Cleaning Equipment', 'Clips', 'Compounds', 'Controls and Controllers', 'Coolants', 'Covers', 'COVID-19 Response']"
+     "Products":['Abrasive Compounds / Media', 'Agents', 'Alumina (Aluminum Oxide)', 'Applicators', 'Assembly Machinery', 'Ballasts', 'Bases', 'Baskets', 'Beakers', 'Bearings', 'Belts', 'Blades', 'Blocks', 'Bolts', 'Bottles', 'Buffers', 'Cabinets', 'Cameras', 'Capacitors', 'Carriers', 'Charts', 'Chemicals', 'Cleaning Compounds and Chemicals', 'Cleaning Equipment', 'Clips', 'Compounds', 'Controls and Controllers', 'Coolants', 'Covers', 'COVID-19 Response']
   },
   {
      "Company":"Technicon Acoustics",
@@ -2156,7 +2156,7 @@ export const supplierdata = [
      "YearFounded":1980.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of standard and custom laminate and composite materials for noise, vibration and thermal applications. Absorbers, barriers, dampers, isolators and thermal management materials are available. Polyester and polyether foam, fabric, vinyl, film and foil materials are used. Capabilities include thermal and flame lamination, PVC casting, foam embossing. Value added services such as kitting, CNC and die cutting are offered. Industries served include heavy equipment, medical, power generation, marine, transportation, air compressors and emergency/specialty vehicles. Kanban and JIT delivery.",
-     "Products":"['Insulation', 'Acoustical Materials', 'Barriers', 'Foams', 'Absorbers', 'Abatement Systems', 'Adhesives', 'Composites', 'Control Products', 'Controls and Controllers', 'Converting Services', 'COVID-19 Response', 'Dampers', 'Enclosures', 'Fabrics and Cloths', 'Fasteners', 'Fiber', 'Film', 'Finishing Services', 'Foam Products', 'Heat Shields', 'Hook and Loop Fasteners', 'Laminates', 'Laminating Services', 'Mounts', 'Pads', 'Panels', 'Plastics', 'Polyvinyl Chloride (PVC)', 'Protectors']"
+     "Products":['Insulation', 'Acoustical Materials', 'Barriers', 'Foams', 'Absorbers', 'Abatement Systems', 'Adhesives', 'Composites', 'Control Products', 'Controls and Controllers', 'Converting Services', 'COVID-19 Response', 'Dampers', 'Enclosures', 'Fabrics and Cloths', 'Fasteners', 'Fiber', 'Film', 'Finishing Services', 'Foam Products', 'Heat Shields', 'Hook and Loop Fasteners', 'Laminates', 'Laminating Services', 'Mounts', 'Pads', 'Panels', 'Plastics', 'Polyvinyl Chloride (PVC)', 'Protectors']
   },
   {
      "Company":"Xamax Industries, Inc.",
@@ -2177,7 +2177,7 @@ export const supplierdata = [
      "YearFounded":1949.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of films, papers, laminates, and nonwoven fabrics. Polyethylene terephthalate (PET), olefin, and polyethylene (PE) are offered. Aramid, cellulose, cotton, polyester, and polypropylene (PP) nonwoven fabrics are also provided. Technical, kraft, tissue, crepe, electrical grade, and heat sealable papers are available. Converting services are offered. Serves automotive, construction, and transportation industries. RoHS compliant.",
-     "Products":"['Fabrics and Cloths', 'COVID-19 Response', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Composites', 'Film', 'Laminates', 'Miscellaneous Plastics', 'Converting Services', 'Cotton', 'Cotton Goods', 'Disaster Preparedness Supplies', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Hurricane Response', 'Insulation', 'Janitorial Supplies', 'Medical/Hospital Consumable Supplies', 'Paper', 'Personal Care Products', 'Plastics', 'Rolls and Rollers', 'Tissue', 'Wipes and Wipers']"
+     "Products":['Fabrics and Cloths', 'COVID-19 Response', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Composites', 'Film', 'Laminates', 'Miscellaneous Plastics', 'Converting Services', 'Cotton', 'Cotton Goods', 'Disaster Preparedness Supplies', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Hurricane Response', 'Insulation', 'Janitorial Supplies', 'Medical/Hospital Consumable Supplies', 'Paper', 'Personal Care Products', 'Plastics', 'Rolls and Rollers', 'Tissue', 'Wipes and Wipers']
   },
   {
      "Company":"Ace Belting Company",
@@ -2198,7 +2198,7 @@ export const supplierdata = [
      "YearFounded":1972.0,
      "ExportMarkets":"Africa, Asia, Australia, Canada, China, Europe, Latin America/Caribbean, Mexico, Middle East, Pacific Rim, South America, Western Europe",
      "Description":"Distributor of a full line of industrial conveyor belting and supplies. Products include FDA/USDA compliant materials, timing belts, woven endless belts, vacuum belts, food grade belts, high temperature belts, and V-belts, PTFE fabrics, and lubricants. Suitable for food processing, packaging, material handling, bookbinding, and box manufacturing applications.",
-     "Products":"['Belts', 'Fabrics and Cloths', 'Sealing Equipment', 'Tapes', 'Adhesives', 'Bands', 'Film', 'Janitorial Supplies', 'Lubricants']"
+     "Products":['Belts', 'Fabrics and Cloths', 'Sealing Equipment', 'Tapes', 'Adhesives', 'Bands', 'Film', 'Janitorial Supplies', 'Lubricants']
   },
   {
      "Company":"Santec Corporation",
@@ -2219,7 +2219,7 @@ export const supplierdata = [
      "YearFounded":1983.0,
      "ExportMarkets":"Canada, Europe, Latin America/Caribbean, Mexico",
      "Description":"Manufacturer of standard and custom replacement parts for printing presses. Blanket wash cloth rolls, wash-up blades, hickey fingers, foam glue pads and wipes are offered. Capabilities include slitting, rewinding and converting. Works with nonwoven, engineered fabrics, melt-blown, paper and polyester materials. Serves OEM, graphic art and printing industries. Made in the USA.",
-     "Products":"['Converting Services', 'Slitting Services', 'Air Filtration Equipment & Supplies', 'Blades', 'Cleaning Compounds and Chemicals', 'COVID-19 Response', 'Fabrics and Cloths', 'Filters', 'Fingers', 'Janitorial Supplies', 'Job Shop Services', 'Liners', 'Pads', 'Press Components', 'Printing Equipment and Supplies', 'Printing Press Parts', 'Rolls and Rollers', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Wipes and Wipers']"
+     "Products":['Converting Services', 'Slitting Services', 'Air Filtration Equipment & Supplies', 'Blades', 'Cleaning Compounds and Chemicals', 'COVID-19 Response', 'Fabrics and Cloths', 'Filters', 'Fingers', 'Janitorial Supplies', 'Job Shop Services', 'Liners', 'Pads', 'Press Components', 'Printing Equipment and Supplies', 'Printing Press Parts', 'Rolls and Rollers', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Wipes and Wipers']
   },
   {
      "Company":"Marktek, Inc.",
@@ -2240,7 +2240,7 @@ export const supplierdata = [
      "YearFounded":1994.0,
      "ExportMarkets":"Asia, Australia, China, Europe, Latin America/Caribbean, Middle East, Pacific Rim, South America, Western Europe",
      "Description":"Distributor of conductive and piezoresistive materials & fabrics. Conductive products include woven fabrics, felts, knits, non-woven mats, fibers, yarns, additives, nonmetallic wire, tapes, glass, and radar absorbing mats. EMI shielded metallic fabric tents & pouches are also available. Conductive products are utilized for EMI/RFI shielding/suppression, static dissipation, antenna systems, RCS reduction, resistive & microwave heating, pressure mapping sensors, antibacterial wipes & dressings,and medical electrodes.",
-     "Products":"['Fabrics and Cloths', 'Absorbers', 'Coatings', 'Electric Wire, Cable and Cable Assemblies', 'Enclosures', 'Polymers', 'Shielding', 'Tapes', 'Additives', 'Compounds', 'Conductive Materials', 'COVID-19 Response', 'Fasteners', 'Fiber', 'Film', 'Foams', 'Gaskets', 'Glass', 'Hook and Loop Fasteners', 'Mats', 'Scrims', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Windows', 'Yarns']"
+     "Products":['Fabrics and Cloths', 'Absorbers', 'Coatings', 'Electric Wire, Cable and Cable Assemblies', 'Enclosures', 'Polymers', 'Shielding', 'Tapes', 'Additives', 'Compounds', 'Conductive Materials', 'COVID-19 Response', 'Fasteners', 'Fiber', 'Film', 'Foams', 'Gaskets', 'Glass', 'Hook and Loop Fasteners', 'Mats', 'Scrims', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Windows', 'Yarns']
   },
   {
      "Company":"Majilite Custom Coated Fabrics & Specialized Films",
@@ -2261,7 +2261,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Custom manufacturer of coated woven and non-woven fabrics, and specialized cast polyurethane thin films. Dip, transfer, rotogravure and reverse roll coating services are available. Laminating, tumbling, toll processing and engineering services are offered. Secondary services such as product development and quality control testing are provided. Serves the aerospace, automotive, electronics, footwear, apparel, textile, medical and military industries.",
-     "Products":"['Film', 'Fabrics and Cloths', 'Laminating Services', 'Coating Services', 'Coatings', 'COVID-19 Response', 'Engineering Services', 'Finishing Services', 'Manufacturing Services', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Tumbling Services']"
+     "Products":['Film', 'Fabrics and Cloths', 'Laminating Services', 'Coating Services', 'Coatings', 'COVID-19 Response', 'Engineering Services', 'Finishing Services', 'Manufacturing Services', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Tumbling Services']
   },
   {
      "Company":"Ovasco Industries",
@@ -2282,7 +2282,7 @@ export const supplierdata = [
      "YearFounded":1921.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of packaging solutions. Various products include textile wiping cloths, paper towels, lint free/low lint wipers, dusting wands, dry mops, scrubbing mop pads, bags, aprons, films, liners and ties. Various capabilities include folding, sewing, printing, perforating, slitting, rewinding, bottom and side gusseting, laminating, cutting, elasticizing and sonic and heat sealing. Oil, gas, mines, drilling, automotive, aviation, healthcare, schools, flooring, hair salon, window cleaning, woodwork, painters and other industries served.",
-     "Products":"['Janitorial Supplies', 'Containers', 'Bags', 'Rags', 'Hurricane Response', 'Infrastructure Protection Supplies', 'Packaging Materials', 'Wipes and Wipers', 'Absorbers', 'Additive Manufacturing Materials', 'Aprons', 'Barrels and Drums', 'Barricades', 'Barriers', 'Blankets', 'Booms', 'Burlap', 'Cases', 'Clean-Up Equipment', 'Cleaning Compounds and Chemicals', 'Cleaning Equipment', 'Cleanroom Equipment', 'Closers', 'Clothing', 'Construction Equipment', 'Containment Systems', 'Converting Services', 'Covers', 'COVID-19 Response', 'Denims']"
+     "Products":['Janitorial Supplies', 'Containers', 'Bags', 'Rags', 'Hurricane Response', 'Infrastructure Protection Supplies', 'Packaging Materials', 'Wipes and Wipers', 'Absorbers', 'Additive Manufacturing Materials', 'Aprons', 'Barrels and Drums', 'Barricades', 'Barriers', 'Blankets', 'Booms', 'Burlap', 'Cases', 'Clean-Up Equipment', 'Cleaning Compounds and Chemicals', 'Cleaning Equipment', 'Cleanroom Equipment', 'Closers', 'Clothing', 'Construction Equipment', 'Containment Systems', 'Converting Services', 'Covers', 'COVID-19 Response', 'Denims']
   },
   {
      "Company":"ImageMark Business Services, Inc.",
@@ -2303,7 +2303,7 @@ export const supplierdata = [
      "YearFounded":1924.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of printed items including marketing collateral, signage, stationery, sales literature, direct mail components (envelopes, letters, postcards). Branded merchandise included in offerings to support employee and marketing programs. Kitting, assembly, fulfillment, and direct mail services are all part of capabilities. Digital storefront drives print-on-demand for B2B clients.",
-     "Products":"['Packaging Services', 'Manufacturing Services', 'Private Label Manufacturing', 'Fulfillment Services', 'Mail Services', 'Advertising Specialties, Novelties, and Promotional Products', 'Printing and Marking Services', 'Aprons', 'Assembly Services', 'Awards', 'Backpacks', 'Badges', 'Bags', 'Balls', 'Bandanas', 'Banners', 'Blankets', 'Boxes', 'Buttons', 'Calculators', 'Calendars', 'Clothing', 'COVID-19 Response', 'Cups', 'Decals', 'Disaster Preparedness Supplies', 'Emblems', 'Envelopes', 'Folders', 'Forms']"
+     "Products":['Packaging Services', 'Manufacturing Services', 'Private Label Manufacturing', 'Fulfillment Services', 'Mail Services', 'Advertising Specialties, Novelties, and Promotional Products', 'Printing and Marking Services', 'Aprons', 'Assembly Services', 'Awards', 'Backpacks', 'Badges', 'Bags', 'Balls', 'Bandanas', 'Banners', 'Blankets', 'Boxes', 'Buttons', 'Calculators', 'Calendars', 'Clothing', 'COVID-19 Response', 'Cups', 'Decals', 'Disaster Preparedness Supplies', 'Emblems', 'Envelopes', 'Folders', 'Forms']
   },
   {
      "Company":"Penn Tool Co.",
@@ -2324,7 +2324,7 @@ export const supplierdata = [
      "YearFounded":1968.0,
      "ExportMarkets":"Asia, Australia, Canada, Europe, Latin America/Caribbean, Middle East, Pacific Rim, Western Europe",
      "Description":"Distributor of precision instruments, cutting tools, and abrasive compounds for metalworking applications. Products include adapters, arbors, benches, bits, blocks, broaches, brushes, calipers, changers, chucks, and collects. Clamps, dials, dies, drills, files, gages, grinders, guards, heads, holders, and hoses are available. Indicators, inserts, laps, lathes, lubricants, optical magnifiers, micrometers, microscopes, pallets, and pumps are offered. Hooks, brakes, squares, countersinks, retrofits, vises, and tubes are provided. Mirrors, exhausts, baffles, ventilators, magnifiers, studs, printheads, grips, and jackets are also available. Made in the USA.",
-     "Products":"['Tools', 'Mills', 'Lubricants', 'Saws', 'Abrasive Compounds / Media', 'Measuring Equipment', 'Clamps', 'Carbide Cutting Tools', 'Drills', 'Lathes', 'Activators', 'Adapters', 'Adhesives', 'Alarms', 'Arbors', 'Assembly Services', 'Attachments', 'Backpacks', 'Baffles', 'Balancers', 'Bands', 'Barrels and Drums', 'Bars', 'Baskets', 'Batteries', 'Beakers', 'Bearings', 'Belts', 'Benches', 'Benders']"
+     "Products":['Tools', 'Mills', 'Lubricants', 'Saws', 'Abrasive Compounds / Media', 'Measuring Equipment', 'Clamps', 'Carbide Cutting Tools', 'Drills', 'Lathes', 'Activators', 'Adapters', 'Adhesives', 'Alarms', 'Arbors', 'Assembly Services', 'Attachments', 'Backpacks', 'Baffles', 'Balancers', 'Bands', 'Barrels and Drums', 'Bars', 'Baskets', 'Batteries', 'Beakers', 'Bearings', 'Belts', 'Benches', 'Benders']
   },
   {
      "Company":"Thermal Specialties",
@@ -2345,7 +2345,7 @@ export const supplierdata = [
      "YearFounded":2012.0,
      "ExportMarkets":"Africa, Asia, Australia, Canada, Europe, Mexico, Middle East, Western Europe",
      "Description":"ISO 9001:2008 certified. Custom manufacturer of furnaces, insulating materials and accessories. Various insulating materials and accessories include aluminum and PVC jackets and fittings, safety equipment, curved sidewall segments, cut and clip banding, cut and curl PVC products and expansion joints. Various capabilities include engineering, repairing, inspection, construction, fabrication, maintenance, blasting, straightening, installation and heat treating. Aerospace, power generation, petroleum, oil and gas, cement, lime, chemical and process industries served. Turnkey systems integration services available. 24/7 service available.",
-     "Products":"['Furnaces', 'Treatment Services', 'Maintenance and Repair Services', 'Calibration Services', 'Engineering Services', 'Renovation Services', 'Adhesives', 'Anchors', 'Applicators', 'Brazing Services', 'Certification Services', 'Cleaning Services', 'Contractors', 'Covers', 'Elbows', 'Fabrication Services', 'Fabrics and Cloths', 'Fittings', 'Furnace Parts', 'Gaskets', 'Inspection Services', 'Installation Services', 'Insulation', 'Insulation Accessories', 'Jackets', 'Knives', 'Lubrication Services', 'Mortar', 'Pins', 'Polyvinyl Chloride (PVC) Products']"
+     "Products":['Furnaces', 'Treatment Services', 'Maintenance and Repair Services', 'Calibration Services', 'Engineering Services', 'Renovation Services', 'Adhesives', 'Anchors', 'Applicators', 'Brazing Services', 'Certification Services', 'Cleaning Services', 'Contractors', 'Covers', 'Elbows', 'Fabrication Services', 'Fabrics and Cloths', 'Fittings', 'Furnace Parts', 'Gaskets', 'Inspection Services', 'Installation Services', 'Insulation', 'Insulation Accessories', 'Jackets', 'Knives', 'Lubrication Services', 'Mortar', 'Pins', 'Polyvinyl Chloride (PVC) Products']
   },
   {
      "Company":"UniversalPromo, Inc.",
@@ -2366,7 +2366,7 @@ export const supplierdata = [
      "YearFounded":1972.0,
      "ExportMarkets":"nan",
      "Description":"Print service provider offering custom pad printing, screen printing, digital printing, hot stamping, laser engraving/cutting, vinyl signage, sublimation, and heat transfer decoration. Specializes in printing of medical components and pharmaceutical goods as well as cosmetic products. Other services include assembly, packaging, laminating, die cutting, sourcing, and engineering. Experienced with a range of material substrates including plastics, wood, metal, glass, fabrics, and silicone. Promotional product supplier and distributor in the ad specialty industry. Products include apparel, drinkware, coasters, cutting boards, mouse pads, magnets, dosing spoons, dosing droppers, oral syringes, medicine cups, travel-size pill boxes, 7-day pill boxes, monthly pill boxes, medicine chests, and promotional kits. Custom imprint options available for promotional products.",
-     "Products":"['Printing and Marking Services', 'Engraving Services', 'Labels', 'Additive Manufacturing Services', 'Advertising Specialties, Novelties, and Promotional Products', 'Assembly Services', 'Balls', 'Bandanas', 'Banners', 'Barware', 'Bottles', 'Calendars', 'Cardboard', 'Cases', 'Chargers', 'Clappers', 'Clips', 'Clubs', 'Containers', 'COVID-19 Response', 'Cups', 'Cushions', 'Cutting Services', 'Decals', 'Dies', 'Dispensers', 'Displays', 'Dresses', 'Fabrication Services', 'Fans']"
+     "Products":['Printing and Marking Services', 'Engraving Services', 'Labels', 'Additive Manufacturing Services', 'Advertising Specialties, Novelties, and Promotional Products', 'Assembly Services', 'Balls', 'Bandanas', 'Banners', 'Barware', 'Bottles', 'Calendars', 'Cardboard', 'Cases', 'Chargers', 'Clappers', 'Clips', 'Clubs', 'Containers', 'COVID-19 Response', 'Cups', 'Cushions', 'Cutting Services', 'Decals', 'Dies', 'Dispensers', 'Displays', 'Dresses', 'Fabrication Services', 'Fans']
   },
   {
      "Company":"Big Frog Custom T-Shirts",
@@ -2387,7 +2387,7 @@ export const supplierdata = [
      "YearFounded":2008.0,
      "ExportMarkets":"nan",
      "Description":"Custom manufacturer of advertising and promotional products. Apparels, shirts, polos, pants, jackets, shorts, bottoms and sweaters are offered. Bags, towels, t-shirts, pillowcases, vests, fleece and outerwear are also provided. Direct-to-garment and screen printing services are available. Suitable for kids, women and men.",
-     "Products":"['Bags', 'Cases', 'Clothing', 'Fleecewear', 'Jackets', 'Janitorial Supplies', 'Pants', 'Printing and Marking Services', 'Shirts', 'Shorts', 'Sportswear', 'Sweaters', 'Towels', 'Vests']"
+     "Products":['Bags', 'Cases', 'Clothing', 'Fleecewear', 'Jackets', 'Janitorial Supplies', 'Pants', 'Printing and Marking Services', 'Shirts', 'Shorts', 'Sportswear', 'Sweaters', 'Towels', 'Vests']
   },
   {
      "Company":"Propper International, Inc.",
@@ -2408,7 +2408,7 @@ export const supplierdata = [
      "YearFounded":1967.0,
      "ExportMarkets":"Asia, Latin America/Caribbean, Middle East",
      "Description":"Manufacturer of tactical gear including coats, jackets, shirts, pants, shorts, flight suits, and accessories.",
-     "Products":"['Backpacks', 'Bags', 'Bottles', 'Bracelets', 'Clothing', 'Coats', 'Coveralls', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Gloves', 'Hats', 'Hurricane Response', 'Janitorial Supplies', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Parkas', 'Sewing Services', 'Shirts', 'Shorts', 'Sleeves', 'Socks', 'Suits', 'Tactical Gear', 'Towels', 'Uniforms']"
+     "Products":['Backpacks', 'Bags', 'Bottles', 'Bracelets', 'Clothing', 'Coats', 'Coveralls', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Gloves', 'Hats', 'Hurricane Response', 'Janitorial Supplies', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Parkas', 'Sewing Services', 'Shirts', 'Shorts', 'Sleeves', 'Socks', 'Suits', 'Tactical Gear', 'Towels', 'Uniforms']
   },
   {
      "Company":"Cut Form LLC",
@@ -2429,7 +2429,7 @@ export const supplierdata = [
      "YearFounded":2013.0,
      "ExportMarkets":"nan",
      "Description":"Contract manufacturing services for apparel. Capabilities include CNC cutting, embroidery, screen printing and dye sublimation. Caps, headwear, robes, towels, sweatshirts, blankets, aprons, facemasks and promotional products are offered. Other products such as bodysuits, bibs, terry towels, dungaree, bandanas, smocks, and wool throws are available. Serves the aerospace, sports, healthcare and upholstery industries. Suitable for indoor and outdoor signage, awnings, decoration and leather applications. Digitizing, design and fabric printing services are provided as secondary services.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Aprons', 'Backpacks', 'Bags', 'Bibs', 'Blankets', 'Caps', 'Clothing', 'Contractors', 'COVID-19 Response', 'Cutting Services', 'Disaster Preparedness Supplies', 'Embroidery Services', 'Flagpoles', 'Hats', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Jackets', 'Janitorial Supplies', 'Manufacturing Services', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Printing and Marking Services', 'Protectors', 'Sewing Services', 'Shirts', 'Shorts', 'Smocks', 'Sublimation Services', 'Towels']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Aprons', 'Backpacks', 'Bags', 'Bibs', 'Blankets', 'Caps', 'Clothing', 'Contractors', 'COVID-19 Response', 'Cutting Services', 'Disaster Preparedness Supplies', 'Embroidery Services', 'Flagpoles', 'Hats', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Jackets', 'Janitorial Supplies', 'Manufacturing Services', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Printing and Marking Services', 'Protectors', 'Sewing Services', 'Shirts', 'Shorts', 'Smocks', 'Sublimation Services', 'Towels']
   },
   {
      "Company":"TY Garments USA",
@@ -2450,7 +2450,7 @@ export const supplierdata = [
      "YearFounded":2016.0,
      "ExportMarkets":"nan",
      "Description":"Contract manufacturer of clothing for retail and wholesale markets. T-shirts, long sleeve shirts, knit or woven jackets, hoodies and sweaters are offered. Pants, shorts, leggings and activewear are also provided. Embroidery services are available. Secondary services include sourcing, warehousing, distribution and fulfillment. Made in the USA.",
-     "Products":"['Clothing', 'Embroidery Services', 'Jackets', 'Jerseys', 'Leggings', 'Manufacturing Services', 'Pants', 'Private Label Manufacturing', 'Shirts', 'Shorts', 'Sportswear', 'Sweaters']"
+     "Products":['Clothing', 'Embroidery Services', 'Jackets', 'Jerseys', 'Leggings', 'Manufacturing Services', 'Pants', 'Private Label Manufacturing', 'Shirts', 'Shorts', 'Sportswear', 'Sweaters']
   },
   {
      "Company":"LA Police Gear",
@@ -2471,7 +2471,7 @@ export const supplierdata = [
      "YearFounded":2001.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer and distributor of apparel and gear. Products include tactical pants, polos, backpacks, boots, flashlight, body armor, plate carrier and police uniforms.",
-     "Products":"[\\'Backpacks\\', \\'Bags\\', \\'Batteries\\', \\'Belts\\', \\'Boots\\', \\'Bulbs\\', \\'Caps\\', \\'Carriers\\', \\'Clothing\\', \\'COVID-19 Response\\', \\'Disaster Preparedness Supplies\\', \\'Emergency Power & Lighting Supplies\\', \\'Eyeglasses\\', \"Fire Fighters\\' Personal Protective Equipment (PPE)\", \\'Fire Fighting Tools\\', \\'Flashlights\\', \\'Gloves\\', \\'Hats\\', \\'Holsters\\', \\'Hoods\\', \\'Hurricane Response\\', \\'Jackets\\', \\'Knives\\', \\'Lanterns\\', \\'Lights\\', \\'Medical Personal Protective Equipment (PPE)\\', \\'Pants\\', \\'Parkas\\', \\'Patches\\', \\'Rings\\']"
+     "Products":['Backpacks', 'Bags', 'Batteries', 'Belts', 'Boots', 'Bulbs', 'Caps', 'Carriers', 'Clothing', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Emergency Power & Lighting Supplies', 'Eyeglasses', "Fire Fighters' Personal Protective Equipment (PPE)", 'Fire Fighting Tools', 'Flashlights', 'Gloves', 'Hats', 'Holsters', 'Hoods', 'Hurricane Response', 'Jackets', 'Knives', 'Lanterns', 'Lights', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Parkas', 'Patches', 'Rings']
   },
   {
      "Company":"Allbrands.com",
@@ -2492,7 +2492,7 @@ export const supplierdata = [
      "YearFounded":1976.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of knitting, quilting, sewing and embroidery machines, garment care products, home cleaning or kitchen equipment and appliances. Home cleaning equipment such as air, vacuum or steam cleaners, steamers, purifiers, humidifiers, dehumidifiers, deodorizers, and room fresheners are available. Kitchen equipment and appliances include juicers, coffee, tea or sauce makers, deep fryers, cutlery, kettles, ovens, blenders, toasters, mixers, grinders, and microwave ovens. Air conditioners, cutting mats, needles, presses, scissors, floor sweepers, ironing boards, table or floor lamps, lighting, tables, organizers, and racks available. Desks, bins, boxes, paper bags, flat belts, bobbins, closeouts, fabric cutters, extenders, and HEPA filters are also offered.",
-     "Products":"['Adhesives', 'Air Filtration Equipment & Supplies', 'Appliances', 'Atomizers', 'Backs and Backing', 'Bags', 'Balls', 'Baskets', 'Belts', 'Bins', 'Blades', 'Boards', 'Bobbins', 'Boilers', 'Boxes', 'Brooms', 'Brushes', 'Buckets', 'Bulbs', 'Burnishers', 'Buttons', 'Cabinets', 'Calendars', 'Cards', 'Cartridges', 'Cases', 'Chairs', 'Chalk', 'Clamps', 'Clappers']"
+     "Products":['Adhesives', 'Air Filtration Equipment & Supplies', 'Appliances', 'Atomizers', 'Backs and Backing', 'Bags', 'Balls', 'Baskets', 'Belts', 'Bins', 'Blades', 'Boards', 'Bobbins', 'Boilers', 'Boxes', 'Brooms', 'Brushes', 'Buckets', 'Bulbs', 'Burnishers', 'Buttons', 'Cabinets', 'Calendars', 'Cards', 'Cartridges', 'Cases', 'Chairs', 'Chalk', 'Clamps', 'Clappers']
   },
   {
      "Company":"EM Design, LLC",
@@ -2513,7 +2513,7 @@ export const supplierdata = [
      "YearFounded":1971.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of RF and microwave components for industrial, medical, radar, security, aerospace, defense and scientific applications. Products include distributed 3 and 4 port circulators, couplers, ball tuners, waveguide loads and bends, gasket seals, and magnets.",
-     "Products":"['Antennas', 'Circulators', 'Couplers and Couplings', 'Isolators', 'Magnets', 'Microwave Equipment', 'Ports', 'RF Components', 'Seals', 'Shorts', 'Tuners', 'Waveguides', 'Windows']"
+     "Products":['Antennas', 'Circulators', 'Couplers and Couplings', 'Isolators', 'Magnets', 'Microwave Equipment', 'Ports', 'RF Components', 'Seals', 'Shorts', 'Tuners', 'Waveguides', 'Windows']
   },
   {
      "Company":"DNC Wholesale",
@@ -2534,7 +2534,7 @@ export const supplierdata = [
      "YearFounded":2010.0,
      "ExportMarkets":"nan",
      "Description":"Distributer and designer merchandise. Products include wholesale clothing, shoes, handbags and personal accessories lots, obtained in large quantities from distributors and major department stores. List of products on sale, from many popular designer brands, providing individuals and corporations the opportunity to purchase designer products in bulk for a fraction of their original value.",
-     "Products":"['Clothing', 'Dresses', 'Jewelry', 'Shirts', 'Shoes', 'Shorts', 'Suits']"
+     "Products":['Clothing', 'Dresses', 'Jewelry', 'Shirts', 'Shoes', 'Shorts', 'Suits']
   },
   {
      "Company":"Youngspeeds",
@@ -2555,7 +2555,7 @@ export const supplierdata = [
      "YearFounded":2018.0,
      "ExportMarkets":"nan",
      "Description":"Custom manufacturer of sportswear for men, women, and children. Made from polyester material. Team uniforms, jerseys, T-shirts, pants, skirts, and vests are offered. Neck gaiters, socks, hoodies, pinnies, sweatshirts, and skirts are also available. Suitable for sports such as baseball, hockey, golf, basketball, soccer, archery, paintball, and shooting.",
-     "Products":"[\\'Clothing\\', \"Fire Fighters\\' Personal Protective Equipment (PPE)\", \\'Gaiters\\', \\'Jerseys\\', \\'Pants\\', \\'Shirts\\', \\'Shorts\\', \\'Skirts\\', \\'Socks\\', \\'Sportswear\\', \\'Uniforms\\', \\'Vests\\', \\'Wildfire Response\\']"
+     "Products":['Clothing', "Fire Fighters' Personal Protective Equipment (PPE)", 'Gaiters', 'Jerseys', 'Pants', 'Shirts', 'Shorts', 'Skirts', 'Socks', 'Sportswear', 'Uniforms', 'Vests', 'Wildfire Response']
   },
   {
      "Company":"Associated Bag",
@@ -2576,7 +2576,7 @@ export const supplierdata = [
      "YearFounded":1938.0,
      "ExportMarkets":"Australia, Canada, Europe, Latin America/Caribbean, Mexico, Western Europe",
      "Description":"Supplier of packaging, shipping and workplace products. Various products include adhesives, amber, anti-rust, anti-static, aprons, autoclave, bags, bandages, barrier, batteries, binders, boxes, brooms, bubble, buckets, burlap, can liners, cartons, carts, cleaners, containers, corrugated, covers, desiccants, dispensers, drums, envelopes, fasteners, fill, film, foam, folders, gaylord boxes, glasses, gloves, goggles, heat sealers, janitorial, knives, Kraft, labels, mailers, markers, masks, medical, office, packing lists, pails, pallets, paper, peanuts, plastic, polyethylene, polypropylene, pouches, protectors, recycling, removers, respirators, rope, rubber bands, safety, sanitizers, scrapers, sealers, sheets, shrink, sleeves, soaps, sorbents, stands, staplers, strapping, stretch, tamper-evident, tape, tarps, ties, tissue, tools, totes, towels, trays, hand trucks, tubing, twine, Tyvek®, vests, vinyl, wipers, wire, wrap and zippers are also available. Custom items available. Many products manufactured in the USA. Same day shipping.",
-     "Products":"['Bags', 'Packaging Materials', 'Boxes', 'Film', 'Janitorial Supplies', 'Tapes', 'Hurricane Response', 'Containers', 'Emergency Shelters & Shelter Supplies', 'Straps', 'Janitorial Equipment', 'Strapping and Banding', 'Cleaning Compounds and Chemicals', 'Labels', 'Liners', 'Ties', 'Wrap', 'Cold Chain Packaging Supplies', 'COVID-19 Response', 'Gloves', 'Hurricane Personal Protective Equipment', 'Mailers', 'Medical & First Aid Supplies', 'Medical Personal Protective Equipment (PPE)', 'Medical/Hospital Consumable Supplies', 'Packs', 'Vaccine Cold Chain Supplies and Logistics', 'Wipes and Wipers', 'Absorbers', 'Adapters']"
+     "Products":['Bags', 'Packaging Materials', 'Boxes', 'Film', 'Janitorial Supplies', 'Tapes', 'Hurricane Response', 'Containers', 'Emergency Shelters & Shelter Supplies', 'Straps', 'Janitorial Equipment', 'Strapping and Banding', 'Cleaning Compounds and Chemicals', 'Labels', 'Liners', 'Ties', 'Wrap', 'Cold Chain Packaging Supplies', 'COVID-19 Response', 'Gloves', 'Hurricane Personal Protective Equipment', 'Mailers', 'Medical & First Aid Supplies', 'Medical Personal Protective Equipment (PPE)', 'Medical/Hospital Consumable Supplies', 'Packs', 'Vaccine Cold Chain Supplies and Logistics', 'Wipes and Wipers', 'Absorbers', 'Adapters']
   },
   {
      "Company":"Walsen International, Inc.",
@@ -2597,7 +2597,7 @@ export const supplierdata = [
      "YearFounded":1992.0,
      "ExportMarkets":"Africa, Asia, Australia, Canada, Europe, Latin America/Caribbean, Mexico, Middle East, Western Europe",
      "Description":"Custom manufacturer of decorative wood, metal, ceramic and plastic components. Products include medallions, emblems, badges, cosmetic packaging, figurines, key chains, money clips and pins. Hang tags, coins, cigar holders, leather cases, ashtrays, flasks, shakers, jars, tumblers, matches, cigar cutters, golf shirts and hats are also available. Capabilities include die striking and casting, stamping, eyeleting, screw machining, plastic injection molding, metal finishing, polishing, enameling, silk-screening, engraving and rubber mold casting and wire forming. Secondary services such as plating, coating, powder coating, vinyl coating and anodizing are also offered. Serves the cosmetics, tobacco and distilled spirits industries.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Awards', 'Badges', 'Barware', 'Caps', 'Cases', 'Casting Services', 'Chains', 'Cigar Accessories', 'Clips', 'Coasters', 'Coins', 'Cosmetics', 'Cutters and Cutting Machinery', 'Desks', 'Disaster Preparedness Supplies', 'Emblems', 'Figurines', 'Flasks', 'Forming Services', 'Gifts', 'Glass', 'Golf Equipment', 'Hats', 'Holders', 'Humidors', 'Hurricane Response', 'Identification Products', 'Jars', 'Labels']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Awards', 'Badges', 'Barware', 'Caps', 'Cases', 'Casting Services', 'Chains', 'Cigar Accessories', 'Clips', 'Coasters', 'Coins', 'Cosmetics', 'Cutters and Cutting Machinery', 'Desks', 'Disaster Preparedness Supplies', 'Emblems', 'Figurines', 'Flasks', 'Forming Services', 'Gifts', 'Glass', 'Golf Equipment', 'Hats', 'Holders', 'Humidors', 'Hurricane Response', 'Identification Products', 'Jars', 'Labels']
   },
   {
      "Company":"D2 Wear Inc.",
@@ -2618,7 +2618,7 @@ export const supplierdata = [
      "YearFounded":2016.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of men and women sportswears. Products include T-shirts, tank tops, joggers, shorts, leggings, crop tops and sports bras. Also, distributes medical ventilators, face masks, disinfectant sprays and wipes, infrared thermometers, hand sanitizers, face shields, safety goggles, hand gloves, rapid test kits and digital watches for hearing impaired.",
-     "Products":"['Bags', 'Brassieres', 'Clothing', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Disinfectants', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Gloves', 'Goggles', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Janitorial Supplies', 'Kits', 'Leggings', 'Masks', 'Medical Laboratory Consumable Supplies', 'Medical Personal Protective Equipment (PPE)', 'Medical Products and Hospital Equipment', 'Medical Testing Equipment', 'Medical Ventilators', 'Medical/Hospital Consumable Supplies', 'Pants', 'Protectors', 'Sanitizers', 'Shielding', 'Shirts', 'Shorts', 'Sportswear', 'Sprays', 'Swabs']"
+     "Products":['Bags', 'Brassieres', 'Clothing', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Disinfectants', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Gloves', 'Goggles', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Janitorial Supplies', 'Kits', 'Leggings', 'Masks', 'Medical Laboratory Consumable Supplies', 'Medical Personal Protective Equipment (PPE)', 'Medical Products and Hospital Equipment', 'Medical Testing Equipment', 'Medical Ventilators', 'Medical/Hospital Consumable Supplies', 'Pants', 'Protectors', 'Sanitizers', 'Shielding', 'Shirts', 'Shorts', 'Sportswear', 'Sprays', 'Swabs']
   },
   {
      "Company":"Maximum Promotions, Inc.",
@@ -2639,7 +2639,7 @@ export const supplierdata = [
      "YearFounded":1982.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer and distributor of standard and custom promotional flags, banners, table tents, trade show displays and display booths. Apparel and promotional items are offered. Flag, bunting and decoration rental services are also available. Apparel embroidery services are provided. Suitable for colleges, schools, offices, annual gatherings and events.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Banners', 'Booths', 'Bunting', 'Clothing', 'Displays', 'Embroidery Services', 'Exhibits', 'Flagpoles', 'Flags', 'Pens', 'Shirts', 'Sportswear', 'Tags', 'Tents', 'Theatrical Sets']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Banners', 'Booths', 'Bunting', 'Clothing', 'Displays', 'Embroidery Services', 'Exhibits', 'Flagpoles', 'Flags', 'Pens', 'Shirts', 'Sportswear', 'Tags', 'Tents', 'Theatrical Sets']
   },
   {
      "Company":"Pacific Coast Stitch LLC",
@@ -2660,7 +2660,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Manufacturer of advertising apparel including T-shirts, polo shirts, crop or tank tops, jackets, sweatshirts, half-zip pullovers, hoodies, leggings and jerseys. Hats, caps, backpacks, face masks, decals and beanies are also offered. Customized logos and name printing options are provided. Serves military, local government agencies and small to large corporation industries. Meets ANSI standards.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Backpacks', 'Bags', 'Caps', 'Clothing', 'COVID-19 Response', 'Decals', 'Disaster Preparedness Supplies', 'Hats', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Jackets', 'Jerseys', 'Leggings', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Shirts', 'Sportswear', 'Uniforms']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Backpacks', 'Bags', 'Caps', 'Clothing', 'COVID-19 Response', 'Decals', 'Disaster Preparedness Supplies', 'Hats', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Jackets', 'Jerseys', 'Leggings', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Shirts', 'Sportswear', 'Uniforms']
   },
   {
      "Company":"Clothing Manufacturer",
@@ -2681,7 +2681,7 @@ export const supplierdata = [
      "YearFounded":2011.0,
      "ExportMarkets":"nan",
      "Description":"Contract manufacturer of clothing for men, women, and children. Shirts, jackets or hoodies, sweaters, t-shirts, pajamas, and sports clothing are offered. Activewear, leggings, sandals, underwear, and shoes are also available. Private labeling services are provided.",
-     "Products":"['Clothing', 'Jackets', 'Leggings', 'Manufacturing Services', 'Private Label Manufacturing', 'Sandals', 'Shirts', 'Shoes']"
+     "Products":['Clothing', 'Jackets', 'Leggings', 'Manufacturing Services', 'Private Label Manufacturing', 'Sandals', 'Shirts', 'Shoes']
   },
   {
      "Company":"Rocktomic Labs",
@@ -2702,7 +2702,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Private label manufacturing services of organic and dietary supplements. Health and skin care products also available. Apparel such as men's and women's t-shirts, hoodies, athletic leggings, hats and blender bottles offered. Custom formulation services provided. Secondary services include online marketing training services are also offered. Serves the biopharmaceutical, commercial, cosmetics, food handling, HVAC, medical, pharmaceutical, recreational, residential and retail industries. FDA approved. Made in the USA.",
-     "Products":"['Bottles', 'Cannabis Products', 'Capsules', 'Clothing', 'Disaster Preparedness Supplies', 'Encapsulation Services', 'Formulating Services', 'Hats', 'Hurricane Response', 'Leggings', 'Manufacturing Services', 'Oils', 'Personal Care Products', 'Pet Products', 'Pharmaceuticals', 'Private Label Manufacturing', 'Shirts', 'Straws', 'Supplements', 'Tinctures', 'Vitamins']"
+     "Products":['Bottles', 'Cannabis Products', 'Capsules', 'Clothing', 'Disaster Preparedness Supplies', 'Encapsulation Services', 'Formulating Services', 'Hats', 'Hurricane Response', 'Leggings', 'Manufacturing Services', 'Oils', 'Personal Care Products', 'Pet Products', 'Pharmaceuticals', 'Private Label Manufacturing', 'Shirts', 'Straws', 'Supplements', 'Tinctures', 'Vitamins']
   },
   {
      "Company":"GiftAFeeling Inc",
@@ -2723,7 +2723,7 @@ export const supplierdata = [
      "YearFounded":2021.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of promotional products for corporate gifting applications. Apparel, drinkware, bags, banners, displays, and mats are offered. Siganages, trophies, pins, and patches are available. Displays, stickers, umbrellas, and socks are also provided.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Aprons', 'Bags', 'Banners', 'Displays', 'Drinkware', 'Fabrics and Cloths', 'Hats', 'Jackets', 'Jerseys', 'Mats', 'Shirts', 'Signs']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Aprons', 'Bags', 'Banners', 'Displays', 'Drinkware', 'Fabrics and Cloths', 'Hats', 'Jackets', 'Jerseys', 'Mats', 'Shirts', 'Signs']
   },
   {
      "Company":"Amelia Impex",
@@ -2744,7 +2744,7 @@ export const supplierdata = [
      "YearFounded":2002.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of sports goods, work wear, and fitness clothing. Products include t-shirts, jerseys, jackets, pants, trousers, leggings, brassieres, textile suits, and shorts. Chest and head guards, boxing gear, shin pads, motorbike gloves, and uniforms are offered. Mitts, badges, patches, balls, bats, weight lifting belts, and travel, school, gym, duffel, and tactical bags are also provided.",
-     "Products":"['Backpacks', 'Badges', 'Bags', 'Balls', 'Belts', 'Brassieres', 'Clothing', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Gloves', 'Guards', 'Hurricane Response', 'Jackets', 'Jerseys', 'Leggings', 'Medical Personal Protective Equipment (PPE)', 'Mitts', 'Pants', 'Patches', 'Shirts', 'Shorts', 'Sportswear', 'Suits', 'Uniforms']"
+     "Products":['Backpacks', 'Badges', 'Bags', 'Balls', 'Belts', 'Brassieres', 'Clothing', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Gloves', 'Guards', 'Hurricane Response', 'Jackets', 'Jerseys', 'Leggings', 'Medical Personal Protective Equipment (PPE)', 'Mitts', 'Pants', 'Patches', 'Shirts', 'Shorts', 'Sportswear', 'Suits', 'Uniforms']
   },
   {
      "Company":"GS7",
@@ -2765,7 +2765,7 @@ export const supplierdata = [
      "YearFounded":2001.0,
      "ExportMarkets":"nan",
      "Description":"Custom manufacturer of women's apparel and clothing. Pants, shirts, and jerseys are offered. Prototyping, packing, labeling, and delivery are offered as secondary services.",
-     "Products":"['Clothing', 'Fabrics and Cloths', 'Jerseys', 'Pants', 'Shirts']"
+     "Products":['Clothing', 'Fabrics and Cloths', 'Jerseys', 'Pants', 'Shirts']
   },
   {
      "Company":"Oasis Uniform",
@@ -2786,7 +2786,7 @@ export const supplierdata = [
      "YearFounded":2004.0,
      "ExportMarkets":"nan",
      "Description":"Custom manufacturer of private label uniforms. Doctor, nurse, security guard, military, school, and sports uniforms are offered. Shirts, pants, safety vests, sweaters, and jackets are also available. Boots and caps are provided. Serves medical, education, and sports industries.",
-     "Products":"[\\'Boots\\', \\'Caps\\', \\'COVID-19 Response\\', \"Fire Fighters\\' Personal Protective Equipment (PPE)\", \\'Jackets\\', \\'Manufacturing Services\\', \\'Medical Personal Protective Equipment (PPE)\\', \\'Pants\\', \\'Private Label Manufacturing\\', \\'Shirts\\', \\'Sweaters\\', \\'Uniforms\\', \\'Vests\\', \\'Wildfire Response\\']"
+     "Products":['Boots', 'Caps', 'COVID-19 Response', "Fire Fighters' Personal Protective Equipment (PPE)", 'Jackets', 'Manufacturing Services', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Private Label Manufacturing', 'Shirts', 'Sweaters', 'Uniforms', 'Vests', 'Wildfire Response']
   },
   {
      "Company":"Ann Arbor T-shirt Company",
@@ -2807,7 +2807,7 @@ export const supplierdata = [
      "YearFounded":2008.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of apparel and promotional products including backpacks, bags, blankets, hats, jackets, shirts, t-shirts and shoes. Capabilities include embroidery services, digital printing and screen printing. Suitable for university students and faculties.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Backpacks', 'Bags', 'Blankets', 'Clothing', 'Disaster Preparedness Supplies', 'Fleecewear', 'Hats', 'Hurricane Response', 'Jackets', 'Shirts', 'Shoes']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Backpacks', 'Bags', 'Blankets', 'Clothing', 'Disaster Preparedness Supplies', 'Fleecewear', 'Hats', 'Hurricane Response', 'Jackets', 'Shirts', 'Shoes']
   },
   {
      "Company":"Funkins Inc.",
@@ -2828,7 +2828,7 @@ export const supplierdata = [
      "YearFounded":1994.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of advertising promotion products for sports, office, tradeshow, and event applications. Products include awards, caps, beanies, jerseys, sweatshirts, jerseys, kites, candy jars, mouse pads, backpacks, and tote bags. Mugs, coffee cups, bottles, mouse pads, folders, footwears, clipboards, awards, plaques, lanyards, badges, trophies, medals, and binders are offered. Pens, crayons, highlighters, markers, clocks, puzzles, stress balls, and magnets are provided. Also a distributor of shirts, phone accessories, and tumblers.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Awards', 'Badges', 'Bags', 'Balls', 'Baskets', 'Binders', 'Bottles', 'Cameras', 'Caps', 'Clipboards', 'Clocks', 'Clothing', 'COVID-19 Response', 'Cups', 'Folders', 'Games', 'Gifts', 'Hats', 'Holders', 'Jars', 'Jerseys', 'Kites', 'Lanyards', 'Magnets', 'Medals', 'Medical Personal Protective Equipment (PPE)', 'Mugs', 'Packs', 'Pads']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Awards', 'Badges', 'Bags', 'Balls', 'Baskets', 'Binders', 'Bottles', 'Cameras', 'Caps', 'Clipboards', 'Clocks', 'Clothing', 'COVID-19 Response', 'Cups', 'Folders', 'Games', 'Gifts', 'Hats', 'Holders', 'Jars', 'Jerseys', 'Kites', 'Lanyards', 'Magnets', 'Medals', 'Medical Personal Protective Equipment (PPE)', 'Mugs', 'Packs', 'Pads']
   },
   {
      "Company":"Custom Apparel and Embroidery by FSS",
@@ -2849,7 +2849,7 @@ export const supplierdata = [
      "YearFounded":2020.0,
      "ExportMarkets":"nan",
      "Description":"Custom manufacturer of promotional clothing, bags, jackets, t-shirts, and blankets. Gloves, hats, jerseys, uniforms, polo and sweatshirts are offered. Embroidery and screen printing services are available. Suitable for schools, events, sports teams, businesses, churches, and birthday parties.",
-     "Products":"['Bags', 'Blankets', 'Clothing', 'COVID-19 Response', 'Embroidery Services', 'Gloves', 'Hats', 'Jackets', 'Jerseys', 'Medical Personal Protective Equipment (PPE)', 'Printing and Marking Services', 'Shirts', 'Uniforms']"
+     "Products":['Bags', 'Blankets', 'Clothing', 'COVID-19 Response', 'Embroidery Services', 'Gloves', 'Hats', 'Jackets', 'Jerseys', 'Medical Personal Protective Equipment (PPE)', 'Printing and Marking Services', 'Shirts', 'Uniforms']
   },
   {
      "Company":"Promoventures, Inc.",
@@ -2870,7 +2870,7 @@ export const supplierdata = [
      "YearFounded":2001.0,
      "ExportMarkets":"nan",
      "Description":"Specializes In High End Logo Promotions. In-House Screen Printing & Embroidery Production Facilities With Capacity To Handle Even Very Large Quantities. Compressed T-Shirt Is A Promotional Product That Involves Taking A Screen Printed T-Shirt & Then Compressing With Up To 40,000 Pounds Of Pneumatic Pressure Into One Of Over 200 Different Shapes.",
-     "Products":"['Printing and Marking Services', 'Shirts', 'Uniforms']"
+     "Products":['Printing and Marking Services', 'Shirts', 'Uniforms']
   },
   {
      "Company":"Seed 2 Shirt",
@@ -2891,7 +2891,7 @@ export const supplierdata = [
      "YearFounded":2016.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of cotton clothing including blank T-shirts, polo shirts and hoodies. Face masks also available. Services such as print-on-demand fulfillment, screen printing, heat transfer and embroidery are offered.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Backpacks', 'Bags', 'Clothing', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Shirts']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Backpacks', 'Bags', 'Clothing', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Shirts']
   },
   {
      "Company":"Wooter Apparel, Inc.",
@@ -2912,7 +2912,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Custom manufacturer of sports jerseys, team uniforms, and sublimated apparel. Varsity and bomber jackets, shirts, pants, hoodies, polos, warmups, socks, and sweatsuits are offered. Bags, backpacks, face masks, gloves, sports balls, beanies, hats, and helmet decals are also available. Suitable for sports such as basketball, football, baseball, soccer, volleyball, cricket, hockey, rugby, bowling, wrestling, tennis, and golf.",
-     "Products":"['Backpacks', 'Bags', 'Balls', 'Clothing', 'COVID-19 Response', 'Decals', 'Disaster Preparedness Supplies', 'Gloves', 'Hats', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Jackets', 'Jerseys', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Protectors', 'Shirts', 'Skirts', 'Sleeves', 'Socks', 'Sportswear', 'Stickers', 'Uniforms']"
+     "Products":['Backpacks', 'Bags', 'Balls', 'Clothing', 'COVID-19 Response', 'Decals', 'Disaster Preparedness Supplies', 'Gloves', 'Hats', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Jackets', 'Jerseys', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Protectors', 'Shirts', 'Skirts', 'Sleeves', 'Socks', 'Sportswear', 'Stickers', 'Uniforms']
   },
   {
      "Company":"Benchmark Clothing Company",
@@ -2933,7 +2933,7 @@ export const supplierdata = [
      "YearFounded":2002.0,
      "ExportMarkets":"Asia, Australia, Canada, Mexico, South America",
      "Description":"Manufacturer of flame resistant work wear. Products include pants, shirts, jackets, jeans, coveralls, beanies, skull caps, Hi-Vis clothing, face mufflers, and hard-hat liners. Capable of private label and OEM work including embroidery, hi-vis striping customization and graphic prints. Made in the USA.",
-     "Products":"['Caps', 'Clothing', 'Coveralls', 'COVID-19 Response', 'Hats', 'Jackets', 'Liners', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Private Label Manufacturing', 'Shades', 'Shirts']"
+     "Products":['Caps', 'Clothing', 'Coveralls', 'COVID-19 Response', 'Hats', 'Jackets', 'Liners', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Private Label Manufacturing', 'Shades', 'Shirts']
   },
   {
      "Company":"ReadyOne Industries",
@@ -2954,7 +2954,7 @@ export const supplierdata = [
      "YearFounded":1977.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of military apparel, outdoor gear, embroidery, and decals.",
-     "Products":"['Bags', 'Boxes', 'Clothing', 'Containers', 'Coveralls', 'COVID-19 Response', 'Emergency Shelters & Shelter Supplies', 'Gowns', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Shirts', 'Tents']"
+     "Products":['Bags', 'Boxes', 'Clothing', 'Containers', 'Coveralls', 'COVID-19 Response', 'Emergency Shelters & Shelter Supplies', 'Gowns', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Shirts', 'Tents']
   },
   {
      "Company":"The CDM Company, Inc.",
@@ -2975,7 +2975,7 @@ export const supplierdata = [
      "YearFounded":1990.0,
      "ExportMarkets":"nan",
      "Description":"Product design and development services, with custom manufacturing and sourcing capabilities. Serves a wide range of industries, including home decor, toys, pet products, bedding and bath, stationary, consumer technology, writing instruments, infant, oral care, drinkware, promotional products, confection, apparel and packaging. Services include digital printing, injection molding, compression and blow molding, ceramics and heat labeling, die casting, and more.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Bags', 'Books', 'Bottles', 'Calendars', 'Cases', 'Casting Services', 'Clothing', 'Cups', 'Drinkware', 'Electronics', 'Eyeglasses', 'Hats', 'Instruments', 'Jackets', 'Janitorial Supplies', 'Job Shop Services', 'Labeling Services', 'Manufacturing Services', 'Molding Services', 'Mugs', 'Packaging Materials', 'Pads', 'Pencils', 'Pens', 'Personal Care Products', 'Printing and Marking Services', 'Shirts', 'Sportswear', 'Stationery']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Bags', 'Books', 'Bottles', 'Calendars', 'Cases', 'Casting Services', 'Clothing', 'Cups', 'Drinkware', 'Electronics', 'Eyeglasses', 'Hats', 'Instruments', 'Jackets', 'Janitorial Supplies', 'Job Shop Services', 'Labeling Services', 'Manufacturing Services', 'Molding Services', 'Mugs', 'Packaging Materials', 'Pads', 'Pencils', 'Pens', 'Personal Care Products', 'Printing and Marking Services', 'Shirts', 'Sportswear', 'Stationery']
   },
   {
      "Company":"Unitex Direct, Inc.",
@@ -2996,7 +2996,7 @@ export const supplierdata = [
      "YearFounded":1992.0,
      "ExportMarkets":"nan",
      "Description":"Specializing In Uniforms, Apparel, & Accessories For The Security, Public Safety, Industrial, Casual, & Career Markets. Delivery From Stock On Hundreds Of Manufacturers Worldwide Service. Custom Uniform Programs Available",
-     "Products":"[\\'Blazers\\', \\'Blouses\\', \\'Clothing\\', \\'COVID-19 Response\\', \\'Emblems\\', \\'Emergency Power & Lighting Supplies\\', \"Fire Fighters\\' Personal Protective Equipment (PPE)\", \\'Flashlights\\', \\'Fleecewear\\', \\'Gloves\\', \\'Hats\\', \\'Holsters\\', \\'Hurricane Response\\', \\'Jerseys\\', \\'Law Enforcement Equipment\\', \\'Medical Personal Protective Equipment (PPE)\\', \\'Pants\\', \\'Private Label Manufacturing\\', \\'Rainwear\\', \\'Safety Equipment\\', \\'Security Systems\\', \\'Shirts\\', \\'Shorts\\', \\'Skirts\\', \\'Suits\\', \\'Sweaters\\', \\'Ties\\', \\'Uniforms\\', \\'Vests\\', \\'Wildfire Response\\']"
+     "Products":['Blazers', 'Blouses', 'Clothing', 'COVID-19 Response', 'Emblems', 'Emergency Power & Lighting Supplies', "Fire Fighters' Personal Protective Equipment (PPE)", 'Flashlights', 'Fleecewear', 'Gloves', 'Hats', 'Holsters', 'Hurricane Response', 'Jerseys', 'Law Enforcement Equipment', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Private Label Manufacturing', 'Rainwear', 'Safety Equipment', 'Security Systems', 'Shirts', 'Shorts', 'Skirts', 'Suits', 'Sweaters', 'Ties', 'Uniforms', 'Vests', 'Wildfire Response']
   },
   {
      "Company":"ImpactSwag",
@@ -3017,7 +3017,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Distributor of promotional products. Apparels, caps, hats, automotive accessories, bags, backpacks, totes, badges, buttons, magnets, stickers and calendars are offered. Clocks, watches, journals, diaries, drinkware, electronics, games, housewares, jackets, shirts, jewelry and flyers are also available.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Badges', 'Bags', 'Books', 'Buttons', 'Calendars', 'Clocks', 'Clothing', 'COVID-19 Response', 'Drinkware', 'Hats', 'Housewares', 'Jackets', 'Magnets', 'Shirts', 'Stickers', 'Watches']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Badges', 'Bags', 'Books', 'Buttons', 'Calendars', 'Clocks', 'Clothing', 'COVID-19 Response', 'Drinkware', 'Hats', 'Housewares', 'Jackets', 'Magnets', 'Shirts', 'Stickers', 'Watches']
   },
   {
      "Company":"Justice Promotional Products, LLC",
@@ -3038,7 +3038,7 @@ export const supplierdata = [
      "YearFounded":2001.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of promotional products for businesses. Apparels, shirts, t-shirts, towels, jackets, aprons, blankets, caps, hats, sweaters and uniforms are offered. Face masks, tote bags, toys, bottles, decals, pencils, pens, ribbons, awards, banners, backpacks, badges, cups, mugs, covers, flags, signs and displays are also available. Watches, speakers and fans are provided.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Aprons', 'Awards', 'Backpacks', 'Badges', 'Bags', 'Banners', 'Blankets', 'Bottles', 'Caps', 'Covers', 'COVID-19 Response', 'Cups', 'Decals', 'Disaster Preparedness Supplies', 'Displays', 'Fans', 'Flags', 'Hats', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Jackets', 'Janitorial Supplies', 'Lanyards', 'Lunchboxes', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Mugs', 'Pencils', 'Pens']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Aprons', 'Awards', 'Backpacks', 'Badges', 'Bags', 'Banners', 'Blankets', 'Bottles', 'Caps', 'Covers', 'COVID-19 Response', 'Cups', 'Decals', 'Disaster Preparedness Supplies', 'Displays', 'Fans', 'Flags', 'Hats', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Jackets', 'Janitorial Supplies', 'Lanyards', 'Lunchboxes', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Mugs', 'Pencils', 'Pens']
   },
   {
      "Company":"Wholesale Crop Top",
@@ -3059,7 +3059,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Manufacturer of clothing. Products include shirts, bodysuits, jackets, skirts, socks, and tees. Also, private label manufacturing for flannel tees.",
-     "Products":"['Manufacturing Services', 'Private Label Manufacturing', 'Shirts']"
+     "Products":['Manufacturing Services', 'Private Label Manufacturing', 'Shirts']
   },
   {
      "Company":"American Textile & Supply, Inc.",
@@ -3080,7 +3080,7 @@ export const supplierdata = [
      "YearFounded":1971.0,
      "ExportMarkets":"nan",
      "Description":"Distributor and manufacturer of wiping materials. Various products include rags, wiping, polishing cloths and microfibers. Full line of sorbents such as pads, boom, socks and spill kits. Secondary containment, berms, spill pallets and decks, drums, gloves, poly sheeting, drum liners bulk bags.",
-     "Products":"['Janitorial Supplies', 'COVID-19 Response', 'Gloves', 'Medical Personal Protective Equipment (PPE)', 'Absorbers', 'Containment Systems', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Media', 'Medical/Hospital Consumable Supplies', 'Wipes and Wipers', 'Rags', 'Buildings', 'Erosion Control Equipment', 'Kits', 'Management Systems', 'Air Filtration Equipment & Supplies', 'Applicators', 'Bags', 'Barrels and Drums', 'Barriers', 'Basins', 'Berms', 'Bins', 'Blankets', 'Booms', 'Brackets', 'Bridges', 'Buckets', 'Cabinets']"
+     "Products":['Janitorial Supplies', 'COVID-19 Response', 'Gloves', 'Medical Personal Protective Equipment (PPE)', 'Absorbers', 'Containment Systems', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Media', 'Medical/Hospital Consumable Supplies', 'Wipes and Wipers', 'Rags', 'Buildings', 'Erosion Control Equipment', 'Kits', 'Management Systems', 'Air Filtration Equipment & Supplies', 'Applicators', 'Bags', 'Barrels and Drums', 'Barriers', 'Basins', 'Berms', 'Bins', 'Blankets', 'Booms', 'Brackets', 'Bridges', 'Buckets', 'Cabinets']
   },
   {
      "Company":"Peerless Materials Company",
@@ -3101,7 +3101,7 @@ export const supplierdata = [
      "YearFounded":1967.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer & distributor of wiping materials. Various products include rags, wiping & polishing cloths, microfibers. Full line of secondary containment, spill pallets, spill decks, berms. Sorbents, spill kits, drums ,gloves, poly sheeting, drum liners & storm water management products.",
-     "Products":"['Janitorial Supplies', 'Absorbers', 'Wipes and Wipers', 'COVID-19 Response', 'Gloves', 'Medical Personal Protective Equipment (PPE)', 'Rags', 'Kits', 'Towels', 'Booms', 'Erosion Control Equipment', 'Applicators', 'Bags', 'Barrels and Drums', 'Barriers', 'Basins', 'Berms', 'Blankets', 'Boxes', 'Buckets', 'Buildings', 'Cabinets', 'Carpets and Rugs', 'Carriers', 'Clean-Up Equipment', 'Cleaning Compounds and Chemicals', 'Cleaning Equipment', 'Cleanroom Equipment', 'Clothing', 'Containers']"
+     "Products":['Janitorial Supplies', 'Absorbers', 'Wipes and Wipers', 'COVID-19 Response', 'Gloves', 'Medical Personal Protective Equipment (PPE)', 'Rags', 'Kits', 'Towels', 'Booms', 'Erosion Control Equipment', 'Applicators', 'Bags', 'Barrels and Drums', 'Barriers', 'Basins', 'Berms', 'Blankets', 'Boxes', 'Buckets', 'Buildings', 'Cabinets', 'Carpets and Rugs', 'Carriers', 'Clean-Up Equipment', 'Cleaning Compounds and Chemicals', 'Cleaning Equipment', 'Cleanroom Equipment', 'Clothing', 'Containers']
   },
   {
      "Company":"Design Print Banner LLC",
@@ -3122,7 +3122,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Manufacturer of advertising and promotional products, marketing, and stationery materials, accessories, and sales essentials. Advertising and promotional products include banners, signs, labels, decals, stands, displays, table covers, flags, clothing, canopy tents, backdrops, inflatables, frames, trade show display packages, partitions, and flyers. Marketing materials include boxes, stickers, calendars, and cards. Stationery such as envelopes, wrapping paper, notepads, and folders are available. Accessories include zip ties, wall brackets, hooks, banner clips, bungees, rope, squeegees, red carpets, and podiums. Also offers sales essentials such as booklets, brochures, catalogs, sales sheets, and door hangers. Customized options are also available. 24x7 support services are available.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Decals', 'Signs', 'Clothing', 'Flags', 'Shirts', 'Stands', 'Stickers', 'Theatrical Sets', 'Backgrounds', 'Badges', 'Bags', 'Banners', 'Barriers', 'Billboards', 'Blankets', 'Blowers', 'Boards', 'Bookmarks', 'Bottles', 'Boxes', 'Brackets', 'Brochures', 'Calendars', 'Canopies', 'Caps', 'Cards', 'Carpets and Rugs', 'Catalogs', 'Clips']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Decals', 'Signs', 'Clothing', 'Flags', 'Shirts', 'Stands', 'Stickers', 'Theatrical Sets', 'Backgrounds', 'Badges', 'Bags', 'Banners', 'Barriers', 'Billboards', 'Blankets', 'Blowers', 'Boards', 'Bookmarks', 'Bottles', 'Boxes', 'Brackets', 'Brochures', 'Calendars', 'Canopies', 'Caps', 'Cards', 'Carpets and Rugs', 'Catalogs', 'Clips']
   },
   {
      "Company":"Fastenal",
@@ -3143,7 +3143,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Distributor of industrial supplies, with specialties in threaded fasteners and accessories. Nuts, bolts, screws, sockets, washers, anchors, pins, and studs offered in product line. Other products include power tools/equipment, cutting tools, hydraulic, and pneumatic equipment. Other products serve industries such as plumbing, electric, manufacturing, welding, and engineering. Customization of products are available. CAD layout design, mechanical testing, gag calibration, and tool repair also in offered services.",
-     "Products":"['Abrasive Compounds / Media', 'Absorbers', 'Acetal', 'Adapters', 'Additives', 'Adhesives', 'Aerosols', 'Agents', 'Air Filtration Equipment & Supplies', 'Alarms', 'Aluminum', 'Anchors', 'Angles', 'Applicators', 'Aprons', 'Arbors', 'Arms', 'Arresters', 'Attachments', 'Backpacks', 'Backs and Backing', 'Bags', 'Ballasts', 'Balls', 'Bandanas', 'Bands', 'Banners', 'Barrels and Drums', 'Barricades', 'Barriers']"
+     "Products":['Abrasive Compounds / Media', 'Absorbers', 'Acetal', 'Adapters', 'Additives', 'Adhesives', 'Aerosols', 'Agents', 'Air Filtration Equipment & Supplies', 'Alarms', 'Aluminum', 'Anchors', 'Angles', 'Applicators', 'Aprons', 'Arbors', 'Arms', 'Arresters', 'Attachments', 'Backpacks', 'Backs and Backing', 'Bags', 'Ballasts', 'Balls', 'Bandanas', 'Bands', 'Banners', 'Barrels and Drums', 'Barricades', 'Barriers']
   },
   {
      "Company":"Jorgensen Co.",
@@ -3164,7 +3164,7 @@ export const supplierdata = [
      "YearFounded":1932.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of safety products for personal, plant, hazardous material, and fire protection applications. Personal protection products include aprons, vests, disposables, boots, sleeves, eye protection, gloves, head protection, hearing protection, and respirators. Plant safety products include fall protection equipment, lockout, tag-outs, cones, first aid, heat stress prevention products, pads, warning products, and tapes are available. Signs, labels, tags, safety scoreboards, pipe markers, ID tags, security devices, permits, hazmat signage, traffic control products, and barriers are offered. Other products include gas detection devices and equipment are also provided. Fire safety services include installation, repair, maintenance, inspection, and testing services",
-     "Products":"['Safety Equipment', 'Extinguishers', 'Fire Fighting Equipment', 'Protectors', 'Sensors / Detectors / Transducers', 'Clothing', 'COVID-19 Response', 'Medical Personal Protective Equipment (PPE)', 'Absorbers', 'Adapters', 'Adhesives', 'Air Filtration Equipment & Supplies', 'Alarms', 'Anchors', 'Aprons', 'Axes', 'Bags', 'Bandages', 'Baths', 'Belts', 'Blankets', 'Blanks', 'Blowers', 'Bombs', 'Brackets', 'Cabinets', 'Cans', 'Caps', 'Cartridges', 'Chains']"
+     "Products":['Safety Equipment', 'Extinguishers', 'Fire Fighting Equipment', 'Protectors', 'Sensors / Detectors / Transducers', 'Clothing', 'COVID-19 Response', 'Medical Personal Protective Equipment (PPE)', 'Absorbers', 'Adapters', 'Adhesives', 'Air Filtration Equipment & Supplies', 'Alarms', 'Anchors', 'Aprons', 'Axes', 'Bags', 'Bandages', 'Baths', 'Belts', 'Blankets', 'Blanks', 'Blowers', 'Bombs', 'Brackets', 'Cabinets', 'Cans', 'Caps', 'Cartridges', 'Chains']
   },
   {
      "Company":"Nixalite of America, Inc.",
@@ -3185,7 +3185,7 @@ export const supplierdata = [
      "YearFounded":1950.0,
      "ExportMarkets":"Africa, Asia, Australia, Canada, Europe, Latin America/Caribbean, Mexico, Middle East, Western Europe",
      "Description":"Manufacturer and distributor of humane pest bird and wildlife control products. Products include bird spikes, bird netting, traps, screens, guards, repellents, deterrents, fogging equipment and much more.",
-     "Products":"['Nets and Netting', 'Generators', 'Pest Control Services', 'Repellents', 'Barriers', 'Control Products', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Disinfectants', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Hurricane Response', 'Air Filtration Equipment & Supplies', 'Anchors', 'Antimicrobials', 'Bolts', 'Brackets', 'Chargers', 'Chemicals', 'Clamps', 'Cleaning Compounds and Chemicals', 'Clips', 'Coatings', 'Connectors', 'Controls and Controllers', 'Cord and Cordage', 'Cutters and Cutting Machinery', 'Decals', 'Deodorizers', 'Drivers', 'Eliminators']"
+     "Products":['Nets and Netting', 'Generators', 'Pest Control Services', 'Repellents', 'Barriers', 'Control Products', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Disinfectants', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Hurricane Response', 'Air Filtration Equipment & Supplies', 'Anchors', 'Antimicrobials', 'Bolts', 'Brackets', 'Chargers', 'Chemicals', 'Clamps', 'Cleaning Compounds and Chemicals', 'Clips', 'Coatings', 'Connectors', 'Controls and Controllers', 'Cord and Cordage', 'Cutters and Cutting Machinery', 'Decals', 'Deodorizers', 'Drivers', 'Eliminators']
   },
   {
      "Company":"2 Roosters LLC",
@@ -3206,7 +3206,7 @@ export const supplierdata = [
      "YearFounded":2017.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of promotional products including sunglasses, watches, shoes, bags, awards, apparel, and headwear. Chairs, blankets, umbrellas, towels, fans, balls, toys, and drinkware are provided. Backpacks, mugs, mats, wipes, covers, markers, and pads are offered. Candles, pedometers, labels, magnets, holders, pens, and erasers are also available. Other products include flash drives, cables, cords, adapters, power banks, speakers, and chargers. Custom logo imprinting options are provided.",
-     "Products":"['Adapters', 'Advertising Specialties, Novelties, and Promotional Products', 'Air Fresheners', 'Albums', 'Awards', 'Backpacks', 'Badges', 'Bags', 'Balloons', 'Balls', 'Balms', 'Bandages', 'Bandanas', 'Bands', 'Blankets', 'Books', 'Bowls', 'Boxes', 'Brushes', 'Calculators', 'Calendars', 'Cameras', 'Candles', 'Caps', 'Cases', 'Coats', 'Cold Chain Packaging Supplies', 'Combs', 'Containers', 'Coupons']"
+     "Products":['Adapters', 'Advertising Specialties, Novelties, and Promotional Products', 'Air Fresheners', 'Albums', 'Awards', 'Backpacks', 'Badges', 'Bags', 'Balloons', 'Balls', 'Balms', 'Bandages', 'Bandanas', 'Bands', 'Blankets', 'Books', 'Bowls', 'Boxes', 'Brushes', 'Calculators', 'Calendars', 'Cameras', 'Candles', 'Caps', 'Cases', 'Coats', 'Cold Chain Packaging Supplies', 'Combs', 'Containers', 'Coupons']
   },
   {
      "Company":"Elkmont Trading Company",
@@ -3227,7 +3227,7 @@ export const supplierdata = [
      "YearFounded":1995.0,
      "ExportMarkets":"nan",
      "Description":"Retailer of women's, men's and children's clothing along with related products. Selection includes shirts, pants, jeans, dresses, rompers, belts, hats, headbands, scarves, gloves, socks, jewelry, purses, bags, footwear, outerwear, swimwear, sleepwear, sporting goods and home goods. Supplier of face mask filter inserts in response to the COVID-19 pandemic.",
-     "Products":"['Belts', 'Blankets', 'Candles', 'Clothing', 'COVID-19 Response', 'Decorations', 'Dresses', 'Drinkware', 'Emergency Power & Lighting Supplies', 'Filters', 'Gloves', 'Hats', 'Headbands', 'Hurricane Response', 'Jackets', 'Jewelry', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Scarves', 'Shirts', 'Sleepwear', 'Socks', 'Sports Equipment', 'Sweaters', 'Swimwear', 'Vests']"
+     "Products":['Belts', 'Blankets', 'Candles', 'Clothing', 'COVID-19 Response', 'Decorations', 'Dresses', 'Drinkware', 'Emergency Power & Lighting Supplies', 'Filters', 'Gloves', 'Hats', 'Headbands', 'Hurricane Response', 'Jackets', 'Jewelry', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Scarves', 'Shirts', 'Sleepwear', 'Socks', 'Sports Equipment', 'Sweaters', 'Swimwear', 'Vests']
   },
   {
      "Company":"Parkoworld",
@@ -3248,7 +3248,7 @@ export const supplierdata = [
      "YearFounded":2010.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of sign stands, key boxes, signs, barriers, stanchions, rubber cones, delineators, cone bars, LED armbands, runner sunglasses, wristwatch walkie talkies, LED magnetic work or umbrella lights rechargeable, batons, polo T-shirts, hats, shorts, face masks and jackets. Custom designed signs, umbrellas and valet podiums are also offered. Serves the parking industry.",
-     "Products":"['Bands', 'Barriers', 'Batons', 'Boxes', 'Cones', 'COVID-19 Response', 'Delineators', 'Eyeglasses', 'Fire Fighting Electronics', 'Hats', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Jackets', 'Lights', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Park Equipment', 'Parking Lot Products', 'Podiums', 'Protectors', 'Radios', 'Shirts', 'Shorts', 'Signs', 'Stanchions', 'Stands', 'Umbrellas', 'Uniforms', 'Wildfire Response']"
+     "Products":['Bands', 'Barriers', 'Batons', 'Boxes', 'Cones', 'COVID-19 Response', 'Delineators', 'Eyeglasses', 'Fire Fighting Electronics', 'Hats', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Jackets', 'Lights', 'Masks', 'Medical Personal Protective Equipment (PPE)', 'Park Equipment', 'Parking Lot Products', 'Podiums', 'Protectors', 'Radios', 'Shirts', 'Shorts', 'Signs', 'Stanchions', 'Stands', 'Umbrellas', 'Uniforms', 'Wildfire Response']
   },
   {
      "Company":"Sage Parts",
@@ -3269,7 +3269,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Distributor of replacement parts for ground support equipment. Ignition switches, carburetors, speed governors, casters, boosters, radiators, and calipers are offered. Adapters, axles, transmissions, lavatory drain couplings, and scuff covers are also available. Seats, flashlights, tires, and E-brake levers are also provided. Personal safety products such as goggles, gloves, earplugs, jackets, vests, face shields, and head protectors are offered. Secondary services such as inventory planning, engineering, and supply chain management are also available. Suitable for passenger stairs, container transporters, belt loaders, baggage, and cargo tractors.",
-     "Products":"['Aircraft Parts', 'Axles', 'Batteries', 'Boosters', 'Calipers', 'Carburetors', 'Casters', 'Chocks', 'Conduits and Ducts', 'Couplers and Couplings', 'Covers', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Dispensers', 'Earmuffs', 'Emergency Power & Lighting Supplies', 'Engines', 'Eyeglasses', 'Fire Fighting Tools', 'Flashlights', 'Gloves', 'Goggles', 'Governors', 'Ground Support Equipment', 'Handles, Pulls and Levers', 'Hats', 'Helmets', 'Hose', 'Hubs', 'Hurricane Response']"
+     "Products":['Aircraft Parts', 'Axles', 'Batteries', 'Boosters', 'Calipers', 'Carburetors', 'Casters', 'Chocks', 'Conduits and Ducts', 'Couplers and Couplings', 'Covers', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Dispensers', 'Earmuffs', 'Emergency Power & Lighting Supplies', 'Engines', 'Eyeglasses', 'Fire Fighting Tools', 'Flashlights', 'Gloves', 'Goggles', 'Governors', 'Ground Support Equipment', 'Handles, Pulls and Levers', 'Hats', 'Helmets', 'Hose', 'Hubs', 'Hurricane Response']
   },
   {
      "Company":"Viking Industrial Center",
@@ -3290,7 +3290,7 @@ export const supplierdata = [
      "YearFounded":1958.0,
      "ExportMarkets":"nan",
      "Description":"Stocking distributor of safety products, fasteners & strut products for construction & industrial applications. Safety products include first aid kits, fall, respiratory, eye, face, head, hearing & sun protection products, protective clothing, confined space equipment, spill & traffic control, home land security, ergonomic safety & fire stopping products. Fasteners include screws, nuts, bolts, anchors, carbide drill bits, clips, nails, rivets, couplings & washers. Strut systems, auto feed screw driving systems, adhesives, sealants, caulks, blades, grinding wheels, nozzles, applicator guns, power & hand tools, snap togglers, split drives, gun cleaners, sockets, nut setters, bit holders, duct tape, wipes & other related accessories are also available.",
-     "Products":"['Abatement Systems', 'Abrasive Compounds / Media', 'Absorbers', 'Actuators', 'Adapters', 'Adhesives', 'Air Filtration Equipment & Supplies', 'Alarms', 'Anchors', 'Antiseptics', 'Aprons', 'Arbors', 'Aspirin', 'Augers', 'Awls', 'Bags', 'Bandages', 'Bandanas', 'Bands', 'Barrels and Drums', 'Barricades', 'Barriers', 'Batteries', 'Belts', 'Bits', 'Blades', 'Blankets', 'Blowers', 'Bolts', 'Boots']"
+     "Products":['Abatement Systems', 'Abrasive Compounds / Media', 'Absorbers', 'Actuators', 'Adapters', 'Adhesives', 'Air Filtration Equipment & Supplies', 'Alarms', 'Anchors', 'Antiseptics', 'Aprons', 'Arbors', 'Aspirin', 'Augers', 'Awls', 'Bags', 'Bandages', 'Bandanas', 'Bands', 'Barrels and Drums', 'Barricades', 'Barriers', 'Batteries', 'Belts', 'Bits', 'Blades', 'Blankets', 'Blowers', 'Bolts', 'Boots']
   },
   {
      "Company":"Dawson Design",
@@ -3311,7 +3311,7 @@ export const supplierdata = [
      "YearFounded":2014.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of promotional automotive and computer products. Products include apparel, awards, lanyards, bags, caps and clocks. Apparels such as aprons, armbands, wrist bands, gloves, earmuffs, socks, athletic and footwear, polo shirts, t-shirts, jackets, sweaters and vests are available. Plaques, vases, emblems, medals, paperweights, trophies, cords, cables and flash drives are provided. Embroidery and screen printing services are also offered. Made in the USA.",
-     "Products":"['Air Fresheners', 'Aprons', 'Awards', 'Backpacks', 'Bags', 'Bands', 'Caps', 'Clocks', 'Clothing', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Drives', 'Earmuffs', 'Electric Wire, Cable and Cable Assemblies', 'Emblems', 'Gloves', 'Hats', 'Holders', 'Hurricane Response', 'Jackets', 'Jars', 'Lanyards', 'Medals', 'Medical Personal Protective Equipment (PPE)', 'Plaques', 'Shirts', 'Socks', 'Stickers', 'Sweaters', 'Vases']"
+     "Products":['Air Fresheners', 'Aprons', 'Awards', 'Backpacks', 'Bags', 'Bands', 'Caps', 'Clocks', 'Clothing', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Drives', 'Earmuffs', 'Electric Wire, Cable and Cable Assemblies', 'Emblems', 'Gloves', 'Hats', 'Holders', 'Hurricane Response', 'Jackets', 'Jars', 'Lanyards', 'Medals', 'Medical Personal Protective Equipment (PPE)', 'Plaques', 'Shirts', 'Socks', 'Stickers', 'Sweaters', 'Vases']
   },
   {
      "Company":"Emerson Knives, Inc.",
@@ -3332,7 +3332,7 @@ export const supplierdata = [
      "YearFounded":2011.0,
      "ExportMarkets":"nan",
      "Description":"Advertising novelty manufacturer of knives and promotional products. Products include apparel, women’s and men’s t-shirts, headwear, long sleeve shirts, fight gear, stickers, patches, DVDs and books.",
-     "Products":"['Cards', 'Compactors', 'COVID-19 Response', 'Discs', 'Hats', 'Jewelry', 'Knives', 'Medical Personal Protective Equipment (PPE)', 'Patches', 'Shirts', 'Stickers']"
+     "Products":['Cards', 'Compactors', 'COVID-19 Response', 'Discs', 'Hats', 'Jewelry', 'Knives', 'Medical Personal Protective Equipment (PPE)', 'Patches', 'Shirts', 'Stickers']
   },
   {
      "Company":"Gerber Childrenswear Inc.",
@@ -3353,7 +3353,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Manufacturer of clothing for infants. Products include t-shirts, sleepwear, diapers, bath products, bedding, bibs, playwear, socks, towels, hats, and mittens. Products are manufactured for boys and girls, but unisex options are available. Organic products are available too.",
-     "Products":"['Bibs', 'Clothing', 'COVID-19 Response', 'Diapers', 'Gloves', 'Hats', 'Janitorial Supplies', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Sheets', 'Shirts', 'Sleepwear', 'Socks', 'Towels']"
+     "Products":['Bibs', 'Clothing', 'COVID-19 Response', 'Diapers', 'Gloves', 'Hats', 'Janitorial Supplies', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Sheets', 'Shirts', 'Sleepwear', 'Socks', 'Towels']
   },
   {
      "Company":"LA Custom Apparel & Promotions, Inc.",
@@ -3374,7 +3374,7 @@ export const supplierdata = [
      "YearFounded":1984.0,
      "ExportMarkets":"nan",
      "Description":"Custom manufacturer of apparels for construction and medical sectors. Products include clothing, garments, coats, jackets, vests, blazers, trousers, blouses, pants, polo shirts, shorts and T-shirts.",
-     "Products":"['Blazers', 'Blouses', 'Clothing', 'Coats', 'COVID-19 Response', 'Jackets', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Private Label Manufacturing', 'Shirts', 'Shorts', 'Skirts', 'Uniforms', 'Vests']"
+     "Products":['Blazers', 'Blouses', 'Clothing', 'Coats', 'COVID-19 Response', 'Jackets', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Private Label Manufacturing', 'Shirts', 'Shorts', 'Skirts', 'Uniforms', 'Vests']
   },
   {
      "Company":"PROFORMA PRINT SOLUTIONS",
@@ -3395,7 +3395,7 @@ export const supplierdata = [
      "YearFounded":1978.0,
      "ExportMarkets":"nan",
      "Description":"Marketing, direct mail, printing and branding services. Distributor of promotional products such as apparel, awards, cards, costumes, t-shirts and table tents. Tags, ice scrapers, boxes, folders, cards and bottles are also offered. Serves automotive, e-commerce, entertainment, hospitality, healthcare, technology and retail industries.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Air Fresheners', 'Awards', 'Bottles', 'Boxes', 'Branding Services', 'Cards', 'Clothing', 'Costumes', 'Folders', 'Gifts', 'Mail Services', 'Marketing Services', 'Printing and Marking Services', 'Scrapers', 'Shirts', 'Tags', 'Tents']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Air Fresheners', 'Awards', 'Bottles', 'Boxes', 'Branding Services', 'Cards', 'Clothing', 'Costumes', 'Folders', 'Gifts', 'Mail Services', 'Marketing Services', 'Printing and Marking Services', 'Scrapers', 'Shirts', 'Tags', 'Tents']
   },
   {
      "Company":"2W International",
@@ -3416,7 +3416,7 @@ export const supplierdata = [
      "YearFounded":1982.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of industrial protective products. Products such as safety vests, t-shirts, winter apparels, rain wears, aprons, foot wears, tarps, head wears and gear and respirator bags are available.",
-     "Products":"['Aprons', 'Bags', 'Clothing', 'COVID-19 Response', 'Emergency Shelters & Shelter Supplies', 'Hats', 'Hurricane Response', 'Medical Personal Protective Equipment (PPE)', 'Protectors', 'Rainwear', 'Shirts', 'Tarps', 'Vests']"
+     "Products":['Aprons', 'Bags', 'Clothing', 'COVID-19 Response', 'Emergency Shelters & Shelter Supplies', 'Hats', 'Hurricane Response', 'Medical Personal Protective Equipment (PPE)', 'Protectors', 'Rainwear', 'Shirts', 'Tarps', 'Vests']
   },
   {
      "Company":"Competition Electronics, Inc.",
@@ -3437,7 +3437,7 @@ export const supplierdata = [
      "YearFounded":1982.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of electronic products. Types include battery chargers/dischargers, regulated DC power supplies, single cell fixtures, shirts, digital remotes, indoor lighting systems, backlight displays, turbo matchers, shot timers and chronographs.",
-     "Products":"['Chargers', 'Chronographs', 'Controls and Controllers', 'Displays', 'Fixtures', 'Lights', 'Power Supplies', 'Shirts', 'Timers']"
+     "Products":['Chargers', 'Chronographs', 'Controls and Controllers', 'Displays', 'Fixtures', 'Lights', 'Power Supplies', 'Shirts', 'Timers']
   },
   {
      "Company":"FRSafety",
@@ -3458,7 +3458,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Distributor of flame resistant clothing and arc flash apparel. Products include shirts, pants, outerwear, jackets, coats, arc flash kits, long coats, leggings, bibs, hoods and glove, head and face gear, gloves and gear, insulated tools, and ear protection.",
-     "Products":"[\\'Blankets\\', \\'Clothing\\', \\'Coats\\', \"Fire Fighters\\' Personal Protective Equipment (PPE)\", \\'Gears\\', \\'Jackets\\', \\'Pants\\', \\'Shirts\\', \\'Tools\\', \\'Wildfire Response\\']"
+     "Products":['Blankets', 'Clothing', 'Coats', "Fire Fighters' Personal Protective Equipment (PPE)", 'Gears', 'Jackets', 'Pants', 'Shirts', 'Tools', 'Wildfire Response']
   },
   {
      "Company":"HMF Engineering, Inc.",
@@ -3479,7 +3479,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Manufacturer of aftermarket exhaust systems for corporate companies. Products include garage and motorcycle exhausts, hats, patches, stickers, t-shirts, universal snorkels, air filters, basic jet kit, oxygen bungs, heat shields, end caps and banners.",
-     "Products":"['Banners', 'Brackets', 'Caps', 'Exhaust Systems', 'Hats', 'Heat Shields', 'Nameplates', 'Patches', 'Plugs and Stoppers', 'Shirts', 'Snorkels', 'Stickers']"
+     "Products":['Banners', 'Brackets', 'Caps', 'Exhaust Systems', 'Hats', 'Heat Shields', 'Nameplates', 'Patches', 'Plugs and Stoppers', 'Shirts', 'Snorkels', 'Stickers']
   },
   {
      "Company":"Life Live Apparel",
@@ -3500,7 +3500,7 @@ export const supplierdata = [
      "YearFounded":2008.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of clothes and home textiles. Products include hats, t-shirts, jackets, shoes, business bags, safety equipment, tops and bottoms, shorts, knits, socks, boxers, briefs and thermoses.",
-     "Products":"['Bags', 'Briefs', 'Clothing', 'Fabrics and Cloths', 'Hats', 'Jackets', 'Janitorial Supplies', 'Safety Equipment', 'Shirts', 'Shoes', 'Shorts', 'Socks', 'Tops', 'Towels']"
+     "Products":['Bags', 'Briefs', 'Clothing', 'Fabrics and Cloths', 'Hats', 'Jackets', 'Janitorial Supplies', 'Safety Equipment', 'Shirts', 'Shoes', 'Shorts', 'Socks', 'Tops', 'Towels']
   },
   {
      "Company":"Bud Miller Associates, Inc.",
@@ -3521,7 +3521,7 @@ export const supplierdata = [
      "YearFounded":1977.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of promotional and marketing products. Products include golf supplies, pens, apparel, bags, T-shirts, water bottles, umbrellas, banners, first aid kits, patches, sunglasses, lanyards, candy, buttons, mugs, clips, and headwear.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Awards', 'Bags', 'Banners', 'Bottles', 'Clothing', 'Convention and Meeting Equipment', 'COVID-19 Response', 'Eyeglasses', 'Flags', 'Hats', 'Hurricane Response', 'Kits', 'Lanyards', 'Magnets', 'Medical & First Aid Supplies', 'Medical Personal Protective Equipment (PPE)', 'Mugs', 'Patches', 'Pedometers', 'Pens', 'Plaques', 'Shirts', 'Umbrellas', 'Wristbands']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Awards', 'Bags', 'Banners', 'Bottles', 'Clothing', 'Convention and Meeting Equipment', 'COVID-19 Response', 'Eyeglasses', 'Flags', 'Hats', 'Hurricane Response', 'Kits', 'Lanyards', 'Magnets', 'Medical & First Aid Supplies', 'Medical Personal Protective Equipment (PPE)', 'Mugs', 'Patches', 'Pedometers', 'Pens', 'Plaques', 'Shirts', 'Umbrellas', 'Wristbands']
   },
   {
      "Company":"Dripbusters LLC",
@@ -3542,7 +3542,7 @@ export const supplierdata = [
      "YearFounded":2005.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of standard and custom drip-free products including drink coasters, drip-free mats, drip catchers, mouse pads and holiday design products. Drink coasters such as standard design drip-free colored coasters, themed designed drink coasters and custom designed drink coasters are available. Types of drip-free mats include base, boot, thaw, slip-resistant, and pet placement mats. Drip-free products are handmade products and can be cleansed and sanitized in dishwashers or washing machines. Custom printed T-shirts are available. Made in the USA.",
-     "Products":"['Casters', 'Coasters', 'Holders', 'Liners', 'Mats', 'Napkins', 'Pads', 'Shirts']"
+     "Products":['Casters', 'Coasters', 'Holders', 'Liners', 'Mats', 'Napkins', 'Pads', 'Shirts']
   },
   {
      "Company":"Gator-Tail, LLC",
@@ -3563,7 +3563,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Manufacturer of outboards for boating, fishing and hunting applications. Products include motors, engines, boats, blinds and propellers. Decals, outerwear, bags, hats and t-shirts are also available. Stainless steel material is used. Capabilities include CNC machining, CAD/CAM, engineering, fabricating and designing. Markets served include marine and petroleum industry. Made in the USA.",
-     "Products":"['Bags', 'Blinds', 'Boats', 'Decals', 'Engines', 'Hats', 'Hurricane Response', 'Hurricane Response Vehicles', 'Motors', 'Propellers', 'Shirts', 'Vests']"
+     "Products":['Bags', 'Blinds', 'Boats', 'Decals', 'Engines', 'Hats', 'Hurricane Response', 'Hurricane Response Vehicles', 'Motors', 'Propellers', 'Shirts', 'Vests']
   },
   {
      "Company":"Speedy Pros Inc",
@@ -3584,7 +3584,7 @@ export const supplierdata = [
      "YearFounded":2003.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of promotional products include art or embroidery supplies, banners, decals, printed bags, digital banners or posters, POP displays, flags and frames. Hats, license plate holders, magnetic labels, license plates, yard sign stakes, stickers, T-shirts, uniforms and vehicle wraps are available. Retail, business, education, real estate, sports or leisure, decorating, occasion, transport or traffic, entertainment or event, military, safety or security, novelty and funny signs are also offered. Business services including consulting, brand integrity, project management, sales development, digitizing, shipping and dropshipping.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Arts and Crafts Supplies', 'Bags', 'Banners', 'Decals', 'Displays', 'Embroidery Equipment', 'Flags', 'Frames', 'Hats', 'Holders', 'Labels', 'Plates', 'Point of Purchase (POP) Products', 'Posters', 'Shirts', 'Signs', 'Stakes', 'Stickers', 'Uniforms', 'Wrap']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Arts and Crafts Supplies', 'Bags', 'Banners', 'Decals', 'Displays', 'Embroidery Equipment', 'Flags', 'Frames', 'Hats', 'Holders', 'Labels', 'Plates', 'Point of Purchase (POP) Products', 'Posters', 'Shirts', 'Signs', 'Stakes', 'Stickers', 'Uniforms', 'Wrap']
   },
   {
      "Company":"ViewSPORT",
@@ -3605,7 +3605,7 @@ export const supplierdata = [
      "YearFounded":2015.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of fitness apparel for men and women. Products include men’s and women’s sports t-shirts, athletic shorts, leggings and fashion tights. Markets served include athletic and military.",
-     "Products":"['Adhesives', 'Clothing', 'Leggings', 'Shirts', 'Shorts', 'Tights']"
+     "Products":['Adhesives', 'Clothing', 'Leggings', 'Shirts', 'Shorts', 'Tights']
   },
   {
      "Company":"Competitive Edge",
@@ -3626,7 +3626,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Distributor of apparel, bags, drinkware, leisure, office, beauty and wellness products. Shirts, t-shirts, jackets, pants, sweatshirts, headwear, backpacks, travel accessories, mugs, flasks, straws, signs, keychains, lapel pins, buttons, stress balls, holders, covers, pens, paper products, towels and wristbands are available. Other products such as USB chargers, umbrellas, flashlights, knives, pillows, chairs, stickers, watches, ornaments, gloves, masks, sanitizers, wipes, first aid kits, eyeglasses, headbands, headphones and mobile accessories are also offered.",
-     "Products":"['Backpacks', 'Bags', 'Balls', 'Books', 'Bottles', 'Buttons', 'Chains', 'Chairs', 'Chargers', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Drinkware', 'Emergency Power & Lighting Supplies', 'Eyeglasses', 'Flashlights', 'Flasks', 'Glassware', 'Gloves', 'Headbands', 'Headphones', 'Holders', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Jackets', 'Janitorial Supplies', 'Jerseys', 'Kits', 'Knives', 'Magnets']"
+     "Products":['Backpacks', 'Bags', 'Balls', 'Books', 'Bottles', 'Buttons', 'Chains', 'Chairs', 'Chargers', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Drinkware', 'Emergency Power & Lighting Supplies', 'Eyeglasses', 'Flashlights', 'Flasks', 'Glassware', 'Gloves', 'Headbands', 'Headphones', 'Holders', 'Hurricane Personal Protective Equipment', 'Hurricane Response', 'Jackets', 'Janitorial Supplies', 'Jerseys', 'Kits', 'Knives', 'Magnets']
   },
   {
      "Company":"Eder Flagpole Co., a division of Eder Flag Mfg. Co., Inc.",
@@ -3647,7 +3647,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"Africa, Asia, Australia, Canada, Europe, Mexico, Middle East, Western Europe",
      "Description":"Custom manufacturer of banners, flags & accessories including flagpoles, plaques, nameplates, cupolas, hardware, ornaments, wearables & weather vanes for a variety of industries & applications. Available in a wide range of materials, styles, sizes & colors.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Balls', 'Banners', 'Bases', 'Bunting', 'Cases', 'COVID-19 Response', 'Crosses', 'Decals', 'Directories', 'Flagpoles', 'Flags', 'Gowns', 'Hardware', 'Lights', 'Masks', 'Mechanical Wire, Cable and Rope', 'Medical Personal Protective Equipment (PPE)', 'Ornaments', 'Pins', 'Plaques', 'Rings', 'Shirts', 'Socks', 'Spears', 'Staffs', 'Stands', 'Sticks', 'Streamers', 'Tips']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Balls', 'Banners', 'Bases', 'Bunting', 'Cases', 'COVID-19 Response', 'Crosses', 'Decals', 'Directories', 'Flagpoles', 'Flags', 'Gowns', 'Hardware', 'Lights', 'Masks', 'Mechanical Wire, Cable and Rope', 'Medical Personal Protective Equipment (PPE)', 'Ornaments', 'Pins', 'Plaques', 'Rings', 'Shirts', 'Socks', 'Spears', 'Staffs', 'Stands', 'Sticks', 'Streamers', 'Tips']
   },
   {
      "Company":"EZ Promo",
@@ -3668,7 +3668,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Distributor of advertising novelty products and promotional items. Products include apparel, T-shirts, uniforms, hats, awards, backpacks, bags, bottles, coasters, cups, drinkware, mugs, decals, flags, food gifts, gloves, face masks, hand sanitizers, keychains, umbrellas and wristbands. Computer accessories, USB flash drives, battery chargers, cases, LED products, flashlights, fans, displays, headphones, speakers and stuffed toys are also offered.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Awards', 'Backpacks', 'Bags', 'Bottles', 'Cards', 'Cases', 'Chains', 'Chargers', 'Clothing', 'Coasters', 'Computer Accessories', 'COVID-19 Response', 'Cups', 'Decals', 'Disaster Preparedness Supplies', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Displays', 'Drinkware', 'Drives', 'Emergency Power & Lighting Supplies', 'Fans', 'Flags', 'Flashlights', 'Gifts', 'Gloves', 'Hats', 'Headphones', 'Hurricane Personal Protective Equipment', 'Hurricane Response']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Awards', 'Backpacks', 'Bags', 'Bottles', 'Cards', 'Cases', 'Chains', 'Chargers', 'Clothing', 'Coasters', 'Computer Accessories', 'COVID-19 Response', 'Cups', 'Decals', 'Disaster Preparedness Supplies', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Displays', 'Drinkware', 'Drives', 'Emergency Power & Lighting Supplies', 'Fans', 'Flags', 'Flashlights', 'Gifts', 'Gloves', 'Hats', 'Headphones', 'Hurricane Personal Protective Equipment', 'Hurricane Response']
   },
   {
      "Company":"Kleen Kraft Services",
@@ -3689,7 +3689,7 @@ export const supplierdata = [
      "YearFounded":1952.0,
      "ExportMarkets":"nan",
      "Description":"Uniform supply services provided. Capabilities include providing men's and women's shirt, pants, overall, coverall, outerwear, active wear, headwear and bag rentals. Serving the manufacturing, engineering, service, food processing and automotive markets.",
-     "Products":"['Aprons', 'Bags', 'Clothing', 'Coats', 'Coveralls', 'COVID-19 Response', 'Hats', 'Jackets', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Shirts', 'Supply Services', 'Sweaters', 'Uniforms']"
+     "Products":['Aprons', 'Bags', 'Clothing', 'Coats', 'Coveralls', 'COVID-19 Response', 'Hats', 'Jackets', 'Medical Personal Protective Equipment (PPE)', 'Pants', 'Shirts', 'Supply Services', 'Sweaters', 'Uniforms']
   },
   {
      "Company":"Logowear",
@@ -3710,7 +3710,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Advertising novelty manufacturer of embroidered wearable and screen printed products. Products include holders, totes, lights, openers, cases, calculators, clocks, coolers, drawstrings, backpacks, duffels, fans, flashlights, headwear, key rings, tags, pedometers, radios, stationary, bottles, umbrellas, t-shirts, sweatshirts, bags, shorts, fabrics and caps.",
-     "Products":"['Caps', 'Cases', 'Coolers', 'COVID-19 Response', 'Fabrics and Cloths', 'Hats', 'Holders', 'Hooks', 'Lights', 'Medical Personal Protective Equipment (PPE)', 'Openers', 'Pants', 'Pedometers', 'Shirts', 'Stationery', 'Totes']"
+     "Products":['Caps', 'Cases', 'Coolers', 'COVID-19 Response', 'Fabrics and Cloths', 'Hats', 'Holders', 'Hooks', 'Lights', 'Medical Personal Protective Equipment (PPE)', 'Openers', 'Pants', 'Pedometers', 'Shirts', 'Stationery', 'Totes']
   },
   {
      "Company":"AP Branded Solutions",
@@ -3731,7 +3731,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Distributor of custom advertising and novelty products.  Products include apparel such as shirts, golf shirts, vests, jackets, and tote bags.  Other products include tote bags, pens, magnets, calendars, notebooks, cups, and waterbottles.  Printed signs, badges, nametags, and banners are also available.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Badges', 'Bags', 'Banners', 'Books', 'Calendars', 'Clothing', 'Cups', 'Janitorial Supplies', 'Magnets', 'Pens', 'Private Label Manufacturing', 'Shirts', 'Sportswear', 'Towels']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Badges', 'Bags', 'Banners', 'Books', 'Calendars', 'Clothing', 'Cups', 'Janitorial Supplies', 'Magnets', 'Pens', 'Private Label Manufacturing', 'Shirts', 'Sportswear', 'Towels']
   },
   {
      "Company":"Carhartt, Inc.",
@@ -3752,7 +3752,7 @@ export const supplierdata = [
      "YearFounded":1889.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of workwear, outdoor apparel, and gear. Products available include aprons, coats, jackets, outerwear, coveralls, jeans, rainwear, shorts, sweatshirts, T-shirts, pants, shirts, vests, bags, belts, boots, caps, card and cell phone cases, money clips, coolers, eyeglasses, footwear, gaiters, gloves, hats, headwear, holsters, hoods, key chains, lanyards, masks, mitts, knee pads, stickers, suspenders, wallets and notebooks. Flame resistant and high visibility clothing also offered. Most items available in stock. Made in the USA.",
-     "Products":"[\\'Aprons\\', \\'Backpacks\\', \\'Bags\\', \\'Bandanas\\', \\'Belts\\', \\'Bibs\\', \\'Blouses\\', \\'Books\\', \\'Boots\\', \\'Buckles\\', \\'Caps\\', \\'Cases\\', \\'Chains\\', \\'Clips\\', \\'Clothing\\', \\'Clutches\\', \\'Coats\\', \\'Coolers\\', \\'Coveralls\\', \\'COVID-19 Response\\', \\'Disaster Preparedness Supplies\\', \\'Eyeglasses\\', \"Fire Fighters\\' Personal Protective Equipment (PPE)\", \\'Gaiters\\', \\'Gloves\\', \\'Hats\\', \\'Headbands\\', \\'Holsters\\', \\'Hoods\\', \\'Hooks\\']"
+     "Products":['Aprons', 'Backpacks', 'Bags', 'Bandanas', 'Belts', 'Bibs', 'Blouses', 'Books', 'Boots', 'Buckles', 'Caps', 'Cases', 'Chains', 'Clips', 'Clothing', 'Clutches', 'Coats', 'Coolers', 'Coveralls', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Eyeglasses', "Fire Fighters' Personal Protective Equipment (PPE)", 'Gaiters', 'Gloves', 'Hats', 'Headbands', 'Holsters', 'Hoods', 'Hooks']
   },
   {
      "Company":"Golden Glove Promotions KT",
@@ -3773,7 +3773,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Distributor of advertising novelties and specialties. Apparel, bags, drinkware, event displays and giveaways, leisure products, office products, tech novelties, wellness novelties, and writing instruments are offered. Products can be customized with logos and branding using processes such as screen printing and embroidery. Other products include advertising and promotional signage, as well as recognition products such as gifts and awards.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Air Fresheners', 'Aprons', 'Automotive Parts', 'Awards', 'Backpacks', 'Bags', 'Balls', 'Balms', 'Bandanas', 'Banners', 'Blankets', 'Books', 'Bottles', 'Bowls', 'Bracelets', 'Calculators', 'Calendars', 'Cases', 'Chains', 'Chargers', 'Clocks', 'Clothing', 'Coasters', 'Cold Chain Packaging Supplies', 'Coolers', 'COVID-19 Response', 'Cups', 'Decals', 'Decanters']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Air Fresheners', 'Aprons', 'Automotive Parts', 'Awards', 'Backpacks', 'Bags', 'Balls', 'Balms', 'Bandanas', 'Banners', 'Blankets', 'Books', 'Bottles', 'Bowls', 'Bracelets', 'Calculators', 'Calendars', 'Cases', 'Chains', 'Chargers', 'Clocks', 'Clothing', 'Coasters', 'Cold Chain Packaging Supplies', 'Coolers', 'COVID-19 Response', 'Cups', 'Decals', 'Decanters']
   },
   {
      "Company":"Sage International, Ltd.",
@@ -3794,7 +3794,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Manufacturer of rifle chassis systems, short gun stocks and accessories for military. Bases, covers, grips, rails, hand tools, clamps, extensions, mountings, hand tools, chalks, inspection mirrors, sight kits, fiber optic beads, tire makers, buttstock assemblies and equilibrated adapters are available. Made in the USA.",
-     "Products":"['Adapters', 'Assemblies', 'Bases', 'Beads', 'Caps', 'Chalk', 'Chassis', 'Clamps', 'Covers', 'Disaster Preparedness Supplies', 'Extensions', 'Grips', 'Gunstocks', 'Hurricane Response', 'Markers and Marking Equipment', 'Mirrors', 'Mounts', 'Rails', 'Shirts', 'Tooling', 'Tools']"
+     "Products":['Adapters', 'Assemblies', 'Bases', 'Beads', 'Caps', 'Chalk', 'Chassis', 'Clamps', 'Covers', 'Disaster Preparedness Supplies', 'Extensions', 'Grips', 'Gunstocks', 'Hurricane Response', 'Markers and Marking Equipment', 'Mirrors', 'Mounts', 'Rails', 'Shirts', 'Tooling', 'Tools']
   },
   {
      "Company":"Working Person",
@@ -3815,7 +3815,7 @@ export const supplierdata = [
      "YearFounded":1995.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of work clothing and accessories, outerwear, footwear and corporate apparels. Various products include shirts, pants, gloves, sweatshirts, T-shirts, uniforms, underwear, tops, skirts, bottoms, trousers, jeans, shorts, jackets, coats, rain gears, overalls, coveralls, hoods, blankets, hats, caps, vests and fleece. Footwear includes men and women steel toe boots, sandals, men's work boots, socks, metatarsal and toe guards, unisex waterproof and military boots, boot laces, rubber overshoes, insoles, moccasins, slippers and snow tractions. Work accessories including knives, bags, watches, safety glasses, gift certificates, backpacks, sunglasses, flashlights, wallets, and lanyards available. Other products include aprons, bibs, hat bands, buttons, sleeves, headbands, sweatbands, helmets, leggings, liners, mittens, face masks, suspenders, parkas, ponchos and pads. Professional logo creating and designing services are also available.",
-     "Products":"['Aprons', 'Backpacks', 'Bags', 'Bandanas', 'Bands', 'Belts', 'Bibs', 'Blankets', 'Boots', 'Bottles', 'Bottoms', 'Briefs', 'Brushes', 'Bulbs', 'Buttons', 'Caps', 'Cases', 'Chains', 'Chaps', 'Cleaning Compounds and Chemicals', 'Clothing', 'Coats', 'Conditioners', 'Cord and Cordage', 'Coveralls', 'Covers', 'COVID-19 Response', 'Cups', 'Disaster Preparedness Supplies', 'Dryers']"
+     "Products":['Aprons', 'Backpacks', 'Bags', 'Bandanas', 'Bands', 'Belts', 'Bibs', 'Blankets', 'Boots', 'Bottles', 'Bottoms', 'Briefs', 'Brushes', 'Bulbs', 'Buttons', 'Caps', 'Cases', 'Chains', 'Chaps', 'Cleaning Compounds and Chemicals', 'Clothing', 'Coats', 'Conditioners', 'Cord and Cordage', 'Coveralls', 'Covers', 'COVID-19 Response', 'Cups', 'Disaster Preparedness Supplies', 'Dryers']
   },
   {
      "Company":"Corporate Images, Inc.",
@@ -3836,7 +3836,7 @@ export const supplierdata = [
      "YearFounded":1979.0,
      "ExportMarkets":"Asia, Australia, Canada, Mexico, South America",
      "Description":"Distributor of corporate identity clothing, apparel & advertising & promotional products. Complete line of apparels available include sport-shirts, caps, hats, headwear, aprons, coats, jackets, sweatpants, fleecewear, T-Shirts, underwear, wind shirts, sport shirts, shorts, denim shirts, baseball & team apparel & long sleeve team-wear. Complete line of promotional items & products include awards, recognitions, backpacks, bags, totes, badges, buttons, magnets, stickers, business, desktop & office items, calendars, clocks & watches, computer accessories, diaries, journals & notepads, drink-ware, electronics, food & edibles, games & novelties, house wares, jewelry, outdoors, sports & leisure luggage, pocket & purse accessories, tools & writing instruments. Silk screen printing capabilities include 12 color automatic printing & 6 color manual printing. Embroidery available.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Air Fresheners', 'Alarms', 'Amplifiers', 'Aprons', 'Awards', 'Backboards', 'Backpacks', 'Bags', 'Balloons', 'Balls', 'Balms', 'Bandages', 'Bands', 'Banks', 'Banners', 'Bars', 'Bats', 'Bells', 'Bibs', 'Binoculars', 'Blades', 'Blankets', 'Blimps', 'Blocks', 'Boards', 'Bookmarks', 'Books', 'Bottles', 'Boxes']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Air Fresheners', 'Alarms', 'Amplifiers', 'Aprons', 'Awards', 'Backboards', 'Backpacks', 'Bags', 'Balloons', 'Balls', 'Balms', 'Bandages', 'Bands', 'Banks', 'Banners', 'Bars', 'Bats', 'Bells', 'Bibs', 'Binoculars', 'Blades', 'Blankets', 'Blimps', 'Blocks', 'Boards', 'Bookmarks', 'Books', 'Bottles', 'Boxes']
   },
   {
      "Company":"FDJ",
@@ -3857,7 +3857,7 @@ export const supplierdata = [
      "YearFounded":1908.0,
      "ExportMarkets":"Canada, Latin America/Caribbean, Mexico",
      "Description":"Manufacturer of women's jeans. Other types of apparel include T-shirts, shirts, blouses, sweaters,  and jackets. Various materials of tops include denim, twill, knit, terrycloth, leather, and fleece.",
-     "Products":"['Blouses', 'Clothing', 'Jackets', 'Leggings', 'Pants', 'Shirts', 'Shorts', 'Sweaters']"
+     "Products":['Blouses', 'Clothing', 'Jackets', 'Leggings', 'Pants', 'Shirts', 'Shorts', 'Sweaters']
   },
   {
      "Company":"Greenline Environmental Solutions",
@@ -3878,7 +3878,7 @@ export const supplierdata = [
      "YearFounded":2008.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of boardshorts and beach clothing for men, women, kids and teens. Polo shirts, sweatshirts, T-shirts, trunks and hats are offered. Made from recycled ocean plastics and fabrics.",
-     "Products":"['Clothing', 'COVID-19 Response', 'Hats', 'Medical Personal Protective Equipment (PPE)', 'Shirts', 'Shorts', 'Trunks']"
+     "Products":['Clothing', 'COVID-19 Response', 'Hats', 'Medical Personal Protective Equipment (PPE)', 'Shirts', 'Shorts', 'Trunks']
   },
   {
      "Company":"Polyconcept North America",
@@ -3899,7 +3899,7 @@ export const supplierdata = [
      "YearFounded":2000.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer and distributor of promotional products and advertising novelties for small enterprises and global corporations. Various products include clothing, backpacks, blankets, business cases, coolers, desktop items, drinkware, duffels, flashlights, games, and gifts. Other products include housewares, journals/stationary/sticky notes, keychains and keylights, luggage, pens, lighters, towels, umbrellas, and coolers.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Backpacks', 'Bags', 'Coolers', 'Disaster Preparedness Supplies', 'Eyeglasses', 'Hurricane Response', 'Jackets', 'Janitorial Supplies', 'Pens', 'Pouches', 'Shakers', 'Shirts', 'Speakers', 'Towels', 'Tumblers']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Backpacks', 'Bags', 'Coolers', 'Disaster Preparedness Supplies', 'Eyeglasses', 'Hurricane Response', 'Jackets', 'Janitorial Supplies', 'Pens', 'Pouches', 'Shakers', 'Shirts', 'Speakers', 'Towels', 'Tumblers']
   },
   {
      "Company":"Promotional Marketing Concepts",
@@ -3920,7 +3920,7 @@ export const supplierdata = [
      "YearFounded":1975.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of advertising, promotional and novelty products. Various types include apparel, awards, badges & badge holders, desk & office items, candy & food favors and gift sets, drinkware, golf gifts, healthcare items, kitchen & home items, sport & outdoor gear, tools & hardware equipment and travel items. Products can be customized as per specifications and are suitable for prospective customer targeting, increasing employee motivation and promotion of products or services. Available in various colors and with imprint options. Gift selection for events and specialized marketing programs are also available.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Air Fresheners', 'Albums', 'Aprons', 'Awards', 'Backpacks', 'Badges', 'Bags', 'Balloons', 'Balls', 'Balms', 'Bandanas', 'Bands', 'Banks', 'Banners', 'Bar Supplies', 'Barbecue Equipment', 'Barometers', 'Baskets', 'Bathroom Parts', 'Batteries', 'Bells', 'Belts', 'Bibs', 'Binders', 'Binoculars', 'Blankets', 'Boards', 'Bookends', 'Bookmarks']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Air Fresheners', 'Albums', 'Aprons', 'Awards', 'Backpacks', 'Badges', 'Bags', 'Balloons', 'Balls', 'Balms', 'Bandanas', 'Bands', 'Banks', 'Banners', 'Bar Supplies', 'Barbecue Equipment', 'Barometers', 'Baskets', 'Bathroom Parts', 'Batteries', 'Bells', 'Belts', 'Bibs', 'Binders', 'Binoculars', 'Blankets', 'Boards', 'Bookends', 'Bookmarks']
   },
   {
      "Company":"AEC Online Store",
@@ -3941,7 +3941,7 @@ export const supplierdata = [
      "YearFounded":2007.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of manufacturer of standard and custom clothing, office supplies, gifts, sport supplies, medical supplies, products, personal protective equipment and promotional supplies. Products include shirts, pants, jackets, vests, hats, caps, glasses, fall protection harnesses, gloves, wipes, face masks, flashlights, dispensers, infrared thermometers, gas detectors, first aid supplies, respirators, face shields and hand sanitizers. Golf balls, tarps, netting, writing supplies, baby towels, umbrellas, tags, labels, danger signs, stickers, barricade tapes, body part supports, lockout kits, horns, headlamps, backpacks, drinkware, two-way radios, flags, banners also offered. Custom logo printing options are provided. Most items available in stock.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Anchors', 'Backpacks', 'Bags', 'Balls', 'Banners', 'Batteries', 'Blankets', 'Blazers', 'Blouses', 'Books', 'Boots', 'Bottles', 'Breakers', 'Cabinets', 'Cans', 'Canvas Products', 'Caps', 'Cards', 'Cases', 'Chairs', 'Chargers', 'Clothing', 'Coats', 'Cones', 'Coolers', 'Coveralls', 'COVID-19 Response', 'Decals', 'Defibrillators']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Anchors', 'Backpacks', 'Bags', 'Balls', 'Banners', 'Batteries', 'Blankets', 'Blazers', 'Blouses', 'Books', 'Boots', 'Bottles', 'Breakers', 'Cabinets', 'Cans', 'Canvas Products', 'Caps', 'Cards', 'Cases', 'Chairs', 'Chargers', 'Clothing', 'Coats', 'Cones', 'Coolers', 'Coveralls', 'COVID-19 Response', 'Decals', 'Defibrillators']
   },
   {
      "Company":"Affix Apparel",
@@ -3962,7 +3962,7 @@ export const supplierdata = [
      "YearFounded":2011.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of private labeled clothing for men, women and kids. Products include aprons, bathrobes, beanie caps, hoods, jackets, jeans, leggings, sports-wear, shirts, t-shirts, tops, uniforms, bed sheets and towels. Bags, leather goods, totes and bath mats are also available. Made in the USA.",
-     "Products":"['Aprons', 'Bags', 'Caps', 'Clothing', 'COVID-19 Response', 'Hoods', 'Jackets', 'Janitorial Supplies', 'Leather', 'Leggings', 'Manufacturing Services', 'Mats', 'Pants', 'Private Label Manufacturing', 'Robes', 'Sheets', 'Shirts', 'Sportswear', 'Tops', 'Totes', 'Towels', 'Uniforms']"
+     "Products":['Aprons', 'Bags', 'Caps', 'Clothing', 'COVID-19 Response', 'Hoods', 'Jackets', 'Janitorial Supplies', 'Leather', 'Leggings', 'Manufacturing Services', 'Mats', 'Pants', 'Private Label Manufacturing', 'Robes', 'Sheets', 'Shirts', 'Sportswear', 'Tops', 'Totes', 'Towels', 'Uniforms']
   },
   {
      "Company":"Fox Apparel, Inc.",
@@ -3983,7 +3983,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Custom manufacturer of apparel for men and women applications. Products include jeans, trousers, pants, shorts and shirts. Other services include pattern design and cutting, sewing, inspection, washing, drying, packaging and shipping. UL listed.",
-     "Products":"['Clothing', 'Pants', 'Shirts', 'Shorts']"
+     "Products":['Clothing', 'Pants', 'Shirts', 'Shorts']
   },
   {
      "Company":"Kutesmart Co., Ltd",
@@ -4004,7 +4004,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Custom manufacturer of apparel products for work, school, and business applications. Dresses, jeans, overcoats, pants, and polo shirts are available. Suits, swimwear, shorts, and uniforms are also available. Serves medical, gambling, airline, and catering industries.",
-     "Products":"['Clothing', 'COVID-19 Response', 'Dresses', 'Fabrics and Cloths', 'Medical Personal Protective Equipment (PPE)', 'Overcoats', 'Pants', 'Shirts', 'Shorts', 'Skirts', 'Suits', 'Swimwear', 'Uniforms']"
+     "Products":['Clothing', 'COVID-19 Response', 'Dresses', 'Fabrics and Cloths', 'Medical Personal Protective Equipment (PPE)', 'Overcoats', 'Pants', 'Shirts', 'Shorts', 'Skirts', 'Suits', 'Swimwear', 'Uniforms']
   },
   {
      "Company":"Marudas Print Services & Promotional",
@@ -4025,7 +4025,7 @@ export const supplierdata = [
      "YearFounded":1983.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of corporate apparel, uniforms, gears, and promotional items. Products include bibs and coveralls, coats, headwear, hi-visibility products, outerwear, pants, shirts, vests, aprons, dresses, duty gears, bags and cases, desk accessories, drinkware, and food gifts. Available with various features, specifications, designs, materials, and colors. Offers custom embroidery, digital printing, four color process, full color process, pad printing, and silk screening for promotional items. Commercial printing and direct mail services are also available.",
-     "Products":"['Advertising Specialties, Novelties, and Promotional Products', 'Appliques', 'Aprons', 'Attachments', 'Awards', 'Backpacks', 'Badges', 'Bags', 'Balls', 'Balms', 'Bandanas', 'Bands', 'Banks', 'Banners', 'Beads', 'Bells', 'Belts', 'Berets', 'Bibs', 'Binders', 'Blankets', 'Bookmarks', 'Books', 'Booths', 'Bottles', 'Boxes', 'Bracelets', 'Buckets', 'Calculators', 'Calendars']"
+     "Products":['Advertising Specialties, Novelties, and Promotional Products', 'Appliques', 'Aprons', 'Attachments', 'Awards', 'Backpacks', 'Badges', 'Bags', 'Balls', 'Balms', 'Bandanas', 'Bands', 'Banks', 'Banners', 'Beads', 'Bells', 'Belts', 'Berets', 'Bibs', 'Binders', 'Blankets', 'Bookmarks', 'Books', 'Booths', 'Bottles', 'Boxes', 'Bracelets', 'Buckets', 'Calculators', 'Calendars']
   },
   {
      "Company":"Calitex International",
@@ -4046,7 +4046,7 @@ export const supplierdata = [
      "YearFounded":2005.0,
      "ExportMarkets":"Canada, Mexico, South America",
      "Description":"Distributor of  industrial textiles. cotton canvas, cotton duck, twills, nylon, sheeting & denim.",
-     "Products":"['Additive Manufacturing Materials', 'Canvas', 'COVID-19 Response', 'Denims', 'Fabrics and Cloths', 'Nylon', 'Sheets', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services']"
+     "Products":['Additive Manufacturing Materials', 'Canvas', 'COVID-19 Response', 'Denims', 'Fabrics and Cloths', 'Nylon', 'Sheets', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services']
   },
   {
      "Company":"Erwin Mills Div., Burlington Industries Inc.",
@@ -4067,7 +4067,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Cotton Goods",
-     "Products":"['Cotton Goods', 'Denims', 'Fabrics and Cloths']"
+     "Products":['Cotton Goods', 'Denims', 'Fabrics and Cloths']
   },
   {
      "Company":"Leigh Fibers",
@@ -4088,7 +4088,7 @@ export const supplierdata = [
      "YearFounded":1921.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of standard and custom natural, and synthetic fibers. Artificial, reprocessed, and flame retardant fibers are also offered. Made from cellulose, nylon, rayon, cotton, acrylic, polypropylene, acetate, and polyester materials. Reprocessed fiber and textile by-products are also available. Suitable for bedding, caskets, filtration, absorption, acoustic insulation, sporting equipment, and spinning applications. Serves the automotive, apparel, consumer, furniture, and textile industries.",
-     "Products":"['Fabrics and Cloths', 'Cutting Services', 'Composites', 'Converting Services', 'Ceramics', 'Boards', 'Fiber', 'Packaging Materials', 'Slitting Services', 'Winders', 'Blending Services', 'COVID-19 Response', 'Denims', 'Fabrication Services', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services']"
+     "Products":['Fabrics and Cloths', 'Cutting Services', 'Composites', 'Converting Services', 'Ceramics', 'Boards', 'Fiber', 'Packaging Materials', 'Slitting Services', 'Winders', 'Blending Services', 'COVID-19 Response', 'Denims', 'Fabrication Services', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services']
   },
   {
      "Company":"Mill Wiping Rags, Inc.",
@@ -4109,7 +4109,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Manufacturer of wiping rags. Products include colored sweats shirt rags, flannel rags, bar mops towels, fleece towels, colored towels, gray sweat rags, denim rags, huck towels, white t-shirt rags, oil pads, corduroy rags, and cheese cloth rags. Applications include refinishing work, janitorial and industrial sites, car washes, boat dealers and elevator companies.",
-     "Products":"['Corduroys', 'Denims', 'Fabrics and Cloths', 'Fleecewear', 'Janitorial Supplies', 'Mops', 'Pads', 'Rags', 'Towels', 'Wipes and Wipers']"
+     "Products":['Corduroys', 'Denims', 'Fabrics and Cloths', 'Fleecewear', 'Janitorial Supplies', 'Mops', 'Pads', 'Rags', 'Towels', 'Wipes and Wipers']
   },
   {
      "Company":"Mount Vernon Mills, Inc.",
@@ -4130,7 +4130,7 @@ export const supplierdata = [
      "YearFounded":1847.0,
      "ExportMarkets":"nan",
      "Description":"Yarns, Fabrics, Finished Textile Consumer Products",
-     "Products":"['Blankets', 'Cotton Goods', 'Denims', 'Fabrics and Cloths', 'Greige Goods', 'Guards', 'Janitorial Supplies', 'Mats', 'Napkins', 'Pads', 'Sheets', 'Towels', 'Yarns']"
+     "Products":['Blankets', 'Cotton Goods', 'Denims', 'Fabrics and Cloths', 'Greige Goods', 'Guards', 'Janitorial Supplies', 'Mats', 'Napkins', 'Pads', 'Sheets', 'Towels', 'Yarns']
   },
   {
      "Company":"American Rubber Products",
@@ -4151,7 +4151,7 @@ export const supplierdata = [
      "YearFounded":"nan",
      "ExportMarkets":"nan",
      "Description":"Distributor of rubber materials and products including fabrics, cloth, silicone foam, silicone sponges, silicone sheets, specification grade materials, military grade materials, PVC/polyester materials and PVC products. Rubber products such as rubber coated fabrics, rubber sheets, rubber foam, rubber sponges and rubber molded parts are available. Rubber materials such as butyl, Hypalon®, EPDM, epichlorohydrin, fluoroelastomer, fluorosilicone, HNBR, natural rubber, neoprene, nitrile, SBR, silicone, urethane, Viton® and engineered elastomers are available. Materials meet AMS, ASTM, BMS, DMS, FDA, HHP, LAC, P/PS, UL®, ZZ-R and 3A sanitary standards. Custom production runs are available. Markets served include aerospace, automotive, medical, commercial, general industrial, oil and gas, military, water processing and irrigation industries. Just-in-time delivery available.",
-     "Products":"['Additive Manufacturing Materials', 'Cotton', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Fabrics and Cloths', 'Foam Products', 'Foams', 'Gaskets', 'Hurricane Response', 'Janitorial Supplies', 'Kevlar®', 'Nomex®', 'Nylon', 'Nylon Products', 'Polyester', 'Polymers', 'Polyvinyl Chloride (PVC)', 'Rayon', 'Rubber', 'Rubber Goods', 'Sheets', 'Sponges', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services']"
+     "Products":['Additive Manufacturing Materials', 'Cotton', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Fabrics and Cloths', 'Foam Products', 'Foams', 'Gaskets', 'Hurricane Response', 'Janitorial Supplies', 'Kevlar®', 'Nomex®', 'Nylon', 'Nylon Products', 'Polyester', 'Polymers', 'Polyvinyl Chloride (PVC)', 'Rayon', 'Rubber', 'Rubber Goods', 'Sheets', 'Sponges', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services']
   },
   {
      "Company":"Carr Textile",
@@ -4172,7 +4172,7 @@ export const supplierdata = [
      "YearFounded":1972.0,
      "ExportMarkets":"Canada, Mexico, South America",
      "Description":"Converter, importer, distributor & wholesaler of cottons, polyesters & blended fabrics. Manufacturer of components for caps & apparel including plastic visor boards, bindings, sweatbands, stayfronts, fabric & leather backstraps.",
-     "Products":"['Bands', 'Bindings', 'Converting Services', 'Cotton', 'Cotton Goods', 'Fabrics and Cloths', 'Polyester', 'Screens', 'Straps']"
+     "Products":['Bands', 'Bindings', 'Converting Services', 'Cotton', 'Cotton Goods', 'Fabrics and Cloths', 'Polyester', 'Screens', 'Straps']
   },
   {
      "Company":"Dunn Trimming and Binding Company",
@@ -4193,7 +4193,7 @@ export const supplierdata = [
      "YearFounded":1905.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of standard and custom and distributor of fabrics. Narrow fabrics, knits and woven are available. Broadcloth/twills, waistbands/sweatbands, cordage/piping, spiral cut rib-knit, round filled spaghetti, elastic braid, hook and loop, tipped laces, woven tapes, mesh and woven edge ribbons are available. Bindings and trimmings are also available. Capabilities include contract sewing, printing, bias, razor and straight slitting, cross and strip cutting, rewinding, folding, fusing, pinking and rerolling services. Industries served include institutional, transportation, medical, bedding, tailoring, janitorial and athletic. Made in the USA.",
-     "Products":"['Additive Manufacturing Materials', 'Bands', 'Bindings', 'Braid', 'Canvas', 'Contractors', 'Cord and Cordage', 'Cotton', 'COVID-19 Response', 'Cutting Services', 'Fabrics and Cloths', 'Hook and Loop Fasteners', 'Hurricane Response', 'Medical & First Aid Supplies', 'Nylon', 'Pipes', 'Poplin', 'Ribbons', 'Screens', 'Sewing Services', 'Slitting Services', 'Sweatbands', 'Tapes', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Trim', 'Twine', 'Webbing']"
+     "Products":['Additive Manufacturing Materials', 'Bands', 'Bindings', 'Braid', 'Canvas', 'Contractors', 'Cord and Cordage', 'Cotton', 'COVID-19 Response', 'Cutting Services', 'Fabrics and Cloths', 'Hook and Loop Fasteners', 'Hurricane Response', 'Medical & First Aid Supplies', 'Nylon', 'Pipes', 'Poplin', 'Ribbons', 'Screens', 'Sewing Services', 'Slitting Services', 'Sweatbands', 'Tapes', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Trim', 'Twine', 'Webbing']
   },
   {
      "Company":"Industrial Wiping Cloth Co., Inc.",
@@ -4214,7 +4214,7 @@ export const supplierdata = [
      "YearFounded":1989.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of cut, boxed, disposable cloth wipers. Products include toilet papers, towels, knits, wiping cloths, sweatshirt, sweaters and pants, corduroys, denims, flat packed scrims and wash rags.",
-     "Products":"['Cleaning Compounds and Chemicals', 'Cleaning Equipment', 'Clothing', 'Corduroys', 'Cotton', 'COVID-19 Response', 'Denims', 'Disposable Products', 'Fabrics and Cloths', 'Flannels', 'Janitorial Supplies', 'Medical/Hospital Consumable Supplies', 'Paper', 'Rags', 'Scrims', 'Towels', 'Wipes and Wipers']"
+     "Products":['Cleaning Compounds and Chemicals', 'Cleaning Equipment', 'Clothing', 'Corduroys', 'Cotton', 'COVID-19 Response', 'Denims', 'Disposable Products', 'Fabrics and Cloths', 'Flannels', 'Janitorial Supplies', 'Medical/Hospital Consumable Supplies', 'Paper', 'Rags', 'Scrims', 'Towels', 'Wipes and Wipers']
   },
   {
      "Company":"Tintoria Piana U.S., Inc.",
@@ -4235,7 +4235,7 @@ export const supplierdata = [
      "YearFounded":1994.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of hydrophilic fibers in non-woven and traditional textiles applications. Cotton fibers, viscose fibers, polyester fibers, nylon fibers, bast fibers, and wool fibers are available. Applications include bedding, automotive, insulation, acoustic panel, furniture and appliance.",
-     "Products":"['Cotton', 'Fabrics and Cloths', 'Fiber', 'Film', 'Wool']"
+     "Products":['Cotton', 'Fabrics and Cloths', 'Fiber', 'Film', 'Wool']
   },
   {
      "Company":"LuRay Textiles Inc.",
@@ -4256,7 +4256,7 @@ export const supplierdata = [
      "YearFounded":1986.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of knitted fabrics and wiping cloths or rags. Cotton, polyester, Kevlar®, and Nomex® fabrics are offered. Cotton yarns, arm protection sleeves, pot holders, and gloves are also available.",
-     "Products":"['Cotton', 'COVID-19 Response', 'Fabrics and Cloths', 'Gloves', 'Holders', 'Janitorial Supplies', 'Medical Personal Protective Equipment (PPE)', 'Rags', 'Sleeves', 'Yarns']"
+     "Products":['Cotton', 'COVID-19 Response', 'Fabrics and Cloths', 'Gloves', 'Holders', 'Janitorial Supplies', 'Medical Personal Protective Equipment (PPE)', 'Rags', 'Sleeves', 'Yarns']
   },
   {
      "Company":"Luxury Fabrics, Inc.",
@@ -4277,7 +4277,7 @@ export const supplierdata = [
      "YearFounded":1966.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of upholstery fabrics and supplies. Chenille, contract, linen, microfiber, outdoor and printed fabrics are offered. Burlap, webbing, vinyl, cotton, threads, polyurethane foams, staples and staple guns are also available. Serves the automotive, aviation, marine and healthcare industries.",
-     "Products":"['Adhesives', 'Burlap', 'Cotton', 'COVID-19 Response', 'Fabrics and Cloths', 'Foam Products', 'Foams', 'Staplers', 'Staples', 'Thread', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Upholstering Equipment', 'Webbing']"
+     "Products":['Adhesives', 'Burlap', 'Cotton', 'COVID-19 Response', 'Fabrics and Cloths', 'Foam Products', 'Foams', 'Staplers', 'Staples', 'Thread', 'Tier 2 Medical Mfg. Supplies, Materials, Components & Services', 'Upholstering Equipment', 'Webbing']
   },
   {
      "Company":"U.S. Cotton",
@@ -4298,7 +4298,7 @@ export const supplierdata = [
      "YearFounded":1983.0,
      "ExportMarkets":"nan",
      "Description":"Manufacturer of health, nail, skin and beauty care products. Cotton balls, rolls, swabs, tissues, foams, cosmetic rounds, sponges, and blotting papers are offered. Offers display options such as custom dump bins, shelf trays, and floor and pallet displays. Private label manufacturing services can also be provided for all cotton products. Additional services for private label products include packaging design, product development, logistics, and marketing assistance. Some products are manufactured with organic cotton, which are USDA, QES, and ICEA certified.",
-     "Products":"['Balls', 'Bins', 'Cosmetics', 'Cotton', 'Cotton Goods', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Displays', 'Disposable Products', 'Foams', 'Gauze', 'Hurricane Response', 'Janitorial Supplies', 'Kits', 'Manufacturing Services', 'Medical & First Aid Supplies', 'Medical Equipment', 'Medical Laboratory Consumable Supplies', 'Medical Products and Hospital Equipment', 'Medical/Hospital Consumable Supplies', 'Paper', 'Patches', 'Personal Care Products', 'Private Label Manufacturing', 'Rolls and Rollers', 'Rounds', 'Sponges', 'Swabs', 'Tissue', 'Trays']"
+     "Products":['Balls', 'Bins', 'Cosmetics', 'Cotton', 'Cotton Goods', 'COVID-19 Response', 'Disaster Preparedness Supplies', 'Displays', 'Disposable Products', 'Foams', 'Gauze', 'Hurricane Response', 'Janitorial Supplies', 'Kits', 'Manufacturing Services', 'Medical & First Aid Supplies', 'Medical Equipment', 'Medical Laboratory Consumable Supplies', 'Medical Products and Hospital Equipment', 'Medical/Hospital Consumable Supplies', 'Paper', 'Patches', 'Personal Care Products', 'Private Label Manufacturing', 'Rolls and Rollers', 'Rounds', 'Sponges', 'Swabs', 'Tissue', 'Trays']
   },
   {
      "Company":"Urgent Dental Supply",
@@ -4319,6 +4319,6 @@ export const supplierdata = [
      "YearFounded":2018.0,
      "ExportMarkets":"nan",
      "Description":"Distributor of medical and dental equipment or supplies. Gauze, covers, sleeves, bouffant caps, gloves, antiseptics, wipes and tips are offered. Floss, syringes, articulating papers, hand sanitizers, ionite fluoride gels, tapes, wooden wedges and mirrors are also available. Cotton roll dispensers, applicators, acrylic dispensing guns, saliva ejectors, disposable and oral care products are provided.",
-     "Products":"['Antiseptics', 'Applicators', 'Cotton', 'Covers', 'COVID-19 Response', 'Dental Equipment', 'Disaster Preparedness Supplies', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Dispensers', 'Disposable Products', 'Ejectors', 'Files', 'Floss', 'Gauze', 'Gels', 'Gloves', 'Guns', 'Hairnets', 'Hurricane Response', 'Instruments', 'Janitorial Supplies', 'Medical & First Aid Supplies', 'Medical Equipment', 'Medical Personal Protective Equipment (PPE)', 'Medical Products and Hospital Equipment', 'Mirrors', 'Paper', 'Personal Care Products', 'Sanitizers', 'Sleeves']"
+     "Products":['Antiseptics', 'Applicators', 'Cotton', 'Covers', 'COVID-19 Response', 'Dental Equipment', 'Disaster Preparedness Supplies', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Dispensers', 'Disposable Products', 'Ejectors', 'Files', 'Floss', 'Gauze', 'Gels', 'Gloves', 'Guns', 'Hairnets', 'Hurricane Response', 'Instruments', 'Janitorial Supplies', 'Medical & First Aid Supplies', 'Medical Equipment', 'Medical Personal Protective Equipment (PPE)', 'Medical Products and Hospital Equipment', 'Mirrors', 'Paper', 'Personal Care Products', 'Sanitizers', 'Sleeves']
   }
 ];

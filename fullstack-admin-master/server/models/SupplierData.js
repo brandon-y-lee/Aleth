@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-//Data columns : ID, Seller, Material, Amount, Unit, Date, Status
 
 const SupplierDataSchema = new mongoose.Schema(
   {
@@ -13,6 +12,8 @@ const SupplierDataSchema = new mongoose.Schema(
     Zip: String,
     Details: String,
     Diversity: String,
+    Certifications: String,
+    OtherCertifications: String,
     Employees: String,
     Sales: String,
     UserType: String,

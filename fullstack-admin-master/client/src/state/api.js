@@ -57,6 +57,15 @@ export const api = createApi({
       providesTags: ["eligibleSellers"],
     }),
 
+    getEligibleSellersAdvanced: build.query({
+      query: ({ products, material, fabricConstruction, certifications }) => ({
+        url: "client/eligibleSellersAdvanced",
+        method: "GET",
+        params: { products, material, fabricConstruction, certifications },
+      }),
+      providesTags: ["eligibleSellersAdvanced"],
+    }),
+
     getIncomingRequests: build.query({
       query: ({ userId }) => ({
         url: "client/incomingRequests",
@@ -173,6 +182,7 @@ export const {
   useGenerateNewShipmentMutation,
   useGetPurchaseOrdersQuery,
   useGetEligibleSellersQuery,
+  useGetEligibleSellersAdvancedQuery,
   useGetOrderSellerDetailsQuery,
   useUpdateOrderMutation,
   useCreateNewOrderMutation,
