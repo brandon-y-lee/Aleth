@@ -19,11 +19,13 @@ import OverallStat from "./models/OverallStat.js";
 import AffiliateStat from "./models/AffiliateStat.js";
 import UserData from "./models/UserData.js";
 import OrderRequest from "./models/OrderRequest.js";
+import SupplierData from "./models/SupplierData.js";
 
 import {
   userData,
   dataShipments,
   dataOrderRequests,
+  supplierdata
 } from "./data/index.js";
 import Shipments from "./models/Shipments.js";
 import { OrderStatus } from "./configs/OrderStatus.js";
@@ -68,6 +70,8 @@ mongoose
     // User.insertMany(dataUser);
     // UserData.insertMany(userData);
     // OrderRequest.insertMany(dataOrderRequests);
+    // SupplierData.insertMany(supplierdata);
+    console.log("Inserted")
   })
   .catch((error) => console.log(`${error} Did not connect`));
 

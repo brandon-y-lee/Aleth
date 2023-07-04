@@ -9,6 +9,7 @@ import getCountryIso3 from "country-iso-2-to-3";
 import { OrderStatus } from "../configs/OrderStatus.js";
 import {RequestType} from "../configs/RequestType.js";
 import mongoose from "mongoose";
+import SupplierData from "../models/SupplierData.js";
 
 
 export const getProducts = async (req, res) => {
@@ -93,6 +94,25 @@ export const getEligibleSellers = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+export const getEligibleSellersAdvanced = async (req, res) => {
+  try {
+    console.log("Finding Eligible Sellers Advanced", req.query);
+    const { products, material, fabricConstruction, certifications } = req.query;
+    const eligibleSellers = await SupplierData.find({
+      $text: { $search: `${material}` },
+      'Products': { $in: products.split(',') }
+    });
+
+    console.log(eligibleSellers);
+
+    res.status(200).json({eligibleSellers});
+  }
+  catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 
 //TODO: Fix this to find out the set of eligible sellers
 export const getPurchaseOrders = async (req, res) => {

@@ -13,7 +13,8 @@ import {
   updateOrder,
   createNewOrder,
   getEligibleSellers,
-  getOrderSellerDetails
+  getOrderSellerDetails,
+  getEligibleSellersAdvanced
 } from "../controllers/client.js";
 
 const router = express.Router();
@@ -30,6 +31,7 @@ router.get("/chainOfShipments", getChainOfShipments);
 router.get("/getIncomingRequests", getIncomingRequests);
 router.get("/getPurchaseOrders", getPurchaseOrders)
 router.get("/eligibleSellers", getEligibleSellers);
+router.get("/eligibleSellersAdvanced", getEligibleSellersAdvanced);
 router.get("/orderSellerDetails", getOrderSellerDetails);
 
 //POSTs
