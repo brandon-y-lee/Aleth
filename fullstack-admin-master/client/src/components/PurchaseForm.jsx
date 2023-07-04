@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   Button,
   TextField,
@@ -25,9 +25,10 @@ const PurchaseForm = ({ onSearch }) => {
     initialValues: {
       productCategory: [],
       materialType: '',
-      fabricConstruction: '',
+      fabricConstruction: [],
       countryOfOrigin: '',
       weightOfFabric: '',
+      unitWeight: '',
       color: '',
       patternPrint: '',
       finishing: '',
@@ -47,6 +48,11 @@ const PurchaseForm = ({ onSearch }) => {
     formik.setFieldValue('productCategory', value);
   };
 
+  const handleFabricConstructionChange = (event) => {
+    const { value } = event.target;
+    formik.setFieldValue('fabricConstruction', value);
+  };
+
   const handleClear = () => {
     formik.resetForm();
   }
@@ -59,7 +65,6 @@ const PurchaseForm = ({ onSearch }) => {
           id="productCategory"
           label="Product Category"
           name="productCategory"
-          multiple
           value={formik.values.productCategory}
           onChange={handleProductCategoryChange}
           renderValue={(selected) => (Array.isArray(selected) ? selected.join(', ') : selected)}
@@ -106,6 +111,7 @@ const PurchaseForm = ({ onSearch }) => {
           </MenuItem>
         </Select>
       </FormControl>
+
       <TextField
         margin="normal"
         required
@@ -116,151 +122,201 @@ const PurchaseForm = ({ onSearch }) => {
         onChange={formik.handleChange}
         value={formik.values.materialType}
       />
+
       <FormControl required fullWidth margin="normal">
         <InputLabel id="fabricConstruction">Fabric Construction</InputLabel>
         <Select
           id="fabricConstruction"
           label="Fabric Construction"
           name="fabricConstruction"
+          multiple
           value={formik.values.fabricConstruction}
-          onChange={formik.handleChange}
+          onChange={handleFabricConstructionChange}
+          renderValue={(selected) => (Array.isArray(selected) ? selected.join(', ') : selected)}
         >
           <MenuItem value={'Woven'}>
             <ListItemText primary="Woven" />
-            <Checkbox checked={formik.values.productCategory.indexOf('Woven') > -1} />
+            <Checkbox checked={formik.values.fabricConstruction.indexOf('Woven') > -1} />
           </MenuItem>
           <MenuItem value={'Knit'}>
             <ListItemText primary="Knit" />
-            <Checkbox checked={formik.values.productCategory.indexOf('Knit') > -1} />
+            <Checkbox checked={formik.values.fabricConstruction.indexOf('Knit') > -1} />
           </MenuItem>
           <MenuItem value={'Non-Woven'}>
             <ListItemText primary="Non-Woven" />
-            <Checkbox checked={formik.values.productCategory.indexOf('Non-Woven') > -1} />
+            <Checkbox checked={formik.values.fabricConstruction.indexOf('Non-Woven') > -1} />
           </MenuItem>
           <MenuItem value={'Lace'}>
             <ListItemText primary="Lace" />
-            <Checkbox checked={formik.values.productCategory.indexOf('Lace') > -1} />
+            <Checkbox checked={formik.values.fabricConstruction.indexOf('Lace') > -1} />
           </MenuItem>
           <MenuItem value={'Fleece'}>
             <ListItemText primary="Fleece" />
-            <Checkbox checked={formik.values.productCategory.indexOf('Fleece') > -1} />
+            <Checkbox checked={formik.values.fabricConstruction.indexOf('Fleece') > -1} />
           </MenuItem>
           <MenuItem value={'Velvet'}>
             <ListItemText primary="Velvet" />
-            <Checkbox checked={formik.values.productCategory.indexOf('Velvet') > -1} />
+            <Checkbox checked={formik.values.fabricConstruction.indexOf('Velvet') > -1} />
           </MenuItem>
           <MenuItem value={'Denim'}>
             <ListItemText primary="Denim" />
-            <Checkbox checked={formik.values.productCategory.indexOf('Denim') > -1} />
+            <Checkbox checked={formik.values.fabricConstruction.indexOf('Denim') > -1} />
           </MenuItem>
           <MenuItem value={'Leather'}>
             <ListItemText primary="Leather" />
-            <Checkbox checked={formik.values.productCategory.indexOf('Leather') > -1} />
+            <Checkbox checked={formik.values.fabricConstruction.indexOf('Leather') > -1} />
           </MenuItem>
           <MenuItem value={'Synthetic'}>
             <ListItemText primary="Synthetic" />
-            <Checkbox checked={formik.values.productCategory.indexOf('Synthetic') > -1} />
+            <Checkbox checked={formik.values.fabricConstruction.indexOf('Synthetic') > -1} />
           </MenuItem>
           <MenuItem value={'Blended'}>
             <ListItemText primary="Blended" />
-            <Checkbox checked={formik.values.productCategory.indexOf('Blended') > -1} />
+            <Checkbox checked={formik.values.fabricConstruction.indexOf('Blended') > -1} />
           </MenuItem>
         </Select>
       </FormControl>
 
       <TextField
         margin="normal"
-        required
         fullWidth
         id="countryOfOrigin"
         label="Country/Region of Origin"
         name="countryOfOrigin"
         onChange={formik.handleChange}
         value={formik.values.countryOfOrigin}
-      />
-      <Accordion 
-        expanded={expanded} 
-        onChange={() => setExpanded(!expanded)}
         sx={{
-          position: expanded ? 'absolute' : 'relative',
-          zIndex: expanded ? 'modal' : 'auto',
-          backgroundColor: theme.palette.background.paper,
-          overflow: 'auto',
+          mb: "1rem",
         }}
-      >
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+      />
+
+      <div style={{ height: '50px', position: 'relative' }}>
+        <Accordion 
+          expanded={expanded} 
+          onChange={() => setExpanded(!expanded)}
+          sx={{
+            position: expanded ? 'absolute' : 'relative',
+            zIndex: expanded ? 'modal' : 'auto',
+            backgroundColor: theme.palette.background.paper,
+            overflow: 'auto',
+            width: expanded ? '100%' : 'auto',
+          }}
         >
-          Advanced Search
-        </AccordionSummary>
-        <AccordionDetails>
-          <Box display="flex" flexDirection="column">
-            <TextField
-              margin="normal"
-              fullWidth
-              id="weightOfFabric"
-              label="Weight of Fabric"
-              name="weightOfFabric"
-              onChange={formik.handleChange}
-              value={formik.values.weightOfFabric}
-            />
-            <TextField
-              margin="normal"
-              fullWidth
-              id="patternPrint"
-              label="Pattern/Print"
-              name="patternPrint"
-              onChange={formik.handleChange}
-              value={formik.values.patternPrint}
-            />
-            <TextField
-              margin="normal"
-              fullWidth
-              id="finishing"
-              label="Finishing"
-              name="finishing"
-              onChange={formik.handleChange}
-              value={formik.values.finishing}
-            />
-            <TextField
-              margin="normal"
-              fullWidth
-              id="quantity"
-              label="Quantity"
-              name="quantity"
-              onChange={formik.handleChange}
-              value={formik.values.quantity}
-            />
-            <TextField
-              margin="normal"
-              fullWidth
-              id="priceRange"
-              label="Price Range"
-              name="priceRange"
-              onChange={formik.handleChange}
-              value={formik.values.priceRange}
-            />
-            <TextField
-              margin="normal"
-              fullWidth
-              id="deliveryDate"
-              label="Delivery Date"
-              name="deliveryDate"
-              onChange={formik.handleChange}
-              value={formik.values.deliveryDate}
-            />
-            <TextField
-              margin="normal"
-              fullWidth
-              id="certificationsRequired"
-              label="Certifications Required"
-              name="certificationsRequired"
-              onChange={formik.handleChange}
-              value={formik.values.certificationsRequired}
-            />
-          </Box>
-        </AccordionDetails>
-      </Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+          >
+            Advanced Search
+          </AccordionSummary>
+          <AccordionDetails>
+            <Box display="flex" flexDirection="column">
+              <TextField
+                margin="normal"
+                fullWidth
+                id="patternPrint"
+                label="Pattern/Print"
+                name="patternPrint"
+                onChange={formik.handleChange}
+                value={formik.values.patternPrint}
+              />
+              <TextField
+                margin="normal"
+                fullWidth
+                id="finishing"
+                label="Finishing"
+                name="finishing"
+                onChange={formik.handleChange}
+                value={formik.values.finishing}
+              />
+              <Box display="flex" justifyContent="space-between">
+                <TextField
+                  margin="normal"
+                  id="weightOfFabric"
+                  label="Weight of Fabric"
+                  name="weightOfFabric"
+                  onChange={formik.handleChange}
+                  value={formik.values.weightOfFabric}
+                  inputProps={{ step: "0.01", min: "0", max: "100", type: "number" }}
+                  style={{ width: '75%' }}
+                />
+                <Select
+                  id="unitWeight"
+                  label="Unit"
+                  name="unitWeight"
+                  value={formik.values.unitWeight}
+                  onChange={formik.handleChange}
+                  sx={{
+                    width: '25%',
+                    mt: 2,
+                    mb: 2,
+                    ml: 1
+                  }}
+                >
+                  <MenuItem value={'GSM'}>Grams per Square Meter</MenuItem>
+                  <MenuItem value={'OSY'}>Ounces per Square Yard</MenuItem>
+                  <MenuItem value={'OLY'}>Ounces per Linear Yard</MenuItem>
+                  <MenuItem value={'D'}>Denier</MenuItem>
+                  <MenuItem value={'Tex'}>Tex</MenuItem>
+                  <MenuItem value={'Thread Count'}>Thread Count</MenuItem>
+                </Select>
+              </Box>
+              <TextField
+                margin="normal"
+                fullWidth
+                id="quantity"
+                label="Quantity"
+                name="quantity"
+                onChange={formik.handleChange}
+                value={formik.values.quantity}
+              />
+              <Box display="flex" justifyContent="space-between">
+                <TextField
+                  margin="normal"
+                  id="priceRangeLower"
+                  label="Price Range Lower"
+                  name="priceRangeLower"
+                  onChange={formik.handleChange}
+                  value={formik.values.priceRangeLower}
+                  style={{ width: '45%' }}
+                  inputProps={{ step: "0.01", min: "0", max: "10000", type: "number" }}
+                />
+                <TextField
+                  margin="normal"
+                  id="priceRangeUpper"
+                  label="Price Range Upper"
+                  name="priceRangeUpper"
+                  onChange={formik.handleChange}
+                  value={formik.values.priceRangeUpper}
+                  style={{ width: '45%' }}
+                  inputProps={{ step: "0.01", min: "0", max: "10000", type: "number" }}
+                />
+              </Box>
+              <TextField
+                margin="normal"
+                fullWidth
+                id="deliveryDate"
+                label="Delivery Date"
+                name="deliveryDate"
+                type="date"
+                onChange={formik.handleChange}
+                value={formik.values.deliveryDate}
+                InputLabelProps={{
+                  shrink: true,
+                }}
+              />
+              <TextField
+                margin="normal"
+                fullWidth
+                id="certificationsRequired"
+                label="Certifications Required"
+                name="certificationsRequired"
+                onChange={formik.handleChange}
+                value={formik.values.certificationsRequired}
+              />
+            </Box>
+          </AccordionDetails>
+        </Accordion>
+      </div>
+
 
       <Button
         type="submit"
