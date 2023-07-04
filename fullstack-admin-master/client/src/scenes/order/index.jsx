@@ -53,6 +53,7 @@ const Order = () => {
     certifications : ""
    })
 
+  console.log(searchResultsAdvanced);
   const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
   const [createOrder, { isLoading: creatingOrder }] = useCreateNewOrderMutation();
 
@@ -171,30 +172,55 @@ const Order = () => {
     },
   ];
 
-  const eligibleSellersColumns = [
-    {
-      field: "userId",
-      headerName: "Seller ID",
-      flex: 0.5,
-    },
-    {
-      field: "name",
-      headerName: "Name",
-      flex: 0.5,
-    },
-    {
-      field: "city",
-      headerName: "Location",
-      flex: 0.5,
-      sortable: false,
-      // renderCell: (params) => {params.value.length},
-    },
-    {
-      field: "type",
-      headerName: "Seller Type",
-      flex: 0.5,
-    },
- ];
+//   const eligibleSellersColumns = [
+//     {
+//       field: "userId",
+//       headerName: "Seller ID",
+//       flex: 0.5,
+//     },
+//     {
+//       field: "name",
+//       headerName: "Name",
+//       flex: 0.5,
+//     },
+//     {
+//       field: "city",
+//       headerName: "Location",
+//       flex: 0.5,
+//       sortable: false,
+//       // renderCell: (params) => {params.value.length},
+//     },
+//     {
+//       field: "type",
+//       headerName: "Seller Type",
+//       flex: 0.5,
+//     },
+//  ];
+
+ const eligibleSellersColumns = [
+  {
+    field: "Company",
+    headerName: "Name",
+    flex: 0.5,
+  },
+  {
+    field: "UserType",
+    headerName: "Name",
+    flex: 0.5,
+  },
+  {
+    field: "City",
+    headerName: "City",
+    flex: 0.5,
+    sortable: false,
+    // renderCell: (params) => {params.value.length},
+  },
+  {
+    field: "Certifications",
+    headerName: "Certifications",
+    flex: 0.5,
+  },
+];
 
   return (
     <Box>
@@ -275,9 +301,9 @@ const Order = () => {
             }}
           >
             <DataGrid
-              loading={isLoadingSearchResults || !searchResults}
-              getRowId={(row) => row["userId"]}
-              rows={(searchResults && searchResults.eligibleSellers) || []}
+              loading={isLoadingSearchResultsAdvanced || !searchResultsAdvanced}
+              getRowId={(row) => row["_id"]}
+              rows={(searchResultsAdvanced && searchResultsAdvanced.eligibleSellers) || []}
               columns={eligibleSellersColumns}
               rowCount={(1) || 0}
               rowsPerPageOptions={[20, 50, 100]}
@@ -302,7 +328,7 @@ const Order = () => {
                 footer: { selectedRows },
               }}
               onRowClick={(row)=>{
-                console.log(row.row["userId"])}}
+                console.log(row.row["id"])}}
             />
           </Box>
         </TabPanel>
