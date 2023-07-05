@@ -100,7 +100,7 @@ export const getEligibleSellersAdvanced = async (req, res) => {
     console.log("Finding Eligible Sellers Advanced", req.query);
     const { products, material, fabricConstruction, certifications } = req.query;
     const eligibleSellers = await SupplierData.find({
-      $text: { $search: `${material}` },
+      // $text: { $search: `${material}` },
       'Products': { $in: products.split(',') }
     });
 
