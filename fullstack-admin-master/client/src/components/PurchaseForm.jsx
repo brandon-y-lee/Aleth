@@ -172,7 +172,7 @@ const PurchaseForm = ({ onSearch }) => {
         renderInput={(params) => (
           <TextField {...params} label="Product Category" />
         )}
-        sx={{ width: 'auto', mb: '2rem' }}
+        sx={{ width: 'auto', mb: '1.5rem' }}
       />
 
       <Autocomplete
@@ -204,7 +204,7 @@ const PurchaseForm = ({ onSearch }) => {
         renderInput={(params) => (
           <TextField {...params} label="Material Type" />
         )}
-        sx={{ width: 'auto', mb: '2rem' }}
+        sx={{ width: 'auto', mb: '1.5rem' }}
       />
 
       <Autocomplete
@@ -236,7 +236,7 @@ const PurchaseForm = ({ onSearch }) => {
         renderInput={(params) => (
           <TextField {...params} label="Fabric Construction" />
         )}
-        sx={{ width: 'auto', mb: '2rem' }}
+        sx={{ width: 'auto', mb: '1.5rem' }}
       />
 
       <TextField
