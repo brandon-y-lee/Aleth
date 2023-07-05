@@ -32,7 +32,7 @@ const PurchaseForm = ({ onSearch }) => {
     initialValues: {
       productCategory: '',
       materialType: '',
-      fabricConstruction: [],
+      fabricConstruction: '',
       countryOfOrigin: '',
       weightOfFabric: '',
       unitWeight: '',
@@ -50,9 +50,8 @@ const PurchaseForm = ({ onSearch }) => {
     },
   });
 
-  const handleProductCategoryChange = (event) => {
-    const { value } = event.target;
-    formik.setFieldValue('productCategory', value);
+  const handleProductCategoryChange = (event, newValue) => {
+    formik.setFieldValue('productCategory', newValue);
   };
 
   const handleFabricConstructionChange = (event) => {
@@ -70,16 +69,16 @@ const PurchaseForm = ({ onSearch }) => {
   }
 
   const productCategories = [
-    { product: 'Tops' },
-    { product: 'Bottoms' },
-    { product: 'Dresses' },
-    { product: 'Outerwear' },
-    { product: 'Undergarments' },
-    { product: 'Activewear' },
-    { product: 'Swimwear' },
-    { product: 'Sleepwear' },
-    { product: 'Accessories' },
-    { product: 'Footwear' },
+    { label: 'Tops' },
+    { label: 'Bottoms' },
+    { label: 'Dresses' },
+    { label: 'Outerwear' },
+    { label: 'Undergarments' },
+    { label: 'Activewear' },
+    { label: 'Swimwear' },
+    { label: 'Sleepwear' },
+    { label: 'Accessories' },
+    { label: 'Footwear' },
   ];
 
   const materialTypes = [
@@ -147,14 +146,18 @@ const PurchaseForm = ({ onSearch }) => {
       <Autocomplete
         disablePortal
         id="productCategory"
-        options={productCategories}
-        value={formik.values.productCategory}
-        onChange={formik.handleChange}
+        options={productCategories}     
         autoComplete
         autoHighlight
         selectOnFocus
         clearOnBlur
-        getOptionLabel={(option) => option.product}
+        getOptionLabel={(option) => typeof option === 'string' ? option : option.label}
+        value={formik.values.productCategory || null}
+        onChange={(event, newValue) => {
+          formik.setFieldValue('productCategory', newValue ? newValue.label : '');
+          console.log(formik.values.productCategory)
+        }}
+        isOptionEqualToValue={(option, value) => option.label === value}
         renderOption={(props, option, { selected }) => (
           <li {...props}>
             <Checkbox
@@ -163,26 +166,30 @@ const PurchaseForm = ({ onSearch }) => {
               style={{ marginRight: 8 }}
               checked={selected}
             />
-            {option.product}
+            {option.label}
           </li>
         )}
         renderInput={(params) => (
-          <TextField {...params} label="Product Category" placeholder="Tops" />
+          <TextField {...params} label="Product Category" />
         )}
-        sx={{ width: 'auto', mb: '1rem' }}
+        sx={{ width: 'auto', mb: '2rem' }}
       />
 
       <Autocomplete
         disablePortal
         id="materialType"
-        options={materialTypes}
-        value={formik.values.materialType}
-        onChange={formik.handleChange}
+        options={materialTypes}     
         autoComplete
         autoHighlight
         selectOnFocus
         clearOnBlur
-        getOptionLabel={(option) => option.label}
+        getOptionLabel={(option) => typeof option === 'string' ? option : option.label}
+        value={formik.values.materialType || null}
+        onChange={(event, newValue) => {
+          formik.setFieldValue('materialType', newValue ? newValue.label : '');
+          console.log(formik.values.materialType)
+        }}
+        isOptionEqualToValue={(option, value) => option.label === value}
         renderOption={(props, option, { selected }) => (
           <li {...props}>
             <Checkbox
@@ -195,22 +202,26 @@ const PurchaseForm = ({ onSearch }) => {
           </li>
         )}
         renderInput={(params) => (
-          <TextField {...params} label="Material Type" placeholder="Cotton" />
+          <TextField {...params} label="Material Type" />
         )}
-        sx={{ width: 'auto', mt: '1rem', mb: '1rem' }}
+        sx={{ width: 'auto', mb: '2rem' }}
       />
 
       <Autocomplete
         disablePortal
         id="fabricConstruction"
-        options={fabricConstructions}
-        value={formik.values.fabricConstruction}
-        onChange={formik.handleChange}
+        options={fabricConstructions}     
         autoComplete
         autoHighlight
         selectOnFocus
         clearOnBlur
-        getOptionLabel={(option) => option.label}
+        getOptionLabel={(option) => typeof option === 'string' ? option : option.label}
+        value={formik.values.fabricConstruction || null}
+        onChange={(event, newValue) => {
+          formik.setFieldValue('fabricConstruction', newValue ? newValue.label : '');
+          console.log(formik.values.fabricConstruction)
+        }}
+        isOptionEqualToValue={(option, value) => option.label === value}
         renderOption={(props, option, { selected }) => (
           <li {...props}>
             <Checkbox
@@ -223,9 +234,9 @@ const PurchaseForm = ({ onSearch }) => {
           </li>
         )}
         renderInput={(params) => (
-          <TextField {...params} label="Fabric Construction" placeholder="Woven" />
+          <TextField {...params} label="Fabric Construction" />
         )}
-        sx={{ width: 'auto', mt: '1rem', mb: '1rem' }}
+        sx={{ width: 'auto', mb: '2rem' }}
       />
 
       <TextField
