@@ -51,7 +51,7 @@ const Order = () => {
     material: formData.materialType ? formData.materialType : undefined,
     fabricConstruction: formData.fabricConstruction ?formData.fabricConstruction : undefined,
     certifications : ""
-   })
+   });
 
   console.log(searchResultsAdvanced);
   const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();

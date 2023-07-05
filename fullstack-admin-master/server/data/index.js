@@ -4321,7 +4321,7 @@ export const supplierdata = [
      "Description":"Distributor of medical and dental equipment or supplies. Gauze, covers, sleeves, bouffant caps, gloves, antiseptics, wipes and tips are offered. Floss, syringes, articulating papers, hand sanitizers, ionite fluoride gels, tapes, wooden wedges and mirrors are also available. Cotton roll dispensers, applicators, acrylic dispensing guns, saliva ejectors, disposable and oral care products are provided.",
      "Products":['Antiseptics', 'Applicators', 'Cotton', 'Covers', 'COVID-19 Response', 'Dental Equipment', 'Disaster Preparedness Supplies', 'Disinfectants, Sanitizers, Soap and Cleaners', 'Dispensers', 'Disposable Products', 'Ejectors', 'Files', 'Floss', 'Gauze', 'Gels', 'Gloves', 'Guns', 'Hairnets', 'Hurricane Response', 'Instruments', 'Janitorial Supplies', 'Medical & First Aid Supplies', 'Medical Equipment', 'Medical Personal Protective Equipment (PPE)', 'Medical Products and Hospital Equipment', 'Mirrors', 'Paper', 'Personal Care Products', 'Sanitizers', 'Sleeves']
   },
-  {
+   {
       "Company":"DCL, Inc.",
       "ID":170,
       "URL":"https://www.thomasnet.com/profile/00178380/dcl-inc.html",
