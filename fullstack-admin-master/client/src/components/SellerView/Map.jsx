@@ -100,8 +100,7 @@ const Map = (props) => {
                         lat: parseFloat(point.coordinates[0].$numberDecimal), 
                         lng: parseFloat(point.coordinates[1].$numberDecimal)
                     },
-                    icon: { url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png", scaledSize: hoveredCardIndex === index ? new window.google.maps.Size(50, 50) : new window.google.maps.Size(32, 32),
-                },
+                    icon: { url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png", scaledSize: hoveredCardIndex === index ? new window.google.maps.Size(50, 50) : new window.google.maps.Size(32, 32)},
                     color: "blue",
                     map,
                     title: `#${index + 1}`,

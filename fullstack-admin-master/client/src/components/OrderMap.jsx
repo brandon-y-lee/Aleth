@@ -3,6 +3,8 @@ import Grid from '@mui/material/Grid';
 import PurchaseForm from 'components/PurchaseForm';
 import OrderDetails from './OrderDetails';
 import SupplierList from './SupplierList';
+import axios from 'axios';
+
 
 
 // Replace the path prop with actual data
@@ -43,6 +45,15 @@ const OrderMap = (props) => {
         };
     };
 
+    const getLatLng = async (address) => {
+        const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=AIzaSyAuVjIdVnypBE451-sxt-h-_R78hQSUDPI`);
+        const { results } = response.data;
+        if (results && results[0] && results[0].geometry && results[0].geometry.location) {
+            return results[0].geometry.location;
+        }
+        return null;
+    };
+
     const closeInfoWindow = () => {
         setActiveMarkerIndex(null); // close InfoWindow
     };
@@ -50,7 +61,7 @@ const OrderMap = (props) => {
     const initMap = async () => {
         // Load the Maps JavaScript API library
         const { Map, Marker } = await window.google.maps.importLibrary('maps');
-
+        getLatLng();
         const map = new Map(mapRef.current, {
             center: { lat: 50.99835602, lng: 77.01502627 },
             zoom: 4,
@@ -60,19 +71,16 @@ const OrderMap = (props) => {
         var bounds = new window.google.maps.LatLngBounds();
 
         // Create markers
-        if (props.locations && props.locations.eligibleSellers) {
-            markersRef.current = props.locations.eligibleSellers.map((point, index) => {
-                const position = {
-                    lat: parseFloat(point.coordinates[0].$numberDecimal), 
-                    lng: parseFloat(point.coordinates[1].$numberDecimal)
-                };
-
+        if (props.locations && props.locations.eligibleSellers && props.locations.eligibleSellers.length) {
+            console.log("Getting inside here");
+            const promises = props.locations.eligibleSellers.map(async (point, index) => {
+                const position = await getLatLng(point['Address']+','+point['City']+','+point['State']) 
                 const marker = new window.google.maps.Marker({
                     position,
                     map,
                     title: `#${index + 1}`,
                 });
-
+                console.log(position);
                 marker.markerIndex = index;
 
                 // Add a click listener to focus the marker when it's clicked
@@ -89,10 +97,11 @@ const OrderMap = (props) => {
                     setHoveredMarkerIndex(null);
                 });
 
-                bounds.extend(position);
+                bounds.extend(new window.google.maps.LatLng(parseFloat(position.lat), parseFloat(position.lng)));
 
                 return marker;
             });
+
 
             markersRef.current.push(
                 new window.google.maps.Marker({
@@ -106,11 +115,11 @@ const OrderMap = (props) => {
             );   
             
             bounds.extend({ lat: props.coordinates[0], lng: props.coordinates[1] });
-
-            console.log(markersRef.current);            
-
+ 
+         
+            markersRef.current = await Promise.all(promises);
             map.fitBounds(bounds);
-            console.log(map);
+            
         }
 
         // Clean up on unmount

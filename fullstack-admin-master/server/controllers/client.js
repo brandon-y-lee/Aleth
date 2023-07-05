@@ -101,10 +101,10 @@ export const getEligibleSellersAdvanced = async (req, res) => {
     const { products, material, fabricConstruction, certifications } = req.query;
     const eligibleSellers = await SupplierData.find({
       // $text: { $search: `${material}` },
-      'Products': { $in: products.split(',') }
+      'Products': { $in: [products] }
     });
-
-    console.log(eligibleSellers);
+    if(eligibleSellers.length > 0)
+      console.log(eligibleSellers[0]);
 
     res.status(200).json({eligibleSellers});
   }

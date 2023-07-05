@@ -236,7 +236,7 @@ const Order = () => {
       
       <Box m="1.5rem 2.5rem">
         <Box mt="2rem">
-          <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResults} handleSearch={handleSearch} purchaseOrders={purchaseOrders} orderId={orderId}/>
+          <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResultsAdvanced} handleSearch={handleSearch} purchaseOrders={purchaseOrders} orderId={orderId}/>
         </Box>
 
         <Box>
