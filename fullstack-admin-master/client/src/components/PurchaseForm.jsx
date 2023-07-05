@@ -31,8 +31,8 @@ const PurchaseForm = ({ onSearch }) => {
   const formik = useFormik({
     initialValues: {
       productCategory: '',
-      materialType: '',
-      fabricConstruction: '',
+      materialType: [],
+      fabricConstruction: [],
       countryOfOrigin: '',
       weightOfFabric: '',
       unitWeight: '',
@@ -45,8 +45,12 @@ const PurchaseForm = ({ onSearch }) => {
       certificationsRequired: '',
     },
     onSubmit: values => {
-      console.log(values);
-      onSearch(values);
+      const valuesToSend = {
+        ...values,
+        materialType: values.materialType.map(option => option.label),
+      };
+      console.log(valuesToSend);
+      onSearch(valuesToSend);
     },
   });
 
@@ -177,19 +181,22 @@ const PurchaseForm = ({ onSearch }) => {
 
       <Autocomplete
         disablePortal
+        multiple
+        limitTags={2}
         id="materialType"
         options={materialTypes}     
         autoComplete
         autoHighlight
         selectOnFocus
         clearOnBlur
-        getOptionLabel={(option) => typeof option === 'string' ? option : option.label}
-        value={formik.values.materialType || null}
+        filterSelectedOptions
+        getOptionLabel={(option) => option.label}
+        value={formik.values.materialType || []}
         onChange={(event, newValue) => {
-          formik.setFieldValue('materialType', newValue ? newValue.label : '');
+          formik.setFieldValue('materialType', newValue);
           console.log(formik.values.materialType)
         }}
-        isOptionEqualToValue={(option, value) => option.label === value}
+        isOptionEqualToValue={(option, value) => option.label === value.label}
         renderOption={(props, option, { selected }) => (
           <li {...props}>
             <Checkbox
@@ -209,19 +216,22 @@ const PurchaseForm = ({ onSearch }) => {
 
       <Autocomplete
         disablePortal
+        multiple
+        limitTags={2}
         id="fabricConstruction"
         options={fabricConstructions}     
         autoComplete
         autoHighlight
         selectOnFocus
         clearOnBlur
-        getOptionLabel={(option) => typeof option === 'string' ? option : option.label}
-        value={formik.values.fabricConstruction || null}
+        filterSelectedOptions
+        getOptionLabel={(option) => option.label}
+        value={formik.values.fabricConstruction || []}
         onChange={(event, newValue) => {
-          formik.setFieldValue('fabricConstruction', newValue ? newValue.label : '');
+          formik.setFieldValue('fabricConstruction', newValue);
           console.log(formik.values.fabricConstruction)
         }}
-        isOptionEqualToValue={(option, value) => option.label === value}
+        isOptionEqualToValue={(option, value) => option.label === value.label}
         renderOption={(props, option, { selected }) => (
           <li {...props}>
             <Checkbox
