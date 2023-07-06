@@ -128,8 +128,11 @@ export const getEligibleSellersAdvanced = async (req, res) => {
     const { products, material, fabricConstruction, certifications } = req.query;
     let eligibleSellers = await SupplierData.find({
       // $text: { $search: `${material}` },
-      'Products': { $in: [products] }
+      'Products': { $in: products.split(',') }
     });
+
+    const materialArr = material.split(',');
+    const fabricConstructionArr = fabricConstruction.split(',');
 
     eligibleSellers = eligibleSellers.map(element => {
         let doc = element.toObject(); // convert to a plain js object
@@ -138,16 +141,25 @@ export const getEligibleSellersAdvanced = async (req, res) => {
         for(let i=0; i<14;i++)
           materials.push(materialTypes[randomNumbers[i]]);
         
-        const categogies = [];
+        const categories = [];
         randomNumbers = generateRandomNumbers(15,4);
           for(let i=0; i<4;i++)
             categories.push(productCategories[randomNumbers[i]]);
         
-        console.log(materials);
-        console.log(doc);
-        doc['materialTypes'] = materials;  // Assign 'materialTypes' key to each object
-        return doc; // return the modified doc
+        doc['materialTypes'] = materials;
+        doc['fabricConstruction'] = categories 
+        return doc; 
     });
+
+    eligibleSellers = eligibleSellers.filter(elem => {
+      const filteredMaterials = materialArr.filter(e => elem.materialTypes.includes(e));
+      const filteredFabricConstructions = fabricConstructionArr.filter(e => elem.fabricConstruction.includes(e));
+      if( (filteredMaterials.length > 0) && (filteredFabricConstructions.length >0))
+        return true;
+      
+      return false;  
+    });
+
 
     res.status(200).json({eligibleSellers});
   }

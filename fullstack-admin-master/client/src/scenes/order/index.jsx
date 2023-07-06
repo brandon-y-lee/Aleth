@@ -220,6 +220,13 @@ const Order = () => {
     headerName: "Certifications",
     flex: 0.5,
   },
+  {
+    field: "materialTypes",
+    headerName: "Material Types",
+    flex: 0.5,
+    // renderCell: (params) => {return (<p>"Hello"</p>)}
+  },
+
 ];
 
   return (
