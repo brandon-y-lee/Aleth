@@ -10,6 +10,9 @@ import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 
+import authRoutes from "./routes/auth.js";
+import { register } from "./controllers/auth.js";
+
 // data imports
 import User from "./models/User.js";
 import Product from "./models/Product.js";
@@ -41,8 +44,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
+/* ROUTES WITH FILES */
+app.post("/auth/register", register);
+
 /* ROUTES */
 /* CLIENT FACING SIDEBAR OPTIONS */
+app.use("/auth", authRoutes);
 app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);

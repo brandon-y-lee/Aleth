@@ -9,6 +9,7 @@ import {
   Grid,
 } from "@mui/material";
 import { DataGrid, GridFooterContainer, GridFooter } from "@mui/x-data-grid";
+import { DataGridPro } from "@mui/x-data-grid-pro";
 import { useGetTransactionsQuery, useGetChainOfShipmentsQuery, useGetIncomingRequestsQuery } from "state/api";
 import { useGetPurchaseOrdersQuery, useGetEligibleSellersQuery, useUpdateOrderMutation, useCreateNewOrderMutation, useGetEligibleSellersAdvancedQuery } from "state/api";
 import Header from "components/Header";
@@ -100,7 +101,6 @@ const Order = () => {
         <Button
           onClick= { async () => { 
             await createOrder({userId, material: formData.material, quantity:10, sellers: selectedRows});
-            // console.log(orderData);
             // await updateOrder({ requestType: RequestType.INITORDER, sellerIds:selectedRows, orderId:[props.orderData._id], isSeller: false })
             console.log(selectedRows); console.log("Submitted Request"); 
             window.location.reload();
@@ -172,53 +172,37 @@ const Order = () => {
     },
   ];
 
-//   const eligibleSellersColumns = [
-//     {
-//       field: "userId",
-//       headerName: "Seller ID",
-//       flex: 0.5,
-//     },
-//     {
-//       field: "name",
-//       headerName: "Name",
-//       flex: 0.5,
-//     },
-//     {
-//       field: "city",
-//       headerName: "Location",
-//       flex: 0.5,
-//       sortable: false,
-//       // renderCell: (params) => {params.value.length},
-//     },
-//     {
-//       field: "type",
-//       headerName: "Seller Type",
-//       flex: 0.5,
-//     },
-//  ];
-
  const eligibleSellersColumns = [
   {
     field: "Company",
     headerName: "Name",
-    flex: 0.5,
+    width: 150,
   },
   {
     field: "UserType",
-    headerName: "Name",
-    flex: 0.5,
+    headerName: "Type",
+    width: 175,
+  },
+  {
+    field: "UserMaterials",
+    headerName: "Materials",
+    width: 200,
+  },
+  {
+    field: "UserConstructions",
+    headerName: "Constructions",
+    width: 175,
   },
   {
     field: "City",
     headerName: "City",
-    flex: 0.5,
+    width: 150,
     sortable: false,
-    // renderCell: (params) => {params.value.length},
   },
   {
     field: "Certifications",
     headerName: "Certifications",
-    flex: 0.5,
+    width: 200,
   },
 ];
 
@@ -316,9 +300,9 @@ const Order = () => {
               onSelectionModelChange={(newSelection) => {
                 setSelectedRows(newSelection);
               }}
-              /* onPageChange={(newPage) => setPage(newPage)}
+              onPageChange={(newPage) => setPage(newPage)}
               onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-              onSortModelChange={(newSortModel) => setSort(...newSortModel)} */
+              onSortModelChange={(newSortModel) => setSort(...newSortModel)}
               components={{ 
                 Toolbar: DataGridCustomToolbar,
                 Footer: CustomFooter,

@@ -16,20 +16,24 @@ import Monthly from "scenes/monthly";
 import Breakdown from "scenes/breakdown";
 import Authentication from "scenes/authentication";
 import Performance from "scenes/performance";
+import Login from "scenes/login";
+
 import Session from 'react-session-api';
 Session.set("username","20");
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  const isAuth = Boolean(useSelector((state) => state.global.token));
+
   return (
     <div className="app">
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
+            <Route path="/" element={<Login />} />
             <Route element={<Layout />}>
-              <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/order" element={<Order />} />
               <Route path="/shipments" element={<Shipments />} />
