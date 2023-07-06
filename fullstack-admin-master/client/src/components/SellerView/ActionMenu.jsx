@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Link from 'components/Link';
+import Link from './Link';
 
 const ActionMenu = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -40,7 +40,7 @@ const ActionMenu = (props) => {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        MenuProps={{
+        sx={{
           elevation: 0,
           sx: {
             overflow: 'visible',
@@ -72,7 +72,7 @@ const ActionMenu = (props) => {
         <MenuItem onClick={handleLinkClick}>
             Link
         </MenuItem>
-        <Link open={openDialog} onClose={handleCloseDialog} />
+        <Link open={openDialog} onClose={handleCloseDialog} id={props.receivingOrderId} />
       </Menu>
     </div>
   );

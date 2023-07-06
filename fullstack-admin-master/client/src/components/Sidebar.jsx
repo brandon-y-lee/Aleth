@@ -27,6 +27,7 @@ import {
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,
   PieChartOutlined,
+  InventoryOutlined,
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -45,7 +46,7 @@ const navItems = [
     icon: null,
   },
   {
-    text: "Map",
+    text: "Order",
     icon: <PublicOutlined />,
   },
   {
@@ -53,8 +54,8 @@ const navItems = [
     icon: <Inventory2Outlined />,
   },
   {
-    text: "Entity",
-    icon: <PeopleAltOutlined />,
+    text: "Products",
+    icon: <InventoryOutlined />,
   },
   {
     text: "Templates",
@@ -65,7 +66,7 @@ const navItems = [
     icon: null,
   },
   {
-    text: "Overview",
+    text: "Entity",
     icon: <PointOfSaleOutlined />,
   },
   {
@@ -85,7 +86,7 @@ const navItems = [
     icon: null,
   },
   {
-    text: "Admin",
+    text: "Authentication",
     icon: <AdminPanelSettingsOutlined />,
   },
   {
@@ -112,124 +113,123 @@ const Sidebar = ({
 
   return (
     <Box component="nav">
-      {isSidebarOpen && (
-        <Drawer
-          open={isSidebarOpen}
-          onClose={() => setIsSidebarOpen(false)}
-          variant="persistent"
-          anchor="left"
-          sx={{
-            width: drawerWidth,
-            "& .MuiDrawer-paper": {
-              color: theme.palette.secondary[200],
-              backgroundColor: theme.palette.background.alt,
-              boxSixing: "border-box",
-              borderWidth: isNonMobile ? 0 : "2px",
-              width: drawerWidth,
-            },
-          }}
-        >
-          <Box width="100%">
-            <Box m="2rem 2rem 2rem 3rem">
-              <FlexBetween color={theme.palette.secondary.main}>
-                <Box display="flex" alignItems="center" gap="0.5rem">
-                  <img src={logo} alt="Aleth Logo" height="45px" />
-                </Box>
-                {!isNonMobile && (
-                  <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-                    <ChevronLeft />
-                  </IconButton>
-                )}
-              </FlexBetween>
+      <Drawer
+        open={true}
+        // onClose={() => setIsSidebarOpen(false)}
+        variant="persistent"
+        anchor="left"
+        sx={{
+          width: isSidebarOpen ? drawerWidth : '80px',
+          transition: 'width 0.3s',
+          "& .MuiDrawer-paper": {
+            color: theme.palette.secondary[200],
+            backgroundColor: theme.palette.background.alt,
+            boxSixing: "border-box",
+            borderWidth: isNonMobile ? 0 : "2px",
+            width: isSidebarOpen ? drawerWidth : '80px',
+            overflowX: 'hidden',
+            transition: 'width 0.3s',
+          },
+        }}
+      >
+        <Box width="100%">
+          <Box m="2rem 2rem 2rem 3rem">
+            <Box display="flex" alignItems="center" gap="0.5rem">
+              <img src={logo} alt="Aleth Logo" height="45px" />
             </Box>
-            <List>
-              {navItems.map(({ text, icon }) => {
-                if (!icon) {
-                  return (
-                    <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem" }}>
-                      {text}
-                    </Typography>
-                  );
-                }
-                const lcText = text.toLowerCase();
-
+          </Box>
+          <List>
+            {navItems.map(({ text, icon }) => {
+              if (!icon) {
                 return (
-                  <ListItem key={text} disablePadding>
-                    <ListItemButton
-                      onClick={() => {
-                        navigate(`/${lcText}`);
-                        setActive(lcText);
-                      }}
+                  <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem" }}>
+                    {text}
+                  </Typography>
+                );
+              }
+              const lcText = text.toLowerCase();
+
+              return (
+                <ListItem key={text} disablePadding>
+                  <ListItemButton
+                    onClick={() => {
+                      navigate(`/${lcText}`);
+                      setActive(lcText);
+                    }}
+                    sx={{
+                      backgroundColor:
+                        active === lcText
+                          ? theme.palette.secondary[400]
+                          : "transparent",
+                      color:
+                        active === lcText
+                          ? theme.palette.primary[600]
+                          : theme.palette.secondary[100],
+                    }}
+                  >
+                    <ListItemIcon
                       sx={{
-                        backgroundColor:
-                          active === lcText
-                            ? theme.palette.secondary[400]
-                            : "transparent",
+                        ml: "2rem",
                         color:
                           active === lcText
                             ? theme.palette.primary[600]
-                            : theme.palette.secondary[100],
+                            : theme.palette.secondary[200],
                       }}
                     >
-                      <ListItemIcon
-                        sx={{
-                          ml: "2rem",
-                          color:
-                            active === lcText
-                              ? theme.palette.primary[600]
-                              : theme.palette.secondary[200],
-                        }}
-                      >
-                        {icon}
-                      </ListItemIcon>
-                      <ListItemText primary={text} />
-                      {active === lcText && (
-                        <ChevronRightOutlined sx={{ ml: "auto" }} />
-                      )}
+                      {icon}
+                    </ListItemIcon>
+                    {isSidebarOpen && <ListItemText primary={text} />}
                     </ListItemButton>
-                  </ListItem>
-                );
-              })}
-            </List>
-          </Box>
+                    {active === lcText && (
+                      <IconButton
+                        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                        sx={{ ml: "auto" }}
+                      >
+                        <ChevronLeft sx={{ ml: "auto" }} />
+                      </IconButton>
+                    )}
+                </ListItem>
+              );
+            })}
+          </List>
+        </Box>
 
-          <Box position="absolute" bottom="2rem">
-            <Divider />
-            <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
-              <Box
-                component="img"
-                alt="profile"
-                src={profileImage}
-                height="40px"
-                width="40px"
-                borderRadius="50%"
-                sx={{ objectFit: "cover" }}
-              />
-              <Box textAlign="left">
-                <Typography
-                  fontWeight="bold"
-                  fontSize="0.9rem"
-                  sx={{ color: theme.palette.secondary[100] }}
-                >
-                  {user.name}
-                </Typography>
-                <Typography
-                  fontSize="0.8rem"
-                  sx={{ color: theme.palette.secondary[200] }}
-                >
-                  {user.occupation}
-                </Typography>
-              </Box>
-              <SettingsOutlined
-                sx={{
-                  color: theme.palette.secondary[300],
-                  fontSize: "25px ",
-                }}
-              />
-            </FlexBetween>
-          </Box>
-        </Drawer>
-      )}
+        <Box position="absolute" bottom="2rem">
+          <Divider />
+          <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
+            <Box
+              component="img"
+              alt="profile"
+              src={profileImage}
+              height="40px"
+              width="40px"
+              borderRadius="50%"
+              sx={{ objectFit: "cover" }}
+            />
+            <Box textAlign="left">
+              <Typography
+                fontWeight="bold"
+                fontSize="0.9rem"
+                sx={{ color: theme.palette.secondary[100] }}
+              >
+                {user.name}
+              </Typography>
+              <Typography
+                fontSize="0.8rem"
+                sx={{ color: theme.palette.secondary[200] }}
+              >
+                {user.occupation}
+              </Typography>
+            </Box>
+            <SettingsOutlined
+              sx={{
+                color: theme.palette.secondary[300],
+                fontSize: "25px ",
+              }}
+            />
+          </FlexBetween>
+        </Box>
+      </Drawer>
     </Box>
   );
 };

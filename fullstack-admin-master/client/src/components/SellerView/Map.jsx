@@ -1,14 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
-import InfoWindow from 'components/InfoWindow';
-import { json } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
+import SupplierCard from '../SupplierDetails/SupplierCard';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+
 
 // Replace the path prop with actual data
 const Map = (props) => {
-    console.log(props);
+    // console.log(props);
     const mapRef = useRef(null);
     const markersRef = useRef([]);
     const polylineRef = useRef(null);
     const [activeMarkerIndex, setActiveMarkerIndex] = useState(null);
+    const [hoveredMarkerIndex, setHoveredMarkerIndex] = useState(null);
+    const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
+
 
     const handleKeyDown = (event) => {
         // Check if the target of the event is a marker
@@ -45,7 +56,7 @@ const Map = (props) => {
     };
 
     function getPolylinePath(shipmentArray){
-        console.log("Here");
+        // console.log("Here");
         const data = shipmentArray;
         const pairs = [];
         const idToObject = {};
@@ -64,36 +75,12 @@ const Map = (props) => {
                 pairs.push([ [a[0].$numberDecimal,a[1].$numberDecimal], [b[0].$numberDecimal, b[1].$numberDecimal]]);
             }
         });
-        console.log(pairs);
-        return pairs;
-    }
-
-    function getPolylinePath(shipmentArray){
-        console.log("Here");
-        const data = shipmentArray;
-        const pairs = [];
-        const idToObject = {};
-
-        // Create a dictionary to map object IDs to their corresponding objects
-        data.forEach(obj => {
-        idToObject[obj.id] = obj;
-        }); 
-
-        // Generate pairs where a.next = b.id
-        data.forEach(obj => {
-            const nextId = obj.next;
-            if (nextId && idToObject[nextId]) {
-                const a = obj.coordinates;
-                const b = idToObject[nextId].coordinates;
-                pairs.push([ [a[0].$numberDecimal,a[1].$numberDecimal], [b[0].$numberDecimal, b[1].$numberDecimal]]);
-            }
-        });
-        console.log(pairs);
         return pairs;
     }
 
     const initMap = async () => {
         // Load the Maps JavaScript API library
+        // console.log("Initing")
         const { Map, Marker, Polyline } = await window.google.maps.importLibrary('maps');
 
         const map = new Map(mapRef.current, {
@@ -105,14 +92,16 @@ const Map = (props) => {
 
         // Create markers and polyline
         if (props.locations && props.locations.shipmentChain) {
-            console.log("Getting here")
             markersRef.current = props.locations.shipmentChain.map((point, index) => {
-                console.log(point);
+                // console.log("Index", index);
+                // console.log("HoveredCardIndex", hoveredCardIndex)
                 const marker = new window.google.maps.Marker({
                     position: {
                         lat: parseFloat(point.coordinates[0].$numberDecimal), 
                         lng: parseFloat(point.coordinates[1].$numberDecimal)
                     },
+                    icon: { url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png", scaledSize: hoveredCardIndex === index ? new window.google.maps.Size(50, 50) : new window.google.maps.Size(32, 32)},
+                    color: "blue",
                     map,
                     title: `#${index + 1}`,
                 });
@@ -123,11 +112,20 @@ const Map = (props) => {
                 marker.addListener('click', () => {
                     setActiveMarkerIndex(index);
                 });
+
+                marker.addListener('mouseover', () => {
+                    setHoveredMarkerIndex(index);
+                });
+            
+                // Add a mouseout listener to clear the hovered marker index
+                marker.addListener('mouseout', () => {
+                    setHoveredMarkerIndex(null);
+                });
+            
             });
     
 
                 let pPairs = getPolylinePath(props.locations.shipmentChain);
-                console.log(pPairs);
                 var polygons = [];
                 
                 for(var i in pPairs)
@@ -135,7 +133,6 @@ const Map = (props) => {
                     var arr = [];
 
                     for (var j = 0; j < pPairs[i].length; j++) {
-                        console.log(pPairs);
                         arr.push(new window.google.maps.LatLng(
                             parseFloat(pPairs[i][j][0]),
                             parseFloat(pPairs[i][j][1])
@@ -143,7 +140,6 @@ const Map = (props) => {
                         bounds.extend(arr[arr.length - 1])
                     }
                     map.fitBounds(bounds);
-                    console.log(arr);
                     polygons.push(new window.google.maps.Polyline({
                     path: arr,
                     strokeColor: '#FF0000',
@@ -172,7 +168,7 @@ const Map = (props) => {
         // Call the initMap function
         initMap();
     
-        // Add the keydown event listener
+        // Keydown event listener
         window.addEventListener('keydown', handleKeyDown);
     
         // Clean up the event listener when the component unmounts
@@ -181,17 +177,59 @@ const Map = (props) => {
         };
     }, [props]);
 
+    const card = (
+        <React.Fragment>
+          <CardContent>
+            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+              Word of the Day
+            </Typography>
+            <Typography variant="h5" component="div">
+             temporary
+            </Typography>
+            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+              adjective
+            </Typography>
+            <Typography variant="body2">
+              well meaning and kindly.
+              <br />
+              {'"a benevolent smile"'}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size="small">Learn More</Button>
+          </CardActions>
+        </React.Fragment>
+      );
+
+    const elems = props.locations.shipmentChain.map((elem,index) => (
+        <ListItem
+            alignItems="flex-start"
+            key={elem.id}
+            component="div" // Change the component from "li" to "div"
+            onMouseEnter={() => setHoveredCardIndex(index)}
+            onMouseLeave={() => setHoveredCardIndex(null)}
+        >
+            <SupplierCard place={{"name":elem.name}} selected = {1} refProp={1} color={hoveredMarkerIndex === index ? 'gainsboro' : 'transparent'}/>
+        </ListItem>
+      ));
+
+    // console.log(elems);
+
     return (
-        <div ref={mapRef} style={{ height: "80vh" }}>
-            {activeMarkerIndex !== null && (
-                <InfoWindow
-                lat={props.locations.shipmentChain[activeMarkerIndex].coordinates[0].$numberDecimal}
-                lng={props.locations.shipmentChain[activeMarkerIndex].coordinates[1].$numberDecimal}
-                onClose={closeInfoWindow}
-                title={props.locations.shipmentChain[activeMarkerIndex].name}
-              />
-            )}
-        </div>
+        <Grid container spacing={2}>
+            <Grid item xs={8} display="flex">
+                <div ref={mapRef} style={{ height: "70vh", width: "100%" }}>
+                </div>
+            </Grid>
+            
+            <Grid item xs={4} display="flex">
+                <Paper style={{maxHeight: "70vh", overflow: 'auto'}}>
+                    <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                        {elems}
+                    </List>
+                </Paper>
+            </Grid>
+        </Grid>
     );
 };
 

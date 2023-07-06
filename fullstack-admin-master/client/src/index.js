@@ -7,6 +7,9 @@ import globalReducer from "state";
 import { Provider } from "react-redux";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { api } from "state/api";
+import Session from 'react-session-api'
+
+// Session.set("username","2");
 
 const store = configureStore({
   reducer: {

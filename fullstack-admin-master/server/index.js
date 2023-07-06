@@ -10,6 +10,9 @@ import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 
+import authRoutes from "./routes/auth.js";
+import { register } from "./controllers/auth.js";
+
 // data imports
 import User from "./models/User.js";
 import Product from "./models/Product.js";
@@ -17,16 +20,18 @@ import ProductStat from "./models/ProductStat.js";
 import Transaction from "./models/Transaction.js";
 import OverallStat from "./models/OverallStat.js";
 import AffiliateStat from "./models/AffiliateStat.js";
+import UserData from "./models/UserData.js";
+import OrderRequest from "./models/OrderRequest.js";
+import SupplierData from "./models/SupplierData.js";
+
 import {
-  dataUser,
-  dataProduct,
-  dataProductStat,
-  dataTransaction,
+  userData,
   dataShipments,
-  dataOverallStat,
-  dataAffiliateStat,
+  dataOrderRequests,
+  supplierdata
 } from "./data/index.js";
 import Shipments from "./models/Shipments.js";
+import { OrderStatus } from "./configs/OrderStatus.js";
 
 /* CONFIGURATION */
 dotenv.config();
@@ -39,8 +44,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
+/* ROUTES WITH FILES */
+app.post("/auth/register", register);
+
 /* ROUTES */
 /* CLIENT FACING SIDEBAR OPTIONS */
+app.use("/auth", authRoutes);
 app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
@@ -66,6 +75,10 @@ mongoose
     // print(dataShipments);
     // Shipments.insertMany(dataShipments);
     // User.insertMany(dataUser);
+    // UserData.insertMany(userData);
+    // OrderRequest.insertMany(dataOrderRequests);
+    // SupplierData.insertMany(supplierdata);
+    console.log("Inserted")
   })
   .catch((error) => console.log(`${error} Did not connect`));
 

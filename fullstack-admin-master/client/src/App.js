@@ -8,36 +8,42 @@ import Layout from "scenes/layout";
 import Dashboard from "scenes/dashboard";
 import Products from "scenes/products";
 import Customers from "scenes/customers";
-import Transactions from "scenes/transactions";
-import Geography from "scenes/geography";
+import Shipments from "scenes/shipments";
+import Order from "scenes/order";
 import Overview from "scenes/overview";
 import Daily from "scenes/daily";
 import Monthly from "scenes/monthly";
 import Breakdown from "scenes/breakdown";
-import Admin from "scenes/admin";
+import Authentication from "scenes/authentication";
 import Performance from "scenes/performance";
+import Login from "scenes/login";
+
+import Session from 'react-session-api';
+Session.set("username","20");
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  const isAuth = Boolean(useSelector((state) => state.global.token));
+
   return (
     <div className="app">
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
+            <Route path="/" element={<Login />} />
             <Route element={<Layout />}>
-              <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/map" element={<Geography />} />
-              <Route path="/shipments" element={<Transactions />} />
-              <Route path="/entity" element={<Customers />} />
-              <Route path="/templates" element={<Products />} />
-              <Route path="/overview" element={<Overview />} />
+              <Route path="/order" element={<Order />} />
+              <Route path="/shipments" element={<Shipments />} />
+              <Route path="/tracing" element={<Customers />} />
+              <Route path="/templates" element={<Overview />} />
+              <Route path="/products" element={<Products />} />
               <Route path="/daily" element={<Daily />} />
               <Route path="/monthly" element={<Monthly />} />
               <Route path="/breakdown" element={<Breakdown />} />
-              <Route path="/admin" element={<Admin />} />
+              <Route path="/authentication" element={<Authentication />} />
               <Route path="/performance" element={<Performance />} />
             </Route>
           </Routes>
