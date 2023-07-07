@@ -14,8 +14,9 @@ import Overview from "scenes/overview";
 import Daily from "scenes/daily";
 import Monthly from "scenes/monthly";
 import Breakdown from "scenes/breakdown";
-import Authentication from "scenes/authentication";
 import Performance from "scenes/performance";
+import Profile from "scenes/profile";
+
 import Session from 'react-session-api';
 Session.set("username","20");
 
@@ -39,8 +40,8 @@ function App() {
               <Route path="/daily" element={<Daily />} />
               <Route path="/monthly" element={<Monthly />} />
               <Route path="/breakdown" element={<Breakdown />} />
-              <Route path="/authentication" element={<Authentication />} />
               <Route path="/performance" element={<Performance />} />
+              <Route path="/profile/:userId" element={<Profile />} />
             </Route>
           </Routes>
         </ThemeProvider>

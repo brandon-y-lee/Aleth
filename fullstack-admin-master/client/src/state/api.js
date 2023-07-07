@@ -66,6 +66,15 @@ export const api = createApi({
       providesTags: ["eligibleSellersAdvanced"],
     }),
 
+    getSupplierData: build.query({
+      query: ({ userId }) => ({
+        url: "client/supplierData",
+        method: "GET",
+        params: { userId },
+      }),
+      providesTags: ["supplierData"],
+    }),
+
     getIncomingRequests: build.query({
       query: ({ userId }) => ({
         url: "client/incomingRequests",
@@ -183,6 +192,7 @@ export const {
   useGetPurchaseOrdersQuery,
   useGetEligibleSellersQuery,
   useGetEligibleSellersAdvancedQuery,
+  useGetSupplierDataQuery,
   useGetOrderSellerDetailsQuery,
   useUpdateOrderMutation,
   useCreateNewOrderMutation,

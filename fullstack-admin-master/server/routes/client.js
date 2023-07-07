@@ -14,7 +14,8 @@ import {
   createNewOrder,
   getEligibleSellers,
   getOrderSellerDetails,
-  getEligibleSellersAdvanced
+  getEligibleSellersAdvanced,
+  getSupplierData
 } from "../controllers/client.js";
 
 const router = express.Router();
@@ -33,6 +34,8 @@ router.get("/getPurchaseOrders", getPurchaseOrders)
 router.get("/eligibleSellers", getEligibleSellers);
 router.get("/eligibleSellersAdvanced", getEligibleSellersAdvanced);
 router.get("/orderSellerDetails", getOrderSellerDetails);
+router.get("/supplierData", getSupplierData);
+
 
 //POSTs
 router.post("/updateRecipients", updateRecipients);

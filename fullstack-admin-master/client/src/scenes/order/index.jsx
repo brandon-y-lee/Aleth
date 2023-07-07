@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Session from 'react-session-api';
 import { 
   Box,
@@ -172,40 +173,21 @@ const Order = () => {
     },
   ];
 
-//   const eligibleSellersColumns = [
-//     {
-//       field: "userId",
-//       headerName: "Seller ID",
-//       flex: 0.5,
-//     },
-//     {
-//       field: "name",
-//       headerName: "Name",
-//       flex: 0.5,
-//     },
-//     {
-//       field: "city",
-//       headerName: "Location",
-//       flex: 0.5,
-//       sortable: false,
-//       // renderCell: (params) => {params.value.length},
-//     },
-//     {
-//       field: "type",
-//       headerName: "Seller Type",
-//       flex: 0.5,
-//     },
-//  ];
-
  const eligibleSellersColumns = [
   {
     field: "Company",
     headerName: "Name",
     flex: 0.5,
+    renderCell: (params) => (
+      console.log(params.id),
+      <Link to={`/profile/${params.id}`}>
+        {params.row.Company}
+      </Link>
+    ),
   },
   {
     field: "UserType",
-    headerName: "Name",
+    headerName: "Type",
     flex: 0.5,
   },
   {

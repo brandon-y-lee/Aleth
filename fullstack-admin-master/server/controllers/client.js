@@ -113,6 +113,20 @@ export const getEligibleSellersAdvanced = async (req, res) => {
   }
 };
 
+export const getSupplierData = async (req, res) => {
+  try {
+    console.log("Finding Supplier Data", req.query);
+    const { userId } = req.query;
+    const supplierData = await SupplierData.findOne({
+      id:userId,
+    });
+    res.status(200).json({supplierData});
+  }
+  catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 
 //TODO: Fix this to find out the set of eligible sellers
 export const getPurchaseOrders = async (req, res) => {
