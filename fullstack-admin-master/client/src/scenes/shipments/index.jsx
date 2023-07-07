@@ -29,7 +29,7 @@ import Order from "scenes/order";
 const Shipments = () => {
   const userId = Session.get("username");
   const theme = useTheme();
-
+  console.log("Logged in user:", userId);
 
   // HOOKS 
   const [page, setPage] = useState(0);

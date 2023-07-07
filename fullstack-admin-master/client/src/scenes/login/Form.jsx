@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "state";
 import FlexBetween from "components/FlexBetween";
+import Session from "react-session-api";
 
 const registerSchema = yup.object().shape({
   name: yup.string().required("required"),
@@ -49,6 +50,7 @@ const initialValuesRegister = {
 const initialValuesLogin = {
   email: "",
   password: "",
+  ID: ""
 };
 
 const Form = () => {
@@ -68,7 +70,7 @@ const Form = () => {
     }
 
     const savedUserResponse = await fetch(
-      "http://localhost:3001/auth/register",
+      "http://localhost:5001/auth/register",
       {
         method: "POST",
         body: formData,
@@ -83,21 +85,25 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
+    const loggedInResponse = await fetch("http://localhost:5001/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
+
+    console.log("Logged in status:", loggedInResponse);
     const loggedIn = await loggedInResponse.json();
     onSubmitProps.resetForm();
     if (loggedIn) {
-      dispatch(
-        setLogin({
-          user: loggedIn.user,
-          token: loggedIn.token,
-        })
-      );
-      navigate("/dashboard");
+      Session.set("username", loggedIn.user.ID);
+      console.log("Session Username", Session.get("username"));
+      // dispatch(
+      //   setLogin({
+      //     user: loggedIn.user,
+      //     token: loggedIn.token,
+      //   })
+      // );
+      navigate("/order");
     }
   };
 
@@ -181,6 +187,16 @@ const Form = () => {
               sx={{ gridColumn: "span 4" }}
             />
             <TextField
+              label="ID"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={values.ID}
+              name="ID"
+              error={Boolean(touched.id) && Boolean(errors.id)}
+              helperText={touched.id && errors.id}
+              sx={{ gridColumn: "span 4" }}
+            />
+            <TextField
               label="Password"
               type="password"
               onBlur={handleBlur}
@@ -198,11 +214,13 @@ const Form = () => {
             <Button
               fullWidth
               type="submit"
+              color="primary" 
+              style={{"backgroundColor":"#00994c"}}
               sx={{
                 m: "2rem 0",
                 p: "1rem",
-                backgroundColor: palette.primary.main,
-                color: palette.background.alt,
+                // backgroundColor: palette.primary.main,
+                // color: palette.background.alt,
                 "&:hover": { color: palette.primary.main },
               }}
             >
@@ -213,9 +231,10 @@ const Form = () => {
                 setPageType(isLogin ? "register" : "login");
                 resetForm();
               }}
+              color="secondary"
               sx={{
                 textDecoration: "underline",
-                color: palette.primary.main,
+                // color: palette.primary.main,
                 "&:hover": {
                   cursor: "pointer",
                   color: palette.primary.light,
