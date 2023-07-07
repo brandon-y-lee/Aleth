@@ -11,33 +11,6 @@ import {RequestType} from "../configs/RequestType.js";
 import mongoose from "mongoose";
 import SupplierData from "../models/SupplierData.js";
 
-const materialTypes = [ 'Cotton', 'Polyester', 'Silk', 'Wool', 'Denim', 'Leather', 'Suede', 'Satin', 'Velvet', 'Linen', 'Rayon', 'Nylon', 'Spandex', 'Lycra', 'Cashmere', 'Chiffon', 'Flannel', 'Gabardine', 'Georgette', 'Jersey', 'Lace', 'Muslin', 'Organza', 'Poplin', 'Tweed', 'Twill', 'Voile', 'Faux Fur', 'Fleece', 'Neoprene', 'Vinyl', 'Hemp', 'Jute', 'Bamboo', 'Modal', 'Tencel', 'Seersucker', 'Brocade', 'Corduroy', 'Damask', 'Khaki', 'Pique', 'Plisse', 'Velour', 'Acrylic', 'Microfiber', 'Polypropylene', 'Gore-Tex', 'Tyvek' ];
-const productCategories = ['Tops','Bottoms','Dresses','Outerwear', 'Undergarments','Activewear','Swimwear','Sleepwear','Accessories','Footwear'];
-
-function hashSellerIDToCat(number) {
-  const Pi = 3.1415926535897932384626433832795;
-  let result = number / Pi;
-  let decimalPart = result.toString().split('.')[1];
-  decimalPart = decimalPart.substring(0, 30);
-  let digits = Array.from(decimalPart);
-  let pairs = [];
-  for(let i = 0; i < digits.length; i += 2){
-    let pair = Number(digits[i] + digits[i + 1]);
-    let scaledPair = Math.floor((pair / 100) * 49);
-    pairs.push(scaledPair);
-  }
-
-  return pairs;  // Return pairs
-}
-
-function generateRandomNumbers(range, amt) {
-  let randomNumbers = [];
-  for(let i = 0; i < amt; i++) {
-      let randomNumber = Math.floor(Math.random() * range);
-      randomNumbers.push(randomNumber);
-  }
-  return randomNumbers;
-}
 
 export const getProducts = async (req, res) => {
   try {
@@ -126,40 +99,12 @@ export const getEligibleSellersAdvanced = async (req, res) => {
   try {
     console.log("Finding Eligible Sellers Advanced", req.query);
     const { products, material, fabricConstruction, certifications } = req.query;
-    let eligibleSellers = await SupplierData.find({
+    const eligibleSellers = await SupplierData.find({
       // $text: { $search: `${material}` },
-      'Products': { $in: products.split(',') }
+      'Products': { $in: [products] }
     });
-
-    const materialArr = material.split(',');
-    const fabricConstructionArr = fabricConstruction.split(',');
-
-    eligibleSellers = eligibleSellers.map(element => {
-        let doc = element.toObject(); // convert to a plain js object
-        const materials = [];
-        let randomNumbers = generateRandomNumbers(49,14);
-        for(let i=0; i<14;i++)
-          materials.push(materialTypes[randomNumbers[i]]);
-        
-        const categories = [];
-        randomNumbers = generateRandomNumbers(15,4);
-          for(let i=0; i<4;i++)
-            categories.push(productCategories[randomNumbers[i]]);
-        
-        doc['materialTypes'] = materials;
-        doc['fabricConstruction'] = categories 
-        return doc; 
-    });
-
-    eligibleSellers = eligibleSellers.filter(elem => {
-      const filteredMaterials = materialArr.filter(e => elem.materialTypes.includes(e));
-      const filteredFabricConstructions = fabricConstructionArr.filter(e => elem.fabricConstruction.includes(e));
-      if( (filteredMaterials.length > 0) && (filteredFabricConstructions.length >0))
-        return true;
-      
-      return false;  
-    });
-
+    if(eligibleSellers.length > 0)
+      console.log(eligibleSellers[0]);
 
     res.status(200).json({eligibleSellers});
   }
@@ -172,16 +117,13 @@ export const getSupplierData = async (req, res) => {
   try {
     console.log("Finding Supplier Data", req.query);
     const { userId } = req.query;
-    const supplierData = await SupplierData.findOne({
-      id:userId,
-    });
+    const supplierData = await SupplierData.findOne({_id: mongoose.Types.ObjectId(userId)});
     res.status(200).json({supplierData});
   }
   catch (error) {
     res.status(404).json({ message: error.message });
   }
 };
-
 
 
 //TODO: Fix this to find out the set of eligible sellers

@@ -52,7 +52,7 @@ const Order = () => {
     material: formData.materialType ? formData.materialType : undefined,
     fabricConstruction: formData.fabricConstruction ?formData.fabricConstruction : undefined,
     certifications : ""
-   });
+   })
 
   console.log(searchResultsAdvanced);
   const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
@@ -202,13 +202,6 @@ const Order = () => {
     headerName: "Certifications",
     flex: 0.5,
   },
-  {
-    field: "materialTypes",
-    headerName: "Material Types",
-    flex: 0.5,
-    // renderCell: (params) => {return (<p>"Hello"</p>)}
-  },
-
 ];
 
   return (

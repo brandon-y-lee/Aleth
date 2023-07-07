@@ -8,21 +8,15 @@ import { useGetSupplierDataQuery } from "state/api";
 const Profile = () => {
     const [user, setUser] = useState(null);
     const { userId } = useParams();
+    console.log(userId);
     const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
 
     let {data: supplierData, isLoading: isLoadingSupplierData} = useGetSupplierDataQuery({userId});
 
+    console.log(supplierData);
+
     return (
         <Box>
-            <Box
-                width="100%"
-                padding="2rem"
-                display={isNonMobileScreens ? "flex" : "block"}
-                gap="2rem"
-                justifyContent="center"
-            >
-                <UserWidget userId={userId} />
-            </Box>
         </Box>
     )
 }
