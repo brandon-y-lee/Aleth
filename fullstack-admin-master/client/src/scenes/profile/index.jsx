@@ -1,12 +1,17 @@
-import { React, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Box, Button, Card, CardContent, CardMedia, Container, Grid, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, CardMedia, Container, Grid, Typography, useTheme, Tabs, Tab } from '@mui/material';
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useGetSupplierDataQuery } from "state/api";
+import TabPanel from 'components/Common/TabPanel';
 
 const Profile = () => {
     const [user, setUser] = useState(null);
+    const [value, setValue] = React.useState(0);
+    const [selectedTab, setSelectedTab] = useState(0);
+
+    const theme = useTheme();
     const { userId } = useParams();
     console.log(userId);
 
@@ -14,71 +19,97 @@ const Profile = () => {
 
     console.log(supplierData);
 
+    function a11yProps(index) {
+        return {
+          id: `simple-tab-${index}`,
+          'aria-controls': `simple-tabpanel-${index}`,
+        };
+    }
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+        setSelectedTab(newValue);
+    };
+
     return (
-        <Box sx={{ backgroundColor: '#9de2ff', py: 5, minHeight: '100vh' }}>
-          <Container>
-            <Grid container justifyContent="center" alignItems="center" style={{ height: '100%' }}>
-              <Grid item lg={9} xl={7}>
-                <Card>
-                  <Box sx={{ display: 'flex', flexDirection: 'row', p: 2, backgroundColor: '#000' }}>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', ml: 4, mt: 5 }}>
-                      <CardMedia component="img" image="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp" sx={{ width: 150, mt: 4, mb: 2 }} />
-                      <Button variant="outlined" color="inherit" sx={{ height: 36 }}>Edit profile</Button>
+        <Card>
+            <Box sx={{ display: 'flex', flexDirection: 'row', p: 2 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mt: 4, mb: 2, gap: '1rem' }}>
+                    <Typography variant="h1" sx={{ color: theme.palette.secondary[200] }}>{supplierData?.supplierData?.Company}</Typography>
+                    <Typography variant="h4" sx={{ color: theme.palette.secondary[200] }}>{supplierData?.supplierData?.UserType} based in {supplierData?.supplierData?.City}, {supplierData?.supplierData?.State}</Typography>
+                </Box>
+            </Box>
+
+            <Box>
+                <Tabs 
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="basic tabs example"
+                >
+                    <Tab 
+                    label="General Profile"
+                    {...a11yProps(0)}
+                    sx={(theme) => ({
+                        color: "#00994c",
+                        backgroundColor: value === 0 ? "#00cc69" : "white",
+                        boxShadow: value === 0 ? theme.shadows[1] : theme.shadows[2],
+                        '&:hover': {
+                        backgroundColor: value === 0 ? '#00cc69' : '#e0e0e0',
+                        },
+                    })}
+                    />
+                    <Tab
+                    label="Operations"
+                    {...a11yProps(1)}
+                    sx={(theme) => ({
+                        color: "#00994c",
+                        backgroundColor: value === 1 ? "#00cc69" : "white",
+                        boxShadow: value === 1 ? theme.shadows[1] : theme.shadows[2],
+                        '&:hover': {
+                        backgroundColor: value === 1 ? '#00cc69' : '#e0e0e0',
+                        }
+                    })}
+                    />
+                    <Tab
+                    label="Claims"
+                    {...a11yProps(1)}
+                    sx={(theme) => ({
+                        color: "#00994c",
+                        backgroundColor: value === 2 ? "#00cc69" : "white",
+                        boxShadow: value === 2 ? theme.shadows[1] : theme.shadows[2],
+                        '&:hover': {
+                        backgroundColor: value === 2 ? '#00cc69' : '#e0e0e0',
+                        }
+                    })}
+                    />
+                </Tabs>
+            </Box>
+
+            <TabPanel value={value} index={0}>
+                <Typography variant="h4" gutterBottom sx={{ ml: 3, mr: 3 }}>Description</Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', backgroundColor: "#f6f6f6" }}>
+                    <Box sx={{ p: 4, backgroundColor: '#f8f9fa' }}>
+                        <Typography variant="body1">{supplierData?.supplierData?.Description}</Typography>
                     </Box>
-                    <Box sx={{ ml: 3, mt: 13 }}>
-                      <Typography variant="h5" color="white">Andy Horwitz</Typography>
-                      <Typography variant="body1" color="white">New York</Typography>
+                </Box>
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+                <Typography variant="h4" gutterBottom sx={{ ml: 3, mr: 3 }}>Description</Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', backgroundColor: "#f6f6f6" }}>
+                    <Box sx={{ p: 4, backgroundColor: '#f8f9fa' }}>
+                        <Typography variant="body1">{supplierData?.supplierData?.Description}</Typography>
                     </Box>
-                  </Box>
-                  <Box sx={{ p: 4, backgroundColor: '#f8f9fa' }}>
-                    <Grid container justifyContent="space-between" alignItems="center">
-                      <Grid item>
-                        <Typography variant="h5">253</Typography>
-                        <Typography variant="body2" color="textSecondary">Photos</Typography>
-                      </Grid>
-                      <Grid item>
-                        <Typography variant="h5">1026</Typography>
-                        <Typography variant="body2" color="textSecondary">Followers</Typography>
-                      </Grid>
-                      <Grid item>
-                        <Typography variant="h5">478</Typography>
-                        <Typography variant="body2" color="textSecondary">Following</Typography>
-                      </Grid>
-                    </Grid>
-                  </Box>
-                  <CardContent>
-                    <Box sx={{ mb: 5 }}>
-                      <Typography variant="h6" gutterBottom>About</Typography>
-                      <Box sx={{ p: 4, backgroundColor: '#f8f9fa' }}>
-                        <Typography variant="body1" fontStyle="italic">Web Developer</Typography>
-                        <Typography variant="body1" fontStyle="italic">Lives in New York</Typography>
-                        <Typography variant="body1" fontStyle="italic">Photographer</Typography>
-                      </Box>
+                </Box>
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+                <Typography variant="h4" gutterBottom sx={{ ml: 3, mr: 3 }}>Description</Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', backgroundColor: "#f6f6f6" }}>
+                    <Box sx={{ p: 4, backgroundColor: '#f8f9fa' }}>
+                        <Typography variant="body1">{supplierData?.supplierData?.Description}</Typography>
                     </Box>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
-                      <Typography variant="h6">Recent photos</Typography>
-                      <Typography variant="body1"><a href="#!" style={{ color: 'inherit', textDecoration: 'none' }}>Show all</a></Typography>
-                    </Box>
-                    <Grid container spacing={2}>
-                      <Grid item xs={6}>
-                        <CardMedia component="img" image="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp" sx={{ width: '100%' }} />
-                      </Grid>
-                      <Grid item xs={6}>
-                        <CardMedia component="img" image="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp" sx={{ width: '100%' }} />
-                      </Grid>
-                      <Grid item xs={6}>
-                        <CardMedia component="img" image="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp" sx={{ width: '100%' }} />
-                      </Grid>
-                      <Grid item xs={6}>
-                        <CardMedia component="img" image="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp" sx={{ width: '100%' }} />
-                      </Grid>
-                    </Grid>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
+                </Box>
+            </TabPanel>
+        </Card>
     );
 }
 

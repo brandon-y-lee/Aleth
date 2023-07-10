@@ -46,13 +46,14 @@ const Order = () => {
   const [searchInput, setSearchInput] = useState("");
 
   let {data: purchaseOrders, isLoading: isLoadingPurchaseOrders} = useGetPurchaseOrdersQuery({userId});
-  let {data: searchResults, isLoading: isLoadingSearchResults} = useGetEligibleSellersQuery({material: formData.material ? formData.material : undefined})
+  let {data: searchResults, isLoading: isLoadingSearchResults} = useGetEligibleSellersQuery({material: formData.material ? formData.material : undefined});
+
   let {data: searchResultsAdvanced, isLoading: isLoadingSearchResultsAdvanced} = useGetEligibleSellersAdvancedQuery({
     products: formData.productCategory ? formData.productCategory : undefined, 
     material: formData.materialType ? formData.materialType : undefined,
     fabricConstruction: formData.fabricConstruction ?formData.fabricConstruction : undefined,
     certifications : ""
-   })
+   });
 
   console.log(searchResultsAdvanced);
   const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
