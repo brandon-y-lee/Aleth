@@ -23,12 +23,17 @@ import Chip from '@mui/material/Chip';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import TabPanel from 'components/Common/TabPanel';
+import { getLoggedInUser } from "utils/auth";
+
 
 // Session.set("username", "2");
 Session.set("coordinates", [17.2064912,22.1782433]);
 
 const Order = () => {
-  const userId = Session.get("username");
+  let userId = Session.get("username");
+  const userInfo = getLoggedInUser();
+
+  userId = userInfo.id;
   const coords = Session.get("coordinates");
   const theme = useTheme();
   const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");

@@ -18,30 +18,24 @@ import Authentication from "scenes/authentication";
 import Performance from "scenes/performance";
 import Login from "scenes/login";
 
-import Session from 'react-session-api';
-// Session.set("username","20");
-
 function App() {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
-  const isAuth = Boolean(useSelector((state) => state.global.token));
+  const token = localStorage.getItem("token");
   
-  if(Session.get("username"))
-  {
-  return (
-    <div className="app">
-      <BrowserRouter>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Routes>
-            <Route element={<Layout />}>
+  if(!token) {
+    return (
+      <div className="app">
+        <BrowserRouter>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Routes>
               <Route path="/" element={<Login />} />
-            </Route>
-          </Routes>
-        </ThemeProvider>
-      </BrowserRouter>
-    </div>
-  );
+            </Routes>
+          </ThemeProvider>
+        </BrowserRouter>
+      </div>
+    );
   }
 
   return (

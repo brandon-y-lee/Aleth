@@ -1,9 +1,9 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import SupplierData from "../models/SupplierData.js";
-import User from "../models/User.js"
-
+import UserAuth from "../models/UserAuth.js";
 /* REGISTER USER */
+
 export const register = async (req, res) => {
     try {
         const {
@@ -44,19 +44,19 @@ export const register = async (req, res) => {
 /* LOGGING IN */
 export const login = async (req, res) => {
     try {
-        console.log("Loggin in!");
         const { email, ID, password } = req.body;
-        const user = await SupplierData.findOne({ id: ID });
-        console.log("User Found:", user);
-        if (!user) return res.status(400).json({ msg: "User does not exist. "});
 
-        const isMatch = true; //await bcrypt.compare(password, user.password);
-        if (!isMatch) return res.status(400).json({ msg: "Invalid credentials. "});
+        const user = await UserAuth.findOne({ id:ID }).populate('supplier');
+        if (!user) return res.status(400).json({ msg: "User does not exist." });
 
-        const token = jwt.sign({ id: user._id}, process.env.JWT_SECRET);
-        // delete user.password;
-        res.status(200).json({ token, user});
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) return res.status(400).json({ msg: "Invalid credentials." });
+
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+
+        const { password: _, ...userInfo } = user.toObject();
+        res.status(200).json({ token, user: userInfo });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
-}
+};

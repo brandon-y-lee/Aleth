@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 const SupplierDataSchema = new mongoose.Schema(
   {
-    ID: Number,
+    id: Number,
     Company: String,
     URL: String,
     Address: String,

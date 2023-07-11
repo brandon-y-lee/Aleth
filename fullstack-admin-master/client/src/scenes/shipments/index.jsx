@@ -23,11 +23,16 @@ import TabPanel from 'components/Common/TabPanel';
 import { OrderStatus } from "configs/OrderStatus";
 import { RequestType } from "configs/RequestType";
 import Order from "scenes/order";
+import { getLoggedInUser } from "utils/auth";
+
 
 // Session.set("username","2");
 
 const Shipments = () => {
-  const userId = Session.get("username");
+  let userId = Session.get("username");
+  const userInfo = getLoggedInUser();
+
+  userId = userInfo.id;
   const theme = useTheme();
   console.log("Logged in user:", userId);
 

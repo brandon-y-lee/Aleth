@@ -90,22 +90,26 @@ const Form = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
-
-    console.log("Logged in status:", loggedInResponse);
-    const loggedIn = await loggedInResponse.json();
-    onSubmitProps.resetForm();
-    if (loggedIn) {
-      Session.set("username", loggedIn.user.ID);
-      console.log("Session Username", Session.get("username"));
-      // dispatch(
-      //   setLogin({
-      //     user: loggedIn.user,
-      //     token: loggedIn.token,
-      //   })
-      // );
-      navigate("/order");
+  
+    if (loggedInResponse.ok) {
+      const loggedIn = await loggedInResponse.json();
+      onSubmitProps.resetForm();
+      if (loggedIn && loggedIn.token) {
+        // Save the token in local storage after successful login
+        localStorage.setItem("token", loggedIn.token);
+        localStorage.setItem("user", JSON.stringify(loggedIn.user));
+      
+        console.log("Local Storage User", localStorage.getItem("user"));
+        console.log("Local Storage Token", localStorage.getItem("token"));
+        navigate("/order");
+      } else {
+        console.log("Logged in status:", loggedInResponse.status);
+      }
+    } else {
+      console.log("Error during login", await loggedInResponse.json());
     }
   };
+  
 
   const handleFormSubmit = async (values, onSubmitProps) => {
     if (isLogin) await login(values, onSubmitProps);
