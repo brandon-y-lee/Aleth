@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Box, Button, Card, CardContent, CardMedia, Container, Grid, Typography, useTheme, Tabs, Tab } from '@mui/material';
+import { Avatar, Box, Breadcrumbs, Button, Typography, useTheme, Tabs, Tab, Link } from '@mui/material';
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useGetSupplierDataQuery } from "state/api";
@@ -32,11 +32,64 @@ const Profile = () => {
     };
 
     return (
-        <Card>
-            <Box sx={{ display: 'flex', flexDirection: 'row', p: 2 }}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, mt: 4, mb: 2, gap: '1rem' }}>
-                    <Typography variant="h1" sx={{ color: theme.palette.secondary[200] }}>{supplierData?.supplierData?.Company}</Typography>
-                    <Typography variant="h4" sx={{ color: theme.palette.secondary[200] }}>{supplierData?.supplierData?.UserType} based in {supplierData?.supplierData?.City}, {supplierData?.supplierData?.State}</Typography>
+        <Box>
+            <Box sx={{ display: 'flex', flexDirection: 'row', background: `linear-gradient(215deg, ${theme.palette.grey[400]} 30%, ${theme.palette.grey[700]} 90%)` }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', ml: 4, mt: 4 }}>
+                    <Breadcrumbs aria-label="breadcrumb">
+                        <Link underline="hover" color="#fff" href="/order">
+                            Search Results
+                        </Link>
+                        <Typography color="#fff">Supplier Profile</Typography>
+                    </Breadcrumbs>
+                    <Avatar 
+                        alt="Profile Picture" 
+                        src={supplierData?.supplierData?.ProfilePicture}
+                        sx={{ 
+                        width: 150, 
+                        height: 150, 
+                        position: 'relative', 
+                        top: 40, 
+                        border: '4px solid white', 
+                        bgcolor: 'white'
+                        }} 
+                    />
+                </Box>
+            
+                <Box sx={{ display: 'flex', flexDirection: 'column', mt: 15, ml: -5, gap: "0.5rem" }}>
+                    <Typography variant="h1" sx={{ color: "#fff", fontWeight: "bold" }}>{supplierData?.supplierData?.Company}</Typography>
+                    <Typography variant="h4" sx={{ color: "#fff" }}>{supplierData?.supplierData?.UserType} | {supplierData?.supplierData?.City}, {supplierData?.supplierData?.State}</Typography>
+                </Box>
+            </Box>
+
+            <Box 
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    m: 2,
+                    pl: 3,
+                    pr: 3,
+                    pt: 2,
+                    pb: 2,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '1.5rem'
+                }}
+            >
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: "0.5rem" }}>
+                    <Typography variant="h5">Supplier Rating</Typography>
+                    <Typography variant="body1">{supplierData?.supplierData?.ID}</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: "0.5rem" }}>
+                    <Typography variant="h5">Average Lead Time</Typography>
+                    <Typography variant="body1">{supplierData?.supplierData?.ID}</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: "0.5rem" }}>
+                    <Typography variant="h5">On-Time Delivery</Typography>
+                    <Typography variant="body1">{supplierData?.supplierData?.ID}</Typography>
+                </Box>                
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: "0.5rem" }}>
+                    <Typography variant="h5">Cost</Typography>
+                    <Typography variant="body1">{supplierData?.supplierData?.ID}</Typography>
                 </Box>
             </Box>
 
@@ -45,6 +98,7 @@ const Profile = () => {
                     value={value}
                     onChange={handleChange}
                     aria-label="basic tabs example"
+                    centered
                 >
                     <Tab 
                     label="General Profile"
@@ -109,7 +163,7 @@ const Profile = () => {
                     </Box>
                 </Box>
             </TabPanel>
-        </Card>
+        </Box>
     );
 }
 
