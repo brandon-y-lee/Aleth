@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Session from 'react-session-api';
 import { 
   Box,
@@ -51,13 +52,14 @@ const Order = () => {
   const [searchInput, setSearchInput] = useState("");
 
   let {data: purchaseOrders, isLoading: isLoadingPurchaseOrders} = useGetPurchaseOrdersQuery({userId});
-  let {data: searchResults, isLoading: isLoadingSearchResults} = useGetEligibleSellersQuery({material: formData.material ? formData.material : undefined})
+  let {data: searchResults, isLoading: isLoadingSearchResults} = useGetEligibleSellersQuery({material: formData.material ? formData.material : undefined});
+
   let {data: searchResultsAdvanced, isLoading: isLoadingSearchResultsAdvanced} = useGetEligibleSellersAdvancedQuery({
     products: formData.productCategory ? formData.productCategory : undefined, 
     material: formData.materialType ? formData.materialType : undefined,
     fabricConstruction: formData.fabricConstruction ?formData.fabricConstruction : undefined,
     certifications : ""
-   })
+   });
 
   console.log(searchResultsAdvanced);
   const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
@@ -181,22 +183,18 @@ const Order = () => {
   {
     field: "Company",
     headerName: "Name",
-    width: 150,
+    flex: 0.5,
+    renderCell: (params) => (
+      console.log(params.id),
+      <Link to={`/profile/${params.id}`}>
+        {params.row.Company}
+      </Link>
+    ),
   },
   {
     field: "UserType",
     headerName: "Type",
-    width: 175,
-  },
-  {
-    field: "UserMaterials",
-    headerName: "Materials",
-    width: 200,
-  },
-  {
-    field: "UserConstructions",
-    headerName: "Constructions",
-    width: 175,
+    flex: 0.5,
   },
   {
     field: "City",

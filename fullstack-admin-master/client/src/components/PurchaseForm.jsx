@@ -47,9 +47,9 @@ const PurchaseForm = ({ onSearch }) => {
     onSubmit: values => {
       const valuesToSend = {
         ...values,
+        fabricConstruction: values.fabricConstruction.map(option => option.label),
         materialType: values.materialType.map(option => option.label),
       };
-      console.log(valuesToSend);
       onSearch(valuesToSend);
     },
   });
