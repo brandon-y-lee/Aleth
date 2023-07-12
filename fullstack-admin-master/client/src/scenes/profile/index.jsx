@@ -12,12 +12,10 @@ import {
     useMediaQuery,
 } from '@mui/material';
 import {
-    DownloadOutlined,
-    Email,
-    PointOfSale,
-    PersonAdd,
-    Traffic,
-    UploadFileOutlined,
+    TimerOutlined,
+    GradeOutlined,
+    LocalShippingOutlined,
+    AttachMoneyOutlined,
   } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -26,6 +24,7 @@ import TabPanel from 'components/Common/TabPanel';
 import OverviewChart from "components/OverviewChart";
 import StatBox from "components/StatBox";
 import Claims from "components/Claims";
+import BreakdownChart from "components/BreakdownChart";
 
 
 const Profile = () => {
@@ -69,10 +68,11 @@ const Profile = () => {
                         alt="Profile Picture" 
                         src={supplierData?.supplierData?.ProfilePicture}
                         sx={{ 
-                        width: 150, 
-                        height: 150, 
+                        width: 200, 
+                        height: 200, 
                         position: 'relative', 
-                        top: 40, 
+                        top: 40,
+                        left: 20,
                         border: '4px solid white', 
                         bgcolor: 'white',
                         boxShadow: theme.shadows[10]
@@ -80,42 +80,13 @@ const Profile = () => {
                     />
                 </Box>
             
-                <Box sx={{ display: 'flex', flexDirection: 'column', mt: 15, ml: -5, mb: 1.5, gap: "0.5rem" }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', mt: 17.5, ml: 5, mb: 1, gap: "0.5rem" }}>
                     <Typography variant="h1" sx={{ color: "#fff", fontWeight: "bold" }}>{supplierData?.supplierData?.Company}</Typography>
                     <Typography variant="h4" sx={{ color: "#fff" }}>{supplierData?.supplierData?.UserType} | {supplierData?.supplierData?.City}, {supplierData?.supplierData?.State}</Typography>
                 </Box>
             </Box>
-
-            <Box 
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    gap: '5rem',
-                    pt: 3,
-                    pb: 3,
-                    pl: 5,
-                    ml: 20,
-                    mb: 5
-                }}
-            >
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: "0.5rem" }}>
-                    <Typography variant="h5" sx={{ color: theme.palette.grey[500] }}>Rating</Typography>
-                    <Typography variant="h2" sx={{ color: "#000", fontWeight: "550" }}>{supplierData?.supplierData?.id}</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: "0.5rem" }}>
-                    <Typography variant="h5" sx={{ color: theme.palette.grey[500] }}>Average Lead Time</Typography>
-                    <Typography variant="h2" sx={{ color: "#000", fontWeight: "550" }}>{supplierData?.supplierData?.id} days</Typography>
-                </Box>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: "0.5rem" }}>
-                    <Typography variant="h5" sx={{ color: theme.palette.grey[500] }}>On-Time Delivery</Typography>
-                    <Typography variant="h2" sx={{ color: "#000", fontWeight: "550" }}>{supplierData?.supplierData?.id}%</Typography>
-                </Box>
-                <Button>
-
-                </Button>
-            </Box>
                 
-            <Box sx={{ pr: 10, pl: 10 }}>
+            <Box sx={{ pr: 10, pl: 10, mt: 10 }}>
                 <Tabs 
                     value={value}
                     onChange={handleChange}
@@ -123,7 +94,7 @@ const Profile = () => {
                     TabIndicatorProps={{style: {background: theme.palette.grey[400]}}}
                 >
                     <Tab 
-                        label="General Profile"
+                        label="General"
                         {...a11yProps(0)}
                         sx={(theme) => ({
                             color: value === 0 ? 'black' : theme.palette.grey[700],
@@ -172,23 +143,25 @@ const Profile = () => {
                         >
                         {/* ROW 1 */}
                         <StatBox
-                            title="Total Customers"
-                            // value={data && data.totalCustomers}
+                            title="RATING"
+                            value={supplierData?.supplierData?.id}
+                            unit="/100"
                             increase="+14%"
                             description="Since last month"
                             icon={
-                            <PersonAdd
+                            <GradeOutlined
                                 sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
                             />
                             }
                         />
                         <StatBox
-                            title="Sales Today"
-                            // value={data && data.todayStats.totalSales}
+                            title="AVG LEAD TIME"
+                            value={supplierData?.supplierData?.id}
+                            unit="DAYS"
                             increase="+21%"
                             description="Since last month"
                             icon={
-                            <PointOfSale
+                            <TimerOutlined
                                 sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
                             />
                             }
@@ -225,27 +198,81 @@ const Profile = () => {
                             </Box>        
                         </Box>
                         <StatBox
-                            title="Monthly Sales"
-                            // value={data && data.thisMonthStats.totalSales}
+                            title="ON-TIME DELIVERY"
+                            value={supplierData?.supplierData?.id}
+                            unit="%"
                             increase="+5%"
                             description="Since last month"
                             icon={
-                            <Email
+                            <LocalShippingOutlined
                                 sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
                             />
                             }
                         />
                         <StatBox
-                            title="Yearly Sales"
-                            // value={data && data.yearlySalesTotal}
+                            title="AVG COST"
+                            value={supplierData?.supplierData?.id}
+                            unit="$"
                             increase="+43%"
                             description="Since last month"
                             icon={
-                            <Traffic
+                            <AttachMoneyOutlined
                                 sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
                             />
                             }
                         />
+
+                        <Box
+                            gridColumn="span 4"
+                            gridRow="span 3"
+                            backgroundColor={theme.palette.background.alt}
+                            p="1.5rem"
+                            borderRadius="0.55rem"
+                        >
+                            <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
+                            Sales By Category
+                            </Typography>
+                            <BreakdownChart isDashboard={true} />
+                            <Typography
+                            p="0 0.6rem"
+                            fontSize="0.8rem"
+                            sx={{ color: theme.palette.secondary[200] }}
+                            >
+                            Breakdown of total sales for this year by category.
+                            </Typography>
+                        </Box>
+
+                        <Box
+                            gridColumn="span 8"
+                            gridRow="span 2"
+                            backgroundColor={theme.palette.background.alt}
+                            p="1rem"
+                            borderRadius="0.55rem"
+                        >
+                            <Typography variant="h4" gutterBottom sx={{ fontWeight: 600, mt: 1, ml: 2 }}>OPERATIONS</Typography>
+                            <Box display="flex" flexDirection="row">
+                                <Box width="50%">
+                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 500, mt: 3, ml: 2 }}>ADDRESS</Typography>
+                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mt: 1, ml: 2 }}>{supplierData?.supplierData?.Address}, {supplierData?.supplierData?.City}, {supplierData?.supplierData?.State}</Typography>
+
+                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 500, mt: 3, ml: 2 }}>FOUNDED</Typography>
+                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mt: 1, ml: 2 }}>{supplierData?.supplierData?.YearFounded?.$numberDecimal}</Typography>
+
+                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 500, mt: 3, ml: 2 }}>PHONE NUMBER</Typography>
+                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mt: 1, ml: 2 }}>{supplierData?.supplierData?.Details}</Typography>
+                                </Box>
+                                <Box width="50%">
+                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 500, mt: 3, ml: 2 }}>COMPANY SIZE</Typography>
+                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mt: 1, ml: 2 }}>{supplierData?.supplierData?.Employees}</Typography>
+
+                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 500, mt: 3, ml: 2 }}>PRODUCTS</Typography>
+                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mt: 1, ml: 2 }}>{Array.isArray(supplierData?.supplierData?.Products) ? supplierData.supplierData.Products.length : "N/A"}</Typography>
+
+                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 500, mt: 3, ml: 2 }}>PRIMARY MARKET</Typography>
+                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mt: 1, ml: 2 }}>{supplierData?.supplierData?.ExportMarkets}</Typography>
+                                </Box>
+                            </Box>        
+                        </Box>
                     </Box>
                 </Box>
             </TabPanel>
