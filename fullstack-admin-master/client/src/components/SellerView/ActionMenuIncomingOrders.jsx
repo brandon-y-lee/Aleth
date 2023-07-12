@@ -11,6 +11,8 @@ import { RequestType } from "configs/RequestType";
 import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import {  Button } from '@mui/material'; // Updated import statements
+import { getLoggedInUser } from "utils/auth";
+
 
 
 const ActionMenuIncomingOrders = (props) => {
@@ -18,7 +20,8 @@ const ActionMenuIncomingOrders = (props) => {
     console.log(props);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
-    const userId = Session.get("username");
+    const userInfo = getLoggedInUser();
+    const userId = userInfo._id;
     const [openDialog, setOpenDialog] = useState(false);
     const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
     const [notes, setNotes] = React.useState('');
@@ -35,16 +38,6 @@ const ActionMenuIncomingOrders = (props) => {
 
     const handleAccept = () => {
         setOpenDialog(true);
-        // updateOrder({ requestType: RequestType.SELLERACCPET, sellerIds:[userId], orderId:[props.orderData._id], isSeller: true })
-        //   .unwrap()
-        //   .then(() => {
-        //     // window.location.reload(false);
-        //     console.log("Order Accepted Successfully successfully!");
-        //     // onClose();
-        //   })
-        //   .catch((error) => {
-        //     console.error("Error accepting order:", error);
-        //   });
       };
 
     const handleReject = () => {

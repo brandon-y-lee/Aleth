@@ -97,7 +97,7 @@ const Form = () => {
       if (loggedIn && loggedIn.token) {
         // Save the token in local storage after successful login
         localStorage.setItem("token", loggedIn.token);
-        localStorage.setItem("user", JSON.stringify(loggedIn.user));
+        localStorage.setItem("user", JSON.stringify(loggedIn.user.supplier));
       
         console.log("Local Storage User", localStorage.getItem("user"));
         console.log("Local Storage Token", localStorage.getItem("token"));

@@ -87,10 +87,10 @@ export const api = createApi({
     }),
 
     getIncomingRequests: build.query({
-      query: ({ userId }) => ({
+      query: ({ userid }) => ({
         url: "client/incomingRequests",
         method: "GET",
-        params: { userId },
+        params: { userid },
       }),
       providesTags: ["IncomingRequests"],
     }),

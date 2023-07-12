@@ -47,7 +47,7 @@ export const getCustomers = async (req, res) => {
 export const getTransactions = async (req, res) => {
   try {
     const { page=1, pageSize=20, sort=null, search="", userId="" } = req.query;
-    console.log("Get Transactions");
+    console.log("Get Transactions", req.query);
 
     // formatted sort should look like { userId: -1 }
     const generateSort = () => {
@@ -250,21 +250,21 @@ export const getChainOfShipments = async (req, res) => {
 //Shipments Page (Seller View) - Fetch all purchase orders that the logged in user is eligible for.
 export const getIncomingRequests = async (req, res) => {
   try {
-    const {userId} = req.query;
-    // console.log(userId);
+    const {userid} = req.query;
+    console.log(userid);
     console.log("Getting incoming requests", req.query);
-    const userData = await UserData.find({
-      userId: "2",
+    const userData = await SupplierData.find({
+      userId: userid,
     });
     
     //TODO - Either find all the orders or the subset that the user is eligible for directly
     const orders = await OrderRequest.find({
       // material: userData.material
     });
-
+    console.log(orders);
     // console.log(orders);
 
-    const newOrders = orders?orders.filter(order => order.sellerStatuses[userId]!==undefined):[];
+    const newOrders = orders?orders.filter(order => order.sellerStatuses[userid]!==undefined):[];
   
     res.status(200).json({
       newOrders
@@ -388,8 +388,9 @@ export const generateNewShipment = async (req, res) => {
     const total = await Shipments.countDocuments({});
     const newId = generateID();
 
-    const userInfo = await UserData.findOne({userId: userId});
+    const userInfo = await SupplierData.findOne({id: userId});
 
+    //TODO : Draft Shipment
     // if (existingShipment) {
     //   // Update the existing shipment with the new data
     //   existingShipment.userId = userId;
@@ -410,11 +411,11 @@ export const generateNewShipment = async (req, res) => {
       id: newId,
       userId,
       recipientId,
-      name: userInfo.name,
+      name: userInfo.Company,
       material,
       amount,
       unit,
-      coordinates: userInfo.coordinates,
+      coordinates: [0,0],
       prev: "",
       orderStatus,
     });
