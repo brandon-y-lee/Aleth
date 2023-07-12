@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@mui/x-data-grid-pro": "^6.9.1",
+    "yup": "^1.2.0"
+  }
+}

@@ -9,6 +9,13 @@ import clientRoutes from "./routes/client.js";
 import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
+import bcrypt from "bcrypt";
+
+import authRoutes from "./routes/auth.js";
+import { register } from "./controllers/auth.js";
+import { login } from "./controllers/auth.js";
+import { verifyToken } from "./middleware/auth.js";
+
 
 // data imports
 import User from "./models/User.js";
@@ -20,6 +27,7 @@ import AffiliateStat from "./models/AffiliateStat.js";
 import UserData from "./models/UserData.js";
 import OrderRequest from "./models/OrderRequest.js";
 import SupplierData from "./models/SupplierData.js";
+import UserAuth from "./models/UserAuth.js";
 
 import {
   userData,
@@ -41,8 +49,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
+/* ROUTES WITH FILES */
+app.post("/auth/register", register);
+app.post("/auth/login", login);
+
 /* ROUTES */
 /* CLIENT FACING SIDEBAR OPTIONS */
+app.use("/auth", authRoutes);
 app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
@@ -55,7 +68,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => {
+  .then(async () => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
     console.log("here");
     /* ONLY ADD DATA ONE TIME */
@@ -72,7 +85,22 @@ mongoose
     // OrderRequest.insertMany(dataOrderRequests);
     // SupplierData.insertMany(supplierdata);
     console.log("Inserted")
+    // const suppliers = await SupplierData.find();
+
+    // // Generate dummy password
+    // const salt = await bcrypt.genSalt();
+    // const passwordHash = await bcrypt.hash("password123", salt);
+
+    // // Map each supplier to a new user
+    // const users = suppliers.map(supplier => ({
+    //     id: supplier.id,
+    //     password: passwordHash,
+    //     supplier: supplier._id
+    // }));
+
+    // // Save all users to the User collection
+    // await UserAuth.insertMany(users);
+
+    console.log('Users seeded successfully');
   })
   .catch((error) => console.log(`${error} Did not connect`));
-
-

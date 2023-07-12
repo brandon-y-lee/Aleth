@@ -23,13 +23,20 @@ import TabPanel from 'components/Common/TabPanel';
 import { OrderStatus } from "configs/OrderStatus";
 import { RequestType } from "configs/RequestType";
 import Order from "scenes/order";
+import { getLoggedInUser } from "utils/auth";
+
 
 // Session.set("username","2");
 
 const Shipments = () => {
-  const userId = Session.get("username");
-  const theme = useTheme();
+  let userId = Session.get("username");
+  const userInfo = getLoggedInUser();
 
+  userId = userInfo._id;
+  const intenralUserId = userInfo.id;
+  const userid = userId;//userInfo.id;
+  const theme = useTheme();
+  console.log("Logged in user:", userid);
 
   // HOOKS 
   const [page, setPage] = useState(0);
@@ -48,13 +55,13 @@ const Shipments = () => {
     pageSize,
     sort: JSON.stringify(sort),
     search,
-    userId: userId
+    userId: intenralUserId
   });
 
   // console.log(userId);
   
   let {data: locations, isLoading: isLoadingNew} = useGetChainOfShipmentsQuery(selectedShipmentId);
-  let {data: incomingOrders, isLoading: isLoadingIncomingOrders} = useGetIncomingRequestsQuery({userId});
+  let {data: incomingOrders, isLoading: isLoadingIncomingOrders} = useGetIncomingRequestsQuery({userid});
 
   // console.log(incomingOrders);
 
@@ -171,16 +178,16 @@ const Shipments = () => {
       headerName: "Order Status",
       flex: 0.5,
       renderCell: (params) => {
-        const sellerStatus = params.value[userId];
-        if(params.value[userId] == OrderStatus.SELLERACCEPT)
+        const sellerStatus = params.value[userid];
+        if(params.value[userid] == OrderStatus.SELLERACCEPT)
           return (<Chip label="You Accepted" color="info"/>)
-        if(params.value[userId] == OrderStatus.NEWORDER)
+        if(params.value[userid] == OrderStatus.NEWORDER)
           return (<Chip label="New Order" color="success"/>)
-        if(params.value[userId] == OrderStatus.BUYERACCEPT)
+        if(params.value[userid] == OrderStatus.BUYERACCEPT)
           return (<Chip label="Buyer Accepted" color="success"/>)
-        if(params.value[userId] == OrderStatus.SELLERDENIED)
+        if(params.value[userid] == OrderStatus.SELLERDENIED)
           return (<Chip label="You Rejected" color="warning"/>)
-        if(params.value[userId] == OrderStatus.BUYERDENIED)
+        if(params.value[userid] == OrderStatus.BUYERDENIED)
           return (<Chip label="Order Rejected" color="error"/>)
       },
     },
@@ -190,7 +197,7 @@ const Shipments = () => {
       sortable: false,
       flex: 0.5,
       renderCell: (params) => {
-        console.log(params);
+        // console.log(params);
       return (<ActionMenuIncomingOrders orderData={params.row}/>)
     },
     },

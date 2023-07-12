@@ -6,7 +6,18 @@ export const api = createApi({
 
   /* baseQuery handles making the actual HTTP requests, fetchBaseQuery is a basic fetch implementation
       with sensible defaults for things like headers. */
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL }),
+      baseQuery: fetchBaseQuery({ 
+        baseUrl: process.env.REACT_APP_BASE_URL,
+        prepareHeaders: (headers, { getState }) => {
+          // If using @reduxjs/toolkit with a correctly configured store
+          // You can retrieve data from any place in the state here
+          const token = localStorage.getItem('token');
+          if (token) {
+            headers.set('Authorization', `Bearer ${token}`);
+          }
+          return headers;
+        }
+      }),
 
   /* reducerPath is the key in the Redux store where the API slice reducer will be mounted. */
   reducerPath: "adminApi",
@@ -76,10 +87,10 @@ export const api = createApi({
     }),
 
     getIncomingRequests: build.query({
-      query: ({ userId }) => ({
+      query: ({ userid }) => ({
         url: "client/incomingRequests",
         method: "GET",
-        params: { userId },
+        params: { userid },
       }),
       providesTags: ["IncomingRequests"],
     }),

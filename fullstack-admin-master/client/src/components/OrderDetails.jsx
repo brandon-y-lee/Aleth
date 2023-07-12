@@ -13,7 +13,6 @@ import NoteIcon from '@mui/icons-material/Note';
 
 
 export default function OrderDetails({orderId}) {
-  console.log(orderId);
   const [expanded, setExpanded] = React.useState(false);
   const [selected, setSelected] = React.useState({}); // add this line
   const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
@@ -58,7 +57,7 @@ export default function OrderDetails({orderId}) {
   const handleButtonClick = async () => {
     const selectedIds = sellerDetails?.userData?.userDetails
       .filter((elem, index) => selected[index])
-      .map(elem => elem.userId);
+      .map(elem => elem._id);
     await updateOrder({ requestType: RequestType.BUYERACCEPT, sellerIds:selectedIds, orderId: [orderId], isSeller: false, notes: " "});
     console.log(selectedIds);
     window.location.reload();
@@ -68,10 +67,10 @@ export default function OrderDetails({orderId}) {
   const elems = sellerDetails?.userData?.userDetails.map((elem, index) => {
 
     const certIndex = Math.floor(Math.random()*(certificates.length-1));
-    const disabled = (sellerDetails.userData.userStatus[elem.userId] !== RequestType.SELLERACCPET)?true:false;
-    const checked = (sellerDetails.userData.userStatus[elem.userId] === RequestType.BUYERACCEPT)?true:false;
-    const sellerNotes = sellerDetails.userData.userNotes[elem.userId];
-    const status = (sellerDetails.userData.userStatus[elem.userId] === RequestType.BUYERACCEPT)?1:0;
+    const disabled = (sellerDetails.userData.userStatus[elem._id] !== RequestType.SELLERACCPET)?true:false;
+    const checked = (sellerDetails.userData.userStatus[elem._id] === RequestType.BUYERACCEPT)?true:false;
+    const sellerNotes = sellerDetails.userData.userNotes[elem._id];
+    const status = (sellerDetails.userData.userStatus[elem._id] === RequestType.BUYERACCEPT)?1:0;
     const statusColor = status==1?"#2f7c327a":"";
     console.log(statusColor);
     
@@ -90,7 +89,7 @@ export default function OrderDetails({orderId}) {
               disabled = {disabled}
             />
             <Typography sx={{ width: '50%', flexShrink: 0 }}>
-                {elem.name}
+                {elem.Company}
             </Typography>
             
             <IconButton sx={{ width: '10%', flexShrink: 0, margin: "2px" }} edge="end" aria-label="notes" onClick={() => handleOpenNotes(sellerNotes)}>

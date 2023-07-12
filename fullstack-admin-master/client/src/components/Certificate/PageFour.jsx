@@ -2,10 +2,15 @@ import React from "react";
 import { Button, Card, CardContent, Typography, Box } from "@mui/material";
 import { useGenerateNewShipmentMutation } from "state/api";
 import Session from 'react-session-api';
+import { getLoggedInUser } from "utils/auth";
+
 
 
 const PageFour = ({ recipient, material, files }) => {
-  const userId = Session.get("username");
+  const userInfo = getLoggedInUser();
+
+  const userId = userInfo.id;
+
   const [generateShipment, { isLoading: generatingShipment }] = useGenerateNewShipmentMutation();
 
   const handlePublish = () => {
