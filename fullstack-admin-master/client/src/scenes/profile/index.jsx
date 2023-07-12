@@ -16,6 +16,7 @@ import {
     GradeOutlined,
     LocalShippingOutlined,
     AttachMoneyOutlined,
+    CommuteTwoTone,
   } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -25,6 +26,10 @@ import OverviewChart from "components/OverviewChart";
 import StatBox from "components/StatBox";
 import Claims from "components/Claims";
 import BreakdownChart from "components/BreakdownChart";
+import FlexBetween from "components/FlexBetween";
+import BarChart from "components/BarChart";
+import logo from "assets/logo.png";
+import cotton from "assets/cotton.jpg";
 
 
 const Profile = () => {
@@ -224,22 +229,25 @@ const Profile = () => {
 
                         <Box
                             gridColumn="span 4"
-                            gridRow="span 3"
+                            gridRow="span 2"
                             backgroundColor={theme.palette.background.alt}
                             p="1.5rem"
                             borderRadius="0.55rem"
+                            sx={{ display: 'flex', flexDirection: 'column', gap: "2rem" }}
                         >
-                            <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
-                            Sales By Category
-                            </Typography>
-                            <BreakdownChart isDashboard={true} />
-                            <Typography
-                            p="0 0.6rem"
-                            fontSize="0.8rem"
-                            sx={{ color: theme.palette.secondary[200] }}
-                            >
-                            Breakdown of total sales for this year by category.
-                            </Typography>
+                            <FlexBetween>
+                                <Typography variant="h4" sx={{ fontWeight: 600 }}>
+                                    GALLERY
+                                </Typography>
+                                <Button variant="outlined" sx={{ color: "black" }}>
+                                    View All
+                                </Button>
+                            </FlexBetween>
+                            <img 
+                                src={cotton}
+                                alt="Gallery"
+                                sx={{ width: '100%', height: 'auto' }}
+                            />
                         </Box>
 
                         <Box
@@ -249,29 +257,8 @@ const Profile = () => {
                             p="1rem"
                             borderRadius="0.55rem"
                         >
-                            <Typography variant="h4" gutterBottom sx={{ fontWeight: 600, mt: 1, ml: 2 }}>OPERATIONS</Typography>
-                            <Box display="flex" flexDirection="row">
-                                <Box width="50%">
-                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 500, mt: 3, ml: 2 }}>ADDRESS</Typography>
-                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mt: 1, ml: 2 }}>{supplierData?.supplierData?.Address}, {supplierData?.supplierData?.City}, {supplierData?.supplierData?.State}</Typography>
-
-                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 500, mt: 3, ml: 2 }}>FOUNDED</Typography>
-                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mt: 1, ml: 2 }}>{supplierData?.supplierData?.YearFounded?.$numberDecimal}</Typography>
-
-                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 500, mt: 3, ml: 2 }}>PHONE NUMBER</Typography>
-                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mt: 1, ml: 2 }}>{supplierData?.supplierData?.Details}</Typography>
-                                </Box>
-                                <Box width="50%">
-                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 500, mt: 3, ml: 2 }}>COMPANY SIZE</Typography>
-                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mt: 1, ml: 2 }}>{supplierData?.supplierData?.Employees}</Typography>
-
-                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 500, mt: 3, ml: 2 }}>PRODUCTS</Typography>
-                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mt: 1, ml: 2 }}>{Array.isArray(supplierData?.supplierData?.Products) ? supplierData.supplierData.Products.length : "N/A"}</Typography>
-
-                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 500, mt: 3, ml: 2 }}>PRIMARY MARKET</Typography>
-                                    <Typography variant="h5" gutterBottom sx={{ fontWeight: 600, mt: 1, ml: 2 }}>{supplierData?.supplierData?.ExportMarkets}</Typography>
-                                </Box>
-                            </Box>        
+                            <Typography variant="h4" gutterBottom sx={{ fontWeight: 600, mt: 1, ml: 2 }}>OUTPUT</Typography>
+                            <BarChart/>
                         </Box>
                     </Box>
                 </Box>

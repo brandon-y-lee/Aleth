@@ -20,7 +20,7 @@ const StatBox = ({ title, value, unit, increase, icon, description }) => {
         <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
           {title}
         </Typography>
-        {icon}
+          {icon}
       </FlexBetween>
 
       <Box display="flex" flexDirection="row">
