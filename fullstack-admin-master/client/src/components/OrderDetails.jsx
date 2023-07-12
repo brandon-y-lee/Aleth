@@ -13,7 +13,6 @@ import NoteIcon from '@mui/icons-material/Note';
 
 
 export default function OrderDetails({orderId}) {
-  console.log(orderId);
   const [expanded, setExpanded] = React.useState(false);
   const [selected, setSelected] = React.useState({}); // add this line
   const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
@@ -90,7 +89,7 @@ export default function OrderDetails({orderId}) {
               disabled = {disabled}
             />
             <Typography sx={{ width: '50%', flexShrink: 0 }}>
-                {elem.name}
+                {elem.Company}
             </Typography>
             
             <IconButton sx={{ width: '10%', flexShrink: 0, margin: "2px" }} edge="end" aria-label="notes" onClick={() => handleOpenNotes(sellerNotes)}>

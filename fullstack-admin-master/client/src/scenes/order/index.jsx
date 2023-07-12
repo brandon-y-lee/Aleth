@@ -107,7 +107,7 @@ const Order = () => {
         <GridFooter sx={{ border: 'none' }} />
         <Button
           onClick= { async () => { 
-            await createOrder({userId, material: formData.material, quantity:10, sellers: selectedRows});
+            await createOrder({userId, material: formData.materialType, quantity:formData.quantity, sellers: selectedRows});
             // await updateOrder({ requestType: RequestType.INITORDER, sellerIds:selectedRows, orderId:[props.orderData._id], isSeller: false })
             console.log(selectedRows); console.log("Submitted Request"); 
             window.location.reload();
@@ -174,7 +174,7 @@ const Order = () => {
       sortable: false,
       flex: 0.5,
       renderCell: (params) => {
-        console.log(params);
+        // console.log(params);
         return (<ActionMenuIncomingOrders orderData={params.row}/>)},
     },
   ];
@@ -301,6 +301,7 @@ const Order = () => {
               paginationMode="server"
               sortingMode="server"
               onSelectionModelChange={(newSelection) => {
+                console.log(newSelection);
                 setSelectedRows(newSelection);
               }}
               onPageChange={(newPage) => setPage(newPage)}
@@ -314,8 +315,9 @@ const Order = () => {
                 toolbar: { searchInput, setSearchInput, setSearch },
                 footer: { selectedRows },
               }}
-              onRowClick={(row)=>{
-                console.log(row.row["id"])}}
+              // onRowClick={(row)=>{
+              //   console.log(row.row["id"])}
+              // }
             />
           </Box>
         </TabPanel>

@@ -197,7 +197,7 @@ export const getOrderSellerDetails = async (req, res) => {
       {
         const status = sellerList[seller];
         const note = sellerNoteList[seller.replace(/["']/g, "")];
-        let userDeet = await UserData.findOne({userId:seller.replace(/["']/g, "")});
+        let userDeet = await SupplierData.findOne({_id:seller.replace(/["']/g, "")});
         
         if(userDeet)
         {

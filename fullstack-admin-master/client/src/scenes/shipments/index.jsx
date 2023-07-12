@@ -32,7 +32,8 @@ const Shipments = () => {
   let userId = Session.get("username");
   const userInfo = getLoggedInUser();
 
-  userId = userInfo.id;
+  userId = userInfo._id;
+  const userid = userInfo.id;
   const theme = useTheme();
   console.log("Logged in user:", userId);
 
@@ -53,7 +54,7 @@ const Shipments = () => {
     pageSize,
     sort: JSON.stringify(sort),
     search,
-    userId: userId
+    userId: userid
   });
 
   // console.log(userId);
@@ -195,7 +196,7 @@ const Shipments = () => {
       sortable: false,
       flex: 0.5,
       renderCell: (params) => {
-        console.log(params);
+        // console.log(params);
       return (<ActionMenuIncomingOrders orderData={params.row}/>)
     },
     },
