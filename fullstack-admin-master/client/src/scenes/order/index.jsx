@@ -10,13 +10,10 @@ import {
   Grid,
 } from "@mui/material";
 import { DataGrid, GridFooterContainer, GridFooter } from "@mui/x-data-grid";
-import { DataGridPro } from "@mui/x-data-grid-pro";
-import { useGetTransactionsQuery, useGetChainOfShipmentsQuery, useGetIncomingRequestsQuery } from "state/api";
 import { useGetPurchaseOrdersQuery, useGetEligibleSellersQuery, useUpdateOrderMutation, useCreateNewOrderMutation, useGetEligibleSellersAdvancedQuery } from "state/api";
 import Header from "components/Header";
 import OrderMap from "components/OrderMap";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
-import ActionMenu from "components/SellerView/ActionMenu";
 import ActionMenuIncomingOrders from "components/SellerView/ActionMenuIncomingOrders";
 import { OrderStatus } from "configs/OrderStatus";
 import { RequestType } from "configs/RequestType";
@@ -24,17 +21,13 @@ import Chip from '@mui/material/Chip';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import TabPanel from 'components/Common/TabPanel';
-import { getLoggedInUser } from "utils/auth";
-
+import Confirmation from "components/Confirmation";
 
 // Session.set("username", "2");
 Session.set("coordinates", [17.2064912,22.1782433]);
 
 const Order = () => {
-  let userId = Session.get("username");
-  const userInfo = getLoggedInUser();
-
-  userId = userInfo.id;
+  const userId = Session.get("username");
   const coords = Session.get("coordinates");
   const theme = useTheme();
   const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
@@ -50,6 +43,8 @@ const Order = () => {
 
   const [formData, setFormData] = useState({});
   const [searchInput, setSearchInput] = useState("");
+  const [confirmationOpen, setConfirmationOpen] = React.useState(false);
+
 
   let {data: purchaseOrders, isLoading: isLoadingPurchaseOrders} = useGetPurchaseOrdersQuery({userId});
   let {data: searchResults, isLoading: isLoadingSearchResults} = useGetEligibleSellersQuery({material: formData.material ? formData.material : undefined});
@@ -81,6 +76,14 @@ const Order = () => {
     setSelectedTab(newValue);
   };
 
+  const handleConfirmationOpen = () => {
+    setConfirmationOpen(true);
+  };
+  
+  const handleConfirmationClose = () => {
+    setConfirmationOpen(false);
+  };
+
   function a11yProps(index) {
     return {
       id: `simple-tab-${index}`,
@@ -106,20 +109,7 @@ const Order = () => {
       <GridFooterContainer>
         <GridFooter sx={{ border: 'none' }} />
         <Button
-          onClick= { async () => { 
-            await createOrder({userId, material: formData.materialType, quantity:formData.quantity, sellers: selectedRows});
-            // await updateOrder({ requestType: RequestType.INITORDER, sellerIds:selectedRows, orderId:[props.orderData._id], isSeller: false })
-            console.log(selectedRows); console.log("Submitted Request"); 
-            window.location.reload();
-          }}
-          sx={{
-            backgroundColor: theme.palette.secondary[300],
-            color: 'white',
-            '&:hover': {
-              backgroundColor: theme.palette.secondary[200],
-            },
-            mr: 2,
-          }}
+          onClick={handleConfirmationOpen}
         >
           Confirm Selection
         </Button>
@@ -174,7 +164,7 @@ const Order = () => {
       sortable: false,
       flex: 0.5,
       renderCell: (params) => {
-        // console.log(params);
+        console.log(params);
         return (<ActionMenuIncomingOrders orderData={params.row}/>)},
     },
   ];
@@ -199,13 +189,14 @@ const Order = () => {
   {
     field: "City",
     headerName: "City",
-    width: 150,
+    flex: 0.5,
     sortable: false,
+    // renderCell: (params) => {params.value.length},
   },
   {
     field: "Certifications",
     headerName: "Certifications",
-    width: 200,
+    flex: 0.5,
   },
 ];
 
@@ -301,12 +292,11 @@ const Order = () => {
               paginationMode="server"
               sortingMode="server"
               onSelectionModelChange={(newSelection) => {
-                console.log(newSelection);
                 setSelectedRows(newSelection);
               }}
-              onPageChange={(newPage) => setPage(newPage)}
+              /* onPageChange={(newPage) => setPage(newPage)}
               onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-              onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+              onSortModelChange={(newSortModel) => setSort(...newSortModel)} */
               components={{ 
                 Toolbar: DataGridCustomToolbar,
                 Footer: CustomFooter,
@@ -315,9 +305,8 @@ const Order = () => {
                 toolbar: { searchInput, setSearchInput, setSearch },
                 footer: { selectedRows },
               }}
-              // onRowClick={(row)=>{
-              //   console.log(row.row["id"])}
-              // }
+              onRowClick={(row)=>{
+                console.log(row.row["id"])}}
             />
           </Box>
         </TabPanel>
@@ -377,6 +366,12 @@ const Order = () => {
           </Box>
         </TabPanel>
       </Box>
+
+      <Confirmation
+        open={confirmationOpen}
+        onClose={handleConfirmationClose}
+        data={{userId, material: formData.material, quantity:10, sellers: selectedRows}}
+      />
     </Box>
   );
 };

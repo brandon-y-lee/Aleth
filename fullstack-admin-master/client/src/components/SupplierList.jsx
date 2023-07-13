@@ -3,7 +3,7 @@ import { Avatar, Box, Typography, Card, CardContent, CardHeader } from '@mui/mat
 
 import { useGetPurchaseOrdersQuery, useGetEligibleSellersQuery, useGetOrderSellerDetailsQuery } from "state/api";
 
-const SupplierList = ({ orderId}) => {
+const SupplierList = ({ orderId }) => {
   console.log(orderId);
     let {data: sellerDetails, isLoading: isLoadingSellerDetails} = useGetOrderSellerDetailsQuery({orderId});
     console.log(sellerDetails);

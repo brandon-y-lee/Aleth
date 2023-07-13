@@ -250,7 +250,6 @@ const PurchaseForm = ({ onSearch }) => {
       />
 
       <TextField
-        margin="normal"
         fullWidth
         id="countryOfOrigin"
         label="Country/Region of Origin"
@@ -258,7 +257,7 @@ const PurchaseForm = ({ onSearch }) => {
         onChange={formik.handleChange}
         value={formik.values.countryOfOrigin}
         sx={{
-          mb: "1rem",
+          mb: "1.5rem",
         }}
       />
 
