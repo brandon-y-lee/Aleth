@@ -109,6 +109,9 @@ const Order = () => {
       <GridFooterContainer>
         <GridFooter sx={{ border: 'none' }} />
         <Button
+          size="medium" 
+          color="primary" 
+          style={{"backgroundColor":"#00994c", "margin":"1em"}}
           onClick={handleConfirmationOpen}
         >
           Confirm Selection
