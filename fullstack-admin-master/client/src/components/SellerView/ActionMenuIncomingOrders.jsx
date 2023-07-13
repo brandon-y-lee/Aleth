@@ -3,21 +3,13 @@ import IconButton from '@mui/material/IconButton';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Link from './Link';
-import Session from 'react-session-api';
+import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button, Typography } from '@mui/material';
 import { useUpdateOrderMutation } from "state/api";
 import { OrderStatus } from "configs/OrderStatus";
 import { RequestType } from "configs/RequestType";
-import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
-import TextField from '@mui/material/TextField';
-import {  Button } from '@mui/material'; // Updated import statements
 import { getLoggedInUser } from "utils/auth";
 
-
-
 const ActionMenuIncomingOrders = (props) => {
-
-    console.log(props);
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const userInfo = getLoggedInUser();
@@ -25,8 +17,6 @@ const ActionMenuIncomingOrders = (props) => {
     const [openDialog, setOpenDialog] = useState(false);
     const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
     const [notes, setNotes] = React.useState('');
-
-    
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -36,56 +26,37 @@ const ActionMenuIncomingOrders = (props) => {
         setAnchorEl(null);
     };
 
-    const handleAccept = () => {
+    const handleViewDetails = () => {
         setOpenDialog(true);
-      };
+    };
+
+    const handleAccept = () => {
+        updateOrder({ requestType: RequestType.SELLERACCEPT, sellerIds:[userId], orderId:[props.orderData._id], isSeller: true, notes })
+        .unwrap()
+        .then(() => {
+          console.log("Order Accepted Successfully successfully!");
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.error("Error accepting order:", error);
+        });
+    };
 
     const handleReject = () => {
-        // console.log(this);
         updateOrder({ requestType: RequestType.SELLERREJECT, sellerIds:[userId], orderId:[props.orderData._id], isSeller: true })
-          .unwrap()
-          .then(() => {
-            window.location.reload(false);
-            console.log("Order rejected Successfully successfully!");
-            // onClose();
-          })
-          .catch((error) => {
-            console.error("Error accepting order:", error);
-          });
-      };
+        .unwrap()
+        .then(() => {
+          console.log("Order rejected Successfully successfully!");
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.error("Error rejecting order:", error);
+        });
+    };
 
     const handleCloseDialog = () => {
         setOpenDialog(false);
     };
-
-    let acceptRejectMenu = [];
-    if(props.orderData.sellerStatuses[userId] == OrderStatus.NEWORDER)
-    {
-        acceptRejectMenu.push(
-            <MenuItem key="1" onClick={handleAccept}>
-                Accept Order
-            </MenuItem>
-        );
-
-        acceptRejectMenu.push(
-          <MenuItem key="2" onClick={handleReject}>
-                Reject Order
-            </MenuItem>
-        );
-    }
-
-    else if(props.orderData.sellerStatuses[userId] == OrderStatus.SELLERACCEPT)
-        acceptRejectMenu.push(
-            <MenuItem key="1" onClick={handleReject}>
-                Reject Order
-            </MenuItem>
-        )
-    else if(props.orderData.sellerStatuses[userId] == OrderStatus.SELLERDENIED)
-        acceptRejectMenu.push(
-            <MenuItem key="1" onClick={handleAccept}>
-                Accept Order
-            </MenuItem>
-        )
 
   return (
     <div>
@@ -101,108 +72,41 @@ const ActionMenuIncomingOrders = (props) => {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        sx={{
-          elevation: 0,
-          sx: {
-            overflow: 'visible',
-            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-            mt: 1.5,
-            '& .MuiAvatar-root': {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
-            '&:before': {
-              content: '""',
-              display: 'block',
-              position: 'absolute',
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: 'background.paper',
-              transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
-            },
-          },
-        }}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-    
-      {acceptRejectMenu}
-      {/* <Dialog open={openDialog} onClose={() => {setOpenDialog(false)}}fullWidth maxWidth="md">
-        <DialogTitle>Confirm order?</DialogTitle>
+        <MenuItem onClick={handleViewDetails}>View Details</MenuItem>
+      </Menu>
+      
+      <Dialog open={openDialog} onClose={handleCloseDialog} fullWidth maxWidth="md">
+        <DialogTitle>Order Details</DialogTitle>
         <DialogContent>
+                    <Typography variant="h6">Material: {props.orderData.material.join(", ")}</Typography>
+                    <Typography variant="h6">Price Range: {props.orderData.priceRange.join(" - ")}</Typography>
+                    <Typography variant="h6">Unit Weight: {props.orderData.unitWeight}</Typography>
+                    <Typography variant="h6">Pattern Print: {props.orderData.patternPrint}</Typography>
+                    <Typography variant="h6">Color: {props.orderData.color}</Typography>
+                    <Typography variant="h6">Country Of Origin: {props.orderData.countryOfOrigin}</Typography>
+                    <Typography variant="h6">Quantity: {props.orderData.quantity}</Typography>
+                    <Typography variant="h6">Delivery Date: {new Date(props.orderData.deliveryDate).toLocaleDateString()}</Typography>
 
-          <TextField 
-            id="outlined-basic" 
-            label="Add Notes (optional)" 
-            variant="outlined" 
-            fullWidth
-            onChange={(e) => setNotes(e.target.value)}
-          />
-        </DialogContent>
+                    <TextField 
+                        sx={{marginTop: 2}}
+                        id="outlined-basic" 
+                        label="Add additional notes here.." 
+                        variant="outlined" 
+                        fullWidth
+                        onChange={(e) => setNotes(e.target.value)}
+                    />
+                </DialogContent>
         <DialogActions>
-        <Button type="button"
-          fullWidth
-          variant="contained"
-          color="secondary" 
-          onClick={() => {
-              setOpenDialog(false);
-              updateOrder({ requestType: RequestType.SELLERACCPET, sellerIds:[userId], orderId:[props.orderData._id], isSeller: true})
-              .unwrap()
-              .then(() => {
-                // window.location.reload(false);
-                console.log("Order Accepted Successfully successfully!");
-                // onClose();
-              })
-              .catch((error) => {
-                console.error("Error accepting order:", error);
-              });
-            }}
-          >
-            Confirm Order
+          <Button onClick={handleReject} color="secondary">
+            Reject
+          </Button>
+          <Button onClick={handleAccept} color="secondary">
+            Accept
           </Button>
         </DialogActions>
-      </Dialog> */}
+      </Dialog>
 
-<Dialog open={openDialog} onClose={() => {setOpenDialog(false)}} fullWidth maxWidth="md">
-  <DialogTitle>Check Status</DialogTitle>
-  <DialogContent>
-    {/* Add content here */}
-    <TextField 
-      id="outlined-basic" 
-      label="Add Notes" 
-      variant="outlined" 
-      fullWidth
-      onChange={(e) => setNotes(e.target.value)}
-    />
-  </DialogContent>
-  <DialogActions>
-    <Button onClick={() => setOpenDialog(false)} color="secondary">
-      Close
-    </Button>
-    <Button onClick={() => {
-        setOpenDialog(false);
-        updateOrder({ requestType: RequestType.SELLERACCPET, sellerIds:[userId], orderId:[props.orderData._id], isSeller: true, notes })
-        .unwrap()
-        .then(() => {
-          console.log("Order Accepted Successfully successfully!");
-          window.location.reload();
-        })
-        .catch((error) => {
-          console.error("Error accepting order:", error);
-        });
-      }
-    } color="secondary">
-      Confirm Order
-    </Button>
-  </DialogActions>
-</Dialog>
-        
-      </Menu>
     </div>
   );
 };

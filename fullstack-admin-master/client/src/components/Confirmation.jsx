@@ -6,15 +6,14 @@ import {
   DialogTitle,
   Button,
   Typography,
-  Checkbox,
-  ListItemText,
   List,
-  ListItemButton
+  ListItem,
+  ListItemText,
 } from '@mui/material';
 import { useCreateNewOrderMutation } from "state/api";
 
-
 const Confirmation = ({ open, onClose, data }) => {
+  console.log(data);
   const [createOrder, { isLoading: creatingOrder }] = useCreateNewOrderMutation();
 
   const handleSubmit = async () => {
@@ -32,15 +31,23 @@ const Confirmation = ({ open, onClose, data }) => {
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>Confirm Your Selection</DialogTitle>
       <DialogContent>
-        {Object.entries(data).map(([key, value]) => (
-          <Typography variant="body1" key={key}>{`${key}: ${value}`}</Typography>
-        ))}
+        <List>
+          {Object.entries(data).map(([key, value]) => (
+            <ListItem key={key}>
+              <ListItemText 
+                primary={<Typography variant="h6">{key}</Typography>} 
+                secondary={<Typography variant="body1">{Array.isArray(value) ? value.join(', ') : value}</Typography>} 
+              />
+            </ListItem>
+          ))}
+        </List>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={onClose} color="secondary">Cancel</Button>
         <Button
-          style={{"backgroundColor":"#00994c"}}
+          variant="contained"
           onClick={handleSubmit}
+          color="primary"
         >
           Submit
         </Button>
@@ -48,4 +55,5 @@ const Confirmation = ({ open, onClose, data }) => {
     </Dialog>
   );
 };
+
 export default Confirmation;
