@@ -110,6 +110,15 @@ const Order = () => {
         <GridFooter sx={{ border: 'none' }} />
         <Button
           onClick={handleConfirmationOpen}
+          sx={{
+            backgroundColor: theme.palette.secondary[300],
+            color: 'white',
+            '&:hover': {
+              backgroundColor: theme.palette.secondary[200],
+            },
+            mr: 2,
+          }}
+
         >
           Confirm Selection
         </Button>
