@@ -17,16 +17,16 @@ import FlexBetween from "components/FlexBetween";
 import Session from "react-session-api";
 
 const registerSchema = yup.object().shape({
-  name: yup.string().required("required"),
+  Company: yup.string().required("required"),
+  Website: yup.string().url("invalid website url").required("required"),
+  Address: yup.string().required("required"),
+  City: yup.string().required("required"),
+  State: yup.string().required("required"),
+  Zip: yup.string().required("required"),
+  Employees: yup.string(),
+  Type: yup.string().required("required"),
   email: yup.string().email("invalid email").required("required"),
   password: yup.string().required("required"),
-  city: yup.string().required("required"),
-  state: yup.string().required("required"),
-  country: yup.string().required("required"),
-  occupation: yup.string().required("required"),
-  phoneNumber: yup.string().required("required"),
-  transactions: yup.string().required("required"),
-  role: yup.string().required("required"),
 });
 
 const loginSchema = yup.object().shape({
@@ -35,16 +35,16 @@ const loginSchema = yup.object().shape({
 });
 
 const initialValuesRegister = {
-    name: "",
-    email: "",
-    password: "",
-    city: "",
-    state: "",
-    country: "",
-    occupation: "",
-    phoneNumber: "",
-    transactions: "",
-    role: "",
+  Company: "",
+  Website: "",
+  Address: "",
+  City: "",
+  State: "",
+  Zip: "",
+  Employees: "",
+  Type: "",
+  email: "",
+  password: "",
 };
 
 const initialValuesLogin = {
@@ -61,6 +61,7 @@ const Form = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
+
 
   const register = async (values, onSubmitProps) => {
     // this allows us to send form info with image
@@ -109,7 +110,8 @@ const Form = () => {
       console.log("Error during login", await loggedInResponse.json());
     }
   };
-  
+  // Existing register and login functions
+  // ...
 
   const handleFormSubmit = async (values, onSubmitProps) => {
     if (isLogin) await login(values, onSubmitProps);
@@ -144,37 +146,83 @@ const Form = () => {
             {isRegister && (
               <>
                 <TextField
-                  label="Name"
+                  label="Company"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  value={values.name}
-                  name="name"
-                  error={
-                    Boolean(touched.name) && Boolean(errors.name)
-                  }
-                  helperText={touched.name && errors.name}
+                  value={values.Company}
+                  name="Company Name"
+                  error={Boolean(touched.Company) && Boolean(errors.Company)}
+                  helperText={touched.Company && errors.Company}
                   sx={{ gridColumn: "span 2" }}
+                />
+                <TextField
+                  label="Website"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.Website}
+                  name="Website"
+                  error={Boolean(touched.Website) && Boolean(errors.Website)}
+                  helperText={touched.Website && errors.Website}
+                  sx={{ gridColumn: "span 2" }}
+                />
+                <TextField
+                  label="Street Address"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.Address}
+                  name="Address"
+                  error={Boolean(touched.Address) && Boolean(errors.Address)}
+                  helperText={touched.Address && errors.Address}
+                  sx={{ gridColumn: "span 4" }}
                 />
                 <TextField
                   label="City"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  value={values.city}
-                  name="city"
-                  error={Boolean(touched.city) && Boolean(errors.city)}
-                  helperText={touched.city && errors.city}
+                  value={values.City}
+                  name="City"
+                  error={Boolean(touched.City) && Boolean(errors.City)}
+                  helperText={touched.City && errors.City}
                   sx={{ gridColumn: "span 2" }}
                 />
                 <TextField
-                  label="Occupation"
+                  label="State"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  value={values.occupation}
-                  name="occupation"
-                  error={
-                    Boolean(touched.occupation) && Boolean(errors.occupation)
-                  }
-                  helperText={touched.occupation && errors.occupation}
+                  value={values.State}
+                  name="State"
+                  error={Boolean(touched.State) && Boolean(errors.State)}
+                  helperText={touched.State && errors.State}
+                  sx={{ gridColumn: "span 2" }}
+                />
+                <TextField
+                  label="Zip"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.Zip}
+                  name="Zip"
+                  error={Boolean(touched.Zip) && Boolean(errors.Zip)}
+                  helperText={touched.Zip && errors.Zip}
+                  sx={{ gridColumn: "span 2" }}
+                />
+                <TextField
+                  label="Employees"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.Employees}
+                  name="Employees"
+                  error={Boolean(touched.Employees) && Boolean(errors.Employees)}
+                  helperText={touched.Employees && errors.Employees}
+                  sx={{ gridColumn: "span 2" }}
+                />
+                <TextField
+                  label="Type"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.Type}
+                  name="Type"
+                  error={Boolean(touched.Type) && Boolean(errors.Type)}
+                  helperText={touched.Type && errors.Type}
                   sx={{ gridColumn: "span 4" }}
                 />
               </>
@@ -188,67 +236,44 @@ const Form = () => {
               name="email"
               error={Boolean(touched.email) && Boolean(errors.email)}
               helperText={touched.email && errors.email}
-              sx={{ gridColumn: "span 4" }}
             />
             <TextField
-              label="ID"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.ID}
-              name="ID"
-              error={Boolean(touched.id) && Boolean(errors.id)}
-              helperText={touched.id && errors.id}
-              sx={{ gridColumn: "span 4" }}
-            />
-            <TextField
-              label="Password"
               type="password"
+              label="Password"
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.password}
               name="password"
               error={Boolean(touched.password) && Boolean(errors.password)}
               helperText={touched.password && errors.password}
-              sx={{ gridColumn: "span 4" }}
             />
-          </Box>
-
-          {/* BUTTONS */}
-          <Box>
-            <Button
-              fullWidth
-              type="submit"
-              color="primary" 
-              style={{"backgroundColor":"#00994c"}}
-              sx={{
-                m: "2rem 0",
-                p: "1rem",
-                // backgroundColor: palette.primary.main,
-                // color: palette.background.alt,
-                "&:hover": { color: palette.primary.main },
-              }}
-            >
-              {isLogin ? "LOGIN" : "REGISTER"}
+            <Button type="submit" variant="contained" color="primary">
+              {isLogin ? "Login" : "Register"}
             </Button>
-            <Typography
-              onClick={() => {
-                setPageType(isLogin ? "register" : "login");
-                resetForm();
-              }}
-              color="secondary"
-              sx={{
-                textDecoration: "underline",
-                // color: palette.primary.main,
-                "&:hover": {
-                  cursor: "pointer",
-                  color: palette.primary.light,
-                },
-              }}
-            >
-              {isLogin
-                ? "Don't have an account? Sign Up here."
-                : "Already have an account? Login here."}
-            </Typography>
+            {isLogin && (
+              <Box>
+                <Typography
+                  variant="body2"
+                  onClick={() => setPageType("forgot")}
+                  sx={{ cursor: "pointer", color: palette.text.secondary }}
+                >
+                  Forgot Password?
+                </Typography>
+              </Box>
+            )}
+            <FlexBetween>
+              <Typography variant="body2">
+                {isLogin ? "New User?" : "Already have an account?"}
+              </Typography>
+              <Button
+                endIcon={<EditOutlinedIcon />}
+                onClick={() =>
+                  setPageType(isLogin ? "register" : "login")
+                }
+              >
+                {isLogin ? "Register" : "Login"}
+              </Button>
+            </FlexBetween>
           </Box>
         </form>
       )}
