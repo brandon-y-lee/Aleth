@@ -33,15 +33,20 @@ import cotton from "assets/cotton.jpg";
 
 
 const Profile = () => {
+    const theme = useTheme();
     const [user, setUser] = useState(null);
     const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
-
     const [value, setValue] = React.useState(0);
     const [selectedTab, setSelectedTab] = useState(0);
 
-    const theme = useTheme();
-    const { userId } = useParams();
-    console.log(userId);
+    const { userId: userIdFromUrl } = useParams();
+    console.log(userIdFromUrl);
+
+    const loggedInUser = JSON.parse(localStorage.getItem("user"));
+    console.log(loggedInUser);
+    const loggedInUserId = loggedInUser ? loggedInUser._id : null;
+
+    const userId = userIdFromUrl || loggedInUserId;
 
     let {data: supplierData, isLoading: isLoadingSupplierData} = useGetSupplierDataQuery({userId});
 

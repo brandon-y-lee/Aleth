@@ -34,7 +34,6 @@ function FileUpload({ onFilesChange }) {
   return (
     <Box 
       sx={{
-        mt: 3,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

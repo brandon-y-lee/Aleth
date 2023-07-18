@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Typography, Box } from "@mui/material";
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, padding, ...other } = props;
   return (
     <div
       role="tabpanel"
@@ -13,7 +13,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box p={padding}>
           {children}
         </Box>
       )}
@@ -25,6 +25,7 @@ TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
   value: PropTypes.any.isRequired,
+  padding: PropTypes.number,
 };
 
 export default TabPanel;

@@ -28,6 +28,7 @@ import {
   TrendingUpOutlined,
   PieChartOutlined,
   InventoryOutlined,
+  SearchOutlined,
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -44,6 +45,10 @@ const navItems = [
   {
     text: "Network",
     icon: null,
+  },
+  {
+    text: "Suppliers",
+    icon: <SearchOutlined />,
   },
   {
     text: "Order",

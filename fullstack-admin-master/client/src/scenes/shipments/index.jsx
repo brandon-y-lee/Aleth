@@ -208,9 +208,6 @@ const Shipments = () => {
       <Box 
         height="16vh"
         p="2.5rem 2.5rem"
-        sx={{
-          background: `linear-gradient(215deg, ${theme.palette.secondary[400]} 30%, ${theme.palette.primary[500]} 90%)`,
-        }}
       >
         <FlexBetween>
           <Header title="SHIPMENTS" subtitle="Manage and Track your Shipments" />

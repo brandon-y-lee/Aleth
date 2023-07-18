@@ -11,8 +11,7 @@ import { Dialog, DialogTitle, DialogContent, DialogContentText, IconButton } fro
 import NoteIcon from '@mui/icons-material/Note';
 
 
-
-export default function OrderDetails({orderId}) {
+export default function OrderDetails({ orderId }) {
   const [expanded, setExpanded] = React.useState(false);
   const [selected, setSelected] = React.useState({}); // add this line
   const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();

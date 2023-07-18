@@ -18,8 +18,6 @@ import {
   Search,
 } from "@mui/icons-material";
 import { DataGrid, GridFooterContainer, GridFooter } from "@mui/x-data-grid";
-import { styled } from '@mui/material/styles';
-
 import { useGetPurchaseOrdersQuery, useGetEligibleSellersQuery, useUpdateOrderMutation, useCreateNewOrderMutation, useGetEligibleSellersAdvancedQuery } from "state/api";
 import Header from "components/Header";
 import OrderMap from "components/OrderMap";
@@ -34,7 +32,7 @@ import Confirmation from "components/Confirmation";
 // Session.set("username", "2");
 Session.set("coordinates", [17.2064912,22.1782433]);
 
-const Order = () => {
+const Suppliers = () => {
   const userId = Session.get("username");
   const coords = Session.get("coordinates");
   const theme = useTheme();
@@ -119,6 +117,7 @@ const Order = () => {
         <Button
           size="medium" 
           color="primary" 
+          style={{"backgroundColor":"#00994c", "margin":"1rem"}}
           onClick={handleConfirmationOpen}
           sx={{
             backgroundColor: theme.palette.secondary[300],
@@ -140,110 +139,83 @@ const Order = () => {
     {
       field: "_id",
       headerName: "ID",
-      flex: 0.25,
+      flex: 0.5,
     },
     {
       field: "style",
       headerName: "SKU",
-      flex: 0.25,
+      flex: 0.5,
     },
     {
       field: "product",
-      headerName: "PRODUCT",
-      flex: 0.50,
+      headerName: "Product",
+      flex: 1,
     },
     {
       field: "amount",
-      headerName: "AMOUNT",
+      headerName: "Amount",
       flex: 0.25,
       sortable: false,
       renderCell: (params) => "2000",
     },
     {
-      field: "cost",
-      headerName: "COST",
+      field: "unit",
+      headerName: "Unit",
       flex: 0.25,
-      renderCell: (params) => "$10"
+      renderCell: (params) => "lb"
     },
     {
       field: "actions",
-      headerName: "ACTIONS",
+      headerName: "Actions",
       sortable: false,
-      flex: 0.25,
+      flex: 0.5,
       renderCell: (params) => {
         console.log(params);
         return (<ActionMenuIncomingOrders orderData={params.row}/>)},
     },
   ];
 
-  const eligibleSellersColumns = [
-    {
-      field: "Company",
-      headerName: "NAME",
-      flex: 0.25,
-      renderCell: (params) => (
-        console.log(params.id),
-        <Link to={`/profile/${params.id}`}>
-          {params.row.Company}
-        </Link>
-      ),
-    },
-    {
-      field: "UserType",
-      headerName: "TYPE",
-      flex: 0.25,
-    },
-    {
-      field: "City",
-      headerName: "CITY",
-      flex: 0.25,
-    },
-    {
-      field: "Certifications",
-      headerName: "CERTIFICATES",
-      flex: 0.25,
-    },
-  ];
-
-  const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
-    '& .MuiDataGrid-root': {
-      border: 'none',
-    },
-    '& .MuiDataGrid-row': {
-      backgroundColor: 'white',
-      borderBottom: '1px solid #e0e0e0',
-      '&:hover': {
-        backgroundColor: '#f5f5f5',
-      },
-    },
-    '& .MuiDataGrid-columnHeader': {
-      color: 'black',
-      border: 'none',
-    },
-    '& .MuiDataGrid-columnHeaderTitle': {
-      fontWeight: 'bold !important',
-      fontSize: '0.9rem',
-    },
-    '& .MuiDataGrid-columnSeparator': {
-      display: 'none',
-    },
-    '& .MuiDataGrid-virtualScroller': {
-      backgroundColor: 'white',
-    },
-    '& .MuiDataGrid-footerContainer': {
-      backgroundColor: theme.palette.background.alt,
-      color: theme.palette.secondary[100],
-      borderTop: "none",
-    },
-  }));
+ const eligibleSellersColumns = [
+  {
+    field: "Company",
+    headerName: "Name",
+    flex: 0.5,
+    renderCell: (params) => (
+      console.log(params.id),
+      <Link to={`/profile/${params.id}`}>
+        {params.row.Company}
+      </Link>
+    ),
+  },
+  {
+    field: "UserType",
+    headerName: "Type",
+    flex: 0.5,
+  },
+  {
+    field: "City",
+    headerName: "City",
+    flex: 0.5,
+    sortable: false,
+    // renderCell: (params) => {params.value.length},
+  },
+  {
+    field: "Certifications",
+    headerName: "Certifications",
+    flex: 0.5,
+  },
+];
 
   return (
     <Box>
       <Box 
-        height="15vh"
+        height="16vh"
         p="2.5rem 2.5rem"
+        sx={{
+          background: `linear-gradient(215deg, ${theme.palette.secondary[400]} 30%, ${theme.palette.primary[500]} 90%)`,
+        }}
       >
-        <Header title="ORDER" subtitle="Manage SKUs and Discover Suppliers" />
+        <Header title="SUPPLIERS" subtitle="Manage and Search for Partners" />
       </Box>
       
       <Box m="1.5rem 2.5rem">
@@ -255,34 +227,28 @@ const Order = () => {
               aria-label="basic tabs example"
             >
               <Tab
-                label="Requests"
+                label="Your Network"
                 {...a11yProps(0)}
-                sx={{
-                  backgroundColor: "transparent",
+                sx={(theme) => ({
+                  color: "#00994c",
+                  backgroundColor: value === 0 ? "#00cc69" : "white",
+                  boxShadow: value === 0 ? theme.shadows[1] : theme.shadows[2],
                   '&:hover': {
-                    backgroundColor: '#e0e0e0',
-                    color: 'white',
-                  },
-                  '&.Mui-selected': {
-                    color: 'black',
-                  },
-                  color: "#b3b3b3",
-                }}
+                    backgroundColor: value === 0 ? '#00cc69' : '#e0e0e0',
+                  }
+                })}
               />
               <Tab 
                 label="Search"
                 {...a11yProps(1)}
-                sx={{
-                  backgroundColor: "transparent",
+                sx={(theme) => ({
+                  color: "#00994c",
+                  backgroundColor: value === 1 ? "#00cc69" : "white",
+                  boxShadow: value === 1 ? theme.shadows[1] : theme.shadows[2],
                   '&:hover': {
-                    backgroundColor: '#e0e0e0',
-                    color: 'white',
+                    backgroundColor: value === 1 ? '#00cc69' : '#e0e0e0',
                   },
-                  '&.Mui-selected': {
-                    color: 'black',
-                  },
-                  color: "#b3b3b3",
-                }}
+                })}
               />
             </Tabs>
           </Box>
@@ -297,38 +263,41 @@ const Order = () => {
           </Box>
         </FlexBetween>
 
-        <Box mt="1.5rem">
+        <Box mt="2rem">
           <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResultsAdvanced} handleSearch={handleSearch} purchaseOrders={purchaseOrders} orderId={orderId}/>
         </Box>
 
-        <TabPanel value={value} index={0} padding={0}>
-          <Box height="60vh" sx={{ mt: "1.5rem" }}>
-            <StyledDataGrid
-              loading={isLoadingPurchaseOrders || !purchaseOrders}
-              getRowId={(row) => Math.random()}
-              rows={(purchaseOrders && purchaseOrders.allOrders) || []}
-              columns={purchaseOrdersColumns}
-              rowCount={(1) || 0}
-              rowsPerPageOptions={[20, 50, 100]}
-              pagination
-              page={1}
-              pageSize={20}
-              paginationMode="server"
-              sortingMode="server"
-              onPageChange={(newPage) => setPage(newPage)}
-              onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-              onSortModelChange={(newSortModel) => setSort(...newSortModel)}
-              onRowClick={(row)=>{
-                console.log(row.row);
-                setOrderId(row.row._id);
-              }}
-            />
-          </Box>
-        </TabPanel>
+        
 
-        <TabPanel value={value} index={1} padding={0}>
-          <Box height="50vh" sx={{ mt: "1.5rem" }}>
-            <StyledDataGrid
+        <TabPanel value={value} index={1}>
+          <Box
+            height="60vh"
+            sx={{
+              "& .MuiDataGrid-root": {
+                border: "none",
+              },
+              "& .MuiDataGrid-cell": {
+                borderBottom: "none",
+              },
+              "& .MuiDataGrid-columnHeaders": {
+                backgroundColor: theme.palette.background.alt,
+                color: theme.palette.secondary[100],
+                borderBottom: "none",
+              },
+              "& .MuiDataGrid-virtualScroller": {
+                backgroundColor: theme.palette.primary.light,
+              },
+              "& .MuiDataGrid-footerContainer": {
+                backgroundColor: theme.palette.background.alt,
+                color: theme.palette.secondary[100],
+                borderTop: "none",
+              },
+              "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                color: `${theme.palette.secondary[200]} !important`,
+              },
+            }}
+          >
+            <DataGrid
               loading={isLoadingSearchResultsAdvanced || !searchResultsAdvanced}
               getRowId={(row) => row["_id"]}
               rows={(searchResultsAdvanced && searchResultsAdvanced.eligibleSellers) || []}
@@ -348,13 +317,70 @@ const Order = () => {
               onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
               onSortModelChange={(newSortModel) => setSort(...newSortModel)} */
               components={{ 
+                Toolbar: DataGridCustomToolbar,
                 Footer: CustomFooter,
               }}
               componentsProps={{
+                toolbar: { searchInput, setSearchInput, setSearch },
                 footer: { selectedRows },
               }}
               onRowClick={(row)=>{
                 console.log(row.row["id"])}}
+            />
+          </Box>
+        </TabPanel>
+
+        <TabPanel value={value} index={0}>
+          <Box
+            height="60vh"
+            sx={{
+              "& .MuiDataGrid-root": {
+                border: "none",
+              },
+              "& .MuiDataGrid-cell": {
+                borderBottom: "none",
+              },
+              "& .MuiDataGrid-columnHeaders": {
+                backgroundColor: theme.palette.background.alt,
+                color: theme.palette.secondary[100],
+                borderBottom: "none",
+              },
+              "& .MuiDataGrid-virtualScroller": {
+                backgroundColor: theme.palette.primary.light,
+              },
+              "& .MuiDataGrid-footerContainer": {
+                backgroundColor: theme.palette.background.alt,
+                color: theme.palette.secondary[100],
+                borderTop: "none",
+              },
+              "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                color: `${theme.palette.secondary[200]} !important`,
+              },
+            }}
+          >
+            <DataGrid
+              loading={isLoadingPurchaseOrders || !purchaseOrders}
+              getRowId={(row) => Math.random()}
+              rows={(purchaseOrders && purchaseOrders.allOrders) || []}
+              columns={purchaseOrdersColumns}
+              rowCount={(1) || 0}
+              rowsPerPageOptions={[20, 50, 100]}
+              pagination
+              page={1}
+              pageSize={20}
+              paginationMode="server"
+              sortingMode="server"
+              onPageChange={(newPage) => setPage(newPage)}
+              onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+              onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+              components={{ Toolbar: DataGridCustomToolbar }}
+              componentsProps={{
+                toolbar: { searchInput, setSearchInput, setSearch },
+              }}
+              onRowClick={(row)=>{
+                console.log(row.row);
+                  setOrderId(row.row._id);
+                }}
             />
           </Box>
         </TabPanel>
@@ -369,4 +395,4 @@ const Order = () => {
   );
 };
 
-export default Order;
+export default Suppliers;

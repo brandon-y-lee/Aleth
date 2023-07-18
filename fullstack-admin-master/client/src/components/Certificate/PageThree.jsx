@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Typography, Box } from "@mui/material";
-import FileUpload from "components/FileUpload";
+import FileUpload from "components/Common/FileUpload";
 
 const PageThree = ({ onButtonClick, setFiles }) => {
   const handleFilesChange = (files) => {

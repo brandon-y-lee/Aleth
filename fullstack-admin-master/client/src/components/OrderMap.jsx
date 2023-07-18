@@ -4,6 +4,7 @@ import PurchaseForm from 'components/PurchaseForm';
 import OrderDetails from './OrderDetails';
 import SupplierList from './SupplierList';
 import axios from 'axios';
+import UploadTechPack from './Order/UploadTechPack';
 
 
 
@@ -144,12 +145,15 @@ const OrderMap = (props) => {
 
     return (
         <Grid container spacing={2}>
-            <Grid item xs={8}>
-                <div ref={mapRef} style={{ height: "100%", width: "100%" }} />
+            <Grid item xs={3}>
+                {props.selectedTab === 0 ? <SupplierList orderId={props.orderId}/> : <UploadTechPack />}
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
                 {/* {props.selectedTab === 0 ? <PurchaseForm onSearch={props.handleSearch} /> : <SupplierList orderId={props.orderId}/>} */}
-                {props.selectedTab === 0 ? <PurchaseForm onSearch={props.handleSearch} /> : <OrderDetails orderId={props.orderId}/>}
+                {props.selectedTab === 0 ? <OrderDetails orderId={props.orderId}/> : <PurchaseForm onSearch={props.handleSearch} />}
+            </Grid>
+            <Grid item xs={6}>
+                <div ref={mapRef} style={{ height: "100%", width: "100%" }} />
             </Grid>
         </Grid>
     );
