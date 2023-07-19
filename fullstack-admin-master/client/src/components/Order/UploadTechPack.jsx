@@ -1,21 +1,37 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Typography } from '@mui/material';
 import FileUpload from '../Common/FileUpload';
+import { useProcessPdfMutation } from 'state/api';
+
 
 const UploadTechPack = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [files, setFiles] = useState([]);
+  const [processPdf, { isLoading, data, error }] = useProcessPdfMutation();
+
 
   const handleFilesChange = (files) => {
     setFiles(files);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log('Name:', name);
     console.log('Description:', description);
     console.log('Files:', files);
+    if (files.length > 0) {
+      const formData = new FormData();
+      formData.append('file', files[0]);
+      // Use the first file from the files array
+      // const file = files[0];
+
+      try {
+        await processPdf(formData);
+      } catch (err) {
+        console.error('Error processing PDF:', err);
+      }
+    }
     // Here you can handle the submission e.g. send the data somewhere
   };
 

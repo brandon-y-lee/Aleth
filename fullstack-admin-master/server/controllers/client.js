@@ -10,6 +10,9 @@ import { OrderStatus } from "../configs/OrderStatus.js";
 import {RequestType} from "../configs/RequestType.js";
 import mongoose from "mongoose";
 import SupplierData from "../models/SupplierData.js";
+import PDFParser from 'pdf2json';
+import fs from 'fs';
+
 
 
 export const getProducts = async (req, res) => {
@@ -112,6 +115,57 @@ export const getEligibleSellersAdvanced = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+
+export const processTechPack = async (req, res) => {
+    console.log("Processing PDF: ", req.file);
+    try {
+        if (!req.file) {
+            return res.status(400).json({ message: 'No file provided' });
+        }
+
+        const pdfParser = new PDFParser();
+
+        pdfParser.on('pdfParser_dataError', err => {
+            console.error('Error parsing PDF:', err.parserError);
+            res.status(500).json({ message: 'Error parsing PDF' });
+        });
+
+        pdfParser.on('pdfParser_dataReady', pdfData => {
+            console.log(pdfData);
+            let tableStarted = false;
+            const tableRows = [];
+
+            for (const page of pdfData.Pages) {
+                for (const textItem of page.Texts) {
+                    const text = decodeURIComponent(textItem.R[0].T);
+                    console.log(text);
+                    if (text.includes('Bill of Material')) {
+                        tableStarted = true;
+                    }
+                    if (tableStarted) {
+                        const yPos = textItem.y;
+                        let row = tableRows.find(r => r.yPos === yPos);
+                        if (!row) {
+                            row = { yPos, data: [] };
+                            tableRows.push(row);
+                        }
+                        row.data.push(text);
+                    }
+                }
+            }
+
+            const sortedRows = tableRows.sort((a, b) => a.yPos - b.yPos).map(row => row.data);
+
+            res.status(200).json({tableData: sortedRows});
+        });
+
+        pdfParser.parseBuffer(req.file.buffer);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 
 export const getSupplierData = async (req, res) => {
   try {

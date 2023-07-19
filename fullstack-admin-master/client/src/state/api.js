@@ -59,6 +59,17 @@ export const api = createApi({
       providesTags: ["Shipments"],
     }),
 
+    processPdf: build.mutation({
+      query: (file) => ({
+        url: 'client/processPDF',
+        method: 'POST',
+        body: file,
+        headers: {
+          'Content-Type': file.type,
+        },
+      }),
+    }),
+
     getEligibleSellers: build.query({
       query: ({ material }) => ({
         url: "client/eligibleSellers",
@@ -204,6 +215,7 @@ export const {
   useGetEligibleSellersQuery,
   useGetEligibleSellersAdvancedQuery,
   useGetSupplierDataQuery,
+  useProcessPdfMutation,
   useGetOrderSellerDetailsQuery,
   useUpdateOrderMutation,
   useCreateNewOrderMutation,

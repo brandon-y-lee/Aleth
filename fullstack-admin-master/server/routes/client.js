@@ -1,4 +1,7 @@
 import express from "express";
+import multer from 'multer';
+const upload = multer({ storage: multer.memoryStorage() });
+
 import {
   getGeography,
   getTransactions,
@@ -15,6 +18,7 @@ import {
   getEligibleSellers,
   getOrderSellerDetails,
   getEligibleSellersAdvanced,
+  processTechPack,
   getSupplierData
 } from "../controllers/client.js";
 
@@ -39,6 +43,7 @@ router.get("/supplierData", getSupplierData);
 
 //POSTs
 router.post("/updateRecipients", updateRecipients);
+router.post('/processPDF', upload.single('file'), processTechPack);
 router.post("/generateNewShipment", generateNewShipment);
 router.post("/updateOrder", updateOrder);
 router.post("/createNewOrder", createNewOrder);
