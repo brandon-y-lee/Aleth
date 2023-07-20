@@ -12,6 +12,9 @@ import mongoose from "mongoose";
 import SupplierData from "../models/SupplierData.js";
 import PDFParser from 'pdf2json';
 import fs from 'fs';
+import {fabrics, productCategory, fabricConstruction} from '../configs/SearchLists.js';
+import OrderTree from "../models/OrderTree.js";
+import SearchQuery from "../models/SearchQuery.js";
 
 
 
@@ -118,53 +121,137 @@ export const getEligibleSellersAdvanced = async (req, res) => {
 
 
 export const processTechPack = async (req, res) => {
-    console.log("Processing PDF: ", req.file);
-    try {
-        if (!req.file) {
-            return res.status(400).json({ message: 'No file provided' });
-        }
+  console.log("Processing PDF: ", req.file);
+  try {
+      if (!req.file) {
+          return res.status(400).json({ message: 'No file provided' });
+      }
 
-        const pdfParser = new PDFParser();
+      const pdfParser = new PDFParser();
 
-        pdfParser.on('pdfParser_dataError', err => {
-            console.error('Error parsing PDF:', err.parserError);
-            res.status(500).json({ message: 'Error parsing PDF' });
-        });
+      pdfParser.on('pdfParser_dataError', err => {
+          console.error('Error parsing PDF:', err.parserError);
+          res.status(500).json({ message: 'Error parsing PDF' });
+      });
 
-        pdfParser.on('pdfParser_dataReady', pdfData => {
-            console.log(pdfData);
-            let tableStarted = false;
-            const tableRows = [];
+      pdfParser.on('pdfParser_dataReady', async pdfData => {
+          let tableStarted = false;
+          const tableRows = [];
+          
+          for (const textItem of pdfData.Pages[0].Texts) {
+              const text = decodeURIComponent(textItem.R[0].T);
+              if (text.includes('BILL OF MATERIALS')) {
+                  tableStarted = true;
+              }
+              if (text.includes('WHILE EVERY CARE IS TAKEN')) {
+                  tableStarted = false;
+              }
+              if (tableStarted) {
+                  const yPos = textItem.y;
+                  let row = tableRows.find(r => r.yPos === yPos);
+                  if (!row) {
+                      row = { yPos, data: [] };
+                      tableRows.push(row);
+                  }
+                  row.data.push(text);
+              }
+          }
 
-            for (const page of pdfData.Pages) {
-                for (const textItem of page.Texts) {
-                    const text = decodeURIComponent(textItem.R[0].T);
-                    console.log(text);
-                    if (text.includes('Bill of Material')) {
-                        tableStarted = true;
-                    }
-                    if (tableStarted) {
-                        const yPos = textItem.y;
-                        let row = tableRows.find(r => r.yPos === yPos);
-                        if (!row) {
-                            row = { yPos, data: [] };
-                            tableRows.push(row);
-                        }
-                        row.data.push(text);
-                    }
-                }
-            }
+          const sortedRows = tableRows.sort((a, b) => a.yPos - b.yPos).map(row => row.data);
+          let orderParams = sortedRows.slice(2, -3).map(row => {
+              const description = row[2].replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '').toLowerCase();
+              const fabric = fabrics.find(fabric => new RegExp(`\\b${fabric.toLowerCase()}\\b`).test(description));
+              const category = productCategory.find(category => new RegExp(`\\b${category.toLowerCase()}\\b`).test(description));
+              const construction = fabricConstruction.find(construction => new RegExp(`\\b${construction.toLowerCase()}\\b`).test(description));
+              return {
+                  fabric: fabric || '',
+                  productCategory: category || '',
+                  fabricConstruction: construction || '',
+                  description: description,
+              };
+          });
 
-            const sortedRows = tableRows.sort((a, b) => a.yPos - b.yPos).map(row => row.data);
-
-            res.status(200).json({tableData: sortedRows});
-        });
-
-        pdfParser.parseBuffer(req.file.buffer);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
+          orderParams = orderParams.filter(param => param.fabric || param.productCategory || param.fabricConstruction);
+          res.status(200).json({tableData: orderParams});
+      });
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  }
 };
+
+export const getTechPacksForUser = async(req, res) => {
+  const {userId} = req.body
+  console.log("Fetching all techpacks for userId: ", userId);
+  try{
+    const techPacks = await OrderTree.find({buyerId: userId});
+    if(techPacks)
+      return res.status(200).json({techPacks});
+  } catch(error){
+    return res.json({message: error.message});
+  }
+}
+
+export const getTechPack = async(req, res) => {
+  console.log("Fetching Tech Pack:", req.query);
+  const {techPackId} = req.query;
+  try{
+    const techPack = await OrderTree.findOne({id: techPackId});
+    if(techPack)
+      return res.status(200).json({techPack});
+  } catch(error){
+    return res.status(500).json({message: error.message});
+  }
+}
+
+export const createSearchQueries = async (req, res) => {
+  console.log("Creating Search Queries PDF: ", req.body);
+  const {orderParams, buyerId, buyerType} = req.body;
+  try {
+
+      const newId = generateID();
+
+      const newOrderTree = new OrderTree({
+        id : newId,
+        buyerType: buyerType,
+        buyerId: buyerId,
+        material: "",
+        quantity: "",
+      });  
+      await newOrder.save();
+
+      // Create SearchQueries from orderParams
+      const searchQueries = [];
+      for (const param of orderParams) {
+        const searchQuery = new SearchQuery({
+          material: param.fabric,
+          productCategory: param.productCategory,
+          fabricConstruction: param.fabricConstruction,
+          orderId: newId
+          // Add other fields as needed
+        });
+    
+        await searchQuery.save();
+        searchQueries.push(searchQuery._id);
+      }
+
+      await OrderTree.updateOne({id: newId},{orderQueries: searchQueries});
+      res.status(200).json({"msg":"Created Successfully"});
+  } catch (error) {
+      res.status(500).json({ message: error.message });
+  };
+}
+
+export const getQueriesForTechPack = async (req, res) => {
+  try{
+    const {techPackId} = req.query;
+    console.log("Getting queries for techpackID: ", techPackId);
+    const techPackQueries = await SearchQuery.find({techPackId: techPackId});
+    console.log(techPackQueries);
+    return res.status(200).json({techPackQueries});
+  } catch (error){
+    return res.status(500).json({message: error.message});
+  }
+}
 
 
 export const getSupplierData = async (req, res) => {
@@ -481,6 +568,41 @@ export const generateNewShipment = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+export const generateNewOrderTree = async (req, res) => {
+  try {
+    console.log("Generating new order", req.body);
+    const { buyerId, buyerType, material, productCategory, deliveryDate, fabricConstruction, orderRequests } = req.body;
+
+    // Generate a new ID. This assumes that you have a function called generateID() similar to the one in the original function.
+    // const newId = generateID();
+
+    const userInfo = await UserData.findOne({id: buyerId});
+
+    // Create a new order tree
+    const newOrder = new OrderTree({
+      buyerId,
+      buyerType,
+      material,
+      productCategory,
+      deliveryDate,
+      fabricConstruction,
+      priceRange,
+      unitWeight,
+      patternPrint,
+      countryOfOrigin,
+      quantity,
+      orderRequests
+    });
+
+    await newOrder.save();
+    res.status(200).json({ message: "New order created successfully" });
+
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 
 //Function to add a new order request
 export const createNewOrder = async (req, res) => {

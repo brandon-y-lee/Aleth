@@ -97,6 +97,22 @@ export const api = createApi({
       providesTags: ["supplierData"],
     }),
 
+    getTechPack: build.query({
+      query: ({techPackId}) => ({
+        url: "client/getTechPack",
+        method: "GET",
+        params: {techPackId},
+      })
+    }),
+
+    getQueriesForTechPack: build.query({
+      query: ({techPackId}) => ({
+        url: "client/getQueriesForTechPack",
+        method: "GET",
+        params: {techPackId},
+      })
+    }),
+
     getIncomingRequests: build.query({
       query: ({ userid }) => ({
         url: "client/incomingRequests",
@@ -216,6 +232,8 @@ export const {
   useGetEligibleSellersAdvancedQuery,
   useGetSupplierDataQuery,
   useProcessPdfMutation,
+  useGetTechPackQuery,
+  useGetQueriesForTechPackQuery,
   useGetOrderSellerDetailsQuery,
   useUpdateOrderMutation,
   useCreateNewOrderMutation,

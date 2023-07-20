@@ -5393,3 +5393,56 @@ export const supplierdata = [
       "Products":['Backpacks', 'Bags', 'Bicycles', 'Blankets', 'Caps', 'Clothing', 'Coveralls', 'Disaster Preparedness Supplies', 'Exercise Equipment', 'Fitness Equipment', 'Hats', 'Hoods', 'Hurricane Response', 'Jackets', 'Jerseys', 'Pants', 'Parkas', 'Rainwear', 'Scarves', 'Shirts', 'Socks', 'Tees', 'Tops', 'Treadmills', 'Uniforms', 'Vests']
    }
 ];
+
+export const orderTreeData = [
+   {
+      "id": "1",
+      "buyerId": "2",
+      "buyerType": "",
+      "mateiral": "",
+      "productCategory": "Jacket",
+      "orderQueries": ["1","2","3"]
+   },
+   {
+      "id": "2",
+      "buyerId": "2",
+      "buyerType": "",
+      "mateiral": "",
+      "productCategory": "Trouser",
+      "orderQueries": ["4","5","6"]
+   }
+];
+
+export const searchQueriesData = [
+   {
+      "techPackId": "1",
+      "material": "Cotton",
+      "productCategory": "Tops",
+      "orderId": "1"
+   },
+   {
+      "techPackId": "1",
+      "material": "Cotton",
+      "productCategory": "Bottoms",
+      "orderId": "1"
+   },
+   {
+      "techPackId": "1",
+      "material": "Cotton",
+      "productCategory": "Activewear",
+      "orderId": "1"
+   },
+   {
+      "techPackId": "2",
+      "material": "Cotton",
+      "productCategory": "Tops",
+      "orderId": "1"
+   },
+   {
+      "techPackId": "2",
+      "material": "Cotton",
+      "productCategory": "Bottoms",
+      "orderId": "1"
+   }
+
+]
