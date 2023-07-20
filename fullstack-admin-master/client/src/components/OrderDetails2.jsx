@@ -65,7 +65,7 @@ export default function OrderDetails2 ({ orderId }) {
   const elems = sellerDetails?.userData?.userDetails.map((elem, index) => {
 
     const certIndex = Math.floor(Math.random()*(certificates.length-1));
-    const disabled = (sellerDetails.userData.userStatus[elem._id] !== RequestType.SELLERACCPET)?true:false;
+    const disabled = (sellerDetails.userData.userStatus[elem._id] !== RequestType.SELLERACCEPT)?true:false;
     const checked = (sellerDetails.userData.userStatus[elem._id] === RequestType.BUYERACCEPT)?true:false;
     const sellerNotes = sellerDetails.userData.userNotes[elem._id];
     const status = (sellerDetails.userData.userStatus[elem._id] === RequestType.BUYERACCEPT)?1:0;

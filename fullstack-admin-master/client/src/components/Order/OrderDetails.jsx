@@ -21,20 +21,24 @@ import { RequestType } from 'configs/RequestType';
 import NoteIcon from '@mui/icons-material/Note';
 
 const OrderDetails = ({ orderId }) => {
-  const [expanded, setExpanded] = React.useState(false);
   const [selected, setSelected] = React.useState({});
+  const [selectedStatus, setSelectedStatus] = React.useState(null);
   const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
   const [openNotes, setOpenNotes] = React.useState(false);
   const [currentNotes, setCurrentNotes] = React.useState('');
 
   const handleOpenNotes = (notes) => {
-      setCurrentNotes(notes);
-      setOpenNotes(true);
-    };
+    setCurrentNotes(notes);
+    setOpenNotes(true);
+  };
   
-    const handleCloseNotes = () => {
-      setOpenNotes(false);
-    };
+  const handleCloseNotes = () => {
+    setOpenNotes(false);
+  };
+
+  const handleStatusClick = (status) => {
+    setSelectedStatus(status);
+  };
   
   let {data: sellerDetails, isLoading: isLoadingSellerDetails} = useGetOrderSellerDetailsQuery({orderId});
   console.log('Seller Details: ', sellerDetails);
@@ -53,63 +57,61 @@ const OrderDetails = ({ orderId }) => {
       "Responsible Care"
   ];
 
-
-  const handleChange = (panel) => (event, isExpanded) => {
-      setExpanded(isExpanded ? panel : false);
-  };
-
   const handleCheckboxChange = (event, index) => {
-      setSelected(prevState => ({ ...prevState, [index]: event.target.checked }));
+    setSelected(prevState => ({ ...prevState, [index]: event.target.checked }));
   };
 
   const handleButtonClick = async () => {
-      const selectedIds = sellerDetails?.userData?.userDetails
-          .filter((elem, index) => selected[index])
-          .map(elem => elem._id);
-      await updateOrder({ requestType: RequestType.BUYERACCEPT, sellerIds:selectedIds, orderId: [orderId], isSeller: false, notes: " "});
-      console.log(selectedIds);
-      window.location.reload();
-      // Do something with selectedIds here...
+    const selectedIds = sellerDetails?.userData?.userDetails
+      .filter((elem, index) => selected[index])
+      .map(elem => elem._id);
+    await updateOrder({ requestType: RequestType.BUYERACCEPT, sellerIds:selectedIds, orderId: [orderId], isSeller: false, notes: " "});
+    console.log(selectedIds);
+    window.location.reload();
+    // Do something with selectedIds here...
   };
 
-  const elems = sellerDetails?.userData?.userDetails.map((elem, index) => {
-    const certIndex = Math.floor(Math.random()*(certificates.length-1));
-    const disabled = (sellerDetails.userData.userStatus[elem._id] !== RequestType.SELLERACCPET)?true:false;
-    const checked = (sellerDetails.userData.userStatus[elem._id] === RequestType.BUYERACCEPT)?true:false;
-    const sellerNotes = sellerDetails.userData.userNotes[elem._id];
-    const status = (sellerDetails.userData.userStatus[elem._id] === RequestType.BUYERACCEPT)?1:0;
-    const statusColor = status==1?"#2f7c327a":"";
-    console.log(statusColor);
-      
-    return (
-      <TableRow key={index}>
-        <TableCell>
-          <Checkbox
-            checked={selected[index] || checked}
-            onChange={(event) => handleCheckboxChange(event, index)}
-          />
-        </TableCell>
-        <TableCell>
-          {elem.Company}
-        </TableCell>
-        <TableCell>
-          <IconButton sx={{ width: '10%', flexShrink: 0, margin: "2px" }} edge="end" aria-label="notes" onClick={() => handleOpenNotes(sellerNotes)}>
-            <NoteIcon />
-          </IconButton>
-        </TableCell>
-        <TableCell>{10}</TableCell>
-        <TableCell>
-          <Card sx={{ width: '100%', m: 1, backgroundColor: "#d6dedb" }}>
-            <CardContent>
-              <Typography variant="h6">On-time delivery rate: 86%</Typography>
-              <Typography variant="h6">Average Lead Time: 4d</Typography>
-              <Typography variant="h6">Certificates: <li> {certificates[certIndex]} </li> <li> {certificates[certIndex+1]} </li></Typography>
-            </CardContent>
-          </Card>
-        </TableCell>
-      </TableRow>
-    );
-  });
+  const elems = sellerDetails?.userData?.userDetails
+    .filter((elem) => {
+      if (!selectedStatus) return true;
+      return sellerDetails.userData.userStatus[elem._id] === selectedStatus;
+    })
+    .map((elem, index) => {
+      const certIndex = Math.floor(Math.random()*(certificates.length-1));
+      const disabled = (sellerDetails.userData.userStatus[elem._id] !== RequestType.SELLERACCEPT)?true:false;
+      const checked = (sellerDetails.userData.userStatus[elem._id] === RequestType.BUYERACCEPT)?true:false;
+      const sellerNotes = sellerDetails.userData.userNotes[elem._id];
+      const status = (sellerDetails.userData.userStatus[elem._id] === RequestType.BUYERACCEPT)?1:0;
+      const statusColor = status==1?"#2f7c327a":"";
+      console.log(statusColor);
+        
+      return (
+        <TableRow key={index}>
+          <TableCell>
+            <Checkbox
+              checked={selected[index] || checked}
+              onChange={(event) => handleCheckboxChange(event, index)}
+            />
+            {elem.Company}
+          </TableCell>
+          <TableCell>
+            <IconButton sx={{ width: '10%', flexShrink: 0, margin: "2px" }} edge="end" aria-label="notes" onClick={() => handleOpenNotes(sellerNotes)}>
+              <NoteIcon />
+            </IconButton>
+          </TableCell>
+          <TableCell>{10}</TableCell>
+          <TableCell>
+            <Card sx={{ width: '100%', m: 1, backgroundColor: "#d6dedb" }}>
+              <CardContent>
+                <Typography variant="h6">On-time delivery rate: 86%</Typography>
+                <Typography variant="h6">Expected Lead Time: 4d</Typography>
+                <Typography variant="h6">Certificates: <li> {certificates[certIndex]} </li> <li> {certificates[certIndex+1]} </li></Typography>
+              </CardContent>
+            </Card>
+          </TableCell>
+        </TableRow>
+      );
+    });
 
   if(!orderId)
     return (<></>);
@@ -118,11 +120,10 @@ const OrderDetails = ({ orderId }) => {
     <div>
       <Typography variant="h5" fullWidth>ORDER ID: {orderId}</Typography>
       
-      <TableContainer>
+      <TableContainer sx={{ maxHeight: '500px', overflow: 'auto' }}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Select</TableCell>
               <TableCell>Company</TableCell>
               <TableCell>Notes</TableCell>
               <TableCell>Rating</TableCell>
@@ -135,13 +136,13 @@ const OrderDetails = ({ orderId }) => {
           <TableFooter>
             <TableRow>
               <TableCell>
-                <Chip label={"Accepted: " + accepted} color="success"/>
+                <Chip label={"Accepted: " + accepted} color="success" onClick={() => handleStatusClick(RequestType.SELLERACCEPT)} clickable/>
               </TableCell>
               <TableCell>
-                <Chip label={"Pending: " + pending} color="info"/>
+                <Chip label={"Pending: " + pending} color="info" onClick={() => handleStatusClick(RequestType.INITORDER)} clickable/>
               </TableCell>
               <TableCell>
-                <Chip label={"Rejected: " + rejected} color="error"/>
+                <Chip label={"Rejected: " + rejected} color="error" onClick={() => handleStatusClick(RequestType.SELLERREJECT)} clickable/>
               </TableCell>
               <TableCell></TableCell>
               <TableCell>
