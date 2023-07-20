@@ -246,7 +246,8 @@ const Order = () => {
             <OrderDetails orderId={orderId} />
           </Grid>
           <Grid item xs={6}>
-            <SupplierTree techPackId={orderId} />
+            {/* <SupplierTree techPackId={orderId} /> */}
+            <SupplierTree techPackId={"1"} />
           </Grid>
         </Grid>
       );

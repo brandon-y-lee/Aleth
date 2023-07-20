@@ -19,7 +19,11 @@ import {
   getOrderSellerDetails,
   getEligibleSellersAdvanced,
   processTechPack,
-  getSupplierData
+  getSupplierData,
+  getTechPack,
+  getQueriesForTechPack,
+  getTechPacksForUser,
+  createSearchQueries
 } from "../controllers/client.js";
 
 const router = express.Router();
@@ -40,6 +44,10 @@ router.get("/eligibleSellersAdvanced", getEligibleSellersAdvanced);
 router.get("/orderSellerDetails", getOrderSellerDetails);
 router.get("/supplierData", getSupplierData);
 
+//GET - Techpack
+router.get("/getTechPack", getTechPack);
+router.get("/getTechpacksForUser", getTechPacksForUser);
+router.get("/getQueriesForTechPack", getQueriesForTechPack);
 
 //POSTs
 router.post("/updateRecipients", updateRecipients);
@@ -47,6 +55,9 @@ router.post('/processPDF', upload.single('file'), processTechPack);
 router.post("/generateNewShipment", generateNewShipment);
 router.post("/updateOrder", updateOrder);
 router.post("/createNewOrder", createNewOrder);
+
+//POSTs - Techpacks
+router.post('/createSearchQueries', createSearchQueries);
 
 
 export default router;
