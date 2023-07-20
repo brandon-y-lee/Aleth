@@ -20,9 +20,12 @@ import {
 import { DataGrid, GridFooterContainer, GridFooter } from "@mui/x-data-grid";
 import { styled } from '@mui/material/styles';
 
-import { useGetPurchaseOrdersQuery, useGetEligibleSellersQuery, useUpdateOrderMutation, useCreateNewOrderMutation, useGetEligibleSellersAdvancedQuery } from "state/api";
+import { useGetPurchaseOrdersQuery, useUpdateOrderMutation, useCreateNewOrderMutation, useGetEligibleSellersAdvancedQuery } from "state/api";
 import Header from "components/Header";
-import OrderMap from "components/OrderMap";
+import OrderMap from "components/Order/OrderMap";
+import OrderDetails from "components/Order/OrderDetails";
+import SupplierTree from "components/Order/SupplierTree";
+import PurchaseForm from "components/Order/PurchaseForm";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import ActionMenuIncomingOrders from "components/SellerView/ActionMenuIncomingOrders";
 import { OrderStatus } from "configs/OrderStatus";
@@ -55,8 +58,6 @@ const Order = () => {
 
 
   let {data: purchaseOrders, isLoading: isLoadingPurchaseOrders} = useGetPurchaseOrdersQuery({userId});
-  let {data: searchResults, isLoading: isLoadingSearchResults} = useGetEligibleSellersQuery({material: formData.material ? formData.material : undefined});
-
   let {data: searchResultsAdvanced, isLoading: isLoadingSearchResultsAdvanced} = useGetEligibleSellersAdvancedQuery({
     products: formData.productCategory ? formData.productCategory : undefined, 
     material: formData.materialType ? formData.materialType : undefined,
@@ -237,6 +238,32 @@ const Order = () => {
     },
   }));
 
+  const renderComponents = () => {
+    if (selectedTab === 0) {
+      return (
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <OrderDetails orderId={orderId} />
+          </Grid>
+          <Grid item xs={6}>
+            <SupplierTree techPackId={orderId} />
+          </Grid>
+        </Grid>
+      );
+    } else {
+      return (
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <PurchaseForm onSearch={handleSearch} />
+          </Grid>
+          <Grid item xs={6}>
+            <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResultsAdvanced} orderId={orderId} />
+          </Grid>
+        </Grid>
+      );
+    }
+  };
+
   return (
     <Box>
       <Box 
@@ -298,11 +325,12 @@ const Order = () => {
         </FlexBetween>
 
         <Box mt="1.5rem">
-          <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResultsAdvanced} handleSearch={handleSearch} purchaseOrders={purchaseOrders} orderId={orderId}/>
+          {renderComponents()}
+          {/* <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResultsAdvanced} handleSearch={handleSearch} purchaseOrders={purchaseOrders} orderId={orderId}/> */}
         </Box>
 
         <TabPanel value={value} index={0} padding={0}>
-          <Box height="60vh" sx={{ mt: "1.5rem" }}>
+          <Box height="50vh" sx={{ mt: "1.5rem", pb: "1.5rem" }}>
             <StyledDataGrid
               loading={isLoadingPurchaseOrders || !purchaseOrders}
               getRowId={(row) => Math.random()}

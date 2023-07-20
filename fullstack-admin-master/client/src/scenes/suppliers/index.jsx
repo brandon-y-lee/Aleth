@@ -20,7 +20,7 @@ import {
 import { DataGrid, GridFooterContainer, GridFooter } from "@mui/x-data-grid";
 import { useGetPurchaseOrdersQuery, useGetEligibleSellersQuery, useUpdateOrderMutation, useCreateNewOrderMutation, useGetEligibleSellersAdvancedQuery } from "state/api";
 import Header from "components/Header";
-import OrderMap from "components/OrderMap";
+import OrderMap from "components/Order/OrderMap";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import ActionMenuIncomingOrders from "components/SellerView/ActionMenuIncomingOrders";
 import { OrderStatus } from "configs/OrderStatus";
