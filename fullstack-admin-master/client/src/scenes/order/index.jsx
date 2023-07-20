@@ -33,6 +33,7 @@ import { RequestType } from "configs/RequestType";
 import FlexBetween from "components/FlexBetween";
 import TabPanel from 'components/Common/TabPanel';
 import Confirmation from "components/Confirmation";
+import SearchTree from "components/Order/SearchTree";
 
 // Session.set("username", "2");
 Session.set("coordinates", [17.2064912,22.1782433]);
@@ -258,7 +259,8 @@ const Order = () => {
             <PurchaseForm onSearch={handleSearch} />
           </Grid>
           <Grid item xs={6}>
-            <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResultsAdvanced} orderId={orderId} />
+            {/* <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResultsAdvanced} orderId={orderId} /> */}
+            <SearchTree techPackId={"1"} />
           </Grid>
         </Grid>
       );
