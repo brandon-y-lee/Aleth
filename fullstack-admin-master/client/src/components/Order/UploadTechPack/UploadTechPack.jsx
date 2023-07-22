@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
-import { Box, TextField, Button, Typography } from '@mui/material';
-import FileUpload from '../Common/FileUpload';
+import { Box, TextField, Button, Typography, useTheme } from '@mui/material';
+import { UploaderComponent } from '@syncfusion/ej2-react-inputs';
+import './UploadTechPack.css';
 import { useProcessPdfMutation } from 'state/api';
 
 
 const UploadTechPack = () => {
+  const theme = useTheme();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [files, setFiles] = useState([]);
   const [processPdf, { isLoading, data, error }] = useProcessPdfMutation();
 
-
-  const handleFilesChange = (files) => {
-    setFiles(files);
+  const path = {
+    removeUrl: 'https://ej2.syncfusion.com/services/api/uploadbox/Remove',
+    saveUrl: 'https://ej2.syncfusion.com/services/api/uploadbox/Save'
   };
 
   const handleSubmit = async (event) => {
@@ -38,14 +40,17 @@ const UploadTechPack = () => {
   return (
     <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: '1rem', p: '1.5rem', backgroundColor: '#f5f5f5', borderRadius: '8px' }}>
         
-      <Typography variant="h5" color="black" align="left" sx={{ fontWeight: '500', pl: 1 }}>
-        Tech Pack
+      <Typography variant="h5" color="black" align="left" sx={{ fontWeight: '600', pl: 1 }}>
+        UPLOAD TECH PACK
       </Typography>
       <TextField
         label="Tech Pack Name"
         variant="outlined"
         value={name}
         onChange={event => setName(event.target.value)}
+        sx={{
+            backgroundColor: 'white',
+        }}
       />
       <TextField
         label="Tech Pack Description"
@@ -54,9 +59,25 @@ const UploadTechPack = () => {
         rows={3}
         value={description}
         onChange={event => setDescription(event.target.value)}
+        sx={{
+            backgroundColor: 'white',
+        }}
       />
-      <FileUpload onFilesChange={handleFilesChange} />
-      <Button variant="contained" color="primary" type="submit">Submit</Button>
+      <UploaderComponent asyncSettings={path} multiple={false} />
+      <Button
+        variant="contained"
+        type="submit"
+        sx={{
+            backgroundColor: 'white', 
+            color: 'black', 
+            '&:hover': {
+            backgroundColor: theme.palette.secondary[400],
+            color: 'white',
+            },
+        }}
+        >
+        Submit
+      </Button>
     </Box>
   );
 };

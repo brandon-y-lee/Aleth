@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@mui/x-data-grid-pro": "^6.9.1",
+    "@syncfusion/ej2-react-inputs": "^22.1.39",
     "bcrypt": "^5.1.0",
     "echarts": "^5.4.3",
     "echarts-for-react": "^3.0.2",

@@ -34,6 +34,7 @@ import FlexBetween from "components/FlexBetween";
 import TabPanel from 'components/Common/TabPanel';
 import Confirmation from "components/Confirmation";
 import SearchTree from "components/Order/SearchTree";
+import UploadTechPack from "components/Order/UploadTechPack/UploadTechPack";
 
 // Session.set("username", "2");
 Session.set("coordinates", [17.2064912,22.1782433]);
@@ -92,6 +93,13 @@ const Order = () => {
   
   const handleConfirmationClose = () => {
     setConfirmationOpen(false);
+  };
+
+  const handleTreeClick = (params) => {
+    console.log("Tree node clicked:", params);
+    if (params.data && params.data.orderId) {
+      setOrderId(params.data.orderId);
+    }
   };
 
   function a11yProps(index) {
@@ -248,7 +256,7 @@ const Order = () => {
           </Grid>
           <Grid item xs={6}>
             {/* <SupplierTree techPackId={orderId} /> */}
-            <SupplierTree techPackId={"1"} />
+            <SupplierTree techPackId={"1"} onTreeClick={handleTreeClick} />
           </Grid>
         </Grid>
       );
@@ -256,7 +264,8 @@ const Order = () => {
       return (
         <Grid container spacing={2}>
           <Grid item xs={6}>
-            <PurchaseForm onSearch={handleSearch} />
+            {/* <PurchaseForm onSearch={handleSearch} /> */}
+            <UploadTechPack />
           </Grid>
           <Grid item xs={6}>
             {/* <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResultsAdvanced} orderId={orderId} /> */}

@@ -8,7 +8,7 @@ import { useGetOrderSellerDetailsQuery, useGetTechPackQuery, useGetQueriesForTec
 
 echarts.use([TooltipComponent, TreeChart, CanvasRenderer]);
 
-const SupplierTree = ({ techPackId }) => {
+const SupplierTree = ({ techPackId, onTreeClick }) => {
   const {data: techPack, isLoading: isLoadingTechPack} = useGetTechPackQuery({techPackId});
   const {data: queries, isLoading: isLoadingQueries} = useGetQueriesForTechPackQuery({techPackId});
   const [option, setOption] = useState({
@@ -61,6 +61,7 @@ const SupplierTree = ({ techPackId }) => {
         return {
           name: query.material,
           children: sellerNodes,
+          orderId: queryId,
         };
       }));
 
@@ -87,6 +88,7 @@ const SupplierTree = ({ techPackId }) => {
         <ReactEChartsCore
           echarts={echarts}
           option={option}
+          onEvents={{ click: onTreeClick }}
           style={{ height: '100%', width: '100%' }}
         />
       )}

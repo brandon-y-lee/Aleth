@@ -47,10 +47,6 @@ const navItems = [
     icon: null,
   },
   {
-    text: "Suppliers",
-    icon: <SearchOutlined />,
-  },
-  {
     text: "Order",
     icon: <PublicOutlined />,
   },

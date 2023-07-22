@@ -16,7 +16,6 @@ import Monthly from "scenes/monthly";
 import Breakdown from "scenes/breakdown";
 import Performance from "scenes/performance";
 import Profile from "scenes/profile";
-import Suppliers from "scenes/suppliers";
 import Login from "scenes/login";
 
 import Session from 'react-session-api';
@@ -51,7 +50,6 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route element={<Layout />}>
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/suppliers" element={<Suppliers />} />
               <Route path="/order" element={<Order />} />
               <Route path="/shipments" element={<Shipments />} />
               <Route path="/templates" element={<Overview />} />
