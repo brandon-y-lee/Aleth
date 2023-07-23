@@ -19,13 +19,15 @@ import {
 } from "@mui/icons-material";
 import { DataGrid, GridFooterContainer, GridFooter } from "@mui/x-data-grid";
 import { styled } from '@mui/material/styles';
-
 import { useGetPurchaseOrdersQuery, useUpdateOrderMutation, useCreateNewOrderMutation, useGetEligibleSellersAdvancedQuery } from "state/api";
 import Header from "components/Header";
 import OrderMap from "components/Order/OrderMap";
 import OrderDetails from "components/Order/OrderDetails";
 import SupplierTree from "components/Order/SupplierTree";
 import PurchaseForm from "components/Order/PurchaseForm";
+import SearchTree from "components/Order/SearchTree";
+import UploadTechPack from "components/Order/UploadTechPack/UploadTechPack";
+
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import ActionMenuIncomingOrders from "components/SellerView/ActionMenuIncomingOrders";
 import { OrderStatus } from "configs/OrderStatus";
@@ -33,10 +35,7 @@ import { RequestType } from "configs/RequestType";
 import FlexBetween from "components/FlexBetween";
 import TabPanel from 'components/Common/TabPanel';
 import Confirmation from "components/Confirmation";
-import SearchTree from "components/Order/SearchTree";
-import UploadTechPack from "components/Order/UploadTechPack/UploadTechPack";
 
-// Session.set("username", "2");
 Session.set("coordinates", [17.2064912,22.1782433]);
 
 const Order = () => {
@@ -367,7 +366,7 @@ const Order = () => {
         </TabPanel>
 
         <TabPanel value={value} index={1} padding={0}>
-          <Box height="50vh" sx={{ mt: "1.5rem" }}>
+          <Box height="50vh" sx={{ mt: "1.5rem", pb: "1.5rem" }}>
             <StyledDataGrid
               loading={isLoadingSearchResultsAdvanced || !searchResultsAdvanced}
               getRowId={(row) => row["_id"]}
