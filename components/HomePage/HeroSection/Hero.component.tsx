@@ -111,7 +111,7 @@ export default function Hero() {
                             required
                           />
                           <TextArea
-                            placeholder="Write your message"
+                            placeholder="Write your message here"
                             name="Message"
                             required
                           />
