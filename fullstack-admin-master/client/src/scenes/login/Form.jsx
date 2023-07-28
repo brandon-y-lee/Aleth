@@ -7,14 +7,11 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "state";
-import FlexBetween from "components/FlexBetween";
-import Session from "react-session-api";
 
 const registerSchema = yup.object().shape({
   Company: yup.string().required("required"),
@@ -55,7 +52,7 @@ const initialValuesLogin = {
 
 const Form = () => {
   const [pageType, setPageType] = useState("login");
-  const { palette } = useTheme();
+  const theme = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)");
@@ -141,6 +138,9 @@ const Form = () => {
             gridTemplateColumns="repeat(4, minmax(0, 1fr))"
             sx={{
               "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
+              backgroundColor: theme.palette.background.alt,
+              p: '3rem',
+              borderRadius: '12px',
             }}
           >
             {isRegister && (
@@ -236,6 +236,7 @@ const Form = () => {
               name="email"
               error={Boolean(touched.email) && Boolean(errors.email)}
               helperText={touched.email && errors.email}
+              sx={{ gridColumn: "span 4", backgroundColor: 'white' }}
             />
             <TextField
                label="ID"
@@ -245,7 +246,7 @@ const Form = () => {
                name="ID"
                error={Boolean(touched.id) && Boolean(errors.id)}
                helperText={touched.id && errors.id}
-               sx={{ gridColumn: "span 4" }}
+               sx={{ gridColumn: "span 4", backgroundColor: 'white' }}
              />
             <TextField
               type="password"
@@ -256,34 +257,43 @@ const Form = () => {
               name="password"
               error={Boolean(touched.password) && Boolean(errors.password)}
               helperText={touched.password && errors.password}
+              sx={{ gridColumn: "span 4", backgroundColor: 'white' }}
             />
-            <Button type="submit" variant="contained" color="primary">
+            <Button 
+              type="submit"
+              variant="contained"
+              sx={{
+                gridColumn: "span 4",
+                backgroundColor: 'white', 
+                color: 'black', 
+                '&:hover': {
+                  backgroundColor: theme.palette.secondary[300],
+                  color: 'white',
+                },
+              }}
+            >
               {isLogin ? "Login" : "Register"}
             </Button>
-            {isLogin && (
-              <Box>
+            <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gridColumn: "span 4" }}>
+              {isLogin && (
                 <Typography
                   variant="body2"
                   onClick={() => setPageType("forgot")}
-                  sx={{ cursor: "pointer", color: palette.text.secondary }}
+                  sx={{ cursor: "pointer", color: theme.palette.text.secondary, whiteSpace: 'nowrap' }}
                 >
                   Forgot Password?
                 </Typography>
-              </Box>
-            )}
-            <FlexBetween>
-              <Typography variant="body2">
-                {isLogin ? "New User?" : "Already have an account?"}
-              </Typography>
-              <Button
-                endIcon={<EditOutlinedIcon />}
+              )}
+              <Typography
+                variant="body2"
+                sx={{ cursor: "pointer", color: theme.palette.text.secondary, whiteSpace: 'nowrap' }}
                 onClick={() =>
                   setPageType(isLogin ? "register" : "login")
                 }
               >
-                {isLogin ? "Register" : "Login"}
-              </Button>
-            </FlexBetween>
+                {isLogin ? "New User?" : "Already have an account?"}
+              </Typography>
+            </Box>
           </Box>
         </form>
       )}

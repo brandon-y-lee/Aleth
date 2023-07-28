@@ -17,8 +17,7 @@ import {
   Menu as MenuIcon,
   Search,
 } from "@mui/icons-material";
-import { DataGrid, GridFooterContainer, GridFooter } from "@mui/x-data-grid";
-import { styled } from '@mui/material/styles';
+import { DataGridPro, GridFooterContainer, GridFooter } from "@mui/x-data-grid-pro";
 import { useGetPurchaseOrdersQuery, useUpdateOrderMutation, useCreateNewOrderMutation, useGetEligibleSellersAdvancedQuery } from "state/api";
 import Header from "components/Header";
 import OrderMap from "components/Order/OrderMap";
@@ -27,8 +26,6 @@ import SupplierTree from "components/Order/SupplierTree";
 import PurchaseForm from "components/Order/PurchaseForm";
 import SearchTree from "components/Order/SearchTree";
 import UploadTechPack from "components/Order/UploadTechPack/UploadTechPack";
-
-import DataGridCustomToolbar from "components/DataGridCustomToolbar";
 import ActionMenuIncomingOrders from "components/SellerView/ActionMenuIncomingOrders";
 import { OrderStatus } from "configs/OrderStatus";
 import { RequestType } from "configs/RequestType";
@@ -57,20 +54,17 @@ const Order = () => {
   const [searchInput, setSearchInput] = useState("");
   const [confirmationOpen, setConfirmationOpen] = React.useState(false);
 
-
   let {data: purchaseOrders, isLoading: isLoadingPurchaseOrders} = useGetPurchaseOrdersQuery({userId});
-  let {data: searchResultsAdvanced, isLoading: isLoadingSearchResultsAdvanced} = useGetEligibleSellersAdvancedQuery({
-    products: formData.productCategory ? formData.productCategory : undefined, 
-    material: formData.materialType ? formData.materialType : undefined,
-    fabricConstruction: formData.fabricConstruction ?formData.fabricConstruction : undefined,
-    certifications : ""
-   });
 
-  console.log(searchResultsAdvanced);
   const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
   const [createOrder, { isLoading: creatingOrder }] = useCreateNewOrderMutation();
-
   
+  const [searchResults, setSearchResults] = useState([]);
+  const updateSearchResults = (results) => {
+    setSearchResults(results);
+    console.log('Search Results:', results);
+  };
+
   const getSearchCoordinates = (data) => {
     if(data === undefined)
       return {};
@@ -214,38 +208,6 @@ const Order = () => {
     },
   ];
 
-  const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
-    '& .MuiDataGrid-root': {
-      border: 'none',
-    },
-    '& .MuiDataGrid-row': {
-      backgroundColor: 'white',
-      borderBottom: '1px solid #e0e0e0',
-      '&:hover': {
-        backgroundColor: '#f5f5f5',
-      },
-    },
-    '& .MuiDataGrid-columnHeader': {
-      color: 'black',
-      border: 'none',
-    },
-    '& .MuiDataGrid-columnHeaderTitle': {
-      fontWeight: 'bold !important',
-      fontSize: '0.9rem',
-    },
-    '& .MuiDataGrid-columnSeparator': {
-      display: 'none',
-    },
-    '& .MuiDataGrid-virtualScroller': {
-      backgroundColor: 'white',
-    },
-    '& .MuiDataGrid-footerContainer': {
-      backgroundColor: theme.palette.background.alt,
-      color: theme.palette.secondary[100],
-      borderTop: "none",
-    },
-  }));
-
   const renderComponents = () => {
     if (selectedTab === 0) {
       return (
@@ -264,7 +226,7 @@ const Order = () => {
         <Grid container spacing={2}>
           <Grid item xs={6}>
             {/* <PurchaseForm onSearch={handleSearch} /> */}
-            <UploadTechPack />
+            <UploadTechPack updateSearchResults={updateSearchResults} />
           </Grid>
           <Grid item xs={6}>
             {/* <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResultsAdvanced} orderId={orderId} /> */}
@@ -342,9 +304,9 @@ const Order = () => {
 
         <TabPanel value={value} index={0} padding={0}>
           <Box height="50vh" sx={{ mt: "1.5rem", pb: "1.5rem" }}>
-            <StyledDataGrid
+            <DataGridPro
               loading={isLoadingPurchaseOrders || !purchaseOrders}
-              getRowId={(row) => Math.random()}
+              getRowId={(row) => row["_id"]}
               rows={(purchaseOrders && purchaseOrders.allOrders) || []}
               columns={purchaseOrdersColumns}
               rowCount={(1) || 0}
@@ -367,10 +329,11 @@ const Order = () => {
 
         <TabPanel value={value} index={1} padding={0}>
           <Box height="50vh" sx={{ mt: "1.5rem", pb: "1.5rem" }}>
-            <StyledDataGrid
-              loading={isLoadingSearchResultsAdvanced || !searchResultsAdvanced}
+            <DataGridPro
+              className="myDataGridPro"
+              loading={!searchResults}
               getRowId={(row) => row["_id"]}
-              rows={(searchResultsAdvanced && searchResultsAdvanced.eligibleSellers) || []}
+              rows={(searchResults && searchResults.eligibleSellers) || []}
               columns={eligibleSellersColumns}
               rowCount={(1) || 0}
               rowsPerPageOptions={[20, 50, 100]}
@@ -381,16 +344,17 @@ const Order = () => {
               paginationMode="server"
               sortingMode="server"
               onSelectionModelChange={(newSelection) => {
+                console.log(newSelection);
                 setSelectedRows(newSelection);
               }}
-              /* onPageChange={(newPage) => setPage(newPage)}
+              onPageChange={(newPage) => setPage(newPage)}
               onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-              onSortModelChange={(newSortModel) => setSort(...newSortModel)} */
-              components={{ 
+              onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+              slots={{ 
                 Footer: CustomFooter,
               }}
-              componentsProps={{
-                footer: { selectedRows },
+              slotProps={{
+                footer: { selectedRows: selectedRows },
               }}
               onRowClick={(row)=>{
                 console.log(row.row["id"])}}

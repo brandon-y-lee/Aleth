@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, TextField, Button, Typography, useTheme, Dialog, DialogContent } from '@mui/material';
 import { UploaderComponent } from '@syncfusion/ej2-react-inputs';
 import './UploadTechPack.css';
@@ -7,8 +7,7 @@ import PurchaseForm from '../PurchaseForm';
 import { useGetEligibleSellersAdvancedQuery } from "state/api";
 
 
-
-const UploadTechPack = () => {
+const UploadTechPack = ({ updateSearchResults }) => {
   const theme = useTheme();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -24,7 +23,7 @@ const UploadTechPack = () => {
     certifications : ""
   });
 
-  console.log(searchResultsAdvanced);
+  console.log('Search Results Advanced: ', searchResultsAdvanced);
 
   const handleOpenDialog = () => setOpenDialog(true);
   const handleCloseDialog = () => setOpenDialog(false);
@@ -62,6 +61,10 @@ const UploadTechPack = () => {
     }
     // Here, handle the submission e.g. send the data somewhere
   };
+
+  useEffect(() => {
+    updateSearchResults(searchResultsAdvanced);
+  }, [searchResultsAdvanced]);  
 
   return (
     <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: '1rem', p: '1.5rem', backgroundColor: '#f5f5f5', borderRadius: '8px' }}>

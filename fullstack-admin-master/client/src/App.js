@@ -17,6 +17,7 @@ import Breakdown from "scenes/breakdown";
 import Performance from "scenes/performance";
 import Profile from "scenes/profile";
 import Login from "scenes/login";
+import { LicenseInfo } from '@mui/x-license-pro';
 
 import Session from 'react-session-api';
 Session.set("username","20");
@@ -25,6 +26,7 @@ function App() {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
   const token = localStorage.getItem("token");
+  LicenseInfo.setLicenseKey('134dfad56c517d6f235e75b3836771d7Tz03MTM0OSxFPTE3MjE3ODExMDEwMDAsUz1wcm8sTE09c3Vic2NyaXB0aW9uLEtWPTI=');
   
   if(!token) {
     return (
