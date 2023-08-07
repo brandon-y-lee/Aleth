@@ -57,6 +57,7 @@ export const login = async (req, res) => {
         const { password: _, ...userInfo } = user.toObject();
         res.status(200).json({ token, user: userInfo });
     } catch (err) {
+        console.log(err);
         res.status(500).json({ error: err.message });
     }
 };

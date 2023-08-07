@@ -15,6 +15,7 @@ import fs from 'fs';
 import {fabrics, productCategory, fabricConstruction} from '../configs/SearchLists.js';
 import OrderTree from "../models/OrderTree.js";
 import SearchQuery from "../models/SearchQuery.js";
+import TechPack from "../models/TechPack.js";
 
 
 
@@ -181,7 +182,7 @@ export const processTechPack = async (req, res) => {
 
 export const getTechPacksForUser = async(req, res) => {
   const {userId} = req.body
-  console.log("Fetching all techpacks for userId: ", userId);
+  console.log("Fetching all Tech Packs for userId: ", userId);
   try{
     const techPacks = await OrderTree.find({buyerId: userId});
     if(techPacks)
@@ -640,6 +641,24 @@ export const createNewOrder = async (req, res) => {
   }
 };
 
+export const createNewTechPack = async (req, res) => {
+  try {
+    const { userId, buyerType, material, productCategory, queries } = req.body;
+
+    const newTechPack = new TechPack({
+      userId,
+      buyerType,
+      material,
+      productCategory,
+      queries
+    });
+
+    await newTechPack.save();
+    res.status(200).json({ message: "New tech pack created successfully" });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 
 export const getGeography = async (req, res) => {
   try {

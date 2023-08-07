@@ -164,6 +164,14 @@ export const api = createApi({
       }),
     }),
 
+    createNewTechPack: build.mutation({
+      query: ({userId, buyerType, material, productCategory, queries}) => ({
+        url: "client/createNewTechPack",
+        method: "POST",
+        body: {userId, buyerType, material, productCategory, queries},
+      }),
+    }),
+
     generateNewShipment: build.mutation({
       query: ({ userId, recipientId, material, amount, unit, orderStatus }) => ({
         url: "client/generateNewShipment",
@@ -237,6 +245,7 @@ export const {
   useGetOrderSellerDetailsQuery,
   useUpdateOrderMutation,
   useCreateNewOrderMutation,
+  useCreateNewTechPackMutation,
   useGetRecipientTransactionsQuery,
   useGetChainOfShipmentsQuery,
   useGetIncomingRequestsQuery,

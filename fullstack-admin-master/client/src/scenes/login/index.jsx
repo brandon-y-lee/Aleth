@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme, useMediaQuery, Grid } from "@mui/material";
 import Form from "./Form";
-import logo from "assets/logo.png";
+import login from "assets/login.png";
 import FlexBetween from "components/FlexBetween";
 
 const Login = () => {
@@ -17,7 +17,7 @@ const Login = () => {
           height="100vh"
           bgcolor={theme.palette.background.alt}
         >
-          <img src={logo} alt="Aleth Logo" height="130px" />
+          <img src={login} alt="Aleth Logo" height="130px" />
         </Box>
       </Grid>
 

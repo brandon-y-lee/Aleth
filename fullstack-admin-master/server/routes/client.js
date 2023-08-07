@@ -23,7 +23,8 @@ import {
   getTechPack,
   getQueriesForTechPack,
   getTechPacksForUser,
-  createSearchQueries
+  createSearchQueries,
+  createNewTechPack
 } from "../controllers/client.js";
 
 const router = express.Router();
@@ -58,6 +59,7 @@ router.post("/createNewOrder", createNewOrder);
 
 //POSTs - Techpacks
 router.post('/createSearchQueries', createSearchQueries);
+router.post('/createNewTechPack', createNewTechPack);
 
 
 export default router;

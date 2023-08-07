@@ -79,24 +79,24 @@ const ActionMenuIncomingOrders = (props) => {
       <Dialog open={openDialog} onClose={handleCloseDialog} fullWidth maxWidth="md">
         <DialogTitle>Order Details</DialogTitle>
         <DialogContent>
-                    <Typography variant="h6">Material: {props.orderData.material.join(", ")}</Typography>
-                    <Typography variant="h6">Price Range: {props.orderData.priceRange.join(" - ")}</Typography>
-                    <Typography variant="h6">Unit Weight: {props.orderData.unitWeight}</Typography>
-                    <Typography variant="h6">Pattern Print: {props.orderData.patternPrint}</Typography>
-                    <Typography variant="h6">Color: {props.orderData.color}</Typography>
-                    <Typography variant="h6">Country Of Origin: {props.orderData.countryOfOrigin}</Typography>
-                    <Typography variant="h6">Quantity: {props.orderData.quantity}</Typography>
-                    <Typography variant="h6">Delivery Date: {new Date(props.orderData.deliveryDate).toLocaleDateString()}</Typography>
+          <Typography variant="h6">Material: {props.orderData.material.join(", ")}</Typography>
+          <Typography variant="h6">Price Range: {props.orderData.priceRange.join(" - ")}</Typography>
+          <Typography variant="h6">Unit Weight: {props.orderData.unitWeight}</Typography>
+          <Typography variant="h6">Pattern Print: {props.orderData.patternPrint}</Typography>
+          <Typography variant="h6">Color: {props.orderData.color}</Typography>
+          <Typography variant="h6">Country Of Origin: {props.orderData.countryOfOrigin}</Typography>
+          <Typography variant="h6">Quantity: {props.orderData.quantity}</Typography>
+          <Typography variant="h6">Delivery Date: {new Date(props.orderData.deliveryDate).toLocaleDateString()}</Typography>
 
-                    <TextField 
-                        sx={{marginTop: 2}}
-                        id="outlined-basic" 
-                        label="Add additional notes here.." 
-                        variant="outlined" 
-                        fullWidth
-                        onChange={(e) => setNotes(e.target.value)}
-                    />
-                </DialogContent>
+          <TextField 
+              sx={{marginTop: 2}}
+              id="outlined-basic" 
+              label="Add additional notes here.." 
+              variant="outlined" 
+              fullWidth
+              onChange={(e) => setNotes(e.target.value)}
+          />
+        </DialogContent>
         <DialogActions>
           <Button onClick={handleReject} color="secondary">
             Reject

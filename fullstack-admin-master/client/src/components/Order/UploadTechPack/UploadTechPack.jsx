@@ -4,17 +4,25 @@ import { UploaderComponent } from '@syncfusion/ej2-react-inputs';
 import './UploadTechPack.css';
 import { useProcessPdfMutation } from 'state/api';
 import PurchaseForm from '../PurchaseForm';
+import ConfirmTechPack from '../ConfirmTechPack';
 import { useGetEligibleSellersAdvancedQuery } from "state/api";
-
 
 const UploadTechPack = ({ updateSearchResults }) => {
   const theme = useTheme();
+
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [files, setFiles] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+
   const [formData, setFormData] = useState({});
   const [processPdf, { isLoading, data, error }] = useProcessPdfMutation();
+
+  const path = {
+    removeUrl: 'https://ej2.syncfusion.com/services/api/uploadbox/Remove',
+    saveUrl: 'https://ej2.syncfusion.com/services/api/uploadbox/Save'
+  };
 
   let {data: searchResultsAdvanced, isLoading: isLoadingSearchResultsAdvanced} = useGetEligibleSellersAdvancedQuery({
     products: formData.productCategory ? formData.productCategory : undefined, 
@@ -28,11 +36,6 @@ const UploadTechPack = ({ updateSearchResults }) => {
   const handleOpenDialog = () => setOpenDialog(true);
   const handleCloseDialog = () => setOpenDialog(false);
 
-  const path = {
-    removeUrl: 'https://ej2.syncfusion.com/services/api/uploadbox/Remove',
-    saveUrl: 'https://ej2.syncfusion.com/services/api/uploadbox/Save'
-  };
-
   const handleFileSelect = args => {
     // Get the file from the selected event
     const selectedFile = args.filesData[0].rawFile;
@@ -43,6 +46,14 @@ const UploadTechPack = ({ updateSearchResults }) => {
     console.log(values);
     setFormData(values);
   };
+
+  /* Add logic for saving and sending tech pack data to server */
+  const handleConfirmTechPack = () => setShowConfirmDialog(false);
+  const handleCloseTechPack = () => setShowConfirmDialog(false);
+
+  useEffect(() => {
+    setShowConfirmDialog(false);
+  }, [name, description, files]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -59,6 +70,7 @@ const UploadTechPack = ({ updateSearchResults }) => {
         console.error('Error processing PDF:', err);
       }
     }
+    setShowConfirmDialog(true);
     // Here, handle the submission e.g. send the data somewhere
   };
 
@@ -116,6 +128,13 @@ const UploadTechPack = ({ updateSearchResults }) => {
         >
         Submit
       </Button>
+      {showConfirmDialog && (
+        <ConfirmTechPack
+          techPackData={{ name, description }}
+          onConfirm={handleConfirmTechPack}
+          onClose={handleCloseTechPack}
+        />
+      )}
     </Box>
   );
 };

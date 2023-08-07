@@ -7,6 +7,7 @@ import {
   CardContent,
   Box,
   IconButton,
+  Stack,
   Table,
   TableBody,
   TableCell,
@@ -14,7 +15,8 @@ import {
   TableHead,
   TableRow,
   TableFooter,
-  Typography 
+  Typography, 
+  Divider
 } from "@mui/material";
 import { useGetOrderSellerDetailsQuery, useUpdateOrderMutation } from "state/api";
 import { RequestType } from 'configs/RequestType';
@@ -40,6 +42,7 @@ const OrderDetails = ({ orderId }) => {
     setSelectedStatus(status);
   };
   
+  console.log('Order Id: ', orderId);
   let {data: sellerDetails, isLoading: isLoadingSellerDetails} = useGetOrderSellerDetailsQuery({orderId});
   console.log('Seller Details: ', sellerDetails);
   const pending = sellerDetails?.userData?.stats.pending;
@@ -84,6 +87,18 @@ const OrderDetails = ({ orderId }) => {
       const status = (sellerDetails.userData.userStatus[elem._id] === RequestType.BUYERACCEPT)?1:0;
       const statusColor = status==1?"#2f7c327a":"";
       console.log(statusColor);
+
+      /*
+      <TableCell>
+        <Card sx={{ width: '100%', m: 1, backgroundColor: "#d6dedb" }}>
+          <CardContent>
+            <Typography variant="h6">On-time delivery rate: 86%</Typography>
+            <Typography variant="h6">Expected Lead Time: 4d</Typography>
+            <Typography variant="h6">Certificates: <li> {certificates[certIndex]} </li> <li> {certificates[certIndex+1]} </li></Typography>
+          </CardContent>
+        </Card>
+      </TableCell>
+      */
         
       return (
         <TableRow key={index}>
@@ -92,6 +107,8 @@ const OrderDetails = ({ orderId }) => {
               checked={selected[index] || checked}
               onChange={(event) => handleCheckboxChange(event, index)}
             />
+          </TableCell>
+          <TableCell>
             {elem.Company}
           </TableCell>
           <TableCell>
@@ -100,15 +117,6 @@ const OrderDetails = ({ orderId }) => {
             </IconButton>
           </TableCell>
           <TableCell>{10}</TableCell>
-          <TableCell>
-            <Card sx={{ width: '100%', m: 1, backgroundColor: "#d6dedb" }}>
-              <CardContent>
-                <Typography variant="h6">On-time delivery rate: 86%</Typography>
-                <Typography variant="h6">Expected Lead Time: 4d</Typography>
-                <Typography variant="h6">Certificates: <li> {certificates[certIndex]} </li> <li> {certificates[certIndex+1]} </li></Typography>
-              </CardContent>
-            </Card>
-          </TableCell>
         </TableRow>
       );
     });
@@ -118,46 +126,76 @@ const OrderDetails = ({ orderId }) => {
 
   return (
     <div>
-      <Typography variant="h5" fullWidth>ORDER ID: {orderId}</Typography>
-      
-      <TableContainer sx={{ maxHeight: '500px', overflow: 'auto' }}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Company</TableCell>
-              <TableCell>Notes</TableCell>
-              <TableCell>Rating</TableCell>
-              <TableCell>Details</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {elems}
-          </TableBody>
-          <TableFooter>
-            <TableRow>
-              <TableCell>
-                <Chip label={"Accepted: " + accepted} color="success" onClick={() => handleStatusClick(RequestType.SELLERACCEPT)} clickable/>
-              </TableCell>
-              <TableCell>
-                <Chip label={"Pending: " + pending} color="info" onClick={() => handleStatusClick(RequestType.INITORDER)} clickable/>
-              </TableCell>
-              <TableCell>
-                <Chip label={"Rejected: " + rejected} color="error" onClick={() => handleStatusClick(RequestType.SELLERREJECT)} clickable/>
-              </TableCell>
-              <TableCell></TableCell>
-              <TableCell>
-                <Button type="button"
-                  fullWidth
-                  variant="contained"
-                  color="secondary" onClick={handleButtonClick}
-                >
-                  Send Confirmation
-                </Button>
-              </TableCell>
-            </TableRow>
-          </TableFooter>
-        </Table>
-      </TableContainer>
+      <Box sx={{
+        border: '2px solid #f6f6f6',
+        boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.15)',
+        backgroundColor: 'background.paper',
+        borderRadius: '5px',
+        padding: '20px',
+      }}>
+        <Box sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+          <Stack>
+            <Typography variant="h5" fullWidth sx={{ color: 'grey', fontWeight: 400 }} align="left">SKU</Typography>
+            <Typography variant="h4" fullWidth sx={{ fontWeight: 550 }} align="left">12345</Typography>
+          </Stack>
+          <Divider orientation="vertical" flexItem />
+          <Stack>
+            <Typography variant="h5" fullWidth sx={{ color: 'grey', fontWeight: 400 }} align="center">Material</Typography>
+            <Typography variant="h4" fullWidth sx={{ fontWeight: 550 }} align="center">COTTON</Typography>
+          </Stack>
+          <Divider orientation="vertical" flexItem />
+          <Stack>
+            <Typography variant="h5" fullWidth sx={{ color: 'grey', fontWeight: 400 }} align="right">Total Suppliers</Typography>
+            <Typography variant="h4" fullWidth sx={{ fontWeight: 550 }} align="right">12345</Typography>
+          </Stack>
+        </Box>
+        
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 3, mb: 2 }}>
+          <Chip label={"Accepted: " + accepted} color="success" onClick={() => handleStatusClick(RequestType.SELLERACCEPT)} clickable sx={{ minWidth: '30%', maxWidth: '100%' }} />
+          <Chip label={"Pending: " + pending} color="info" onClick={() => handleStatusClick(RequestType.INITORDER)} clickable sx={{ minWidth: '30%', maxWidth: '100%' }} />
+          <Chip label={"Rejected: " + rejected} color="error" onClick={() => handleStatusClick(RequestType.SELLERREJECT)} clickable sx={{ minWidth: '30%', maxWidth: '100%' }} />
+        </Box>
+
+        <TableContainer sx={{ maxHeight: '500px', overflow: 'auto' }}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ width: '50px' }}></TableCell>
+                <TableCell align="center">Company</TableCell>
+                <TableCell align="center">Notes</TableCell>
+                <TableCell align="center">Rating</TableCell>
+                <TableCell align="center">Details</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody sx={{
+              '& .MuiTableCell-root': {
+                textAlign: 'center',
+              },
+            }}>
+              {elems}
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TableCell colSpan={5}>
+                  <Button 
+                    type="button"
+                    variant="contained"
+                    color="secondary" 
+                    onClick={handleButtonClick}
+                    sx={{ mt: 2, mb: 2 }}
+                  >
+                    Send Confirmation
+                  </Button>
+                </TableCell>
+              </TableRow>
+            </TableFooter>
+          </Table>
+        </TableContainer>
+      </Box>
     </div>
   );
 };

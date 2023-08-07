@@ -11,6 +11,9 @@ echarts.use([TooltipComponent, TreeChart, CanvasRenderer]);
 const SupplierTree = ({ techPackId, onTreeClick }) => {
   const {data: techPack, isLoading: isLoadingTechPack} = useGetTechPackQuery({techPackId});
   const {data: queries, isLoading: isLoadingQueries} = useGetQueriesForTechPackQuery({techPackId});
+  console.log('Tech Pack: ', techPack);
+  console.log('Queries: ', queries);
+
   const [option, setOption] = useState({
     tooltip: {
       trigger: 'item',
@@ -47,13 +50,20 @@ const SupplierTree = ({ techPackId, onTreeClick }) => {
     ],
   });
 
+  const handleTreeNodeClick = (params) => {
+    console.log('Params Data: ', params.data)
+    if (params.data && params.data.orderId) {
+      onTreeClick(params.data.orderId);
+    }
+  };
+
   useEffect(() => {
     async function fetchData() {
       if (isLoadingTechPack || isLoadingQueries) return;
       
       const children = await Promise.all(techPack.techPack.orderQueries.map(async (queryId) => {
-        const query = queries.techPackQueries[0]; //await fetchOrderQuery(queryId);
-        console.log(query);
+        const query = queries.techPackQueries.find(q => q.id === queryId);
+        console.log('Query: ', query);
         const sellers = []; //await fetchEligibleSellers(queryId);
 
         const sellerNodes = sellers.map(seller => ({ name: seller.name }));
@@ -64,6 +74,8 @@ const SupplierTree = ({ techPackId, onTreeClick }) => {
           orderId: queryId,
         };
       }));
+
+      console.log('Children: ', children);
 
       const treeData = {
         name: techPack.techPack.productCategory,
@@ -88,7 +100,7 @@ const SupplierTree = ({ techPackId, onTreeClick }) => {
         <ReactEChartsCore
           echarts={echarts}
           option={option}
-          onEvents={{ click: onTreeClick }}
+          onEvents={{ click: handleTreeNodeClick }}
           style={{ height: '100%', width: '100%' }}
         />
       )}

@@ -11,7 +11,9 @@ import {
   Chip,
   Tabs,
   Tab,
-  IconButton
+  IconButton,
+  Stack,
+  Paper
 } from "@mui/material";
 import {
   Menu as MenuIcon,
@@ -26,6 +28,7 @@ import SupplierTree from "components/Order/SupplierTree";
 import PurchaseForm from "components/Order/PurchaseForm";
 import SearchTree from "components/Order/SearchTree";
 import UploadTechPack from "components/Order/UploadTechPack/UploadTechPack";
+import Options from "components/Order/Options";
 import ActionMenuIncomingOrders from "components/SellerView/ActionMenuIncomingOrders";
 import { OrderStatus } from "configs/OrderStatus";
 import { RequestType } from "configs/RequestType";
@@ -49,12 +52,14 @@ const Order = () => {
   const [search, setSearch] = useState("");
   const [selectedTab, setSelectedTab] = useState(0);
   const [selectedRows, setSelectedRows] = useState([]);
+  const [selectedOrderId, setSelectedOrderId] = useState(null);
 
   const [formData, setFormData] = useState({});
   const [searchInput, setSearchInput] = useState("");
   const [confirmationOpen, setConfirmationOpen] = React.useState(false);
 
   let {data: purchaseOrders, isLoading: isLoadingPurchaseOrders} = useGetPurchaseOrdersQuery({userId});
+  console.log('Purchase Orders:', purchaseOrders);
 
   const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
   const [createOrder, { isLoading: creatingOrder }] = useCreateNewOrderMutation();
@@ -88,11 +93,8 @@ const Order = () => {
     setConfirmationOpen(false);
   };
 
-  const handleTreeClick = (params) => {
-    console.log("Tree node clicked:", params);
-    if (params.data && params.data.orderId) {
-      setOrderId(params.data.orderId);
-    }
+  const handleTreeClick = (orderId) => {
+    setSelectedOrderId(orderId);
   };
 
   function a11yProps(index) {
@@ -100,6 +102,50 @@ const Order = () => {
       id: `simple-tab-${index}`,
       'aria-controls': `simple-tabpanel-${index}`,
     };
+  }
+
+  function DetailPanelContent({ row: rowProp }) {
+    return (
+      <Stack
+        sx={{ py: 2, height: '100%', boxSizing: 'border-box' }}
+        direction="column"
+      >
+        <Paper sx={{ flex: 1, mx: 'auto', width: '90%', p: 1 }}>
+          <Stack direction="column" spacing={1} sx={{ height: 1 }}>
+            <Typography variant="h6">{`TECH PACK: ${rowProp._id}`}</Typography>
+            <Grid container>
+              <Grid item md={6}>
+                <Typography variant="body2" color="textSecondary">ID</Typography>
+                <Typography variant="body1">{rowProp._id}</Typography>
+              </Grid>
+              <Grid item md={6}>
+                <Typography variant="body2" align="right" color="textSecondary">Date Created</Typography>
+                <Typography variant="body1" align="right">{rowProp.createdAt}</Typography>
+              </Grid>
+            </Grid>
+            <DataGridPro
+              density="compact"
+              columns={[
+                /*
+                { field: 'name', headerName: 'Material', flex: 1 },
+                {
+                  field: 'query',
+                  headerName: 'Query ID',
+                  align: 'center',
+                  type: 'number',
+                },
+                */
+                { field: 'quantity', headerName: 'Quantity', type: 'number' },
+              ]}
+              /* Rows need to map over array that points to different queries */
+              rows={rowProp.quantity}
+              sx={{ flex: 1}}
+              hideFooter
+            />
+          </Stack>
+        </Paper>
+      </Stack>
+    )
   }
 
   const CustomFooter = (props) => {
@@ -211,15 +257,17 @@ const Order = () => {
   const renderComponents = () => {
     if (selectedTab === 0) {
       return (
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
-            <OrderDetails orderId={orderId} />
+        <Box>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <SupplierTree techPackId={"1"} onTreeClick={handleTreeClick} />
+            </Grid>
+            <Grid item xs={6}>
+              {/* <SupplierTree techPackId={orderId} /> */}
+              <OrderDetails orderId={selectedOrderId} />
+            </Grid>
           </Grid>
-          <Grid item xs={6}>
-            {/* <SupplierTree techPackId={orderId} /> */}
-            <SupplierTree techPackId={"1"} onTreeClick={handleTreeClick} />
-          </Grid>
-        </Grid>
+        </Box>
       );
     } else {
       return (
@@ -297,7 +345,8 @@ const Order = () => {
           </Box>
         </FlexBetween>
 
-        <Box mt="1.5rem">
+        <Box p="1.5rem 0rem">
+          <Options />
           {renderComponents()}
           {/* <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResultsAdvanced} handleSearch={handleSearch} purchaseOrders={purchaseOrders} orderId={orderId}/> */}
         </Box>
@@ -307,6 +356,8 @@ const Order = () => {
             <DataGridPro
               loading={isLoadingPurchaseOrders || !purchaseOrders}
               getRowId={(row) => row["_id"]}
+              getDetailPanelContent={({ row }) => <DetailPanelContent row={row} />}
+              getDetailPanelHeight={({ row }) => 'auto'}
               rows={(purchaseOrders && purchaseOrders.allOrders) || []}
               columns={purchaseOrdersColumns}
               rowCount={(1) || 0}
@@ -320,7 +371,7 @@ const Order = () => {
               onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
               onSortModelChange={(newSortModel) => setSort(...newSortModel)}
               onRowClick={(row)=>{
-                console.log(row.row);
+                console.log('Row Click: ', row.row);
                 setOrderId(row.row._id);
               }}
             />
