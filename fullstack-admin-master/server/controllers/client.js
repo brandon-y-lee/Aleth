@@ -16,39 +16,9 @@ import {fabrics, productCategory, fabricConstruction} from '../configs/SearchLis
 import OrderTree from "../models/OrderTree.js";
 import SearchQuery from "../models/SearchQuery.js";
 import TechPack from "../models/TechPack.js";
+import userSupplierNetwork from "../models/UserSupplierNetwork.js";
 
 
-
-export const getProducts = async (req, res) => {
-  try {
-    const products = await Product.find();
-
-    const productsWithStats = await Promise.all(
-      products.map(async (product) => {
-        const stat = await ProductStat.find({
-          productId: product._id,
-        });
-        return {
-          ...product._doc,
-          stat,
-        };
-      })
-    );
-
-    res.status(200).json(productsWithStats);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
-export const getCustomers = async (req, res) => {
-  try {
-    const customers = await User.find({ role: "user" }).select("-password");
-    res.status(200).json(customers);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
 
 //Shipments where the user is the userID provided
 export const getTransactions = async (req, res) => {
@@ -684,6 +654,30 @@ export const getGeography = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+/* USER SUPPLIER NETWORK */
+export const addSupplierToUserNetwork = async (userId, supplierId) => {
+  try {
+      const networkEntry = new userSupplierNetwork({
+          userId: userId,
+          supplierId: supplierId
+      });
+      await networkEntry.save();
+      console.log('Supplier added to user network successfully!');
+  } catch (error) {
+      console.error('Error adding supplier to user network:', error);
+  }
+};
+
+export const getSuppliersForUser = async (userId) => {
+  try {
+      const suppliers = await userSupplierNetwork.find({ userId: userId }).populate('supplierId');
+      return suppliers.map(entry => entry.supplierId);
+  } catch (error) {
+      console.error('Error fetching suppliers for user:', error);
+  }
+};
+
 
 function generateID() {
   // get current year

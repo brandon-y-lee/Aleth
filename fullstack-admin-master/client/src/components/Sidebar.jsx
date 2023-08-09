@@ -43,20 +43,16 @@ const navItems = [
     icon: <HomeOutlined />,
   },
   {
-    text: "Network",
-    icon: null,
-  },
-  {
     text: "Order",
     icon: <PublicOutlined />,
   },
   {
-    text: "Shipments",
-    icon: <Inventory2Outlined />,
+    text: "Network",
+    icon: <InventoryOutlined />,
   },
   {
-    text: "Products",
-    icon: <InventoryOutlined />,
+    text: "Shipments",
+    icon: <Inventory2Outlined />,
   },
   {
     text: "Templates",
