@@ -31,7 +31,7 @@ const ActionMenuIncomingOrders = (props) => {
     };
 
     const handleAccept = () => {
-        updateOrder({ requestType: RequestType.SELLERACCEPT, sellerIds:[userId], orderId:[props.orderData._id], isSeller: true, notes })
+        updateOrder({ requestType: RequestType.SELLERACCEPT, sellerIds:[userId], orderId:[props.techPackData._id], isSeller: true, notes })
         .unwrap()
         .then(() => {
           console.log("Order Accepted Successfully successfully!");
@@ -43,7 +43,7 @@ const ActionMenuIncomingOrders = (props) => {
     };
 
     const handleReject = () => {
-        updateOrder({ requestType: RequestType.SELLERREJECT, sellerIds:[userId], orderId:[props.orderData._id], isSeller: true })
+        updateOrder({ requestType: RequestType.SELLERREJECT, sellerIds:[userId], orderId:[props.techPackData._id], isSeller: true })
         .unwrap()
         .then(() => {
           console.log("Order rejected Successfully successfully!");
@@ -79,14 +79,8 @@ const ActionMenuIncomingOrders = (props) => {
       <Dialog open={openDialog} onClose={handleCloseDialog} fullWidth maxWidth="md">
         <DialogTitle>Order Details</DialogTitle>
         <DialogContent>
-          <Typography variant="h6">Material: {props.orderData.material.join(", ")}</Typography>
-          <Typography variant="h6">Price Range: {props.orderData.priceRange.join(" - ")}</Typography>
-          <Typography variant="h6">Unit Weight: {props.orderData.unitWeight}</Typography>
-          <Typography variant="h6">Pattern Print: {props.orderData.patternPrint}</Typography>
-          <Typography variant="h6">Color: {props.orderData.color}</Typography>
-          <Typography variant="h6">Country Of Origin: {props.orderData.countryOfOrigin}</Typography>
-          <Typography variant="h6">Quantity: {props.orderData.quantity}</Typography>
-          <Typography variant="h6">Delivery Date: {new Date(props.orderData.deliveryDate).toLocaleDateString()}</Typography>
+          <Typography variant="h6">Product: {props.techPackData.product}</Typography>
+          <Typography variant="h6">Quantity: {props.techPackData.quantity}</Typography>
 
           <TextField 
               sx={{marginTop: 2}}

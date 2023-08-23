@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, TextField, Button, Typography, useTheme, Dialog, DialogContent } from '@mui/material';
+import { Box, TextField, Button, Typography, useTheme, Dialog, DialogTitle, DialogContent } from '@mui/material';
 import { UploaderComponent } from '@syncfusion/ej2-react-inputs';
 import './UploadTechPack.css';
 import { useProcessPdfMutation } from 'state/api';
@@ -71,6 +71,7 @@ const UploadTechPack = ({ updateSearchResults }) => {
       }
     }
     setShowConfirmDialog(true);
+
     // Here, handle the submission e.g. send the data somewhere
   };
 
@@ -128,13 +129,15 @@ const UploadTechPack = ({ updateSearchResults }) => {
         >
         Submit
       </Button>
-      {showConfirmDialog && (
-        <ConfirmTechPack
-          techPackData={{ name, description }}
-          onConfirm={handleConfirmTechPack}
-          onClose={handleCloseTechPack}
-        />
-      )}
+      <Dialog open={showConfirmDialog} onClose={() => setShowConfirmDialog(false)}>
+        <DialogTitle>Processed Tech Pack Data</DialogTitle>
+        <DialogContent>
+          <Typography variant="body1">
+            {/* Display the processed data here. Replace `data` with the actual variable that holds the processed data. */}
+            {JSON.stringify(data, null, 2)}
+          </Typography>
+        </DialogContent>
+      </Dialog>
     </Box>
   );
 };

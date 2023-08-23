@@ -2,10 +2,11 @@ import mongoose from 'mongoose';
 
 const techPackSchema = mongoose.Schema(
     {
-      userId: String,
+      buyerId: String,
       buyerType: String,
-      material: String,
-      productCategory: String,
+      sku: String,
+      product: String,
+      quantity: Number,
       queries: {
         type: [String],
         default: []

@@ -58,41 +58,34 @@ const SupplierTree = ({ techPackId, onTreeClick }) => {
   };
 
   useEffect(() => {
-    async function fetchData() {
-      if (isLoadingTechPack || isLoadingQueries) return;
-      
-      const children = await Promise.all(techPack.techPack.orderQueries.map(async (queryId) => {
-        const query = queries.techPackQueries.find(q => q.id === queryId);
-        console.log('Query: ', query);
-        const sellers = []; //await fetchEligibleSellers(queryId);
+    if (isLoadingTechPack || isLoadingQueries || !techPack || !queries) return;
+    
+    // Extract techPack and queries data
+    const techPackData = techPack.techPack;
+    const queriesData = queries.techPackQueries;
+    
+    // Construct children nodes for tech pack
+    const children = queriesData.map(query => ({
+      name: query.material,
+      // children: query.sellers.map(seller => ({ name: seller })),
+      orderId: query._id
+    }));
 
-        const sellerNodes = sellers.map(seller => ({ name: seller.name }));
+    // Construct the root node
+    const treeData = {
+      name: techPackData.product,
+      children
+    };
 
-        return {
-          name: query.material,
-          children: sellerNodes,
-          orderId: queryId,
-        };
-      }));
-
-      console.log('Children: ', children);
-
-      const treeData = {
-        name: techPack.techPack.productCategory,
-        children,
-      };
-
-      setOption(prevOption => ({
-        ...prevOption,
-        series: [{
-          ...prevOption.series[0],
-          data: [treeData],
-        }],
-      }));
-    }
-
-    fetchData();
-}, [techPackId, isLoadingTechPack, queries, isLoadingQueries]);
+    // Set option for Tree Chart
+    setOption(prevOption => ({
+      ...prevOption,
+      series: [{
+        ...prevOption.series[0],
+        data: [treeData],
+      }],
+    }));
+  }, [techPackId, isLoadingTechPack, techPack, queries, isLoadingQueries]);
 
   return (
     <div style={{ height: '100%', width: '100%' }}>

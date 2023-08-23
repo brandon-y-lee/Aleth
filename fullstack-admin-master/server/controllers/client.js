@@ -19,6 +19,588 @@ import TechPack from "../models/TechPack.js";
 import userSupplierNetwork from "../models/UserSupplierNetwork.js";
 
 
+/* GET - TECH PACK */
+
+export const getTechPacksForUser = async (req, res) => {
+  const { userId } = req.query;
+  console.log("Fetching all Tech Packs for userId: ", userId);
+  try{
+    const techPacks = await TechPack.find({buyerId: userId});
+    if(techPacks)
+      return res.status(200).json({techPacks});
+  } catch(error){
+    return res.json({message: error.message});
+  }
+}
+
+export const getTechPack = async (req, res) => {
+  const {techPackId} = req.query;
+  console.log("Fetching Tech Pack with ID:", techPackId);
+
+  try{
+    const techPack = await TechPack.findOne({_id: techPackId});
+    if(techPack)
+      return res.status(200).json({techPack});
+  } catch(error){
+    return res.status(500).json({message: error.message});
+  }
+};
+
+export const getQueriesForTechPack = async (req, res) => {
+  const {techPackId} = req.query;
+  console.log("Getting queries for techPackId: ", techPackId);
+
+  try{
+    const techPack = await TechPack.findOne({_id: techPackId});
+    console.log(techPack);
+
+    if (techPack && techPack.queries) {
+      const queries = await OrderRequest.find({
+        _id: { $in: techPack.queries }
+      });
+      
+      console.log(queries);
+      return res.status(200).json({ techPackQueries: queries });
+    } else {
+      return res.status(404).json({ message: "Tech Pack not found or has no queries." });
+    }
+  } catch (error){
+    return res.status(500).json({message: error.message});
+  }
+};
+
+export const getEligibleSellersAdvanced = async (req, res) => {
+  try {
+    console.log("Finding Eligible Sellers Advanced", req.query);
+    const { products, material, fabricConstruction, certifications } = req.query;
+    const eligibleSellers = await SupplierData.find({
+      // $text: { $search: `${material}` },
+      'Products': { $in: [products] }
+    });
+    if(eligibleSellers.length > 0)
+      console.log(eligibleSellers[0]);
+
+    res.status(200).json({eligibleSellers});
+  }
+  catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+
+
+
+/* GET - USER SUPPLIER NETWORK */
+
+export const getSuppliersForUser = async (req, res) => {
+  console.log("Finding Accepted Invites For User", req.query);
+  const { userId } = req.query;
+
+  if (!userId) {
+    return res.status(400).json({ message: "userId is required" });
+  }
+
+  try {
+    const invites = await userSupplierNetwork.find({
+      $or: [
+        { userId: mongoose.Types.ObjectId(userId) },
+        { supplierId: mongoose.Types.ObjectId(userId) }
+      ],
+      status: 'accepted'
+    });
+    console.log("Invites", invites);
+
+    if (!invites || invites.length === 0) {
+      return res.status(404).json({ message: "No suppliers found for this user" });
+    }
+
+    const profiles = [];
+    for (let invite of invites) {
+      const otherUserId = invite.userId.toString() === userId ? invite.supplierId : invite.userId;
+      const profile = await SupplierData.findOne({_id: mongoose.Types.ObjectId(otherUserId)});
+      profiles.push(profile);
+    }
+
+    res.status(200).json(profiles);
+  } catch (error) {
+    console.error("Error fetching suppliers for user:", error);
+    res.status(500).json({ message: "Error fetching suppliers for user", error });
+  }
+};
+
+export const getInvitesSentForUser = async (req, res) => {
+  console.log("Finding Invites Sent For User", req.query);
+  const { userId } = req.query;
+
+  if (!userId) {
+    return res.status(400).json({ message: "userId is required" });
+  }
+
+  try {
+    const invitesSent = await userSupplierNetwork.find({ userId: mongoose.Types.ObjectId(userId), status: 'pending' }).populate('supplierId');
+    if (invitesSent.length === 0) {
+      return res.status(404).json({ message: "Invites sent not found" });
+    }
+    res.status(200).json(invitesSent);
+  } catch (error) {
+    console.error("Error fetching invites sent:", error);
+    res.status(500).json({ message: "Error fetching invites sent", error });
+  }
+};
+
+export const getInvitesReceivedForUser = async (req, res) => {
+  console.log("Finding Invites Received For User", req.query);
+  const { userId } = req.query;
+
+  if (!userId) {
+    return res.status(400).json({ message: "userId is required" });
+  }
+
+  try {
+    const invitesReceived = await userSupplierNetwork.find({ supplierId: mongoose.Types.ObjectId(userId), status: 'pending' }).populate('userId');
+    if (invitesReceived.length === 0) {
+      return res.status(404).json({ message: "Invites received not found" });
+    }
+    res.status(200).json(invitesReceived);
+  } catch (error) {
+    console.error("Error fetching invites received:", error);
+    res.status(500).json({ message: "Error fetching invites received", error});
+  }
+};
+
+export const getInvitesForUser = async (req, res) => {
+  console.log("Finding Invites For User", req.query);
+  const { userId } = req.query;
+
+  if (!userId) {
+    return res.status(400).json({ message: "userId is required" });
+  }
+
+  try {
+    const allInvites = await userSupplierNetwork.find({
+      $or: [
+        { userId: mongoose.Types.ObjectId(userId) },
+        { supplierId: mongoose.Types.ObjectId(userId) }
+      ]
+    });
+
+    res.status(200).json(allInvites);
+  } catch (error) {
+    console.error("Error fetching invites for user:", error);
+    res.status(500).json({ message: "Error fetching invites for user", error });
+  }
+}
+
+export const getPendingInvitationsForUser = async (req, res) => {
+  console.log("Finding Pending Invitations For User", req.query);
+  const { userId } = req.query;
+
+  if (!userId) {
+    return res.status(400).json({ message: "userId is required" });
+  }
+
+  try {
+    const invitesSentCount = await userSupplierNetwork.countDocuments({ 
+      userId: mongoose.Types.ObjectId(userId), 
+      status: 'pending' 
+    });
+
+    const invitesReceivedCount = await userSupplierNetwork.countDocuments({ 
+      supplierId: mongoose.Types.ObjectId(userId), 
+      status: 'pending' 
+    });
+
+    const totalPending = invitesSentCount + invitesReceivedCount;
+
+    res.status(200).json({ 
+      invitesSent: invitesSentCount, 
+      invitesReceived: invitesReceivedCount, 
+      totalPending 
+    });
+
+  } catch (error) {
+    console.error("Error fetching pending invitations:", error);
+    res.status(500).json({ message: "Error fetching pending invitations", error });
+  }
+};
+
+export const getCompanyName = async (req, res) => {
+  console.log("Finding Company", req.query);
+  const { query } = req.query;
+
+  if (!query || query === "null") {
+    return res.status(400).json({ message: "Query parameter is missing" });
+  }
+  
+  try {
+    const results = await SupplierData.aggregate([
+      {
+        $search: {
+          index: "company",
+          text: {
+            query: query,
+            path: {
+              wildcard: "*"
+            },
+            fuzzy: {
+              maxEdits: 1
+            }
+          }
+        }
+      },
+      {
+        $project: {
+          Company: 1,
+          Description: 1,
+          YearFounded: 1,
+          Employees: 1,
+          Sales: 1,
+          UserType: 1
+        }
+      }
+    ]);
+
+    res.status(200).json(results);
+  } catch (error) {
+    res.status(404).json({ message: "Error searching suppliers", error });
+  }
+};
+
+
+
+
+/* POST - TECH PACK */
+
+export const createNewTechPack = async (req, res) => {
+  try {
+    const { buyerId, buyerType, sku, product, quantity, queries } = req.body;
+
+    const newTechPack = new TechPack({
+      buyerId,
+      buyerType,
+      sku,
+      product,
+      quantity,
+      queries
+    });
+
+    await newTechPack.save();
+    res.status(200).json({ message: "New tech pack created successfully" });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export const processTechPack = async (req, res) => {
+  console.log("Processing PDF: ", req.file);
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file provided' });
+    }
+
+    const pdfParser = new PDFParser();
+
+    pdfParser.on('pdfParser_dataError', err => {
+      console.error('Error parsing PDF:', err.parserError);
+      res.status(500).json({ message: 'Error parsing PDF' });
+    });
+
+    pdfParser.on('pdfParser_dataReady', async pdfData => {
+      let tableStarted = false;
+      const tableRows = [];
+        
+      for (const textItem of pdfData.Pages[0].Texts) {
+        const text = decodeURIComponent(textItem.R[0].T);
+        if (text.includes('BILL OF MATERIALS')) {
+          tableStarted = true;
+        }
+        if (text.includes('WHILE EVERY CARE IS TAKEN')) {
+          tableStarted = false;
+        }
+        if (tableStarted) {
+          const yPos = textItem.y;
+          let row = tableRows.find(r => r.yPos === yPos);
+          if (!row) {
+            row = { yPos, data: [] };
+            tableRows.push(row);
+          }
+          row.data.push(text);
+        }
+      }
+
+      const sortedRows = tableRows.sort((a, b) => a.yPos - b.yPos).map(row => row.data);
+      let orderParams = sortedRows.slice(2, -3).map(row => {
+        const description = row[2].replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '').toLowerCase();
+        const fabric = fabrics.find(fabric => new RegExp(`\\b${fabric.toLowerCase()}\\b`).test(description));
+        const category = productCategory.find(category => new RegExp(`\\b${category.toLowerCase()}\\b`).test(description));
+        const construction = fabricConstruction.find(construction => new RegExp(`\\b${construction.toLowerCase()}\\b`).test(description));
+        return {
+          fabric: fabric || '',
+          productCategory: category || '',
+          fabricConstruction: construction || '',
+          description: description,
+        };
+      });
+
+      orderParams = orderParams.filter(param => param.fabric || param.productCategory || param.fabricConstruction);
+      res.status(200).json({tableData: orderParams});
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const createSearchQueries = async (req, res) => {
+  console.log("Creating Search Queries PDF: ", req.body);
+  const {orderParams, buyerId, buyerType} = req.body;
+  try {
+    const newId = generateID();
+
+    const newOrderTree = new OrderTree({
+      id : newId,
+      buyerType: buyerType,
+      buyerId: buyerId,
+      material: "",
+      quantity: "",
+    });  
+    await newOrder.save();
+
+    // Create SearchQueries from orderParams
+    const searchQueries = [];
+    for (const param of orderParams) {
+      const searchQuery = new SearchQuery({
+        material: param.fabric,
+        productCategory: param.productCategory,
+        fabricConstruction: param.fabricConstruction,
+        orderId: newId
+        // Add other fields as needed
+      });
+  
+      await searchQuery.save();
+      searchQueries.push(searchQuery._id);
+    }
+
+    await TechPack.updateOne({id: newId},{queries: searchQueries});
+    res.status(200).json({"msg":"Created Successfully"});
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  };
+};
+
+export const createNewOrder = async (req, res) => {
+  try {
+    console.log("Generating new order", req.body);
+    const { 
+      buyerId,
+      buyerType,
+      techPackId,
+      material,
+      productCategory,
+      deliveryDate,
+      fabricConstruction,
+      color,
+      quantity,
+      countryOfOrigin,
+      eligibleSuppliers
+    } = req.body;
+
+    let supplierStatuses = {};
+    let supplierNotes = {};
+
+    eligibleSuppliers.forEach((supplierId) => {
+      supplierStatuses[supplierId] = OrderStatus.NEWORDER;
+      supplierNotes[supplierId] = "";
+    })
+
+    const newOrder = new OrderRequest({
+      buyerId : buyerId,
+      buyerType: buyerType,
+      techPackId: techPackId,
+      material: material,
+      productCategory: productCategory,
+      deliveryDate: deliveryDate,
+      fabricConstruction: fabricConstruction,
+      color: color,
+      quantity: quantity,
+      countryOfOrigin: countryOfOrigin,
+      eligibleSuppliers: eligibleSuppliers,
+      supplierStatuses: supplierStatuses,
+      supplierNotes: supplierNotes
+    });
+
+    await newOrder.save();
+    res.status(200).json({ message: "New order created successfully" });
+    }
+  catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+// Function for updating order requests on init/accept/reject operations by sellers/buyers
+export const updateOrder = async (req, res) => {
+  try{
+    console.log("Updating purchase order", req.body);
+    const {requestType, sellerIds, orderId, isSeller, notes} = req.body;
+    console.log(sellerIds);
+    console.log(orderId);
+    const order = await OrderRequest.find({_id: new mongoose.Types.ObjectId(orderId[0])});
+    console.log(order);
+    let orderStatus = OrderStatus.INITORDER;
+    if(order)
+    {
+      let sellerStatuses = order[0].sellerStatuses;
+      let sellerNotes = order[0].sellerNotes;
+      console.log("Seller Statuses", sellerStatuses);
+      //Buyer initiating the order, expressing interest in a subset of all possible sellers
+      if(requestType == RequestType.INITORDER){
+        orderStatus = OrderStatus.INITORDER;
+        let sellerStatuses = {};
+        let sellerNotes = {};
+
+        for(const sellerId of sellerIds)
+        {
+          sellerStatuses[sellerId] = OrderStatus.NEWORDER;
+          sellerNotes[sellerId] = "";
+        }
+      }
+
+      //Buyer sending accept to one or many sellers of the subset of the sellers
+      if(requestType == RequestType.BUYERACCEPT)
+      {
+        //Sanity Check
+        if(!isSeller)
+        {
+          orderStatus = OrderStatus.BUYERACCEPT;
+          //Accept the ones the buyer sent
+          for(const sellerId of sellerIds)
+            sellerStatuses[sellerId] = OrderStatus.BUYERACCEPT;
+        
+          //Reject the others
+          for (let key of Object.keys(sellerStatuses)) {
+              if(sellerStatuses[key] != OrderStatus.BUYERACCEPT)
+                sellerStatuses[key] = OrderStatus.BUYERDENIED;
+            }
+          //TODO: change the order status to BUYERACCEPT here. Do an UpdateOne call.
+        }
+      }
+
+      //Buyer sending reject request to one or many sellers of the subset of sellers
+      if(requestType == RequestType.BUYERDENIED)
+      {
+        //Sanity Check
+        if(isBuyer)
+        {
+          //Accept the ones the buyer sent
+          for(const sellerId of sellerIds)
+            sellerStatuses[sellerId] = OrderStatus.BUYERDENIED;
+        }
+      }
+
+      //Seller sending accept request to the buyer
+      if(requestType == RequestType.SELLERACCPET)
+      {
+        if(isSeller)
+        {
+            orderStatus = OrderStatus.SELLERACCEPT;
+            sellerStatuses[sellerIds[0]] = OrderStatus.SELLERACCEPT; 
+            sellerNotes[sellerIds[0]] = notes;
+        }
+      }
+
+      //Seller sending reject request to the buyer
+      if(requestType == RequestType.SELLERREJECT)
+      {
+        if(isSeller)
+            sellerStatuses[sellerIds[0]] = OrderStatus.SELLERDENIED;   
+      }
+      console.log("Final Status", sellerStatuses);
+      //Set the updated seller statuses for the order
+      await OrderRequest.updateOne({_id: new mongoose.Types.ObjectId(orderId[0])},{sellerStatuses: sellerStatuses, sellerNotes: sellerNotes})
+    }
+    res.status(200).json({ message: "Order updated successfully" });
+  } catch(error) {
+    res.status(404).json({message: error.message});
+  }
+};
+
+
+
+
+/* POST - USER SUPPLIER NETWORK */
+
+export const addSupplierToUserNetwork = async (userId, supplierId) => {
+  try {
+      const networkEntry = new userSupplierNetwork({
+          userId: userId,
+          supplierId: supplierId
+      });
+      await networkEntry.save();
+      console.log('Supplier added to user network successfully!');
+  } catch (error) {
+      console.error('Error adding supplier to user network:', error);
+  }
+};
+
+export const sendInvite = async (req, res) => {
+  try {
+    console.log("Sending invite", req.body);
+    const { userId, supplierId, status, connectionDate } = req.body;
+
+    const newInvite = new userSupplierNetwork({
+      userId,
+      supplierId,
+      status,
+      connectionDate
+    });
+
+    await newInvite.save();
+    res.status(200).json({ message: "New invite created successfully" });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export const updateInviteStatus = async (req, res) => {
+  try {
+    console.log("Updating invite status", req.body);
+    const { inviteId, status } = req.body;
+
+    // Find the invite by its ID
+    const invite = await userSupplierNetwork.findById(inviteId);
+    if (!invite) {
+      return res.status(404).json({ message: "Invite not found" });
+    }
+
+    // Update the status and connection date if the status is 'accepted'
+    invite.status = status;
+    if (status === 'accepted') {
+      await invite.save();
+      invite.connectionDate = new Date();
+    }
+
+    if (status === 'declined' || status === 'withdraw') {
+      await invite.remove();
+      return res.status(200).json({ message: "Invite declined and removed" });
+    }
+    res.status(200).json({ message: "Invite updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Shipments where the user is the userID provided
 export const getTransactions = async (req, res) => {
@@ -58,195 +640,26 @@ export const getTransactions = async (req, res) => {
 };
 
 
-//TODO: Fix this to find out the set of eligible sellers
-export const getEligibleSellers = async (req, res) => {
-  try {
-    console.log("Finding Eligible Sellers", req.query);
-    const {material} = req.query;
-
-    const eligibleSellers = await UserData.find({material:material});
-    res.status(200).json({eligibleSellers});
-    }
-  catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
-export const getEligibleSellersAdvanced = async (req, res) => {
-  try {
-    console.log("Finding Eligible Sellers Advanced", req.query);
-    const { products, material, fabricConstruction, certifications } = req.query;
-    const eligibleSellers = await SupplierData.find({
-      // $text: { $search: `${material}` },
-      'Products': { $in: [products] }
-    });
-    if(eligibleSellers.length > 0)
-      console.log(eligibleSellers[0]);
-
-    res.status(200).json({eligibleSellers});
-  }
-  catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
-
-export const processTechPack = async (req, res) => {
-  console.log("Processing PDF: ", req.file);
-  try {
-      if (!req.file) {
-          return res.status(400).json({ message: 'No file provided' });
-      }
-
-      const pdfParser = new PDFParser();
-
-      pdfParser.on('pdfParser_dataError', err => {
-          console.error('Error parsing PDF:', err.parserError);
-          res.status(500).json({ message: 'Error parsing PDF' });
-      });
-
-      pdfParser.on('pdfParser_dataReady', async pdfData => {
-          let tableStarted = false;
-          const tableRows = [];
-          
-          for (const textItem of pdfData.Pages[0].Texts) {
-              const text = decodeURIComponent(textItem.R[0].T);
-              if (text.includes('BILL OF MATERIALS')) {
-                  tableStarted = true;
-              }
-              if (text.includes('WHILE EVERY CARE IS TAKEN')) {
-                  tableStarted = false;
-              }
-              if (tableStarted) {
-                  const yPos = textItem.y;
-                  let row = tableRows.find(r => r.yPos === yPos);
-                  if (!row) {
-                      row = { yPos, data: [] };
-                      tableRows.push(row);
-                  }
-                  row.data.push(text);
-              }
-          }
-
-          const sortedRows = tableRows.sort((a, b) => a.yPos - b.yPos).map(row => row.data);
-          let orderParams = sortedRows.slice(2, -3).map(row => {
-              const description = row[2].replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '').toLowerCase();
-              const fabric = fabrics.find(fabric => new RegExp(`\\b${fabric.toLowerCase()}\\b`).test(description));
-              const category = productCategory.find(category => new RegExp(`\\b${category.toLowerCase()}\\b`).test(description));
-              const construction = fabricConstruction.find(construction => new RegExp(`\\b${construction.toLowerCase()}\\b`).test(description));
-              return {
-                  fabric: fabric || '',
-                  productCategory: category || '',
-                  fabricConstruction: construction || '',
-                  description: description,
-              };
-          });
-
-          orderParams = orderParams.filter(param => param.fabric || param.productCategory || param.fabricConstruction);
-          res.status(200).json({tableData: orderParams});
-      });
-  } catch (error) {
-      res.status(500).json({ message: error.message });
-  }
-};
-
-export const getTechPacksForUser = async(req, res) => {
-  const {userId} = req.body
-  console.log("Fetching all Tech Packs for userId: ", userId);
-  try{
-    const techPacks = await OrderTree.find({buyerId: userId});
-    if(techPacks)
-      return res.status(200).json({techPacks});
-  } catch(error){
-    return res.json({message: error.message});
-  }
-}
-
-export const getTechPack = async(req, res) => {
-  console.log("Fetching Tech Pack:", req.query);
-  const {techPackId} = req.query;
-  try{
-    const techPack = await OrderTree.findOne({id: techPackId});
-    if(techPack)
-      return res.status(200).json({techPack});
-  } catch(error){
-    return res.status(500).json({message: error.message});
-  }
-}
-
-export const createSearchQueries = async (req, res) => {
-  console.log("Creating Search Queries PDF: ", req.body);
-  const {orderParams, buyerId, buyerType} = req.body;
-  try {
-
-      const newId = generateID();
-
-      const newOrderTree = new OrderTree({
-        id : newId,
-        buyerType: buyerType,
-        buyerId: buyerId,
-        material: "",
-        quantity: "",
-      });  
-      await newOrder.save();
-
-      // Create SearchQueries from orderParams
-      const searchQueries = [];
-      for (const param of orderParams) {
-        const searchQuery = new SearchQuery({
-          material: param.fabric,
-          productCategory: param.productCategory,
-          fabricConstruction: param.fabricConstruction,
-          orderId: newId
-          // Add other fields as needed
-        });
-    
-        await searchQuery.save();
-        searchQueries.push(searchQuery._id);
-      }
-
-      await OrderTree.updateOne({id: newId},{orderQueries: searchQueries});
-      res.status(200).json({"msg":"Created Successfully"});
-  } catch (error) {
-      res.status(500).json({ message: error.message });
-  };
-}
-
-export const getQueriesForTechPack = async (req, res) => {
-  try{
-    const {techPackId} = req.query;
-    console.log("Getting queries for techpackID: ", techPackId);
-    const techPackQueries = await SearchQuery.find({techPackId: techPackId});
-    console.log(techPackQueries);
-    return res.status(200).json({techPackQueries});
-  } catch (error){
-    return res.status(500).json({message: error.message});
-  }
-}
-
 
 export const getSupplierData = async (req, res) => {
   try {
     console.log("Finding Supplier Data", req.query);
     const { userId } = req.query;
+
+    // Check if userId is provided
+    if (!userId) {
+      return res.status(400).json({ message: "userId not provided" });
+    }
+
     const supplierData = await SupplierData.findOne({_id: mongoose.Types.ObjectId(userId)});
+
+    // Check if supplierData was found
+    if (!supplierData) {
+      return res.status(404).json({ message: "Supplier not found" });
+    }
+
     res.status(200).json({supplierData});
   }
-  catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
-
-//TODO: Fix this to find out the set of eligible sellers
-export const getPurchaseOrders = async (req, res) => {
-  try {
-    console.log("Fetching purchase orders", req.query);
-    const {userId} = req.query;
-
-    const allOrders = await OrderRequest.find({buyerId:userId});
-    res.status(200).json({allOrders});
-    }
   catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -400,94 +813,6 @@ export const updateRecipients = async (req, res) => {
   } catch(error) {
     res.status(404).json({message: error.message});
   }
-
-}
-
-//Function for updating order requests on init/accept/reject operations by sellers/buyers
-export const updateOrder = async (req, res) => {
-  try{
-    console.log("Updating purchase order", req.body);
-    const {requestType, sellerIds, orderId, isSeller, notes} = req.body;
-    console.log(sellerIds);
-    console.log(orderId);
-    const order = await OrderRequest.find({_id: new mongoose.Types.ObjectId(orderId[0])});
-    console.log(order);
-    let orderStatus = OrderStatus.INITORDER;
-    if(order)
-    {
-      let sellerStatuses = order[0].sellerStatuses;
-      let sellerNotes = order[0].sellerNotes;
-      console.log("Seller Statuses", sellerStatuses);
-      //Buyer initiating the order, expressing interest in a subset of all possible sellers
-      if(requestType == RequestType.INITORDER){
-        orderStatus = OrderStatus.INITORDER;
-        let sellerStatuses = {};
-        let sellerNotes = {};
-
-        for(const sellerId of sellerIds)
-        {
-          sellerStatuses[sellerId] = OrderStatus.NEWORDER;
-          sellerNotes[sellerId] = "";
-        }
-      }
-
-      //Buyer sending accept to one or many sellers of the subset of the sellers
-      if(requestType == RequestType.BUYERACCEPT)
-      {
-        //Sanity Check
-        if(!isSeller)
-        {
-          orderStatus = OrderStatus.BUYERACCEPT;
-          //Accept the ones the buyer sent
-          for(const sellerId of sellerIds)
-            sellerStatuses[sellerId] = OrderStatus.BUYERACCEPT;
-        
-          //Reject the others
-          for (let key of Object.keys(sellerStatuses)) {
-              if(sellerStatuses[key] != OrderStatus.BUYERACCEPT)
-                sellerStatuses[key] = OrderStatus.BUYERDENIED;
-            }
-          //TODO: change the order status to BUYERACCEPT here. Do an UpdateOne call.
-        }
-      }
-
-      //Buyer sending reject request to one or many sellers of the subset of sellers
-      if(requestType == RequestType.BUYERDENIED)
-      {
-        //Sanity Check
-        if(isBuyer)
-        {
-          //Accept the ones the buyer sent
-          for(const sellerId of sellerIds)
-            sellerStatuses[sellerId] = OrderStatus.BUYERDENIED;
-        }
-      }
-
-      //Seller sending accept request to the buyer
-      if(requestType == RequestType.SELLERACCPET)
-      {
-        if(isSeller)
-        {
-            orderStatus = OrderStatus.SELLERACCEPT;
-            sellerStatuses[sellerIds[0]] = OrderStatus.SELLERACCEPT; 
-            sellerNotes[sellerIds[0]] = notes;
-        }
-      }
-
-      //Seller sending reject request to the buyer
-      if(requestType == RequestType.SELLERREJECT)
-      {
-        if(isSeller)
-            sellerStatuses[sellerIds[0]] = OrderStatus.SELLERDENIED;   
-      }
-      console.log("Final Status", sellerStatuses);
-      //Set the updated seller statuses for the order
-      await OrderRequest.updateOne({_id: new mongoose.Types.ObjectId(orderId[0])},{sellerStatuses: sellerStatuses, sellerNotes: sellerNotes})
-    }
-    res.status(200).json({ message: "Order updated successfully" });
-  } catch(error) {
-    res.status(404).json({message: error.message});
-  }
 };
 
 //Function to add a new shipment or update the status of an existing shipment
@@ -539,145 +864,6 @@ export const generateNewShipment = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-
-export const generateNewOrderTree = async (req, res) => {
-  try {
-    console.log("Generating new order", req.body);
-    const { buyerId, buyerType, material, productCategory, deliveryDate, fabricConstruction, orderRequests } = req.body;
-
-    // Generate a new ID. This assumes that you have a function called generateID() similar to the one in the original function.
-    // const newId = generateID();
-
-    const userInfo = await UserData.findOne({id: buyerId});
-
-    // Create a new order tree
-    const newOrder = new OrderTree({
-      buyerId,
-      buyerType,
-      material,
-      productCategory,
-      deliveryDate,
-      fabricConstruction,
-      priceRange,
-      unitWeight,
-      patternPrint,
-      countryOfOrigin,
-      quantity,
-      orderRequests
-    });
-
-    await newOrder.save();
-    res.status(200).json({ message: "New order created successfully" });
-
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
-
-//Function to add a new order request
-export const createNewOrder = async (req, res) => {
-  try {
-    console.log("Generating new order", req.body);
-    const { userId, material, quantity, sellers} = req.body;
-
-    // const eligibleSellers = await UserData.find({material:material});
-    let sellerStatuses = {};
-    let sellerNotes = {};
-    for(const seller of sellers)
-    {
-      sellerStatuses[seller] = OrderStatus.NEWORDER;
-      sellerNotes[seller] = "";
-    }
-
-    // //Set stasuses of eligible sellers as NEWORDER
-    // for(const eligibleSeller of eligibleSellers)
-    //   sellerStatuses[eligibleSeller.userId] = OrderStatus.NEWORDER;
-
-    const newOrder = new OrderRequest({
-      buyerId : userId,
-      buyerType: " ",
-      material: material,
-      quantity: quantity,
-      sellerStatuses: sellerStatuses,
-      sellerNotes: sellerNotes
-    });
-
-    await newOrder.save();
-    res.status(200).json({ message: "New order created successfully" });
-    }
-  catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
-export const createNewTechPack = async (req, res) => {
-  try {
-    const { userId, buyerType, material, productCategory, queries } = req.body;
-
-    const newTechPack = new TechPack({
-      userId,
-      buyerType,
-      material,
-      productCategory,
-      queries
-    });
-
-    await newTechPack.save();
-    res.status(200).json({ message: "New tech pack created successfully" });
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
-export const getGeography = async (req, res) => {
-  try {
-    const users = await User.find();
-
-    const mappedLocations = users.reduce((acc, { country }) => {
-      const countryISO3 = getCountryIso3(country);
-      if (!acc[countryISO3]) {
-        acc[countryISO3] = 0;
-      }
-      acc[countryISO3]++;
-      return acc;
-    }, {});
-
-    const formattedLocations = Object.entries(mappedLocations).map(
-      ([country, count]) => {
-        return { id: country, value: count };
-      }
-    );
-
-    res.status(200).json(formattedLocations);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
-/* USER SUPPLIER NETWORK */
-export const addSupplierToUserNetwork = async (userId, supplierId) => {
-  try {
-      const networkEntry = new userSupplierNetwork({
-          userId: userId,
-          supplierId: supplierId
-      });
-      await networkEntry.save();
-      console.log('Supplier added to user network successfully!');
-  } catch (error) {
-      console.error('Error adding supplier to user network:', error);
-  }
-};
-
-export const getSuppliersForUser = async (userId) => {
-  try {
-      const suppliers = await userSupplierNetwork.find({ userId: userId }).populate('supplierId');
-      return suppliers.map(entry => entry.supplierId);
-  } catch (error) {
-      console.error('Error fetching suppliers for user:', error);
-  }
-};
-
 
 function generateID() {
   // get current year

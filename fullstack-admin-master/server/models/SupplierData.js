@@ -25,5 +25,5 @@ const SupplierDataSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const SupplierData = mongoose.model("supplierdata", SupplierDataSchema);
+const SupplierData = mongoose.model("SupplierData", SupplierDataSchema);
 export default SupplierData;

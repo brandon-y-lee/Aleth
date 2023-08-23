@@ -5,7 +5,7 @@ import SupplierData from "./SupplierData.js";
 const UserAuthSchema = new mongoose.Schema({
     id: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    supplier: { type: mongoose.Schema.Types.ObjectId, ref: 'supplierdata' }
+    supplier: { type: mongoose.Schema.Types.ObjectId, ref: 'SupplierData' }
 });
 
 UserAuthSchema.pre('save', async function (next) {

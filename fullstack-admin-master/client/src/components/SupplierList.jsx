@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, Box, Typography, Card, CardContent, CardHeader } from '@mui/material';
 
-import { useGetPurchaseOrdersQuery, useGetEligibleSellersQuery, useGetOrderSellerDetailsQuery } from "state/api";
+import { useGetEligibleSellersQuery, useGetOrderSellerDetailsQuery } from "state/api";
 
 const SupplierList = ({ orderId }) => {
   console.log(orderId);

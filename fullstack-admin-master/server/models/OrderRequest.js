@@ -5,45 +5,43 @@ const OrderRequestSchema = new mongoose.Schema(
   {
     buyerId: String,
     buyerType: String,
-    material: [String],
-    productCategory: [String],
-    deliveryDate: {
-      type: Date,
-      default: Date.now
+    techPackId: String,
+    material:{
+      type: String,
+      default:""
+    },
+    productCategory:{
+      type: String,
+      default:""
     },
     fabricConstruction:{
-      type: [String],
-      default:[]
-    },
-    priceRange:{
-      type: [Number],
-      default: [0,100000]
-    },
-    unitWeight: {
-      type: Number,
-      default: 0
-    },
-    patternPrint:{
       type: String,
-      default: ""
+      default:""
     },
     color: {
       type: String,
       default: ""
     },
+    quantity: Number,
     countryOfOrigin: {
       type: String,
       default:""
     },
-    quantity: Number,
+    deliveryDate: {
+      type: Date,
+      default: Date.now
+    },
     orderStatus: {
-        type: Number,
-        enum: Object.values(OrderStatus),
-        default: OrderStatus.NEWORDER
-      },
-    
-    sellerStatuses: {},
-    sellerNotes: {}
+      type: Number,
+      enum: Object.values(OrderStatus),
+      default: OrderStatus.NEWORDER
+    },
+    suppliers:{
+      type: [String],
+      default: []
+    },
+    supplierStatuses: {},
+    supplierNotes: {}
   },
   { timestamps: true }
 );

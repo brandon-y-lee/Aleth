@@ -70,15 +70,6 @@ export const api = createApi({
       }),
     }),
 
-    getEligibleSellers: build.query({
-      query: ({ material }) => ({
-        url: "client/eligibleSellers",
-        method: "GET",
-        params: { material },
-      }),
-      providesTags: ["eligibleSellers"],
-    }),
-
     getEligibleSellersAdvanced: build.query({
       query: ({ products, material, fabricConstruction, certifications }) => ({
         url: "client/eligibleSellersAdvanced",
@@ -97,12 +88,68 @@ export const api = createApi({
       providesTags: ["supplierData"],
     }),
 
+    getCompany: build.query({
+      query: ({ query }) => ({
+        url: "client/search",
+        method: "GET",
+        params: { query },
+      }),
+    }),
+
+    getSuppliersForUser: build.query({
+      query: ({ userId }) => ({
+        url: "client/getSuppliersForUser",
+        method: "GET",
+        params: { userId },
+      }),
+    }),
+
+    getInvitesSentForUser: build.query({
+      query: ({ userId }) => ({
+        url: "client/getInvitesSentForUser",
+        method: "GET",
+        params: { userId },
+      }),
+    }),
+
+    getInvitesReceivedForUser: build.query({
+      query: ({ userId }) => ({
+        url: "client/getInvitesReceivedForUser",
+        method: "GET",
+        params: { userId },
+      }),
+    }),
+
+    getInvitesForUser: build.query({
+      query: ({ userId }) => ({
+        url: "client/getInvitesForUser",
+        method: "GET",
+        params: { userId },
+      }),
+    }),
+
+    getPendingInvitationsForUser: build.query({
+      query: ({ userId }) => ({
+        url: "client/getPendingInvitationsForUser",
+        method: "GET",
+        params: { userId },
+      }),
+    }),
+
     getTechPack: build.query({
-      query: ({techPackId}) => ({
+      query: ({ techPackId }) => ({
         url: "client/getTechPack",
         method: "GET",
-        params: {techPackId},
-      })
+        params: { techPackId },
+      }),
+    }),
+
+    getTechPacksForUser: build.query({
+      query: ({ userId }) => ({
+        url: "client/getTechPacksForUser",
+        method: "GET",
+        params: { userId }
+      }),
     }),
 
     getQueriesForTechPack: build.query({
@@ -110,7 +157,7 @@ export const api = createApi({
         url: "client/getQueriesForTechPack",
         method: "GET",
         params: {techPackId},
-      })
+      }),
     }),
 
     getIncomingRequests: build.query({
@@ -131,15 +178,6 @@ export const api = createApi({
       providesTags: ["SellerDetails"],
     }),
 
-    getPurchaseOrders: build.query({
-      query: ({ userId }) => ({
-        url: "client/getPurchaseOrders",
-        method: "GET",
-        params: { userId },
-      }),
-      providesTags: ["PurchaseOrders"],
-    }),
-
     updateRecipients: build.mutation({
       query: ({ senders, receivingOrderId, shipmentID }) => ({
         url: "client/updateRecipients",
@@ -149,26 +187,42 @@ export const api = createApi({
     }),
 
     updateOrder: build.mutation({
-      query: ({requestType, sellerIds, orderId, isSeller, notes}) => ({
+      query: ({ requestType, sellerIds, orderId, isSeller, notes }) => ({
         url: "client/updateOrder",
         method: "POST",
-        body: {requestType, sellerIds, orderId, isSeller, notes},
+        body: { requestType, sellerIds, orderId, isSeller, notes },
+      }),
+    }),
+
+    sendInvite: build.mutation({
+      query: ({ userId, supplierId, status, connectionDate }) => ({
+        url: "client/sendInvite",
+        method: "POST",
+        body: { userId, supplierId, status, connectionDate },
+      }),
+    }),
+
+    updateInviteStatus: build.mutation({
+      query: ({ inviteId, status }) => ({
+        url: "client/updateInviteStatus",
+        method: "POST",
+        body: { inviteId, status },
       }),
     }),
 
     createNewOrder: build.mutation({
-      query: ({userId, material, quantity, sellers}) => ({
+      query: ({ buyerId, buyerType, techPackId, material, productCategory, deliveryDate, fabricConstruction, color, quantity, countryOfOrigin, eligibleSuppliers }) => ({
         url: "client/createNewOrder",
         method: "POST",
-        body: {userId, material, quantity, sellers},
+        body: { buyerId, buyerType, techPackId, material, productCategory, deliveryDate, fabricConstruction, color, quantity, countryOfOrigin, eligibleSuppliers },
       }),
     }),
 
     createNewTechPack: build.mutation({
-      query: ({userId, buyerType, material, productCategory, queries}) => ({
+      query: ({ buyerId, buyerType, sku, product, quantity, queries }) => ({
         url: "client/createNewTechPack",
         method: "POST",
-        body: {userId, buyerType, material, productCategory, queries},
+        body: { buyerId, buyerType, sku, product, quantity, queries },
       }),
     }),
 
@@ -198,11 +252,6 @@ export const api = createApi({
       providesTags: ['chainOfShipments'],
     }),
 
-    getGeography: build.query({
-      query: () => "client/map",
-      providesTags: ["Map"],
-    }),
-
     getSales: build.query({
       query: () => "sales/sales",
       providesTags: ["Sales"],
@@ -222,7 +271,6 @@ export const api = createApi({
       query: () => "general/dashboard",
       providesTags: ["Dashboard"],
     }),
-
   }),
 });
 
@@ -235,21 +283,27 @@ export const {
   useGetTransactionsQuery,
   useUpdateRecipientsMutation,
   useGenerateNewShipmentMutation,
-  useGetPurchaseOrdersQuery,
-  useGetEligibleSellersQuery,
   useGetEligibleSellersAdvancedQuery,
   useGetSupplierDataQuery,
+  useGetCompanyQuery,
+  useGetSuppliersForUserQuery,
+  useGetInvitesSentForUserQuery,
+  useGetInvitesReceivedForUserQuery,
+  useGetInvitesForUserQuery,
+  useGetPendingInvitationsForUserQuery,
   useProcessPdfMutation,
   useGetTechPackQuery,
+  useGetTechPacksForUserQuery,
   useGetQueriesForTechPackQuery,
   useGetOrderSellerDetailsQuery,
   useUpdateOrderMutation,
+  useSendInviteMutation,
+  useUpdateInviteStatusMutation,
   useCreateNewOrderMutation,
   useCreateNewTechPackMutation,
   useGetRecipientTransactionsQuery,
   useGetChainOfShipmentsQuery,
   useGetIncomingRequestsQuery,
-  useGetGeographyQuery,
   useGetSalesQuery,
   useGetAdminsQuery,
   useGetUserPerformanceQuery,

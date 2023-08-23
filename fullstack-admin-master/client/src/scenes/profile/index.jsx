@@ -50,7 +50,7 @@ const Profile = () => {
 
     let {data: supplierData, isLoading: isLoadingSupplierData} = useGetSupplierDataQuery({userId});
 
-    console.log(supplierData);
+    console.log('Supplier Data Profile: ', supplierData);
 
     function a11yProps(index) {
         return {

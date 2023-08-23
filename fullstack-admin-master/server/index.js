@@ -30,6 +30,7 @@ import SupplierData from "./models/SupplierData.js";
 import UserAuth from "./models/UserAuth.js";
 import OrderTree from "./models/OrderTree.js";
 import SearchQuery from "./models/SearchQuery.js";
+import TechPack from "./models/TechPack.js";
 
 import {
   userData,
@@ -37,7 +38,9 @@ import {
   dataOrderRequests,
   supplierdata,
   searchQueriesData,
-  orderTreeData
+  orderTreeData,
+  techPackMockData,
+  orderRequestMockData
 } from "./data/index.js";
 import Shipments from "./models/Shipments.js";
 import { OrderStatus } from "./configs/OrderStatus.js";
@@ -87,6 +90,8 @@ mongoose
     // User.insertMany(dataUser);
     // UserData.insertMany(userData);
     // OrderTree.insertMany(orderTreeData);
+    // TechPack.insertMany(techPackMockData);
+    // OrderRequest.insertMany(orderRequestMockData);
     console.log("Inserted")
     // const suppliers = await SupplierData.find();
 

@@ -1,0 +1,13 @@
+/* styles.css */
+.customLink {
+  color: black;
+  text-decoration: none;
+}
+
+.customLink:hover {
+  text-decoration: underline;
+}
+
+.customLink:visited {
+  color: black;
+}

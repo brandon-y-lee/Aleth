@@ -1,5 +1,85 @@
 // import { OrderStatus } from "../configs/OrderStatus";
 
+const orderRequestIds1 = [
+  "64e0485c11c265bf45fd2ce4",
+  "64e0485c11c265bf45fd2ce5"
+];
+
+const orderRequestIds2 = [
+  "64e0485c11c265bf45fd2ce6",
+  "64e0485c11c265bf45fd2ce7"
+];
+
+export const techPackMockData = [
+  {
+    buyerId: "2",
+    buyerType: "Manufacturer",
+    sku: "12345",
+    product: "Jean Jacket",
+    quantity: 100,
+    queries: orderRequestIds1
+  },
+  {
+    buyerId: "2",
+    buyerType: "Manufacturer",
+    sku: "23456",
+    product: "Wool Coat",
+    quantity: 200,
+    queries: orderRequestIds2
+  }
+];
+
+export const orderRequestMockData = [
+  {
+    buyerId: "2",
+    buyerType: "Manufacturer",
+    techPackId: "64e038a94d810a8cfc8f1501",
+    material: "Cotton",
+    productCategory: "Tops",
+    fabricConstruction: "Woven",
+    color: "Black",
+    quantity: 100,
+    countryOfOrigin: "US",
+    suppliers: ['64ad9455915f6be80712a28f', '64ad9455915f6be80712a2ed', '64ad9455915f6be80712a303']
+  },
+  {
+    buyerId: "2",
+    buyerType: "Manufacturer",
+    techPackId: "64e038a94d810a8cfc8f1501",
+    material: "Denim",
+    productCategory: "Tops",
+    fabricConstruction: "Woven",
+    color: "Blue",
+    quantity: 100,
+    countryOfOrigin: "US",
+    sellers: ['64ad9455915f6be80712a28f', '64ad9455915f6be80712a2ed', '64ad9455915f6be80712a303']
+  },
+  {
+    buyerId: "2",
+    buyerType: "Manufacturer",
+    techPackId: "64e038a94d810a8cfc8f1502",
+    material: "Wool",
+    productCategory: "Outerwear",
+    fabricConstruction: "Woven",
+    color: "Grey",
+    quantity: 100,
+    countryOfOrigin: "US",
+    sellers: ['64ad9455915f6be80712a28f', '64ad9455915f6be80712a2ed', '64ad9455915f6be80712a303']
+  },
+  {
+    buyerId: "2",
+    buyerType: "Manufacturer",
+    techPackId: "64e038a94d810a8cfc8f1502",
+    material: "Viscose",
+    productCategory: "Outerwear",
+    fabricConstruction: "Woven",
+    color: "Black",
+    quantity: 100,
+    countryOfOrigin: "US",
+    sellers: ['64ad9455915f6be80712a28f', '64ad9455915f6be80712a2ed', '64ad9455915f6be80712a303']
+  }
+];
+
 export const dataShipments = [
   {
     "userId": 1,

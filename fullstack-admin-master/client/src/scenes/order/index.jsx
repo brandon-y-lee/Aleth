@@ -1,26 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Session from 'react-session-api';
-import { 
-  Box,
-  Button,
-  useMediaQuery,
-  useTheme,
-  Typography,
-  Grid,
-  Chip,
-  Tabs,
-  Tab,
-  IconButton,
-  Stack,
-  Paper
-} from "@mui/material";
-import {
-  Menu as MenuIcon,
-  Search,
-} from "@mui/icons-material";
+import { Box, Button, useMediaQuery, useTheme, Typography, Grid, Chip, Tabs, Tab, IconButton, Stack, Paper } from "@mui/material";
+import { Menu as MenuIcon, Search } from "@mui/icons-material";
 import { DataGridPro, GridFooterContainer, GridFooter } from "@mui/x-data-grid-pro";
-import { useGetPurchaseOrdersQuery, useUpdateOrderMutation, useCreateNewOrderMutation, useGetEligibleSellersAdvancedQuery } from "state/api";
+import { useUpdateOrderMutation, useCreateNewOrderMutation, useGetEligibleSellersAdvancedQuery, useGetTechPacksForUserQuery } from "state/api";
 import Header from "components/Header";
 import OrderMap from "components/Order/OrderMap";
 import OrderDetails from "components/Order/OrderDetails";
@@ -34,13 +18,19 @@ import { OrderStatus } from "configs/OrderStatus";
 import { RequestType } from "configs/RequestType";
 import FlexBetween from "components/FlexBetween";
 import TabPanel from 'components/Common/TabPanel';
-import Confirmation from "components/Confirmation";
+import Confirmation from "components/Order/Confirmation";
+import TechPackDetails from "components/Order/TechPackDetails";
 
 Session.set("coordinates", [17.2064912,22.1782433]);
 
 const Order = () => {
-  const userId = Session.get("username");
-  const coords = Session.get("coordinates");
+  const loggedInUser = JSON.parse(localStorage.getItem("user"));
+
+  const loggedInUserId = loggedInUser ? loggedInUser.id : null;
+
+  const { userId: userIdFromUrl } = useParams();
+  const userId = userIdFromUrl || loggedInUserId;
+
   const theme = useTheme();
   const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
   // values to be sent to the backend
@@ -53,12 +43,14 @@ const Order = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [selectedRows, setSelectedRows] = useState([]);
   const [selectedOrderId, setSelectedOrderId] = useState(null);
+  const [selectedTechPack, setSelectedTechPack] = useState(null);
 
   const [formData, setFormData] = useState({});
   const [searchInput, setSearchInput] = useState("");
   const [confirmationOpen, setConfirmationOpen] = React.useState(false);
+  console.log('User ID: ', userId);
 
-  let {data: purchaseOrders, isLoading: isLoadingPurchaseOrders} = useGetPurchaseOrdersQuery({userId});
+  let {data: purchaseOrders, isLoading: isLoadingPurchaseOrders} = useGetTechPacksForUserQuery({ userId });
   console.log('Purchase Orders:', purchaseOrders);
 
   const [updateOrder, { isLoading: updatingOrder }] = useUpdateOrderMutation();
@@ -102,8 +94,8 @@ const Order = () => {
       id: `simple-tab-${index}`,
       'aria-controls': `simple-tabpanel-${index}`,
     };
-  }
-
+  };
+  
   function DetailPanelContent({ row: rowProp }) {
     return (
       <Stack
@@ -185,14 +177,14 @@ const Order = () => {
     );
   };
 
-  const purchaseOrdersColumns = [
+  const techPackColumns = [
     {
       field: "_id",
       headerName: "ID",
-      flex: 0.25,
+      flex: 0.50,
     },
     {
-      field: "style",
+      field: "sku",
       headerName: "SKU",
       flex: 0.25,
     },
@@ -202,11 +194,10 @@ const Order = () => {
       flex: 0.50,
     },
     {
-      field: "amount",
-      headerName: "AMOUNT",
+      field: "quantity",
+      headerName: "QUANTITY",
       flex: 0.25,
       sortable: false,
-      renderCell: (params) => "2000",
     },
     {
       field: "cost",
@@ -221,7 +212,7 @@ const Order = () => {
       flex: 0.25,
       renderCell: (params) => {
         console.log(params);
-        return (<ActionMenuIncomingOrders orderData={params.row}/>)},
+        return (<ActionMenuIncomingOrders techPackData={params.row}/>)},
     },
   ];
 
@@ -260,11 +251,11 @@ const Order = () => {
         <Box>
           <Grid container spacing={2}>
             <Grid item xs={6}>
-              <SupplierTree techPackId={"1"} onTreeClick={handleTreeClick} />
+              <SupplierTree techPackId={selectedTechPack} onTreeClick={handleTreeClick} />
             </Grid>
             <Grid item xs={6}>
               {/* <SupplierTree techPackId={orderId} /> */}
-              <OrderDetails orderId={selectedOrderId} />
+              <TechPackDetails techPackId={selectedTechPack} />
             </Grid>
           </Grid>
         </Box>
@@ -288,13 +279,13 @@ const Order = () => {
   return (
     <Box>
       <Box 
-        height="15vh"
-        p="2.5rem 2.5rem"
+        height="12vh"
+        m="1.5rem 2.5rem"
       >
         <Header title="ORDER" subtitle="Manage SKUs and Discover Suppliers" />
       </Box>
       
-      <Box m="1.5rem 2.5rem">
+      <Box m="1rem 2.5rem">
         <FlexBetween>
           <Box>
             <Tabs 
@@ -346,7 +337,6 @@ const Order = () => {
         </FlexBetween>
 
         <Box p="1.5rem 0rem">
-          <Options />
           {renderComponents()}
           {/* <OrderMap selectedTab={selectedTab} coordinates={coords} locations={searchResultsAdvanced} handleSearch={handleSearch} purchaseOrders={purchaseOrders} orderId={orderId}/> */}
         </Box>
@@ -358,8 +348,8 @@ const Order = () => {
               getRowId={(row) => row["_id"]}
               getDetailPanelContent={({ row }) => <DetailPanelContent row={row} />}
               getDetailPanelHeight={({ row }) => 'auto'}
-              rows={(purchaseOrders && purchaseOrders.allOrders) || []}
-              columns={purchaseOrdersColumns}
+              rows={(purchaseOrders && purchaseOrders.techPacks) || []}
+              columns={techPackColumns}
               rowCount={(1) || 0}
               rowsPerPageOptions={[20, 50, 100]}
               pagination
@@ -371,7 +361,8 @@ const Order = () => {
               onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
               onSortModelChange={(newSortModel) => setSort(...newSortModel)}
               onRowClick={(row)=>{
-                console.log('Row Click: ', row.row);
+                console.log('Row Click: ', row.row._id);
+                setSelectedTechPack(row.row._id);
                 setOrderId(row.row._id);
               }}
             />
@@ -395,7 +386,7 @@ const Order = () => {
               paginationMode="server"
               sortingMode="server"
               onSelectionModelChange={(newSelection) => {
-                console.log(newSelection);
+                console.log('New Selection: ', newSelection);
                 setSelectedRows(newSelection);
               }}
               onPageChange={(newPage) => setPage(newPage)}
