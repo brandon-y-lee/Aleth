@@ -59,9 +59,9 @@ export const api = createApi({
       providesTags: ["Shipments"],
     }),
 
-    processPdf: build.mutation({
+    processTechPack: build.mutation({
       query: (file) => ({
-        url: 'client/processPDF',
+        url: 'client/processTechPack',
         method: 'POST',
         body: file,
         headers: {
@@ -71,10 +71,10 @@ export const api = createApi({
     }),
 
     getEligibleSellersAdvanced: build.query({
-      query: ({ products, material, fabricConstruction, certifications }) => ({
+      query: ({ material, fabricConstruction }) => ({
         url: "client/eligibleSellersAdvanced",
         method: "GET",
-        params: { products, material, fabricConstruction, certifications },
+        params: { material, fabricConstruction },
       }),
       providesTags: ["eligibleSellersAdvanced"],
     }),
@@ -160,6 +160,22 @@ export const api = createApi({
       }),
     }),
 
+    getBulkSuppliers: build.query({
+      query: ({ supplierIds }) => ({
+        url: "client/getBulkSuppliers",
+        method: "GET",
+        params: { supplierIds: supplierIds.join(',') },
+      }),
+    }),
+
+    getOrderRequestDetails: build.query({
+      query: ({ orderRequestId }) => ({
+        url: "client/getOrderRequestDetails",
+        method: "GET",
+        params: { orderRequestId },
+      })
+    }),
+
     getIncomingRequests: build.query({
       query: ({ userid }) => ({
         url: "client/incomingRequests",
@@ -210,6 +226,13 @@ export const api = createApi({
       }),
     }),
 
+    deleteTechPack: build.mutation({
+      query: ({ techPackId }) => ({
+        url: `client/deleteTechPack/${techPackId}`,
+        method: "DELETE",
+      }),
+    }),
+
     createNewOrder: build.mutation({
       query: ({ buyerId, buyerType, techPackId, material, productCategory, deliveryDate, fabricConstruction, color, quantity, countryOfOrigin, eligibleSuppliers }) => ({
         url: "client/createNewOrder",
@@ -223,6 +246,14 @@ export const api = createApi({
         url: "client/createNewTechPack",
         method: "POST",
         body: { buyerId, buyerType, sku, product, quantity, queries },
+      }),
+    }),
+
+    createNewTechPackAndSearchQueries: build.mutation({
+      query: ({ techPackParams, buyerId, buyerType, sku, product }) => ({
+        url: "client/createNewTechPackAndSearchQueries",
+        method: "POST",
+        body: { techPackParams, buyerId, buyerType, sku, product },
       }),
     }),
 
@@ -291,16 +322,20 @@ export const {
   useGetInvitesReceivedForUserQuery,
   useGetInvitesForUserQuery,
   useGetPendingInvitationsForUserQuery,
-  useProcessPdfMutation,
+  useProcessTechPackMutation,
   useGetTechPackQuery,
   useGetTechPacksForUserQuery,
   useGetQueriesForTechPackQuery,
+  useGetBulkSuppliersQuery,
+  useGetOrderRequestDetailsQuery,
   useGetOrderSellerDetailsQuery,
   useUpdateOrderMutation,
   useSendInviteMutation,
   useUpdateInviteStatusMutation,
   useCreateNewOrderMutation,
+  useDeleteTechPackMutation,
   useCreateNewTechPackMutation,
+  useCreateNewTechPackAndSearchQueriesMutation,
   useGetRecipientTransactionsQuery,
   useGetChainOfShipmentsQuery,
   useGetIncomingRequestsQuery,

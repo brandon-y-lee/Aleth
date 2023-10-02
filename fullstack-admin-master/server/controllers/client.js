@@ -7,7 +7,8 @@ import Shipments from "../models/Shipments.js";
 import OrderRequest from "../models/OrderRequest.js";
 import getCountryIso3 from "country-iso-2-to-3";
 import { OrderStatus } from "../configs/OrderStatus.js";
-import {RequestType} from "../configs/RequestType.js";
+import { RequestType } from "../configs/RequestType.js";
+import { TechPackStatus } from "../configs/TechPackStatus.js";
 import mongoose from "mongoose";
 import SupplierData from "../models/SupplierData.js";
 import PDFParser from 'pdf2json';
@@ -34,7 +35,7 @@ export const getTechPacksForUser = async (req, res) => {
 }
 
 export const getTechPack = async (req, res) => {
-  const {techPackId} = req.query;
+  const { techPackId } = req.query;
   console.log("Fetching Tech Pack with ID:", techPackId);
 
   try{
@@ -47,20 +48,24 @@ export const getTechPack = async (req, res) => {
 };
 
 export const getQueriesForTechPack = async (req, res) => {
-  const {techPackId} = req.query;
+  const { techPackId } = req.query;
   console.log("Getting queries for techPackId: ", techPackId);
 
+  if (!techPackId || techPackId === "null") {
+    return res.status(400).json({ message: "TechPackId parameter is missing" });
+  }
+
   try{
-    const techPack = await TechPack.findOne({_id: techPackId});
-    console.log(techPack);
+    const techPack = await TechPack.findOne({ _id: techPackId });
 
     if (techPack && techPack.queries) {
-      const queries = await OrderRequest.find({
-        _id: { $in: techPack.queries }
-      });
-      
-      console.log(queries);
-      return res.status(200).json({ techPackQueries: queries });
+      const queries = await OrderRequest.find({ techPackId: techPackId });
+  
+      if (queries.length > 0) {
+        return res.status(200).json({ techPackQueries: queries });
+      } else {
+        return res.status(404).json({ message: "No queries found for this Tech Pack." });
+      }
     } else {
       return res.status(404).json({ message: "Tech Pack not found or has no queries." });
     }
@@ -69,21 +74,66 @@ export const getQueriesForTechPack = async (req, res) => {
   }
 };
 
-export const getEligibleSellersAdvanced = async (req, res) => {
-  try {
-    console.log("Finding Eligible Sellers Advanced", req.query);
-    const { products, material, fabricConstruction, certifications } = req.query;
-    const eligibleSellers = await SupplierData.find({
-      // $text: { $search: `${material}` },
-      'Products': { $in: [products] }
-    });
-    if(eligibleSellers.length > 0)
-      console.log(eligibleSellers[0]);
+export const getBulkSuppliers = async (req, res) => {
+  const supplierIdsString = req.query.supplierIds || "";
+  const supplierIdsArray = supplierIdsString.split(',');
 
-    res.status(200).json({eligibleSellers});
+  try {
+    const suppliers = await SupplierData.find({ _id: { $in: supplierIdsArray } });
+    return res.status(200).json(suppliers);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
   }
-  catch (error) {
-    res.status(404).json({ message: error.message });
+};
+
+export const getOrderRequestDetails = async (req, res) => {
+  try {
+    const { orderRequestId } = req.query;
+
+    let sellerData = {
+      'stats': { 'pending': 0, 'accepted': 0, 'rejected': 0 },
+      'sellerStatus': {},
+      'sellerNotes': {}
+    };
+
+    const orderRequest = await OrderRequest.findById(orderRequestId);
+    console.log('orderRequest: ', orderRequest);
+
+    if (orderRequest) {
+      const supplierStatuses = orderRequest.supplierStatuses;
+      console.log('supplierStasuses: ', supplierStatuses);
+      const supplierNotes = orderRequest.supplierNotes;
+
+      for (let supplierId in supplierStatuses) {
+        const status = supplierStatuses[supplierId];
+        const note = supplierNotes[supplierId];
+        const supplierData = await SupplierData.findById(supplierId);
+
+        if (supplierData) {
+          sellerData['sellerStatus'][supplierId] = status;
+          sellerData['sellerNotes'][supplierId] = note;
+
+          if (status === OrderStatus.NEWORDER) {
+            sellerData['stats']['pending'] += 1;
+          }
+
+          if (status === OrderStatus.SELLERACCEPT || status === OrderStatus.BUYERACCEPT) {
+            sellerData['stats']['accepted'] += 1;
+          }
+
+          if (status === OrderStatus.SELLERDENIED || status === OrderStatus.BUYERDENIED) {
+            sellerData['stats']['rejected'] += 1;
+          }
+        }
+      }
+
+      res.status(200).json({ sellerData });
+    } else {
+      res.status(404).json({ message: "OrderRequest not found." });
+    }
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -329,12 +379,14 @@ export const processTechPack = async (req, res) => {
       }
 
       const sortedRows = tableRows.sort((a, b) => a.yPos - b.yPos).map(row => row.data);
-      let orderParams = sortedRows.slice(2, -3).map(row => {
+      let orderParams = sortedRows.slice(3, -3).map(row => {
+        const item = row[1];
         const description = row[2].replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '').toLowerCase();
         const fabric = fabrics.find(fabric => new RegExp(`\\b${fabric.toLowerCase()}\\b`).test(description));
         const category = productCategory.find(category => new RegExp(`\\b${category.toLowerCase()}\\b`).test(description));
         const construction = fabricConstruction.find(construction => new RegExp(`\\b${construction.toLowerCase()}\\b`).test(description));
         return {
+          item: item || '',
           fabric: fabric || '',
           productCategory: category || '',
           fabricConstruction: construction || '',
@@ -342,49 +394,191 @@ export const processTechPack = async (req, res) => {
         };
       });
 
-      orderParams = orderParams.filter(param => param.fabric || param.productCategory || param.fabricConstruction);
+      orderParams = orderParams.filter(param => param.item || param.fabric || param.productCategory || param.fabricConstruction);
+      console.log("PDF Done Parsing");
       res.status(200).json({tableData: orderParams});
     });
+
+    pdfParser.parseBuffer(req.file.buffer);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-export const createSearchQueries = async (req, res) => {
-  console.log("Creating Search Queries PDF: ", req.body);
-  const {orderParams, buyerId, buyerType} = req.body;
+export const getEligibleSellersAdvanced = async (req, res) => {
   try {
-    const newId = generateID();
+    console.log("Finding Eligible Sellers Advanced", req.query);
+    const { material, fabricConstruction } = req.query;
 
-    const newOrderTree = new OrderTree({
-      id : newId,
-      buyerType: buyerType,
+    const query = [
+      {
+        $project: {
+          materialMatch: { $regexMatch: { input: "$Description", regex: new RegExp(material, 'i') } },
+          fabricConstructionMatch: { $regexMatch: { input: "$Description", regex: new RegExp(fabricConstruction, 'i') } }
+        }
+      },
+      {
+        $addFields: {
+          matchCount: {
+            $add: [
+              { $cond: ["$materialMatch", 1, 0] },
+              { $cond: ["$fabricConstructionMatch", 1, 0] }
+            ]
+          }
+        }
+      },
+      { $sort: { matchCount: -1 } }
+    ];
+
+    const eligibleSellers = await SupplierData.aggregate(query);
+
+    if (eligibleSellers.length > 0)
+      console.log(eligibleSellers[0]);
+
+    res.status(200).json({ eligibleSellers });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+const findEligibleSuppliers = async ({ material, fabricConstruction }) => {
+  // Initialize the query array
+  const query = [];
+
+  // Create a conditional projection based on non-empty values
+  const projectionFields = {};
+
+  if (material) {
+    projectionFields.materialMatch = { $regexMatch: { input: "$Description", regex: new RegExp(material, 'i') } };
+  }
+
+  if (fabricConstruction) {
+    projectionFields.fabricConstructionMatch = { $regexMatch: { input: "$Description", regex: new RegExp(fabricConstruction, 'i') } };
+  }
+
+  // Only add the $project stage if there's something to project
+  if (Object.keys(projectionFields).length > 0) {
+    query.push({ $project: projectionFields });
+  }
+
+  // Add fields for matchCount calculation
+  const matchCountCalc = [];
+
+  if (material) {
+    matchCountCalc.push({ $cond: ["$materialMatch", 1, 0] });
+  }
+
+  if (fabricConstruction) {
+    matchCountCalc.push({ $cond: ["$fabricConstructionMatch", 1, 0] });
+  }
+
+  // Only add the $addFields stage if there's a condition to check
+  if (matchCountCalc.length > 0) {
+    query.push({ $addFields: { matchCount: { $add: matchCountCalc } } });
+    query.push({ $match: { matchCount: { $gt: 0 } } });
+    query.push({ $sort: { matchCount: -1 } });
+  }
+
+  // Execute the query
+  const eligibleSuppliers = await SupplierData.aggregate(query);
+
+  if (eligibleSuppliers.length > 0) {
+    return eligibleSuppliers;
+  } else {
+    throw new Error('No eligible sellers found.');
+  }
+};
+
+export const createNewTechPackAndSearchQueries = async (req, res) => {
+  console.log("Creating Search Queries PDF: ", req.body);
+  const { techPackParams, buyerId, buyerType, sku, product } = req.body;
+
+  try {
+    const newTechPack = new TechPack({
       buyerId: buyerId,
-      material: "",
-      quantity: "",
-    });  
-    await newOrder.save();
+      buyerType: buyerType,
+      product: product,
+      sku: sku,
+      status: TechPackStatus.NEWTECHPACK,
+      queries: []
+    });
+    await newTechPack.save();
 
-    // Create SearchQueries from orderParams
     const searchQueries = [];
-    for (const param of orderParams) {
-      const searchQuery = new SearchQuery({
-        material: param.fabric,
-        productCategory: param.productCategory,
-        fabricConstruction: param.fabricConstruction,
-        orderId: newId
-        // Add other fields as needed
-      });
-  
-      await searchQuery.save();
-      searchQueries.push(searchQuery._id);
+    for (const param of techPackParams) {
+      try {
+        const eligibleSuppliers = await findEligibleSuppliers({ material: param.fabric, fabricConstruction: param.fabricConstruction });
+        console.log(`Eligible Suppliers for ${param.fabric} and ${param.fabricConstruction}:`, eligibleSuppliers);
+        const supplierIds = eligibleSuppliers.map(s => s._id);
+
+        let supplierStatuses = {};
+        let supplierNotes = {};
+    
+        supplierIds.forEach((supplierId) => {
+          supplierStatuses[supplierId] = OrderStatus.NEWORDER;
+          supplierNotes[supplierId] = "";
+        })
+
+        const searchQuery = new OrderRequest({
+          buyerId: buyerId,
+          buyerType: buyerType,
+          techPackId: newTechPack._id,
+          item: param.item,
+          description: param.description,
+          material: param.fabric,
+          productCategory: param.productCategory,
+          fabricConstruction: param.fabricConstruction,
+          suppliers: supplierIds,
+          supplierStatuses: supplierStatuses,
+          supplierNotes: supplierNotes
+          // deliveryDate: param.deliveryDate,
+          // color: param.color,
+          // quantity: param.quantity,
+          // countryOfOrigin: param.countryOfOrigin,
+        });
+
+        await searchQuery.save();
+        searchQueries.push(searchQuery._id);
+      } catch (error) {
+        console.error("Error finding eligible sellers: ", error);
+      }
     }
 
-    await TechPack.updateOne({id: newId},{queries: searchQueries});
-    res.status(200).json({"msg":"Created Successfully"});
+    await TechPack.updateOne({_id: newTechPack._id}, {queries: searchQueries});
+
+    // Fetch the updated TechPack
+    const updatedTechPack = await TechPack.findById(newTechPack._id);
+    res.status(200).json({
+      message: "Tech Pack created successfully and Search Queries created",
+      newTechPack: updatedTechPack
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   };
+};
+
+export const deleteTechPack = async (req, res) => {
+  const { techPackId } = req.params;
+
+  try {
+    if (req.method === 'DELETE') {
+      // Delete associated OrderRequest objects
+      await OrderRequest.deleteMany({ techPackId: techPackId });
+
+      // Delete the TechPack
+      const techPack = await TechPack.findById(techPackId);
+      await techPack.remove();
+      if (techPack) {
+        res.status(200).json({ message: "TechPack and associated OrderRequests deleted successfully." });
+      } else {
+        res.status(404).json({ message: "TechPack not found." });
+      }
+    } else {
+      res.status(400).json({ message: "Invalid HTTP method." });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "An error occurred while processing the TechPack.", error });
+  }
 };
 
 export const createNewOrder = async (req, res) => {

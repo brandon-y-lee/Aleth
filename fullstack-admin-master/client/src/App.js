@@ -8,8 +8,8 @@ import Layout from "scenes/layout";
 import Dashboard from "scenes/dashboard";
 import Network from "scenes/network";
 import Customers from "scenes/customers";
-import Shipments from "scenes/shipments";
-import Order from "scenes/order";
+import Shipments from "scenes/trades";
+import Inbox from "scenes/inbox";
 import Overview from "scenes/overview";
 import Daily from "scenes/daily";
 import Monthly from "scenes/monthly";
@@ -52,14 +52,9 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route element={<Layout />}>
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/order" element={<Order />} />
+              <Route path="/inbox" element={<Inbox />} />
+              <Route path="/trades" element={<Shipments />} />
               <Route path="/network" element={<Network />} />
-              <Route path="/shipments" element={<Shipments />} />
-              <Route path="/templates" element={<Overview />} />
-              <Route path="/daily" element={<Daily />} />
-              <Route path="/monthly" element={<Monthly />} />
-              <Route path="/breakdown" element={<Breakdown />} />
-              <Route path="/performance" element={<Performance />} />
               <Route path="/profile/:userId?" element={<Profile />} />
             </Route>
           </Routes>

@@ -28,6 +28,7 @@ import {
   TrendingUpOutlined,
   PieChartOutlined,
   InventoryOutlined,
+  MailOutlined,
   SearchOutlined,
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
@@ -43,48 +44,16 @@ const navItems = [
     icon: <HomeOutlined />,
   },
   {
-    text: "Order",
-    icon: <PublicOutlined />,
+    text: "Inbox",
+    icon: <MailOutlined />,
   },
   {
-    text: "Network",
-    icon: <InventoryOutlined />,
-  },
-  {
-    text: "Shipments",
+    text: "Trades",
     icon: <Inventory2Outlined />,
   },
   {
-    text: "Templates",
-    icon: <DescriptionOutlined />,
-  },
-  {
-    text: "Passports",
-    icon: null,
-  },
-  {
-    text: "Entity",
-    icon: <PointOfSaleOutlined />,
-  },
-  {
-    text: "Insights",
-    icon: <TodayOutlined />,
-  },
-  {
-    text: "Monthly",
-    icon: <CalendarMonthOutlined />,
-  },
-  {
-    text: "Breakdown",
-    icon: <PieChartOutlined />,
-  },
-  {
-    text: "Management",
-    icon: null,
-  },
-  {
-    text: "Performance",
-    icon: <TrendingUpOutlined />,
+    text: "Network",
+    icon: <PublicOutlined />,
   },
   {
     text: "Profile",

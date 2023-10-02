@@ -2,4 +2,4 @@ export const fabrics = [ 'Cotton', 'Polyester', 'Silk', 'Wool', 'Denim', 'Leathe
 
 export const productCategory = ['Tops', 'Bottoms', 'Dresses', 'Outerwear', 'Undergarments', 'Activewear', 'Swimwear', 'Accessories', 'Footwear'];
 
-export const fabricConstruction = ['Woven', 'Knit', 'Non-Woven', 'Synthetic', 'Blended'];
+export const fabricConstruction = ['Woven', 'Knit', 'Non-Woven', 'Synthetic', 'Blended', 'Twill', 'Corduroy'];

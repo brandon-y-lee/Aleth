@@ -88,7 +88,7 @@ const SupplierTree = ({ techPackId, onTreeClick }) => {
   }, [techPackId, isLoadingTechPack, techPack, queries, isLoadingQueries]);
 
   return (
-    <div style={{ height: '100%', width: '100%' }}>
+    <div style={{ padding: '10px', height: '100%', width: '100%' }}>
       {option && (
         <ReactEChartsCore
           echarts={echarts}

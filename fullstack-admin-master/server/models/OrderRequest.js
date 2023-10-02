@@ -6,6 +6,14 @@ const OrderRequestSchema = new mongoose.Schema(
     buyerId: String,
     buyerType: String,
     techPackId: String,
+    item:{
+      type: String,
+      default: ''
+    },
+    description:{
+      type: String,
+      default: ''
+    },
     material:{
       type: String,
       default:""

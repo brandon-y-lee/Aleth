@@ -18,7 +18,6 @@ import {
   getTechPack,
   getQueriesForTechPack,
   getTechPacksForUser,
-  createSearchQueries,
   createNewTechPack,
   getSuppliersForUser,
   addSupplierToUserNetwork,
@@ -29,6 +28,10 @@ import {
   getInvitesReceivedForUser,
   getPendingInvitationsForUser,
   getInvitesForUser,
+  createNewTechPackAndSearchQueries,
+  getBulkSuppliers,
+  getOrderRequestDetails,
+  deleteTechPack,
 } from "../controllers/client.js";
 
 const router = express.Router();
@@ -49,6 +52,8 @@ router.get("/supplierData", getSupplierData);
 router.get("/getTechPack", getTechPack);
 router.get("/getTechPacksForUser", getTechPacksForUser);
 router.get("/getQueriesForTechPack", getQueriesForTechPack);
+router.get("/getBulkSuppliers", getBulkSuppliers);
+router.get("/getOrderRequestDetails", getOrderRequestDetails);
 
 //GET - User Supplier Network
 router.get("/getSuppliersForUser", getSuppliersForUser);
@@ -60,7 +65,7 @@ router.get("/getInvitesForUser", getInvitesForUser);
 
 //POSTs
 router.post("/updateRecipients", updateRecipients);
-router.post('/processPDF', upload.single('file'), processTechPack);
+router.post('/processTechPack', upload.single('file'), processTechPack);
 router.post("/generateNewShipment", generateNewShipment);
 
 //POSTS - QUERIES
@@ -68,8 +73,9 @@ router.post("/createNewOrder", createNewOrder);
 router.post("/updateOrder", updateOrder);
 
 //POSTs - Techpacks
-router.post('/createSearchQueries', createSearchQueries);
 router.post('/createNewTechPack', createNewTechPack);
+router.post('/createNewTechPackAndSearchQueries', createNewTechPackAndSearchQueries);
+router.delete('/deleteTechPack/:techPackId', deleteTechPack);
 
 //POSTS - User Supplier Network
 router.post("/addSupplierToUserNetwork", addSupplierToUserNetwork);

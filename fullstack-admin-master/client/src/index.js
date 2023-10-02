@@ -9,7 +9,7 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import { api } from "state/api";
 import {registerLicense} from "@syncfusion/ej2-base";
 
-registerLicense('ORg4AjUWIQA/Gnt2V1hhQlJAfVddX2JWfFN0RnNedVp3flBAcDwsT3RfQF5jTn1SdERgWH1ZcHdSQg==');
+registerLicense('Ngo9BigBOggjHTQxAR8/V1NGaF1cWGhAYVFyWmFZfV1gdVVMY1xbRXdPIiBoS35RdUVrW3pccndVR2JfUkJ2');
 
 const store = configureStore({
   reducer: {

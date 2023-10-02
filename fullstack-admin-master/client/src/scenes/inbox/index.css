@@ -1,0 +1,21 @@
+/* Custom styling for DataGridPro */
+
+.myDataGridPro {
+  --unstable_DataGrid-headWeight: bold !important;
+}
+
+/* Remove border around the DataGridPro */
+.myDataGridPro .MuiDataGrid-root {
+  border: none !important;
+}
+
+/* Remove all border lines */
+.myDataGridPro .MuiDataGrid-row,
+.myDataGridPro .MuiDataGrid-cell {
+  border: none !important;
+}
+
+/* Remove the footer */
+.myDataGridPro .MuiDataGrid-footerContainer {
+  display: none !important;
+}

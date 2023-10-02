@@ -63,10 +63,7 @@ const Dashboard = () => {
     <Box>
       <Box 
         height="15vh"
-        p="3rem 2.5rem"
-        sx={{
-          background: `linear-gradient(215deg, ${theme.palette.secondary[400]} 30%, ${theme.palette.primary[500]} 90%)`,
-        }}
+        p="2rem 2.5rem"
       >
         <FlexBetween>
           <Header title="DASHBOARD" />

@@ -22,13 +22,13 @@ import TabPanel from 'components/Common/TabPanel';
 // import { makeStyles } from '@mui/styles';
 import { OrderStatus } from "configs/OrderStatus";
 import { RequestType } from "configs/RequestType";
-import Order from "scenes/order";
+import Order from "scenes/inbox";
 import { getLoggedInUser } from "utils/auth";
 
 
 // Session.set("username","2");
 
-const Shipments = () => {
+const Trades = () => {
   let userId = Session.get("username");
   const userInfo = getLoggedInUser();
 
@@ -370,4 +370,4 @@ const Shipments = () => {
   );
 };
 
-export default Shipments;
+export default Trades;

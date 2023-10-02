@@ -7,6 +7,10 @@ const techPackSchema = mongoose.Schema(
       sku: String,
       product: String,
       quantity: Number,
+      status: {
+        type: Number,
+        enum: [0, 1, 2]
+      },
       queries: {
         type: [String],
         default: []
